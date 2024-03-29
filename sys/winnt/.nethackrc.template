@@ -1,8 +1,8 @@
-# NetHack 3.6  defaults.nh       $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.32 $
+# LumaHack 3.6  defaults.nh       $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.32 $
 # Copyright (c) 2006 by Michael Allison
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
-# Sample config file for win32 NetHack
+# Sample config file for win32 LumaHack
 # A '#' at the beginning of a line means the rest of the line is a comment.
 #
 # Some options MUST be set in this file, other options can be toggled while
@@ -11,7 +11,7 @@
 # To change the configuration, comment out the unwanted lines, and
 # uncomment the configuration you want.
 #
-# $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.32 $
+# $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.32 $
 
 # *** OPTIONS ***
 #
@@ -20,7 +20,7 @@
 OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
 
 # Here is a suggested symbol set from Michael Feir, 
-# for use by blind NetHack players
+# for use by blind LumaHack players
 #OPTIONS=symset:NHAccess,roguesymset:NHAccess
 
 # Optional curses port interface
@@ -30,7 +30,7 @@ OPTIONS=symset:IBMGraphics_2,roguesymset:RogueEpyx
 # Ray Chason's keyboard handling
 # OPTIONS=altkeyhandling:ray
 #
-# NetHack 3.4.0 keyboard handling
+# LumaHack 3.4.0 keyboard handling
 # OPTIONS=altkeyhandling:340
 
 # *** Personal Preferences ***
@@ -91,9 +91,9 @@ OPTIONS=force_invmenu
 OPTIONS=suppress_alert:3.3.1
 #
 # Note: the rest_on_space in the next line may not be
-#       appropriate for a beginning NetHack player, since
+#       appropriate for a beginning LumaHack player, since
 #       it could result in use of a turn unintentionally.
-#       If you're new to NetHack, leave it commented it out.
+#       If you're new to LumaHack, leave it commented it out.
 #OPTIONS=rest_on_space
 #
 # Set some options to control graphical window-port (these will
@@ -139,25 +139,25 @@ OPTIONS=vary_msgcount:4
 
 # *** LOCATIONS ***
 # IMPORTANT: If you change any of these locations, the directories they
-# point at must exist.  NetHack will not create them for you.
+# point at must exist.  LumaHack will not create them for you.
 #
 # The location that documentation and helps files are placed
-#HACKDIR=c:\User\USERNAME\NetHack\3.6
+#HACKDIR=c:\User\USERNAME\LumaHack\3.6
 #
 # The location that level files in progress are stored (writeable)
-#LEVELDIR=c:\User\USERNAME\AppData\Local\NetHack\3.6
+#LEVELDIR=c:\User\USERNAME\AppData\Local\LumaHack\3.6
 #
 # The location where saved games are kept (writeable)
-#SAVEDIR=c:\User\USERNAME\AppData\Local\NetHack\3.6
+#SAVEDIR=c:\User\USERNAME\AppData\Local\LumaHack\3.6
 #
 # The location that bones files are kept (writeable)
-#BONESDIR=c:\ProgramData\NetHack\3.6
+#BONESDIR=c:\ProgramData\LumaHack\3.6
 #
 # The location that score files are kept (writeable)
-#SCOREDIR=c:\ProgramData\NetHack\3.6
+#SCOREDIR=c:\ProgramData\LumaHack\3.6
 #
 # The location that file synchronization locks are stored (writeable)
-#LOCKDIR=c:\ProgramData\NetHack\3.6
+#LOCKDIR=c:\ProgramData\LumaHack\3.6
 #
 
 # Finnish keyboards might need these modifications uncommented. 

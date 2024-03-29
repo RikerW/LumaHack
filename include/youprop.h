@@ -1,6 +1,6 @@
-/* NetHack 3.6	youprop.h	$NHDT-Date: 1568831820 2019/09/18 18:37:00 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.27 $ */
+/* LumaHack 3.6	youprop.h	$NHDT-Date: 1568831820 2019/09/18 18:37:00 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.27 $ */
 /* Copyright (c) 1989 Mike Threepoint				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef YOUPROP_H
 #define YOUPROP_H

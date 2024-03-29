@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 curswins.c */
+/* LumaHack 3.6 curswins.c */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -13,7 +13,7 @@
 /* Private declarations */
 
 typedef struct nhw {
-    winid nhwin;                /* NetHack window id */
+    winid nhwin;                /* LumaHack window id */
     WINDOW *curwin;             /* Curses window pointer */
     int width;                  /* Usable width not counting border */
     int height;                 /* Usable height not counting border */
@@ -21,27 +21,27 @@ typedef struct nhw {
     int y;                      /* start of window on termial (top) */
     int orientation;            /* Placement of window relative to map */
     boolean border;             /* Whether window has a visible border */
-} nethack_window;
+} lumahack_window;
 
 typedef struct nhwd {
-    winid nhwid;                /* NetHack window id */
+    winid nhwid;                /* LumaHack window id */
     struct nhwd *prev_wid;      /* Pointer to previous entry */
     struct nhwd *next_wid;      /* Pointer to next entry */
-} nethack_wid;
+} lumahack_wid;
 
 typedef struct nhchar {
     int ch;                     /* character */
     int color;                  /* color info for character */
     int attr;                   /* attributes of character */
-} nethack_char;
+} lumahack_char;
 
 static boolean map_clipped;     /* Map window smaller than 80x21 */
-static nethack_window nhwins[NHWIN_MAX];        /* NetHack window array */
-static nethack_char map[ROWNO][COLNO];  /* Map window contents */
-static nethack_wid *nhwids = NULL;      /* NetHack wid array */
+static lumahack_window nhwins[NHWIN_MAX];        /* LumaHack window array */
+static lumahack_char map[ROWNO][COLNO];  /* Map window contents */
+static lumahack_wid *nhwids = NULL;      /* LumaHack wid array */
 
 static boolean is_main_window(winid wid);
-static void write_char(WINDOW * win, int x, int y, nethack_char ch);
+static void write_char(WINDOW * win, int x, int y, lumahack_char ch);
 static void clear_map(void);
 
 /* Create a window with the specified size and orientation */
@@ -152,14 +152,14 @@ curses_destroy_win(WINDOW *win)
     werase(win);
     wrefresh(win);
     delwin(win);
-    curses_refresh_nethack_windows();
+    curses_refresh_lumahack_windows();
 }
 
 
-/* Refresh nethack windows if they exist, or base window if not */
+/* Refresh lumahack windows if they exist, or base window if not */
 
 void
-curses_refresh_nethack_windows()
+curses_refresh_lumahack_windows()
 {
     WINDOW *status_window, *message_window, *map_window, *inv_window;
 
@@ -194,7 +194,7 @@ curses_refresh_nethack_windows()
 }
 
 
-/* Return curses window pointer for given NetHack winid */
+/* Return curses window pointer for given LumaHack winid */
 
 WINDOW *
 curses_get_nhwin(winid wid)
@@ -209,7 +209,7 @@ curses_get_nhwin(winid wid)
 }
 
 
-/* Add curses window pointer and window info to list for given NetHack winid */
+/* Add curses window pointer and window info to list for given LumaHack winid */
 
 void
 curses_add_nhwin(winid wid, int height, int width, int y, int x,
@@ -272,10 +272,10 @@ curses_add_nhwin(winid wid, int height, int width, int y, int x,
 void
 curses_add_wid(winid wid)
 {
-    nethack_wid *new_wid;
-    nethack_wid *widptr = nhwids;
+    lumahack_wid *new_wid;
+    lumahack_wid *widptr = nhwids;
 
-    new_wid = (nethack_wid *) alloc((unsigned) sizeof (nethack_wid));
+    new_wid = (lumahack_wid *) alloc((unsigned) sizeof (lumahack_wid));
     new_wid->nhwid = wid;
 
     new_wid->next_wid = NULL;
@@ -293,7 +293,7 @@ curses_add_wid(winid wid)
 }
 
 
-/* refresh a curses window via given nethack winid */
+/* refresh a curses window via given lumahack winid */
 
 void
 curses_refresh_nhwin(winid wid)
@@ -303,7 +303,7 @@ curses_refresh_nhwin(winid wid)
 }
 
 
-/* Delete curses window via given NetHack winid and remove entry from list */
+/* Delete curses window via given LumaHack winid and remove entry from list */
 
 void
 curses_del_nhwin(winid wid)
@@ -331,8 +331,8 @@ curses_del_nhwin(winid wid)
 void
 curses_del_wid(winid wid)
 {
-    nethack_wid *tmpwid;
-    nethack_wid *widptr;
+    lumahack_wid *tmpwid;
+    lumahack_wid *widptr;
 
     if (curses_is_menu(wid) || curses_is_text(wid)) {
         curses_del_menu(wid, FALSE);
@@ -372,7 +372,7 @@ curses_putch(winid wid, int x, int y, int ch, int color, int attr)
     static boolean map_initted = FALSE;
     int sx, sy, ex, ey;
     boolean border = curses_window_has_border(wid);
-    nethack_char nch;
+    lumahack_char nch;
 /*
     if (wid == STATUS_WIN) {
         curses_update_stats();
@@ -452,7 +452,7 @@ curses_window_has_border(winid wid)
 boolean
 curses_window_exists(winid wid)
 {
-    nethack_wid *widptr;
+    lumahack_wid *widptr;
 
     for (widptr = nhwids; widptr; widptr = widptr->next_wid)
         if (widptr->nhwid == wid)
@@ -478,7 +478,7 @@ curses_get_window_orientation(winid wid)
 }
 
 
-/* Output a line of text to specified NetHack window with given coordinates
+/* Output a line of text to specified LumaHack window with given coordinates
    and text attributes */
 
 void
@@ -523,7 +523,7 @@ curses_puts(winid wid, int attr, const char *text)
 }
 
 
-/* Clear the contents of a window via the given NetHack winid */
+/* Clear the contents of a window via the given LumaHack winid */
 
 void
 curses_clear_nhwin(winid wid)
@@ -569,7 +569,7 @@ curses_alert_main_borders(boolean onoff)
     curses_alert_win_border(INV_WIN, onoff);
 }
 
-/* Return true if given wid is a main NetHack window */
+/* Return true if given wid is a main LumaHack window */
 
 static boolean
 is_main_window(winid wid)
@@ -586,7 +586,7 @@ is_main_window(winid wid)
 coordinates without a refresh.  Currently only used for the map. */
 
 static void
-write_char(WINDOW * win, int x, int y, nethack_char nch)
+write_char(WINDOW * win, int x, int y, lumahack_char nch)
 {
     curses_toggle_color_attr(win, nch.color, nch.attr, ON);
 #ifdef PDCURSES
@@ -609,7 +609,7 @@ curses_draw_map(int sx, int sy, int ex, int ey)
 
 #ifdef MAP_SCROLLBARS
     int sbsx, sbsy, sbex, sbey, count;
-    nethack_char hsb_back, hsb_bar, vsb_back, vsb_bar;
+    lumahack_char hsb_back, hsb_bar, vsb_back, vsb_bar;
 #endif
 
     if (curses_window_has_border(MAP_WIN)) {

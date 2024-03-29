@@ -1,6 +1,6 @@
-/* NetHack 3.6	safeproc.c   */	
+/* LumaHack 3.6	safeproc.c   */	
 /* Copyright (c) Michael Allison, 2018                            */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include <stdio.h>

@@ -1,6 +1,6 @@
-/* NetHack 3.6  stubs.c       $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.3 $ */
+/* LumaHack 3.6  stubs.c       $NHDT-Date: 1524689357 2018/04/25 20:49:17 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.3 $ */
 /*      Copyright (c) 2015 by Michael Allison              */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "win32api.h"
 #include "hack.h"
@@ -48,7 +48,7 @@ char *argv[];
     boolean resuming;
 
     resuming = mingw_main(argc, argv);
-    nethack_exit(EXIT_SUCCESS);
+    lumahack_exit(EXIT_SUCCESS);
     /*NOTREACHED*/
     return 0;
 }
@@ -179,7 +179,7 @@ more()
 }
 
 void
-nethack_enter_nttty()
+lumahack_enter_nttty()
 {
     return;
 }

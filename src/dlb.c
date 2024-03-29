@@ -1,6 +1,6 @@
-/* NetHack 3.6	dlb.c	$NHDT-Date: 1446975464 2015/11/08 09:37:44 $  $NHDT-Branch: master $:$NHDT-Revision: 1.15 $ */
+/* LumaHack 3.6	dlb.c	$NHDT-Date: 1446975464 2015/11/08 09:37:44 $  $NHDT-Branch: master $:$NHDT-Revision: 1.15 $ */
 /* Copyright (c) Kenneth Lorber, Bethesda, Maryland, 1993. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "config.h"
 #include "dlb.h"
@@ -24,7 +24,7 @@
 
 #ifdef DLB
 /*
- * Data librarian.  Present a STDIO-like interface to NetHack while
+ * Data librarian.  Present a STDIO-like interface to LumaHack while
  * multiplexing on one or more "data libraries".  If a file is not found
  * in a given library, look for it outside the libraries.
  */
@@ -61,7 +61,7 @@ extern FILE *FDECL(fopen_datafile, (const char *, const char *, int));
  *
  * The ability to open more than one library is supported but used
  * only in the Amiga port (the second library holds the sound files).
- * For Unix, the idea would be to split the NetHack library
+ * For Unix, the idea would be to split the LumaHack library
  * into text and binary parts, where the text version could be shared.
  */
 

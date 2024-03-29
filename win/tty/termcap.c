@@ -1,7 +1,7 @@
-/* NetHack 3.6	termcap.c	$NHDT-Date: 1562056615 2019/07/02 08:36:55 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.31 $ */
+/* LumaHack 3.6	termcap.c	$NHDT-Date: 1562056615 2019/07/02 08:36:55 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.31 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Pasi Kallinen, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -243,7 +243,7 @@ int *wid, *hgt;
 #endif
     nh_ND = Tgetstr("nd");
     if (tgetflag("os"))
-        error("NetHack can't have OS.");
+        error("LumaHack can't have OS.");
     if (tgetflag("ul"))
         ul_hack = TRUE;
     CE = Tgetstr("ce");
@@ -256,8 +256,8 @@ int *wid, *hgt;
     /* not:             XD = Tgetstr("do"); */
     if (!(nh_CM = Tgetstr("cm"))) {
         if (!UP && !HO)
-            error("NetHack needs CM or UP or HO.");
-        tty_raw_print("Playing NetHack on terminals without CM is suspect.");
+            error("LumaHack needs CM or UP or HO.");
+        tty_raw_print("Playing LumaHack on terminals without CM is suspect.");
         tty_wait_synch();
     }
     SO = Tgetstr("so");
@@ -312,7 +312,7 @@ int *wid, *hgt;
     *wid = CO;
     *hgt = LI;
     if (!(CL = Tgetstr("cl"))) /* last thing set */
-        error("NetHack needs CL.");
+        error("LumaHack needs CL.");
     if ((int) (tbufptr - tbuf) > (int) (sizeof tbuf))
         error("TERMCAP entry too big...\n");
     free((genericptr_t) tptr);
@@ -416,7 +416,7 @@ tty_decgraphics_termcap_fixup()
             if (*ae == '*')
                 ++ae;
         }
-        /* can't use nethack's case-insensitive strstri() here, and some old
+        /* can't use lumahack's case-insensitive strstri() here, and some old
            systems don't have strstr(), so use brute force substring search */
         ae_length = strlen(ae), he_limit = strlen(nh_he);
         while (he_limit >= ae_length) {
@@ -828,7 +828,7 @@ cl_eos() /* free after Robert Viduya */
  */
 
 /* `curses' is aptly named; various versions don't like these
-    macros used elsewhere within nethack; fortunately they're
+    macros used elsewhere within lumahack; fortunately they're
     not needed beyond this point, so we don't need to worry
     about reconstructing them after the header file inclusion. */
 #undef delay_output
@@ -864,7 +864,7 @@ extern char *tparm();
 #endif
 #endif
 
-/* Mapping data for the six terminfo colors that resolve to pairs of nethack
+/* Mapping data for the six terminfo colors that resolve to pairs of lumahack
  * colors.  Black and white are handled specially.
  */
 const struct {

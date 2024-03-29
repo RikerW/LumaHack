@@ -1,10 +1,10 @@
-/* NetHack 3.6	gnbind.c	$NHDT-Date: 1450453305 2015/12/18 15:41:45 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.33 $ */
+/* LumaHack 3.6	gnbind.c	$NHDT-Date: 1450453305 2015/12/18 15:41:45 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.33 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file implements the interface between the window port specific
- * code in the Gnome port and the rest of the nethack game engine.
+ * code in the Gnome port and the rest of the lumahack game engine.
 */
 
 #include "gnbind.h"
@@ -54,7 +54,7 @@ struct window_procs Gnome_procs = {
 
 /*
 init_nhwindows(int* argcp, char** argv)
-                -- Initialize the windows used by NetHack.  This can also
+                -- Initialize the windows used by LumaHack.  This can also
                    create the standard windows listed at the top, but does
                    not display them.
                 -- Any commandline arguments relevant to the windowport
@@ -352,7 +352,7 @@ gnome_askname()
 
     g_message("Asking name....");
 
-    /* Ask for a name and stuff the response into plname, a nethack global */
+    /* Ask for a name and stuff the response into plname, a lumahack global */
     ret = ghack_ask_string_dialog("What is your name?", "gandalf",
                                   "GnomeHack", plname);
 
@@ -1089,7 +1089,7 @@ gnome_getlin(const char *question, char *input)
 {
     int ret;
 
-    ret = ghack_ask_string_dialog(question, "", "nethack", input);
+    ret = ghack_ask_string_dialog(question, "", "lumahack", input);
 
     if (ret == -1)
         input[0] = 0;

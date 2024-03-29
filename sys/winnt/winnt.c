@@ -1,6 +1,6 @@
-/* NetHack 3.6	winnt.c	$NHDT-Date: 1524321419 2018/04/21 14:36:59 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.30 $ */
-/* Copyright (c) NetHack PC Development Team 1993, 1994 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	winnt.c	$NHDT-Date: 1524321419 2018/04/21 14:36:59 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.30 $ */
+/* Copyright (c) LumaHack PC Development Team 1993, 1994 */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  *  WIN32 system functions.
@@ -192,13 +192,13 @@ int *lan_username_size;
     DWORD i = BUFSZ - 1;
     BOOL allowUserName = TRUE;
 
-    Strcpy(username_buffer, "NetHack");
+    Strcpy(username_buffer, "LumaHack");
 
 #ifndef WIN32CON
-    /* Our privacy policy for the windows store version of nethack makes
+    /* Our privacy policy for the windows store version of lumahack makes
      * a promise about not collecting any personally identifiable information.
      * Do not allow getting user name if we being run from windows store
-     * version of nethack.  In 3.7, we should remove use of username.
+     * version of lumahack.  In 3.7, we should remove use of username.
      */
     allowUserName = !win10_is_desktop_bridge_application();
 #endif
@@ -321,9 +321,9 @@ genericptr_t ptr2;
                     "displayed\n"
                     "inside an unzip utility.\n\n"
                     "You have to unzip the contents of the zip file into a\n"
-                    "folder on your system, and then run \"NetHack.exe\" or "
+                    "folder on your system, and then run \"LumaHack.exe\" or "
                     "\n"
-                    "\"NetHackW.exe\" from there.\n\n"
+                    "\"LumaHackW.exe\" from there.\n\n"
                     "If that is not the situation, you are encouraged to\n"
                     "report the error as shown above.\n\n",
                     1023);
@@ -501,7 +501,7 @@ void nhassert_failed(const char * exp, const char * file, int line)
 }
 
 void
-nethack_exit(code)
+lumahack_exit(code)
 int code;
 {
     /* Only if we started from the GUI, not the command prompt,
@@ -549,12 +549,12 @@ const char *str;
     return;
 }
 
-/* nethack_enter_winnt() is called from main immediately after
+/* lumahack_enter_winnt() is called from main immediately after
    initializing the window port */
-void nethack_enter_winnt()
+void lumahack_enter_winnt()
 {
 	if (WINDOWPORT("tty"))
-		nethack_enter_nttty();
+		lumahack_enter_nttty();
 }
 
 /* CP437 to Unicode mapping according to the Unicode Consortium */

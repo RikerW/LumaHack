@@ -1,18 +1,18 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4icon.cpp -- a labelled icon
 
 #ifndef QT4ICON_H
 #define QT4ICON_H
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtLabelledIcon : public QWidget {
+class LumaHackQtLabelledIcon : public QWidget {
 public:
-	NetHackQtLabelledIcon(QWidget* parent, const char* label);
-	NetHackQtLabelledIcon(QWidget* parent, const char* label, const QPixmap& icon);
+	LumaHackQtLabelledIcon(QWidget* parent, const char* label);
+	LumaHackQtLabelledIcon(QWidget* parent, const char* label, const QPixmap& icon);
 
 	enum { NoNum=-99999 };
 	void setLabel(const QString&, bool lower=true); // a string
@@ -48,6 +48,6 @@ private:
 	QLabel* icon;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

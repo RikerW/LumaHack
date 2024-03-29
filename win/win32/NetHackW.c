@@ -1,6 +1,6 @@
-/* NetHack 3.6    winhack.c    $NHDT-Date: 1449488876 2015/12/07 11:47:56 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.44 $ */
+/* LumaHack 3.6    winhack.c    $NHDT-Date: 1449488876 2015/12/07 11:47:56 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.44 $ */
 /* Copyright (C) 2001 by Alex Kompel      */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 // winhack.cpp : Defines the entry point for the application.
 //
@@ -49,11 +49,11 @@ Version     _WIN_32IE   Platform/IE
 */
 #define MIN_COMCTLMAJOR 4
 #define MIN_COMCTLMINOR 71
-#define INSTALL_NOTES "http://www.nethack.org/v340/ports/download-win.html#cc"
+#define INSTALL_NOTES "http://www.lumahack.org/v340/ports/download-win.html#cc"
 /*#define COMCTL_URL
  * "http://www.microsoft.com/msdownload/ieplatform/ie/comctrlx86.asp"*/
 
-extern void FDECL(nethack_exit, (int));
+extern void FDECL(lumahack_exit, (int));
 static TCHAR *_get_cmd_arg(TCHAR *pCmdLine);
 static HRESULT GetComCtlVersion(LPDWORD pdwMajor, LPDWORD pdwMinor);
 BOOL WINAPI
@@ -62,7 +62,7 @@ _nhapply_image_transparent(HDC hDC, int x, int y, int width, int height,
                            int s_height, UINT cTransparent);
 
 // Global Variables:
-NHWinApp _nethack_app;
+NHWinApp _lumahack_app;
 extern int GUILaunched;     /* We tell shared startup code in windmain.c
                                that the GUI was launched via this */
 
@@ -126,44 +126,44 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
     sys_early_init();
 
     /* init application structure */
-    _nethack_app.hApp = hInstance;
-    _nethack_app.hAccelTable =
+    _lumahack_app.hApp = hInstance;
+    _lumahack_app.hAccelTable =
         LoadAccelerators(hInstance, (LPCTSTR) IDC_NETHACKW);
-    _nethack_app.hMainWnd = NULL;
-    _nethack_app.hPopupWnd = NULL;
-    _nethack_app.bmpTiles = LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_TILES));
-    if (_nethack_app.bmpTiles == NULL)
+    _lumahack_app.hMainWnd = NULL;
+    _lumahack_app.hPopupWnd = NULL;
+    _lumahack_app.bmpTiles = LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_TILES));
+    if (_lumahack_app.bmpTiles == NULL)
         panic("cannot load tiles bitmap");
-    _nethack_app.bmpPetMark =
+    _lumahack_app.bmpPetMark =
         LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_PETMARK));
-    if (_nethack_app.bmpPetMark == NULL)
+    if (_lumahack_app.bmpPetMark == NULL)
         panic("cannot load pet mark bitmap");
 #ifdef USE_PILEMARK
-    _nethack_app.bmpPileMark =
+    _lumahack_app.bmpPileMark =
         LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_PILEMARK));
-    if (_nethack_app.bmpPileMark == NULL)
+    if (_lumahack_app.bmpPileMark == NULL)
         panic("cannot load pile mark bitmap");
 #endif
-    _nethack_app.bmpRip = LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_RIP));
-    if (_nethack_app.bmpRip == NULL)
+    _lumahack_app.bmpRip = LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_RIP));
+    if (_lumahack_app.bmpRip == NULL)
         panic("cannot load rip bitmap");
-    _nethack_app.bmpSplash =
+    _lumahack_app.bmpSplash =
         LoadBitmap(hInstance, MAKEINTRESOURCE(IDB_SPLASH));
-    if (_nethack_app.bmpSplash == NULL)
+    if (_lumahack_app.bmpSplash == NULL)
         panic("cannot load splash bitmap");
-    _nethack_app.bmpMapTiles = _nethack_app.bmpTiles;
-    _nethack_app.mapTile_X = TILE_X;
-    _nethack_app.mapTile_Y = TILE_Y;
-    _nethack_app.mapTilesPerLine = TILES_PER_LINE;
+    _lumahack_app.bmpMapTiles = _lumahack_app.bmpTiles;
+    _lumahack_app.mapTile_X = TILE_X;
+    _lumahack_app.mapTile_Y = TILE_Y;
+    _lumahack_app.mapTilesPerLine = TILES_PER_LINE;
 
-    _nethack_app.bNoHScroll = FALSE;
-    _nethack_app.bNoVScroll = FALSE;
-    _nethack_app.saved_text = strdup("");
+    _lumahack_app.bNoHScroll = FALSE;
+    _lumahack_app.bNoVScroll = FALSE;
+    _lumahack_app.saved_text = strdup("");
 
-    _nethack_app.bAutoLayout = TRUE;
-    _nethack_app.bWindowsLocked = TRUE;
+    _lumahack_app.bAutoLayout = TRUE;
+    _lumahack_app.bWindowsLocked = TRUE;
 
-    _nethack_app.bNoSounds = FALSE;
+    _lumahack_app.bNoSounds = FALSE;
 
 #if 0  /* GdiTransparentBlt does not render spash bitmap for whatever reason */
     /* use system-provided TransparentBlt for Win2k+ */
@@ -171,10 +171,10 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
     osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
     GetVersionEx(&osvi);
     if (osvi.dwMajorVersion >= 5)
-        _nethack_app.lpfnTransparentBlt = GdiTransparentBlt;
+        _lumahack_app.lpfnTransparentBlt = GdiTransparentBlt;
     else
 #endif
-        _nethack_app.lpfnTransparentBlt = _nhapply_image_transparent;
+        _lumahack_app.lpfnTransparentBlt = _nhapply_image_transparent;
 
     // init controls
     if (FAILED(GetComCtlVersion(&major, &minor))) {
@@ -188,7 +188,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
         || (major == MIN_COMCTLMAJOR && minor < MIN_COMCTLMINOR)) {
         char buf[TBUFSZ];
         Sprintf(buf, "Common control library is outdated.\n%s %d.%d\n%s\n%s",
-                "NetHack requires at least version ", MIN_COMCTLMAJOR,
+                "LumaHack requires at least version ", MIN_COMCTLMAJOR,
                 MIN_COMCTLMINOR,
                 "For further information, refer to the installation notes at",
                 INSTALL_NOTES);
@@ -225,7 +225,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
             for (p = plname; *p && *p != '.'; p++)
                 ;
             if (*p) {
-                if (strcmp(p + 1, "NetHack-saved-game") == 0) {
+                if (strcmp(p + 1, "LumaHack-saved-game") == 0) {
                     *p = '\0';
                     argv[1] = "-u";
                     argv[2] = _strdup(plname);
@@ -244,7 +244,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine,
 PNHWinApp
 GetNHApp()
 {
-    return &_nethack_app;
+    return &_lumahack_app;
 }
 
 TCHAR *

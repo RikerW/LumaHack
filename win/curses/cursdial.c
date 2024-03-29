@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 cursdial.c */
+/* LumaHack 3.6 cursdial.c */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -28,7 +28,7 @@ extern char erase_char, kill_char;
  *  in order to match fields of the window_procs struct (see winprocs.h).
  *  But for a standard-conforming compiler, we'll end up with the widened
  *  types necessary to match the mixed prototype/old-style function
- *  definition environment as used by nethack's core.  Prototype
+ *  definition environment as used by lumahack's core.  Prototype
 int func(CHAR_P);
  *  becomes
 int func(int);
@@ -57,7 +57,7 @@ int func(CHAR_P arg) { ... }
 /* Private declarations */
 
 typedef struct nhmi {
-    winid wid;                  /* NetHack window id */
+    winid wid;                  /* LumaHack window id */
     int glyph;                  /* Menu glyphs */
     anything identifier;        /* Value returned if item selected */
     CHAR_P accelerator;         /* Character used to select item from menu */
@@ -75,7 +75,7 @@ typedef struct nhmi {
 } nhmenu_item;
 
 typedef struct nhm {
-    winid wid;                  /* NetHack window id */
+    winid wid;                  /* LumaHack window id */
     const char *prompt;         /* Menu prompt text */
     nhmenu_item *entries;       /* Menu entries */
     int num_entries;            /* Number of menu entries */
@@ -111,7 +111,7 @@ static int menu_operation(WINDOW * win, nhmenu *menu, menu_op operation,
 static void menu_clear_selections(nhmenu *menu);
 static int menu_max_height(void);
 
-static nhmenu *nhmenus = NULL;  /* NetHack menu array */
+static nhmenu *nhmenus = NULL;  /* LumaHack menu array */
 
 /* maximum number of selector entries per page; if '$' is present
    it isn't counted toward maximum, so actual max per page is 53 */
@@ -506,7 +506,7 @@ curses_ext_cmd()
 }
 
 
-/* Initialize a menu from given NetHack winid */
+/* Initialize a menu from given LumaHack winid */
 
 void
 curses_create_nhmenu(winid wid)
@@ -722,7 +722,7 @@ curses_finalize_nhmenu(winid wid, const char *prompt)
 }
 
 
-/* Display a nethack menu, and return a selection, if applicable */
+/* Display a lumahack menu, and return a selection, if applicable */
 
 int
 curses_display_nhmenu(winid wid, int how, MENU_ITEM_P ** _selected)
@@ -813,7 +813,7 @@ curses_menu_exists(winid wid)
     }
 }
 
-/* Delete the menu associated with the given NetHack winid from memory */
+/* Delete the menu associated with the given LumaHack winid from memory */
 
 void
 curses_del_menu(winid wid, boolean del_wid_too)
@@ -861,7 +861,7 @@ curses_del_menu(winid wid, boolean del_wid_too)
 }
 
 
-/* return a pointer to the menu associated with the given NetHack winid */
+/* return a pointer to the menu associated with the given LumaHack winid */
 
 static nhmenu *
 get_menu(winid wid)

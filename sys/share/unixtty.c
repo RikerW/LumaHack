@@ -1,7 +1,7 @@
-/* NetHack 3.6	unixtty.c	$NHDT-Date: 1570652308 2019/10/09 20:18:28 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.26 $ */
+/* LumaHack 3.6	unixtty.c	$NHDT-Date: 1570652308 2019/10/09 20:18:28 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.26 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* tty.c - (Unix) version */
 
@@ -200,7 +200,7 @@ static void
 setctty()
 {
     if (STTY(&curttyb) < 0 || STTY2(&curttyb2) < 0)
-        perror("NetHack (setctty)");
+        perror("LumaHack (setctty)");
 }
 
 /*
@@ -212,7 +212,7 @@ void
 gettty()
 {
     if (GTTY(&inittyb) < 0 || GTTY2(&inittyb2) < 0)
-        perror("NetHack (gettty)");
+        perror("LumaHack (gettty)");
     curttyb = inittyb;
     curttyb2 = inittyb2;
     ospeed = OSPEED(inittyb);
@@ -238,7 +238,7 @@ const char *s;
     if (s)
         raw_print(s);
     if (STTY(&inittyb) < 0 || STTY2(&inittyb2) < 0)
-        perror("NetHack (settty)");
+        perror("LumaHack (settty)");
     iflags.echo = (inittyb.echoflgs & ECHO) ? ON : OFF;
     iflags.cbreak = (CBRKON(inittyb.cbrkflgs & CBRKMASK)) ? ON : OFF;
     curttyb.inputflags |= STRIPHI;

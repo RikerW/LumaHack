@@ -1,8 +1,8 @@
-// NetHack 3.6	qt_win.cpp	$NHDT-Date: 1524684508 2018/04/25 19:28:28 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.77 $
+// LumaHack 3.6	qt_win.cpp	$NHDT-Date: 1524684508 2018/04/25 19:28:28 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.77 $
 // Copyright (c) Warwick Allison, 1999.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
-// Qt Binding for NetHack 3.4
+// Qt Binding for LumaHack 3.4
 //
 // Copyright (C) 1996-2001 by Warwick W. Allison (warwick@troll.no)
 // 
@@ -10,26 +10,26 @@
 //    Michael Hohmuth <hohmuth@inf.tu-dresden.de>
 //       - Userid control
 //    Svante Gerhard <svante@algonet.se>
-//       - .nethackrc tile and font size settings
+//       - .lumahackrc tile and font size settings
 //    Dirk Schoenberger <schoenberger@signsoft.com>
 //       - KDE support
 //       - SlashEm support
 //    and many others for bug reports.
 // 
 // Unfortunately, this doesn't use Qt as well as I would like,
-// primarily because NetHack is fundamentally a getkey-type program
+// primarily because LumaHack is fundamentally a getkey-type program
 // rather than being event driven (hence the ugly key and click buffer)
 // and also because this is my first major application of Qt.  
 // 
-// The problem of NetHack's getkey requirement is solved by intercepting
+// The problem of LumaHack's getkey requirement is solved by intercepting
 // key events by overiding QApplicion::notify(...), and putting them in
 // a buffer.  Mouse clicks on the map window are treated with a similar
-// buffer.  When the NetHack engine calls for a key, one is taken from
+// buffer.  When the LumaHack engine calls for a key, one is taken from
 // the buffer, or if that is empty, QApplication::enter_loop() is called.
 // Whenever keys or clicks go into the buffer, QApplication::exit_loop()
 // is called.
 //
-// Another problem is that some NetHack players are decade-long players who
+// Another problem is that some LumaHack players are decade-long players who
 // demand complete keyboard control (while Qt and X11 conspire to make this
 // difficult by having widget-based focus rather than application based -
 // a good thing in general).  This problem is solved by again using the key
@@ -42,9 +42,9 @@
 
 extern "C" {
 
-// This includes all the definitions we need from the NetHack main
+// This includes all the definitions we need from the LumaHack main
 // engine.  We pretend MSC is a STDC compiler, because C++ is close
-// enough, and we undefine NetHack macros which conflict with Qt
+// enough, and we undefine LumaHack macros which conflict with Qt
 // identifiers.
 
 #define alloc hide_alloc // avoid treading on STL symbol
@@ -140,22 +140,22 @@ extern "C" void play_sound_for_message(const char* str);
 // Warwick prefers it this way...
 #define QT_CHOOSE_RACE_FIRST
 
-static const char nh_attribution[] = "<center><big>NetHack</big>"
-	"<br><small>by the NetHack DevTeam</small></center>";
+static const char nh_attribution[] = "<center><big>LumaHack</big>"
+	"<br><small>by the LumaHack DevTeam</small></center>";
 
 static QString
 aboutMsg()
 {
     QString msg;
     msg.sprintf(
-    "Qt NetHack is a version of NetHack built\n"
+    "Qt LumaHack is a version of LumaHack built\n"
 #ifdef KDE
     "using KDE and the Qt GUI toolkit.\n"
 #else
     "using the Qt GUI toolkit.\n"
 #endif
     "This is version %d.%d.%d\n\n"
-    "Homepage:\n     http://trolls.troll.no/warwick/nethack/\n\n"
+    "Homepage:\n     http://trolls.troll.no/warwick/lumahack/\n\n"
 #ifdef KDE
 	  "KDE:\n     http://www.kde.org\n"
 #endif
@@ -176,17 +176,17 @@ centerOnMain( QWidget* w )
               p.y() + m->height()/2 - w->height()/2 );
 }
 
-NetHackQtLineEdit::NetHackQtLineEdit() :
+LumaHackQtLineEdit::LumaHackQtLineEdit() :
     QLineEdit(0)
 {
 }
 
-NetHackQtLineEdit::NetHackQtLineEdit(QWidget* parent, const char* name) :
+LumaHackQtLineEdit::LumaHackQtLineEdit(QWidget* parent, const char* name) :
     QLineEdit(parent,name)
 {
 }
 
-void NetHackQtLineEdit::fakeEvent(int key, int ascii, int state)
+void LumaHackQtLineEdit::fakeEvent(int key, int ascii, int state)
 {
     QKeyEvent fake(QEvent::KeyPress,key,ascii,state);
     keyPressEvent(&fake);
@@ -598,7 +598,7 @@ static const char * cast_c_xpm[] = {
 "   .   X  X ",
 "   .    XX  "};
 
-NetHackQtSettings::NetHackQtSettings(int w, int h) :
+LumaHackQtSettings::LumaHackQtSettings(int w, int h) :
     tilewidth(TILEWMIN,64,1,this),
     tileheight(TILEHMIN,64,1,this),
     widthlbl(&tilewidth,"&Width:",this),
@@ -649,7 +649,7 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
 	tileheight.setValue(30);
     }
 
-    // Tile/font sizes read from .nethackrc
+    // Tile/font sizes read from .lumahackrc
     if (qt_tilewidth != NULL) {
 	tilewidth.setValue(atoi(qt_tilewidth));
 	free(qt_tilewidth);
@@ -669,7 +669,7 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
 	free(qt_fontsize); 
     }
 
-    theglyphs=new NetHackQtGlyphs();
+    theglyphs=new LumaHackQtGlyphs();
     resizeTiles();
 
     connect(&tilewidth,SIGNAL(valueChanged(int)),this,SLOT(resizeTiles()));
@@ -702,12 +702,12 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
     resize(150,140);
 }
 
-NetHackQtGlyphs& NetHackQtSettings::glyphs()
+LumaHackQtGlyphs& LumaHackQtSettings::glyphs()
 {
     return *theglyphs;
 }
 
-void NetHackQtSettings::resizeTiles()
+void LumaHackQtSettings::resizeTiles()
 {
     int w = tilewidth.value();
     int h = tileheight.value();
@@ -716,12 +716,12 @@ void NetHackQtSettings::resizeTiles()
     emit tilesChanged();
 }
 
-void NetHackQtSettings::toggleGlyphSize()
+void LumaHackQtSettings::toggleGlyphSize()
 {
     whichsize.toggle();
 }
 
-void NetHackQtSettings::setGlyphSize(bool which)
+void LumaHackQtSettings::setGlyphSize(bool which)
 {
     QSize n = QSize(tilewidth.value(),tileheight.value());
     if ( othersize.isValid() ) {
@@ -736,46 +736,46 @@ void NetHackQtSettings::setGlyphSize(bool which)
     othersize = n;
 }
 
-const QFont& NetHackQtSettings::normalFont()
+const QFont& LumaHackQtSettings::normalFont()
 {
     static int size[]={ 18, 14, 12, 10, 8 };
     normal.setPointSize(size[fontsize.currentItem()]);
     return normal;
 }
 
-const QFont& NetHackQtSettings::normalFixedFont()
+const QFont& LumaHackQtSettings::normalFixedFont()
 {
     static int size[]={ 18, 14, 13, 10, 8 };
     normalfixed.setPointSize(size[fontsize.currentItem()]);
     return normalfixed;
 }
 
-const QFont& NetHackQtSettings::largeFont()
+const QFont& LumaHackQtSettings::largeFont()
 {
     static int size[]={ 24, 18, 14, 12, 10 };
     large.setPointSize(size[fontsize.currentItem()]);
     return large;
 }
 
-bool NetHackQtSettings::ynInMessages()
+bool LumaHackQtSettings::ynInMessages()
 {
     return !qt_compact_mode;
 }
 
 
-NetHackQtSettings* qt_settings;
+LumaHackQtSettings* qt_settings;
 
 
 
-NetHackQtKeyBuffer::NetHackQtKeyBuffer() :
+LumaHackQtKeyBuffer::LumaHackQtKeyBuffer() :
     in(0), out(0)
 {
 }
 
-bool NetHackQtKeyBuffer::Empty() const { return in==out; }
-bool NetHackQtKeyBuffer::Full() const { return (in+1)%maxkey==out; }
+bool LumaHackQtKeyBuffer::Empty() const { return in==out; }
+bool LumaHackQtKeyBuffer::Full() const { return (in+1)%maxkey==out; }
 
-void NetHackQtKeyBuffer::Put(int k, int a, int state)
+void LumaHackQtKeyBuffer::Put(int k, int a, int state)
 {
     if ( Full() ) return;	// Safety
     key[in]=k;
@@ -783,17 +783,17 @@ void NetHackQtKeyBuffer::Put(int k, int a, int state)
     in=(in+1)%maxkey;
 }
 
-void NetHackQtKeyBuffer::Put(char a)
+void LumaHackQtKeyBuffer::Put(char a)
 {
     Put(0,a,0);
 }
 
-void NetHackQtKeyBuffer::Put(const char* str)
+void LumaHackQtKeyBuffer::Put(const char* str)
 {
     while (*str) Put(*str++);
 }
 
-int NetHackQtKeyBuffer::GetKey()
+int LumaHackQtKeyBuffer::GetKey()
 {
     if ( Empty() ) return 0;
     int r=TopKey();
@@ -801,7 +801,7 @@ int NetHackQtKeyBuffer::GetKey()
     return r;
 }
 
-int NetHackQtKeyBuffer::GetAscii()
+int LumaHackQtKeyBuffer::GetAscii()
 {
     if ( Empty() ) return 0; // Safety
     int r=TopAscii();
@@ -809,7 +809,7 @@ int NetHackQtKeyBuffer::GetAscii()
     return r;
 }
 
-int NetHackQtKeyBuffer::GetState()
+int LumaHackQtKeyBuffer::GetState()
 {
     if ( Empty() ) return 0;
     int r=TopState();
@@ -817,34 +817,34 @@ int NetHackQtKeyBuffer::GetState()
     return r;
 }
 
-int NetHackQtKeyBuffer::TopKey() const
+int LumaHackQtKeyBuffer::TopKey() const
 {
     if ( Empty() ) return 0;
     return key[out];
 }
 
-int NetHackQtKeyBuffer::TopAscii() const
+int LumaHackQtKeyBuffer::TopAscii() const
 {
     if ( Empty() ) return 0;
     return ascii[out];
 }
 
-int NetHackQtKeyBuffer::TopState() const
+int LumaHackQtKeyBuffer::TopState() const
 {
     if ( Empty() ) return 0;
     return state[out];
 }
 
 
-NetHackQtClickBuffer::NetHackQtClickBuffer() :
+LumaHackQtClickBuffer::LumaHackQtClickBuffer() :
     in(0), out(0)
 {
 }
 
-bool NetHackQtClickBuffer::Empty() const { return in==out; }
-bool NetHackQtClickBuffer::Full() const { return (in+1)%maxclick==out; }
+bool LumaHackQtClickBuffer::Empty() const { return in==out; }
+bool LumaHackQtClickBuffer::Full() const { return (in+1)%maxclick==out; }
 
-void NetHackQtClickBuffer::Put(int x, int y, int mod)
+void LumaHackQtClickBuffer::Put(int x, int y, int mod)
 {
     click[in].x=x;
     click[in].y=y;
@@ -852,11 +852,11 @@ void NetHackQtClickBuffer::Put(int x, int y, int mod)
     in=(in+1)%maxclick;
 }
 
-int NetHackQtClickBuffer::NextX() const { return click[out].x; }
-int NetHackQtClickBuffer::NextY() const { return click[out].y; }
-int NetHackQtClickBuffer::NextMod() const { return click[out].mod; }
+int LumaHackQtClickBuffer::NextX() const { return click[out].x; }
+int LumaHackQtClickBuffer::NextY() const { return click[out].y; }
+int LumaHackQtClickBuffer::NextMod() const { return click[out].mod; }
 
-void NetHackQtClickBuffer::Get()
+void LumaHackQtClickBuffer::Get()
 {
     out=(out+1)%maxclick;
 }
@@ -870,7 +870,7 @@ public:
 
     void setGlyph(int g)
     {
-	NetHackQtGlyphs& glyphs = qt_settings->glyphs();
+	LumaHackQtGlyphs& glyphs = qt_settings->glyphs();
 	int gw = glyphs.width();
 	int gh = glyphs.height();
 	QPixmap pm(gw,gh);
@@ -980,7 +980,7 @@ public:
     }
 };
 
-NetHackQtPlayerSelector::NetHackQtPlayerSelector(NetHackQtKeyBuffer& ks) :
+LumaHackQtPlayerSelector::LumaHackQtPlayerSelector(LumaHackQtKeyBuffer& ks) :
     QDialog(qApp->mainWidget(),"plsel",TRUE),
     keysource(ks),
     fully_specified_role(TRUE)
@@ -1167,12 +1167,12 @@ NetHackQtPlayerSelector::NetHackQtPlayerSelector(NetHackQtKeyBuffer& ks) :
 }
 
 
-void NetHackQtPlayerSelector::selectName(const QString& n)
+void LumaHackQtPlayerSelector::selectName(const QString& n)
 {
     strncpy(plname,n.latin1(),sizeof(plname)-1);
 }
 
-void NetHackQtPlayerSelector::selectRole()
+void LumaHackQtPlayerSelector::selectRole()
 {
     int ra = race->selectedItemNumber();
     int ro = role->selectedItemNumber();
@@ -1208,7 +1208,7 @@ void NetHackQtPlayerSelector::selectRole()
     setupOthers();
 }
 
-void NetHackQtPlayerSelector::selectRace()
+void LumaHackQtPlayerSelector::selectRace()
 {
     int ra = race->selectedItemNumber();
     int ro = role->selectedItemNumber();
@@ -1244,7 +1244,7 @@ void NetHackQtPlayerSelector::selectRace()
     setupOthers();
 }
 
-void NetHackQtPlayerSelector::setupOthers()
+void LumaHackQtPlayerSelector::setupOthers()
 {
     int ro = role->selectedItemNumber();
     int ra = race->selectedItemNumber();
@@ -1282,36 +1282,36 @@ void NetHackQtPlayerSelector::setupOthers()
     selectAlignment(c);
 }
 
-void NetHackQtPlayerSelector::selectGender(int i)
+void LumaHackQtPlayerSelector::selectGender(int i)
 {
     flags.initgend = i;
 }
 
-void NetHackQtPlayerSelector::selectAlignment(int i)
+void LumaHackQtPlayerSelector::selectAlignment(int i)
 {
     flags.initalign = i;
 }
 
 
-void NetHackQtPlayerSelector::done(int i)
+void LumaHackQtPlayerSelector::done(int i)
 {
     setResult(i);
     qApp->exit_loop();
 }
 
-void NetHackQtPlayerSelector::Quit()
+void LumaHackQtPlayerSelector::Quit()
 {
     done(R_Quit);
     qApp->exit_loop();
 }
 
-void NetHackQtPlayerSelector::Random()
+void LumaHackQtPlayerSelector::Random()
 {
     done(R_Rand);
     qApp->exit_loop();
 }
 
-bool NetHackQtPlayerSelector::Choose()
+bool LumaHackQtPlayerSelector::Choose()
 {
     if (fully_specified_role) return TRUE;
 
@@ -1333,7 +1333,7 @@ bool NetHackQtPlayerSelector::Choose()
 }
 
 
-NetHackQtStringRequestor::NetHackQtStringRequestor(NetHackQtKeyBuffer& ks, const char* p, const char* cancelstr) :
+LumaHackQtStringRequestor::LumaHackQtStringRequestor(LumaHackQtKeyBuffer& ks, const char* p, const char* cancelstr) :
     QDialog(qApp->mainWidget(),"string",FALSE),
     prompt(p,this,"prompt"),
     input(this,"input"),
@@ -1350,7 +1350,7 @@ NetHackQtStringRequestor::NetHackQtStringRequestor(NetHackQtKeyBuffer& ks, const
     setFocusPolicy(StrongFocus);
 }
 
-void NetHackQtStringRequestor::resizeEvent(QResizeEvent*)
+void LumaHackQtStringRequestor::resizeEvent(QResizeEvent*)
 {
     const int margin=5;
     const int gutter=5;
@@ -1375,12 +1375,12 @@ void NetHackQtStringRequestor::resizeEvent(QResizeEvent*)
 	cancel->width(),h);
 }
 
-void NetHackQtStringRequestor::SetDefault(const char* d)
+void LumaHackQtStringRequestor::SetDefault(const char* d)
 {
     input.setText(d);
 }
 
-bool NetHackQtStringRequestor::Get(char* buffer, int maxchar)
+bool LumaHackQtStringRequestor::Get(char* buffer, int maxchar)
 {
     input.setMaxLength(maxchar);
     if (strlen(prompt.text()) > 16) {
@@ -1423,45 +1423,45 @@ bool NetHackQtStringRequestor::Get(char* buffer, int maxchar)
 	return FALSE;
     }
 }
-void NetHackQtStringRequestor::done(int i)
+void LumaHackQtStringRequestor::done(int i)
 {
     setResult(i);
     qApp->exit_loop();
 }
 
 
-NetHackQtWindow::NetHackQtWindow()
+LumaHackQtWindow::LumaHackQtWindow()
 {
 }
 
-NetHackQtWindow::~NetHackQtWindow()
+LumaHackQtWindow::~LumaHackQtWindow()
 {
 }
 
 // XXX Use "expected ..." for now, abort or default later.
 //
-void NetHackQtWindow::Clear() { puts("unexpected Clear"); }
-void NetHackQtWindow::Display(bool block) { puts("unexpected Display"); }
-bool NetHackQtWindow::Destroy() { return TRUE; }
-void NetHackQtWindow::CursorTo(int x,int y) { puts("unexpected CursorTo"); }
-void NetHackQtWindow::PutStr(int attr, const char* text) { puts("unexpected PutStr"); }
-void NetHackQtWindow::StartMenu() { puts("unexpected StartMenu"); }
-void NetHackQtWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
+void LumaHackQtWindow::Clear() { puts("unexpected Clear"); }
+void LumaHackQtWindow::Display(bool block) { puts("unexpected Display"); }
+bool LumaHackQtWindow::Destroy() { return TRUE; }
+void LumaHackQtWindow::CursorTo(int x,int y) { puts("unexpected CursorTo"); }
+void LumaHackQtWindow::PutStr(int attr, const char* text) { puts("unexpected PutStr"); }
+void LumaHackQtWindow::StartMenu() { puts("unexpected StartMenu"); }
+void LumaHackQtWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
     const char* str, bool presel) { puts("unexpected AddMenu"); }
-void NetHackQtWindow::EndMenu(const char* prompt) { puts("unexpected EndMenu"); }
-int NetHackQtWindow::SelectMenu(int how, MENU_ITEM_P **menu_list) { puts("unexpected SelectMenu"); return 0; }
-void NetHackQtWindow::ClipAround(int x,int y) { puts("unexpected ClipAround"); }
-void NetHackQtWindow::PrintGlyph(int x,int y,int glyph) { puts("unexpected PrintGlyph"); }
-//void NetHackQtWindow::PrintGlyphCompose(int x,int y,int,int) { puts("unexpected PrintGlyphCompose"); }
-void NetHackQtWindow::UseRIP(int how, time_t when) { puts("unexpected UseRIP"); }
+void LumaHackQtWindow::EndMenu(const char* prompt) { puts("unexpected EndMenu"); }
+int LumaHackQtWindow::SelectMenu(int how, MENU_ITEM_P **menu_list) { puts("unexpected SelectMenu"); return 0; }
+void LumaHackQtWindow::ClipAround(int x,int y) { puts("unexpected ClipAround"); }
+void LumaHackQtWindow::PrintGlyph(int x,int y,int glyph) { puts("unexpected PrintGlyph"); }
+//void LumaHackQtWindow::PrintGlyphCompose(int x,int y,int,int) { puts("unexpected PrintGlyphCompose"); }
+void LumaHackQtWindow::UseRIP(int how, time_t when) { puts("unexpected UseRIP"); }
 
 
 
 // XXX Hmmm... crash after saving bones file if Map window is
 // XXX deleted.  Strange bug somewhere.
-bool NetHackQtMapWindow::Destroy() { return FALSE; }
+bool LumaHackQtMapWindow::Destroy() { return FALSE; }
 
-NetHackQtMapWindow::NetHackQtMapWindow(NetHackQtClickBuffer& click_sink) :
+LumaHackQtMapWindow::LumaHackQtMapWindow(LumaHackQtClickBuffer& click_sink) :
     clicksink(click_sink),
     change(10),
     rogue_font(0)
@@ -1492,10 +1492,10 @@ NetHackQtMapWindow::NetHackQtMapWindow(NetHackQtClickBuffer& click_sink) :
 
 #ifdef SAFERHANGUP
 // The "deadman" timer is received by this slot
-void NetHackQtMapWindow::timeout() {}
+void LumaHackQtMapWindow::timeout() {}
 #endif
 
-void NetHackQtMapWindow::moveMessages(int x, int y)
+void LumaHackQtMapWindow::moveMessages(int x, int y)
 {
     QRect u = messages_rect;
     messages_rect.moveTopLeft(QPoint(x,y));
@@ -1503,14 +1503,14 @@ void NetHackQtMapWindow::moveMessages(int x, int y)
     update(u);
 }
 
-void NetHackQtMapWindow::clearMessages()
+void LumaHackQtMapWindow::clearMessages()
 {
     messages = "";
     update(messages_rect);
     messages_rect = QRect();
 }
 
-void NetHackQtMapWindow::putMessage(int attr, const char* text)
+void LumaHackQtMapWindow::putMessage(int attr, const char* text)
 {
     if ( !messages.isEmpty() )
 	messages += "\n";
@@ -1523,9 +1523,9 @@ void NetHackQtMapWindow::putMessage(int attr, const char* text)
     update(messages_rect);
 }
 
-void NetHackQtMapWindow::updateTiles()
+void LumaHackQtMapWindow::updateTiles()
 {
-    NetHackQtGlyphs& glyphs = qt_settings->glyphs();
+    LumaHackQtGlyphs& glyphs = qt_settings->glyphs();
     int gw = glyphs.width();
     int gh = glyphs.height();
     // Be exactly the size we want to be - full map...
@@ -1549,19 +1549,19 @@ void NetHackQtMapWindow::updateTiles()
     emit resized();
 }
 
-NetHackQtMapWindow::~NetHackQtMapWindow()
+LumaHackQtMapWindow::~LumaHackQtMapWindow()
 {
     // Remove from viewport porthole, since that is a destructible member.
     viewport.removeChild(this);
     recreate(0,0,QPoint(0,0));
 }
 
-QWidget* NetHackQtMapWindow::Widget()
+QWidget* LumaHackQtMapWindow::Widget()
 {
     return &viewport;
 }
 
-void NetHackQtMapWindow::Scroll(int dx, int dy)
+void LumaHackQtMapWindow::Scroll(int dx, int dy)
 {
     if (viewport.horizontalScrollBar()->isVisible()) {
 	while (dx<0) { viewport.horizontalScrollBar()->subtractPage(); dx++; }
@@ -1573,7 +1573,7 @@ void NetHackQtMapWindow::Scroll(int dx, int dy)
     }
 }
 
-void NetHackQtMapWindow::Clear()
+void LumaHackQtMapWindow::Clear()
 {
     unsigned short stone=cmap_to_glyph(S_stone);
 
@@ -1587,13 +1587,13 @@ void NetHackQtMapWindow::Clear()
     change.add(0,0,COLNO,ROWNO);
 }
 
-void NetHackQtMapWindow::clickCursor()
+void LumaHackQtMapWindow::clickCursor()
 {
     clicksink.Put(cursor.x(),cursor.y(),CLICK_1);
     qApp->exit_loop();
 }
 
-void NetHackQtMapWindow::mousePressEvent(QMouseEvent* event)
+void LumaHackQtMapWindow::mousePressEvent(QMouseEvent* event)
 {
     clicksink.Put(
 	event->pos().x()/qt_settings->glyphs().width(),
@@ -1633,7 +1633,7 @@ const QPen& nhcolor_to_pen(int c)
 }
 #endif
 
-void NetHackQtMapWindow::paintEvent(QPaintEvent* event)
+void LumaHackQtMapWindow::paintEvent(QPaintEvent* event)
 {
     QRect area=event->rect();
     QRect garea;
@@ -1772,7 +1772,7 @@ void NetHackQtMapWindow::paintEvent(QPaintEvent* event)
     painter.end();
 }
 
-void NetHackQtMapWindow::Display(bool block)
+void LumaHackQtMapWindow::Display(bool block)
 {
     for (int i=0; i<change.clusters(); i++) {
 	const QRect& ch=change[i];
@@ -1792,7 +1792,7 @@ void NetHackQtMapWindow::Display(bool block)
     }
 }
 
-void NetHackQtMapWindow::CursorTo(int x,int y)
+void LumaHackQtMapWindow::CursorTo(int x,int y)
 {
     Changed(cursor.x(),cursor.y());
     cursor.setX(x);
@@ -1800,12 +1800,12 @@ void NetHackQtMapWindow::CursorTo(int x,int y)
     Changed(cursor.x(),cursor.y());
 }
 
-void NetHackQtMapWindow::PutStr(int attr, const char* text)
+void LumaHackQtMapWindow::PutStr(int attr, const char* text)
 {
     puts("unexpected PutStr in MapWindow");
 }
 
-void NetHackQtMapWindow::ClipAround(int x,int y)
+void LumaHackQtMapWindow::ClipAround(int x,int y)
 {
     // Convert to pixel of center of tile
     x=x*qt_settings->glyphs().width()+qt_settings->glyphs().width()/2;
@@ -1815,24 +1815,24 @@ void NetHackQtMapWindow::ClipAround(int x,int y)
     viewport.center(x,y,0.45,0.45);
 }
 
-void NetHackQtMapWindow::PrintGlyph(int x,int y,int glyph)
+void LumaHackQtMapWindow::PrintGlyph(int x,int y,int glyph)
 {
     Glyph(x,y)=glyph;
     Changed(x,y);
 }
 
-//void NetHackQtMapWindow::PrintGlyphCompose(int x,int y,int glyph1, int glyph2)
+//void LumaHackQtMapWindow::PrintGlyphCompose(int x,int y,int glyph1, int glyph2)
 //{
     // TODO: composed graphics
 //}
 
-void NetHackQtMapWindow::Changed(int x, int y)
+void LumaHackQtMapWindow::Changed(int x, int y)
 {
     change.add(x,y);
 }
 
 
-class NetHackQtScrollText : public QTableView {
+class LumaHackQtScrollText : public QTableView {
     struct UData {
 	UData() : text(0), attr(0) { }
 	~UData() { if (text) free(text); }
@@ -1843,7 +1843,7 @@ class NetHackQtScrollText : public QTableView {
 public:
     int uncleared;
 
-    NetHackQtScrollText(int maxlength) :
+    LumaHackQtScrollText(int maxlength) :
 	uncleared(0),
 	maxitems(maxlength),
 	first(0),
@@ -1860,7 +1860,7 @@ public:
 	    |Tbl_smoothScrolling);
     }
 
-    ~NetHackQtScrollText()
+    ~LumaHackQtScrollText()
     {
     }
 
@@ -1970,8 +1970,8 @@ protected:
     }
 };
 
-NetHackQtMessageWindow::NetHackQtMessageWindow() :
-    list(new NetHackQtScrollText(::iflags.msg_history))
+LumaHackQtMessageWindow::LumaHackQtMessageWindow() :
+    list(new LumaHackQtScrollText(::iflags.msg_history))
 {
     ::iflags.window_inited = 1;
     map = 0;
@@ -1979,33 +1979,33 @@ NetHackQtMessageWindow::NetHackQtMessageWindow() :
     updateFont();
 }
 
-NetHackQtMessageWindow::~NetHackQtMessageWindow()
+LumaHackQtMessageWindow::~LumaHackQtMessageWindow()
 {
     ::iflags.window_inited = 0;
     delete list;
 }
 
-QWidget* NetHackQtMessageWindow::Widget() { return list; }
+QWidget* LumaHackQtMessageWindow::Widget() { return list; }
 
-void NetHackQtMessageWindow::setMap(NetHackQtMapWindow* m)
+void LumaHackQtMessageWindow::setMap(LumaHackQtMapWindow* m)
 {
     map = m;
     updateFont();
 }
 
-void NetHackQtMessageWindow::updateFont()
+void LumaHackQtMessageWindow::updateFont()
 {
     list->setFont(qt_settings->normalFont());
     if ( map )
 	map->setFont(qt_settings->normalFont());
 }
 
-void NetHackQtMessageWindow::Scroll(int dx, int dy)
+void LumaHackQtMessageWindow::Scroll(int dx, int dy)
 {
     list->Scroll(dx,dy);
 }
 
-void NetHackQtMessageWindow::Clear()
+void LumaHackQtMessageWindow::Clear()
 {
     if ( map )
 	map->clearMessages();
@@ -2016,7 +2016,7 @@ void NetHackQtMessageWindow::Clear()
     }
 }
 
-void NetHackQtMessageWindow::Display(bool block)
+void LumaHackQtMessageWindow::Display(bool block)
 {
     if (changed) {
 	list->repaint();
@@ -2024,7 +2024,7 @@ void NetHackQtMessageWindow::Display(bool block)
     }
 }
 
-void NetHackQtMessageWindow::PutStr(int attr, const char* text)
+void LumaHackQtMessageWindow::PutStr(int attr, const char* text)
 {
 #ifdef USER_SOUNDS
     play_sound_for_message(text);
@@ -2043,7 +2043,7 @@ void NetHackQtMessageWindow::PutStr(int attr, const char* text)
 
 
 
-NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l) :
+LumaHackQtLabelledIcon::LumaHackQtLabelledIcon(QWidget* parent, const char* l) :
     QWidget(parent),
     low_is_good(FALSE),
     prev_value(-123),
@@ -2053,7 +2053,7 @@ NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l) :
 {
     initHighlight();
 }
-NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l, const QPixmap& i) :
+LumaHackQtLabelledIcon::LumaHackQtLabelledIcon(QWidget* parent, const char* l, const QPixmap& i) :
     QWidget(parent),
     low_is_good(FALSE),
     prev_value(-123),
@@ -2064,7 +2064,7 @@ NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l, con
     setIcon(i);
     initHighlight();
 }
-void NetHackQtLabelledIcon::initHighlight()
+void LumaHackQtLabelledIcon::initHighlight()
 {
     const QPalette& pal=palette();
     const QColorGroup& pa=pal.normal();
@@ -2079,7 +2079,7 @@ void NetHackQtLabelledIcon::initHighlight()
     hl_bad.setActive(bad);
 }
 
-void NetHackQtLabelledIcon::setLabel(const char* t, bool lower)
+void LumaHackQtLabelledIcon::setLabel(const char* t, bool lower)
 {
     if (!label) {
 	label=new QLabel(this);
@@ -2091,7 +2091,7 @@ void NetHackQtLabelledIcon::setLabel(const char* t, bool lower)
 	highlight(lower==low_is_good ? hl_good : hl_bad);
     }
 }
-void NetHackQtLabelledIcon::setLabel(const char* t, long v, long cv, const char* tail)
+void LumaHackQtLabelledIcon::setLabel(const char* t, long v, long cv, const char* tail)
 {
     char buf[BUFSZ];
     if (v==NoNum) {
@@ -2102,22 +2102,22 @@ void NetHackQtLabelledIcon::setLabel(const char* t, long v, long cv, const char*
     setLabel(buf,cv<prev_value);
     prev_value=cv;
 }
-void NetHackQtLabelledIcon::setLabel(const char* t, long v, const char* tail)
+void LumaHackQtLabelledIcon::setLabel(const char* t, long v, const char* tail)
 {
     setLabel(t,v,v,tail);
 }
-void NetHackQtLabelledIcon::setIcon(const QPixmap& i)
+void LumaHackQtLabelledIcon::setIcon(const QPixmap& i)
 {
     if (icon) icon->setPixmap(i);
     else { icon=new QLabel(this); icon->setPixmap(i); resizeEvent(0); }
     icon->resize(i.width(),i.height());
 }
-void NetHackQtLabelledIcon::setFont(const QFont& f)
+void LumaHackQtLabelledIcon::setFont(const QFont& f)
 {
     QWidget::setFont(f);
     if (label) label->setFont(f);
 }
-void NetHackQtLabelledIcon::show()
+void LumaHackQtLabelledIcon::show()
 {
 #if QT_VERSION >= 300
     if (isHidden())
@@ -2127,15 +2127,15 @@ void NetHackQtLabelledIcon::show()
 	highlight(hl_bad);
     QWidget::show();
 }
-void NetHackQtLabelledIcon::highlightWhenChanging()
+void LumaHackQtLabelledIcon::highlightWhenChanging()
 {
     turn_count=0;
 }
-void NetHackQtLabelledIcon::lowIsGood()
+void LumaHackQtLabelledIcon::lowIsGood()
 {
     low_is_good=TRUE;
 }
-void NetHackQtLabelledIcon::dissipateHighlight()
+void LumaHackQtLabelledIcon::dissipateHighlight()
 {
     if (turn_count>0) {
 	turn_count--;
@@ -2143,7 +2143,7 @@ void NetHackQtLabelledIcon::dissipateHighlight()
 	    unhighlight();
     }
 }
-void NetHackQtLabelledIcon::highlight(const QPalette& hl)
+void LumaHackQtLabelledIcon::highlight(const QPalette& hl)
 {
     if (label) { // Surely it is?!
 	if (turn_count>=0) {
@@ -2156,13 +2156,13 @@ void NetHackQtLabelledIcon::highlight(const QPalette& hl)
 	}
     }
 }
-void NetHackQtLabelledIcon::unhighlight()
+void LumaHackQtLabelledIcon::unhighlight()
 {
     if (label) { // Surely it is?!
 	label->setPalette(palette());
     }
 }
-void NetHackQtLabelledIcon::resizeEvent(QResizeEvent*)
+void LumaHackQtLabelledIcon::resizeEvent(QResizeEvent*)
 {
     setAlignments();
 
@@ -2180,7 +2180,7 @@ void NetHackQtLabelledIcon::resizeEvent(QResizeEvent*)
     }
 }
 
-void NetHackQtLabelledIcon::setAlignments()
+void LumaHackQtLabelledIcon::setAlignments()
 {
     if (label) label->setAlignment(AlignHCenter|AlignVCenter);
     if (icon) icon->setAlignment(AlignHCenter|AlignVCenter);
@@ -2196,7 +2196,7 @@ tryload(QPixmap& pm, const char* fn)
     }
 }
 
-NetHackQtStatusWindow::NetHackQtStatusWindow() :
+LumaHackQtStatusWindow::LumaHackQtStatusWindow() :
     // Notes:
     //  Alignment needs -2 init value, because -1 is an alignment.
     //  Armor Class is an schar, so 256 is out of range.
@@ -2289,7 +2289,7 @@ NetHackQtStatusWindow::NetHackQtStatusWindow() :
     doUpdate();
 }
 
-void NetHackQtStatusWindow::doUpdate()
+void LumaHackQtStatusWindow::doUpdate()
 {
     const QFont& large=qt_settings->largeFont();
     name.setFont(large);
@@ -2323,25 +2323,25 @@ void NetHackQtStatusWindow::doUpdate()
     updateStats();
 }
 
-QWidget* NetHackQtStatusWindow::Widget() { return this; }
+QWidget* LumaHackQtStatusWindow::Widget() { return this; }
 
-void NetHackQtStatusWindow::Clear()
+void LumaHackQtStatusWindow::Clear()
 {
 }
-void NetHackQtStatusWindow::Display(bool block)
+void LumaHackQtStatusWindow::Display(bool block)
 {
 }
-void NetHackQtStatusWindow::CursorTo(int,int y)
+void LumaHackQtStatusWindow::CursorTo(int,int y)
 {
     cursy=y;
 }
-void NetHackQtStatusWindow::PutStr(int attr, const char* text)
+void LumaHackQtStatusWindow::PutStr(int attr, const char* text)
 {
     // do a complete update when line 0 is done (as per X11 fancy status)
     if (cursy==0) updateStats();
 }
 
-void NetHackQtStatusWindow::resizeEvent(QResizeEvent*)
+void LumaHackQtStatusWindow::resizeEvent(QResizeEvent*)
 {
     const float SP_name=0.13; //     <Name> the <Class> (large)
     const float SP_dlev=0.13; //   Level 3 in The Dungeons of Doom (large)
@@ -2419,11 +2419,11 @@ void NetHackQtStatusWindow::resizeEvent(QResizeEvent*)
  * have been calculated so that when the window is popped up we don't get all
  * kinds of funny values being displayed.
  */
-void NetHackQtStatusWindow::nullOut()
+void LumaHackQtStatusWindow::nullOut()
 {
 }
 
-void NetHackQtStatusWindow::fadeHighlighting()
+void LumaHackQtStatusWindow::fadeHighlighting()
 {
     name.dissipateHighlight();
     dlevel.dissipateHighlight();
@@ -2470,7 +2470,7 @@ void NetHackQtStatusWindow::fadeHighlighting()
  *
  * [**] HD is shown instead of level and exp if mtimedone is non-zero.
  */
-void NetHackQtStatusWindow::updateStats()
+void LumaHackQtStatusWindow::updateStats()
 {
     if (!parentWidget()) return;
 
@@ -2487,7 +2487,7 @@ void NetHackQtStatusWindow::updateStats()
     } else {
 	Sprintf(buf,"STR:%d",ACURR(A_STR));
     }
-    str.setLabel(buf,NetHackQtLabelledIcon::NoNum,ACURR(A_STR));
+    str.setLabel(buf,LumaHackQtLabelledIcon::NoNum,ACURR(A_STR));
 
     dex.setLabel("DEX:",(long)ACURR(A_DEX));
     con.setLabel("CON:",(long)ACURR(A_CON));
@@ -2549,7 +2549,7 @@ void NetHackQtStatusWindow::updateStats()
     } else {
 	Strcat(buf, rank_of(u.ulevel, pl_character[0], ::flags.female));
     }
-    name.setLabel(buf,NetHackQtLabelledIcon::NoNum,u.ulevel);
+    name.setLabel(buf,LumaHackQtLabelledIcon::NoNum,u.ulevel);
 
     if (describe_level(buf)) {
 	dlevel.setLabel(buf,(bool)TRUE);
@@ -2642,38 +2642,38 @@ void NetHackQtStatusWindow::updateStats()
 /*
  * Turn off hilighted status values after a certain amount of turns.
  */
-void NetHackQtStatusWindow::checkTurnEvents()
+void LumaHackQtStatusWindow::checkTurnEvents()
 {
 }
 
 
 
-NetHackQtMenuDialog::NetHackQtMenuDialog() :
+LumaHackQtMenuDialog::LumaHackQtMenuDialog() :
     QDialog(qApp->mainWidget(),0,FALSE)
 {
 }
 
-void NetHackQtMenuDialog::resizeEvent(QResizeEvent*)
+void LumaHackQtMenuDialog::resizeEvent(QResizeEvent*)
 {
     emit Resized();
 }
 
-void NetHackQtMenuDialog::Accept()
+void LumaHackQtMenuDialog::Accept()
 {
     accept();
 }
 
-void NetHackQtMenuDialog::Reject()
+void LumaHackQtMenuDialog::Reject()
 {
     reject();
 }
 
-void NetHackQtMenuDialog::SetResult(int r)
+void LumaHackQtMenuDialog::SetResult(int r)
 {
     setResult(r);
 }
 
-void NetHackQtMenuDialog::done(int i)
+void LumaHackQtMenuDialog::done(int i)
 {
     setResult(i);
     qApp->exit_loop();
@@ -2688,10 +2688,10 @@ void NetHackQtMenuDialog::done(int i)
 //   double-clicking or click-on-count gives pop-up entry
 // string is green when selected
 //
-NetHackQtMenuWindow::NetHackQtMenuWindow(NetHackQtKeyBuffer& ks) :
+LumaHackQtMenuWindow::LumaHackQtMenuWindow(LumaHackQtKeyBuffer& ks) :
     QTableView(),
     keysource(ks),
-    dialog(new NetHackQtMenuDialog()),
+    dialog(new LumaHackQtMenuDialog()),
     prompt(0),
     pressed(-1)
 {
@@ -2732,23 +2732,23 @@ NetHackQtMenuWindow::NetHackQtMenuWindow(NetHackQtKeyBuffer& ks) :
     setFocusPolicy(StrongFocus);
 }
 
-NetHackQtMenuWindow::~NetHackQtMenuWindow()
+LumaHackQtMenuWindow::~LumaHackQtMenuWindow()
 {
     // Remove from dialog before we destruct it
     recreate(0,0,QPoint(0,0));
     delete dialog;
 }
 
-void NetHackQtMenuWindow::focusInEvent(QFocusEvent *)
+void LumaHackQtMenuWindow::focusInEvent(QFocusEvent *)
 {
     // Don't repaint at all, since nothing is using the focus colour
 }
-void NetHackQtMenuWindow::focusOutEvent(QFocusEvent *)
+void LumaHackQtMenuWindow::focusOutEvent(QFocusEvent *)
 {
     // Don't repaint at all, since nothing is using the focus colour
 }
 
-int NetHackQtMenuWindow::cellWidth(int col)
+int LumaHackQtMenuWindow::cellWidth(int col)
 {
     switch (col) {
      case 0:
@@ -2764,9 +2764,9 @@ int NetHackQtMenuWindow::cellWidth(int col)
     return 0;
 }
 
-QWidget* NetHackQtMenuWindow::Widget() { return dialog; }
+QWidget* LumaHackQtMenuWindow::Widget() { return dialog; }
 
-void NetHackQtMenuWindow::StartMenu()
+void LumaHackQtMenuWindow::StartMenu()
 {
     setNumRows((itemcount=0));
     str_width=200;
@@ -2775,19 +2775,19 @@ void NetHackQtMenuWindow::StartMenu()
     has_glyphs=FALSE;
 }
 
-NetHackQtMenuWindow::MenuItem::MenuItem() :
+LumaHackQtMenuWindow::MenuItem::MenuItem() :
     str(0)
 {
 }
 
-NetHackQtMenuWindow::MenuItem::~MenuItem()
+LumaHackQtMenuWindow::MenuItem::~MenuItem()
 {
     if (str) free((void*)str);
 }
 
 #define STR_MARGIN 4
 
-void NetHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
+void LumaHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
 	char ch, char gch, int attr, const char* str, bool presel)
 {
     if (!ch && identifier->a_void!=0) {
@@ -2813,11 +2813,11 @@ void NetHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
     str_fixed=str_fixed || strstr(str,"     ");
     if (glyph!=NO_GLYPH) has_glyphs=TRUE;
 }
-void NetHackQtMenuWindow::EndMenu(const char* p)
+void LumaHackQtMenuWindow::EndMenu(const char* p)
 {
     prompt.setText(p ? p : "");
 }
-void NetHackQtMenuWindow::Layout()
+void LumaHackQtMenuWindow::Layout()
 {
     int butw=totalWidth()/6; // 6 buttons
     int buth=fontMetrics().height()+8; // 8 for spacing & mitres
@@ -2837,7 +2837,7 @@ void NetHackQtMenuWindow::Layout()
     search->setGeometry(x,0,butw,buth);
 }
 
-int NetHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
+int LumaHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
 {
     setFont(str_fixed ?
 	qt_settings->normalFixedFont() : qt_settings->normalFont());
@@ -2958,7 +2958,7 @@ int NetHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
     }
 }
 
-void NetHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
+void LumaHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
 {
     if (viewHeight() < totalHeight() && !(event->state()&ShiftButton)) {
 	if (event->key()==Key_Prior) {
@@ -2973,29 +2973,29 @@ void NetHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMenuWindow::All()
+void LumaHackQtMenuWindow::All()
 {
     for (int i=0; i<itemcount; i++) {
 	if (!item[i].selected) ToggleSelect(i);
     }
 }
-void NetHackQtMenuWindow::ChooseNone()
+void LumaHackQtMenuWindow::ChooseNone()
 {
     for (int i=0; i<itemcount; i++) {
 	if (item[i].selected) ToggleSelect(i);
     }
 }
 
-void NetHackQtMenuWindow::Invert()
+void LumaHackQtMenuWindow::Invert()
 {
     for (int i=0; i<itemcount; i++) {
 	ToggleSelect(i);
     }
 }
 
-void NetHackQtMenuWindow::Search()
+void LumaHackQtMenuWindow::Search()
 {
-    NetHackQtStringRequestor requestor(keysource,"Search for:");
+    LumaHackQtStringRequestor requestor(keysource,"Search for:");
     char line[256];
     if (requestor.Get(line)) {
 	for (int i=0; i<itemcount; i++) {
@@ -3005,7 +3005,7 @@ void NetHackQtMenuWindow::Search()
     }
 }
 
-void NetHackQtMenuWindow::ToggleSelect(int i)
+void LumaHackQtMenuWindow::ToggleSelect(int i)
 {
     if (item[i].Selectable()) {
 	item[i].selected = !item[i].selected;
@@ -3019,7 +3019,7 @@ void NetHackQtMenuWindow::ToggleSelect(int i)
 }
 
 
-void NetHackQtMenuWindow::paintCell(QPainter* painter, int row, int col)
+void LumaHackQtMenuWindow::paintCell(QPainter* painter, int row, int col)
 {
     // [pick-count] [accel] [glyph] [string]
 
@@ -3092,7 +3092,7 @@ void NetHackQtMenuWindow::paintCell(QPainter* painter, int row, int col)
     }
 }
 
-void NetHackQtMenuWindow::mousePressEvent(QMouseEvent* event)
+void LumaHackQtMenuWindow::mousePressEvent(QMouseEvent* event)
 {
     int col=findCol(event->pos().x());
     int row=findRow(event->pos().y());
@@ -3102,7 +3102,7 @@ void NetHackQtMenuWindow::mousePressEvent(QMouseEvent* event)
     if (how!=PICK_NONE) {
 	if (col==0) {
 	    // Changing count.
-	    NetHackQtStringRequestor requestor(keysource,"Count:");
+	    LumaHackQtStringRequestor requestor(keysource,"Count:");
 	    char buf[BUFSZ];
 
 	    if (item[row].count>0)
@@ -3130,7 +3130,7 @@ void NetHackQtMenuWindow::mousePressEvent(QMouseEvent* event)
     }
 }
 
-void NetHackQtMenuWindow::mouseReleaseEvent(QMouseEvent* event)
+void LumaHackQtMenuWindow::mouseReleaseEvent(QMouseEvent* event)
 {
     if (pressed>=0) {
 	int p=pressed;
@@ -3139,7 +3139,7 @@ void NetHackQtMenuWindow::mouseReleaseEvent(QMouseEvent* event)
     }
 }
 
-void NetHackQtMenuWindow::mouseMoveEvent(QMouseEvent* event)
+void LumaHackQtMenuWindow::mouseMoveEvent(QMouseEvent* event)
 {
     if (pressed>=0) {
 	int col=findCol(event->pos().x());
@@ -3160,9 +3160,9 @@ void NetHackQtMenuWindow::mouseMoveEvent(QMouseEvent* event)
 }
 
 
-class NetHackQtTextListBox : public QListBox {
+class LumaHackQtTextListBox : public QListBox {
 public:
-    NetHackQtTextListBox(QWidget* parent) : QListBox(parent) { }
+    LumaHackQtTextListBox(QWidget* parent) : QListBox(parent) { }
 
     int TotalWidth()
     {
@@ -3186,9 +3186,9 @@ public:
 };
 
 
-QPixmap* NetHackQtRIP::pixmap=0;
+QPixmap* LumaHackQtRIP::pixmap=0;
 
-NetHackQtRIP::NetHackQtRIP(QWidget* parent) :
+LumaHackQtRIP::LumaHackQtRIP(QWidget* parent) :
     QWidget(parent)
 {
     if (!pixmap) {
@@ -3200,18 +3200,18 @@ NetHackQtRIP::NetHackQtRIP(QWidget* parent) :
     setFont(QFont("times",12)); // XXX may need to be configurable
 }
 
-void NetHackQtRIP::setLines(char** l, int n)
+void LumaHackQtRIP::setLines(char** l, int n)
 {
     line=l;
     riplines=n;
 }
 
-QSize NetHackQtRIP::sizeHint() const
+QSize LumaHackQtRIP::sizeHint() const
 {
     return pixmap->size();
 }
 
-void NetHackQtRIP::paintEvent(QPaintEvent* event)
+void LumaHackQtRIP::paintEvent(QPaintEvent* event)
 {
     if ( riplines ) {
 	int pix_x=(width()-pixmap->width())/2;
@@ -3233,14 +3233,14 @@ void NetHackQtRIP::paintEvent(QPaintEvent* event)
     }
 }
 
-NetHackQtTextWindow::NetHackQtTextWindow(NetHackQtKeyBuffer& ks) :
+LumaHackQtTextWindow::LumaHackQtTextWindow(LumaHackQtKeyBuffer& ks) :
     QDialog(qApp->mainWidget(),0,FALSE),
     keysource(ks),
     use_rip(FALSE),
     str_fixed(FALSE),
     ok("Dismiss",this),
     search("Search",this),
-    lines(new NetHackQtTextListBox(this)),
+    lines(new LumaHackQtTextListBox(this)),
     rip(this)
 {
     ok.setDefault(TRUE);
@@ -3256,28 +3256,28 @@ NetHackQtTextWindow::NetHackQtTextWindow(NetHackQtKeyBuffer& ks) :
     vb->addWidget(lines);
 }
 
-void NetHackQtTextWindow::doUpdate()
+void LumaHackQtTextWindow::doUpdate()
 {
     update();
 }
 
 
-NetHackQtTextWindow::~NetHackQtTextWindow()
+LumaHackQtTextWindow::~LumaHackQtTextWindow()
 {
 
 }
 
-QWidget* NetHackQtTextWindow::Widget()
+QWidget* LumaHackQtTextWindow::Widget()
 {
     return this;
 }
 
-bool NetHackQtTextWindow::Destroy()
+bool LumaHackQtTextWindow::Destroy()
 {
     return !isVisible();
 }
 
-void NetHackQtTextWindow::UseRIP(int how, time_t when)
+void LumaHackQtTextWindow::UseRIP(int how, time_t when)
 {
 // Code from X11 windowport
 #define STONE_LINE_LEN 16    /* # chars that fit on one line */
@@ -3339,14 +3339,14 @@ static char** rip_line=0;
     use_rip=TRUE;
 }
 
-void NetHackQtTextWindow::Clear()
+void LumaHackQtTextWindow::Clear()
 {
     lines->clear();
     use_rip=FALSE;
     str_fixed=FALSE;
 }
 
-void NetHackQtTextWindow::Display(bool block)
+void LumaHackQtTextWindow::Display(bool block)
 {
     if (str_fixed) {
 	lines->setFont(qt_settings->normalFixedFont());
@@ -3393,20 +3393,20 @@ void NetHackQtTextWindow::Display(bool block)
     }
 }
 
-void NetHackQtTextWindow::PutStr(int attr, const char* text)
+void LumaHackQtTextWindow::PutStr(int attr, const char* text)
 {
     str_fixed=str_fixed || strstr(text,"    ");
     lines->insertItem(text);
 }
 
-void NetHackQtTextWindow::done(int i)
+void LumaHackQtTextWindow::done(int i)
 {
     setResult(i+1000);
     hide();
     qApp->exit_loop();
 }
 
-void NetHackQtTextWindow::keyPressEvent(QKeyEvent* e)
+void LumaHackQtTextWindow::keyPressEvent(QKeyEvent* e)
 {
     if ( e->ascii() != '\r' && e->ascii() != '\n' && e->ascii() != '\033' )
 	lines->keyPressEvent(e);
@@ -3414,9 +3414,9 @@ void NetHackQtTextWindow::keyPressEvent(QKeyEvent* e)
 	QDialog::keyPressEvent(e);
 }
 
-void NetHackQtTextWindow::Search()
+void LumaHackQtTextWindow::Search()
 {
-    NetHackQtStringRequestor requestor(keysource,"Search for:");
+    LumaHackQtStringRequestor requestor(keysource,"Search for:");
     static char line[256]="";
     requestor.SetDefault(line);
     if (requestor.Get(line)) {
@@ -3435,29 +3435,29 @@ void NetHackQtTextWindow::Search()
 }
 
 
-NetHackQtDelay::NetHackQtDelay(int ms) :
+LumaHackQtDelay::LumaHackQtDelay(int ms) :
     msec(ms)
 {
 }
 
-void NetHackQtDelay::wait()
+void LumaHackQtDelay::wait()
 {
     startTimer(msec);
     qApp->enter_loop();
 }
 
-void NetHackQtDelay::timerEvent(QTimerEvent* timer)
+void LumaHackQtDelay::timerEvent(QTimerEvent* timer)
 {
     qApp->exit_loop();
     killTimers();
 }
 
-NetHackQtInvUsageWindow::NetHackQtInvUsageWindow(QWidget* parent) :
+LumaHackQtInvUsageWindow::LumaHackQtInvUsageWindow(QWidget* parent) :
     QWidget(parent)
 {
 }
 
-void NetHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int y, bool canbe)
+void LumaHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int y, bool canbe)
 {
     short int glyph;
     if (nhobj)
@@ -3470,7 +3470,7 @@ void NetHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int
     qt_settings->glyphs().drawCell(painter,glyph,x,y);
 }
 
-void NetHackQtInvUsageWindow::paintEvent(QPaintEvent*)
+void LumaHackQtInvUsageWindow::paintEvent(QPaintEvent*)
 {
     //  012
     //
@@ -3533,7 +3533,7 @@ public:
 };
 
 
-NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
+LumaHackQtMainWindow::LumaHackQtMainWindow(LumaHackQtKeyBuffer& ks) :
     message(0), map(0), status(0), invusage(0),
     keysink(ks), dirkey(0)
 {
@@ -3546,7 +3546,7 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
     addToolBar(toolbar);
     menubar = menuBar();
 
-    setCaption("Qt NetHack");
+    setCaption("Qt LumaHack");
     if ( qt_compact_mode )
 	setIcon(QPixmap(nh_icon_small));
     else
@@ -3676,8 +3676,8 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
     macro=new const char* [count];
 
     game->insertItem("Qt settings...",1000);
-    help->insertItem("About Qt NetHack...",2000);
-    //help->insertItem("NetHack Guidebook...",3000);
+    help->insertItem("About Qt LumaHack...",2000);
+    //help->insertItem("LumaHack Guidebook...",3000);
     help->insertSeparator();
 
     count=0;
@@ -3785,16 +3785,16 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
 	setCentralWidget(stack);
     } else {
 	setCentralWidget(new QWidget(this));
-	invusage = new NetHackQtInvUsageWindow(centralWidget());
+	invusage = new LumaHackQtInvUsageWindow(centralWidget());
     }
 }
 
-void NetHackQtMainWindow::zoomMap()
+void LumaHackQtMainWindow::zoomMap()
 {
     qt_settings->toggleGlyphSize();
 }
 
-void NetHackQtMainWindow::raiseMap()
+void LumaHackQtMainWindow::raiseMap()
 {
     if ( stack->id(stack->visibleWidget()) == 0 ) {
 	zoomMap();
@@ -3803,22 +3803,22 @@ void NetHackQtMainWindow::raiseMap()
     }
 }
 
-void NetHackQtMainWindow::raiseMessages()
+void LumaHackQtMainWindow::raiseMessages()
 {
     stack->raiseWidget(1);
 }
 
-void NetHackQtMainWindow::raiseStatus()
+void LumaHackQtMainWindow::raiseStatus()
 {
     stack->raiseWidget(2);
 }
 
-class NetHackMimeSourceFactory : public QMimeSourceFactory {
+class LumaHackMimeSourceFactory : public QMimeSourceFactory {
 public:
     const QMimeSource* data(const QString& abs_name) const
     {
 	const QMimeSource* r = 0;
-	if ( (NetHackMimeSourceFactory*)this == QMimeSourceFactory::defaultFactory() )
+	if ( (LumaHackMimeSourceFactory*)this == QMimeSourceFactory::defaultFactory() )
 	    r = QMimeSourceFactory::data(abs_name);
 	else
 	    r = QMimeSourceFactory::defaultFactory()->data(abs_name);
@@ -3842,7 +3842,7 @@ public:
     }
 };
 
-void NetHackQtMainWindow::doMenuItem(int id)
+void LumaHackQtMainWindow::doMenuItem(int id)
 {
     switch (id) {
       case 1000:
@@ -3850,13 +3850,13 @@ void NetHackQtMainWindow::doMenuItem(int id)
 	qt_settings->show();
 	break;
       case 2000:
-	QMessageBox::about(this,  "About Qt NetHack", aboutMsg());
+	QMessageBox::about(this,  "About Qt LumaHack", aboutMsg());
 	break;
       case 3000: {
 	    QDialog dlg(this,0,TRUE);
 	    (new QVBoxLayout(&dlg))->setAutoAdd(TRUE);
 	    QTextBrowser browser(&dlg);
-	    NetHackMimeSourceFactory ms;
+	    LumaHackMimeSourceFactory ms;
 	    browser.setMimeSourceFactory(&ms);
 	    browser.setSource(QDir::currentDirPath()+"/Guidebook.html");
 	    if ( qt_compact_mode )
@@ -3870,32 +3870,32 @@ void NetHackQtMainWindow::doMenuItem(int id)
     }
 }
 
-void NetHackQtMainWindow::doKeys(const QString& k)
+void LumaHackQtMainWindow::doKeys(const QString& k)
 {
     keysink.Put(k);
     qApp->exit_loop();
 }
 
-void NetHackQtMainWindow::AddMessageWindow(NetHackQtMessageWindow* window)
+void LumaHackQtMainWindow::AddMessageWindow(LumaHackQtMessageWindow* window)
 {
     message=window;
     ShowIfReady();
 }
 
-void NetHackQtMainWindow::AddMapWindow(NetHackQtMapWindow* window)
+void LumaHackQtMainWindow::AddMapWindow(LumaHackQtMapWindow* window)
 {
     map=window;
     ShowIfReady();
     connect(map,SIGNAL(resized()),this,SLOT(layout()));
 }
 
-void NetHackQtMainWindow::AddStatusWindow(NetHackQtStatusWindow* window)
+void LumaHackQtMainWindow::AddStatusWindow(LumaHackQtStatusWindow* window)
 {
     status=window;
     ShowIfReady();
 }
 
-void NetHackQtMainWindow::RemoveWindow(NetHackQtWindow* window)
+void LumaHackQtMainWindow::RemoveWindow(LumaHackQtWindow* window)
 {
     if (window==status) {
 	status=0;
@@ -3909,20 +3909,20 @@ void NetHackQtMainWindow::RemoveWindow(NetHackQtWindow* window)
     }
 }
 
-void NetHackQtMainWindow::updateInventory()
+void LumaHackQtMainWindow::updateInventory()
 {
     if ( invusage )
 	invusage->repaint(FALSE);
 }
 
-void NetHackQtMainWindow::fadeHighlighting()
+void LumaHackQtMainWindow::fadeHighlighting()
 {
     if (status) {
 	status->fadeHighlighting();
     }
 }
 
-void NetHackQtMainWindow::layout()
+void LumaHackQtMainWindow::layout()
 {
     if ( qt_compact_mode )
 	return;
@@ -3944,7 +3944,7 @@ void NetHackQtMainWindow::layout()
     }
 }
 
-void NetHackQtMainWindow::resizeEvent(QResizeEvent*)
+void LumaHackQtMainWindow::resizeEvent(QResizeEvent*)
 {
     layout();
 #ifdef KDE
@@ -3952,7 +3952,7 @@ void NetHackQtMainWindow::resizeEvent(QResizeEvent*)
 #endif         
 }
 
-void NetHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
+void LumaHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
 {
     if ( dirkey ) {
 	doKeys(QString(QChar(dirkey)));
@@ -3961,7 +3961,7 @@ void NetHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMainWindow::keyPressEvent(QKeyEvent* event)
+void LumaHackQtMainWindow::keyPressEvent(QKeyEvent* event)
 {
     // Global key controls
 
@@ -4027,18 +4027,18 @@ void NetHackQtMainWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMainWindow::closeEvent(QCloseEvent* e)
+void LumaHackQtMainWindow::closeEvent(QCloseEvent* e)
 {
     if ( program_state.something_worth_saving ) {
-	switch ( QMessageBox::information( this, "NetHack",
-	    "This will end your NetHack session",
+	switch ( QMessageBox::information( this, "LumaHack",
+	    "This will end your LumaHack session",
 	    "&Save", "&Cancel", 0, 1 ) )
 	{
 	    case 0:
 		// See dosave() function
 		if (dosave0()) {
 		    u.uhp = -1;
-		    NetHackQtBind::qt_exit_nhwindows(0);
+		    LumaHackQtBind::qt_exit_nhwindows(0);
 		    nh_terminate(EXIT_SUCCESS);
 		}
 		break;
@@ -4050,7 +4050,7 @@ void NetHackQtMainWindow::closeEvent(QCloseEvent* e)
     }
 }
 
-void NetHackQtMainWindow::ShowIfReady()
+void LumaHackQtMainWindow::ShowIfReady()
 {
     if (message && map && status) {
 	QPoint pos(0,0);
@@ -4074,15 +4074,15 @@ void NetHackQtMainWindow::ShowIfReady()
 }
 
 
-NetHackQtYnDialog::NetHackQtYnDialog(NetHackQtKeyBuffer& keysrc,const char* q,const char* ch,char df) :
+LumaHackQtYnDialog::LumaHackQtYnDialog(LumaHackQtKeyBuffer& keysrc,const char* q,const char* ch,char df) :
     QDialog(qApp->mainWidget(),0,FALSE),
     question(q), choices(ch), def(df),
     keysource(keysrc)
 {
-    setCaption("NetHack: Question");
+    setCaption("LumaHack: Question");
 }
 
-char NetHackQtYnDialog::Exec()
+char LumaHackQtYnDialog::Exec()
 {
     QString ch(choices);
     int ch_per_line=6;
@@ -4258,24 +4258,24 @@ char NetHackQtYnDialog::Exec()
 	}
     }
 }
-void NetHackQtYnDialog::keyPressEvent(QKeyEvent* event)
+void LumaHackQtYnDialog::keyPressEvent(QKeyEvent* event)
 {
     // Don't want QDialog's Return/Esc behaviour
     event->ignore();
 }
 
-void NetHackQtYnDialog::doneItem(int i)
+void LumaHackQtYnDialog::doneItem(int i)
 {
     done(i+1000);
 }
 
-void NetHackQtYnDialog::done(int i)
+void LumaHackQtYnDialog::done(int i)
 {
     setResult(i);
     qApp->exit_loop();
 }
 
-NetHackQtGlyphs::NetHackQtGlyphs()
+LumaHackQtGlyphs::LumaHackQtGlyphs()
 {
     const char* tile_file = "nhtiles.bmp";
     if ( iflags.wc_tile_file )
@@ -4311,7 +4311,7 @@ NetHackQtGlyphs::NetHackQtGlyphs()
     setSize(tilefile_tile_W, tilefile_tile_H);
 }
 
-void NetHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
+void LumaHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
 {
     int tile = glyph2tile[glyph];
     int px = (tile%tiles_per_row)*width();
@@ -4325,11 +4325,11 @@ void NetHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
 	width(),height()
     );
 }
-void NetHackQtGlyphs::drawCell(QPainter& painter, int glyph, int cellx, int celly)
+void LumaHackQtGlyphs::drawCell(QPainter& painter, int glyph, int cellx, int celly)
 {
     drawGlyph(painter,glyph,cellx*width(),celly*height());
 }
-void NetHackQtGlyphs::setSize(int w, int h)
+void LumaHackQtGlyphs::setSize(int w, int h)
 {
     if ( size == QSize(w,h) )
 	return;
@@ -4370,20 +4370,20 @@ void NetHackQtGlyphs::setSize(int w, int h)
 //////////////////////////////////////////////////////////////
 
 
-NetHackQtMenuOrTextWindow::NetHackQtMenuOrTextWindow(NetHackQtKeyBuffer& ks) :
+LumaHackQtMenuOrTextWindow::LumaHackQtMenuOrTextWindow(LumaHackQtKeyBuffer& ks) :
     actual(0),
     keysource(ks)
 {
 }
 
-QWidget* NetHackQtMenuOrTextWindow::Widget()
+QWidget* LumaHackQtMenuOrTextWindow::Widget()
 {
     if (!actual) impossible("Widget called before we know if Menu or Text");
     return actual->Widget();
 }
 
 // Text
-void NetHackQtMenuOrTextWindow::Clear()
+void LumaHackQtMenuOrTextWindow::Clear()
 {
     if (!actual)
         impossible("Clear called before we know if Menu or Text");
@@ -4391,7 +4391,7 @@ void NetHackQtMenuOrTextWindow::Clear()
         actual->Clear();
 }
 
-void NetHackQtMenuOrTextWindow::Display(bool block)
+void LumaHackQtMenuOrTextWindow::Display(bool block)
 {
     if (!actual)
         impossible("Display called before we know if Menu or Text");
@@ -4399,7 +4399,7 @@ void NetHackQtMenuOrTextWindow::Display(bool block)
         actual->Display(block);
 }
 
-bool NetHackQtMenuOrTextWindow::Destroy()
+bool LumaHackQtMenuOrTextWindow::Destroy()
 {
     bool res = FALSE;
 
@@ -4411,33 +4411,33 @@ bool NetHackQtMenuOrTextWindow::Destroy()
     return res;
 }
 
-void NetHackQtMenuOrTextWindow::PutStr(int attr, const char* text)
+void LumaHackQtMenuOrTextWindow::PutStr(int attr, const char* text)
 {
-    if (!actual) actual=new NetHackQtTextWindow(keysource);
+    if (!actual) actual=new LumaHackQtTextWindow(keysource);
     actual->PutStr(attr,text);
 }
 
 // Menu
-void NetHackQtMenuOrTextWindow::StartMenu()
+void LumaHackQtMenuOrTextWindow::StartMenu()
 {
-    if (!actual) actual=new NetHackQtMenuWindow(keysource);
+    if (!actual) actual=new LumaHackQtMenuWindow(keysource);
     actual->StartMenu();
 }
 
-void NetHackQtMenuOrTextWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
+void LumaHackQtMenuOrTextWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
 	const char* str, bool presel)
 {
     if (!actual) impossible("AddMenu called before we know if Menu or Text");
     actual->AddMenu(glyph,identifier,ch,gch,attr,str,presel);
 }
 
-void NetHackQtMenuOrTextWindow::EndMenu(const char* prompt)
+void LumaHackQtMenuOrTextWindow::EndMenu(const char* prompt)
 {
     if (!actual) impossible("EndMenu called before we know if Menu or Text");
     actual->EndMenu(prompt);
 }
 
-int NetHackQtMenuOrTextWindow::SelectMenu(int how, MENU_ITEM_P **menu_list)
+int LumaHackQtMenuOrTextWindow::SelectMenu(int how, MENU_ITEM_P **menu_list)
 {
     if (!actual) impossible("SelectMenu called before we know if Menu or Text");
     return actual->SelectMenu(how,menu_list);
@@ -4464,7 +4464,7 @@ struct {
 };
 
 
-NetHackQtBind::NetHackQtBind(int& argc, char** argv) :
+LumaHackQtBind::LumaHackQtBind(int& argc, char** argv) :
 #ifdef KDE
     KApplication(argc,argv)
 #elif defined(QWS) // not quite the right condition
@@ -4508,16 +4508,16 @@ NetHackQtBind::NetHackQtBind(int& argc, char** argv) :
     } else {
 	splash = 0;
     }
-    main = new NetHackQtMainWindow(keybuffer);
+    main = new LumaHackQtMainWindow(keybuffer);
 #if defined(QWS) // not quite the right condition
     showMainWidget(main);
 #else
     setMainWidget(main);
 #endif
-    qt_settings=new NetHackQtSettings(main->width(),main->height());
+    qt_settings=new LumaHackQtSettings(main->width(),main->height());
 }
 
-void NetHackQtBind::qt_init_nhwindows(int* argc, char** argv)
+void LumaHackQtBind::qt_init_nhwindows(int* argc, char** argv)
 {
 #ifdef UNIX
 // Userid control
@@ -4535,32 +4535,32 @@ void NetHackQtBind::qt_init_nhwindows(int* argc, char** argv)
 #endif
 
     QApplication::setColorSpec(ManyColor);
-    instance=new NetHackQtBind(*argc,argv);
+    instance=new LumaHackQtBind(*argc,argv);
 
 #ifdef UNIX
     seteuid(gamesuid);
 #endif
 
 #ifdef _WS_WIN_
-    // This nethack engine feature should be moved into windowport API
-    nt_kbhit = NetHackQtBind::qt_kbhit;
+    // This lumahack engine feature should be moved into windowport API
+    nt_kbhit = LumaHackQtBind::qt_kbhit;
 #endif
 }
 
-int NetHackQtBind::qt_kbhit()
+int LumaHackQtBind::qt_kbhit()
 {
     return !keybuffer.Empty();
 }
 
 static bool have_asked = FALSE;
 
-void NetHackQtBind::qt_player_selection()
+void LumaHackQtBind::qt_player_selection()
 {
     if ( !have_asked )
 	qt_askname();
 }
 
-NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
+LumaHackQtSavedGameSelector::LumaHackQtSavedGameSelector(const char** saved) :
     QDialog(qApp->mainWidget(),"sgsel",TRUE)
 {
     QVBoxLayout *vbl = new QVBoxLayout(this,6);
@@ -4569,7 +4569,7 @@ NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
     QLabel* logo = new QLabel(this); vbl->addWidget(logo);
     logo->setAlignment(AlignCenter);
     logo->setPixmap(QPixmap("nhsplash.xpm"));
-    QLabel* attr = new QLabel("by the NetHack DevTeam",this);
+    QLabel* attr = new QLabel("by the LumaHack DevTeam",this);
     attr->setAlignment(AlignCenter);
     vbl->addWidget(attr);
     vbl->addStretch(2);
@@ -4599,7 +4599,7 @@ NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
     }
 }
 
-int NetHackQtSavedGameSelector::choose()
+int LumaHackQtSavedGameSelector::choose()
 {
 #if defined(QWS) // probably safe with Qt 3, too (where show!=exec in QDialog).
     if ( qt_compact_mode )
@@ -4608,7 +4608,7 @@ int NetHackQtSavedGameSelector::choose()
     return exec()-2;
 }
 
-void NetHackQtBind::qt_askname()
+void LumaHackQtBind::qt_askname()
 {
     have_asked = TRUE;
 
@@ -4618,7 +4618,7 @@ void NetHackQtBind::qt_askname()
     int ch = -1;
     if ( saved && *saved ) {
 	if ( splash ) splash->hide();
-	NetHackQtSavedGameSelector sgsel((const char**)saved);
+	LumaHackQtSavedGameSelector sgsel((const char**)saved);
 	ch = sgsel.choose();
 	if ( ch >= 0 )
 	    strcpy(plname,saved[ch]);
@@ -4628,7 +4628,7 @@ void NetHackQtBind::qt_askname()
     switch (ch) {
       case -1:
 	if ( splash ) splash->hide();
-	if (NetHackQtPlayerSelector(keybuffer).Choose())
+	if (LumaHackQtPlayerSelector(keybuffer).Choose())
 	    return;
       case -2:
 	break;
@@ -4642,7 +4642,7 @@ void NetHackQtBind::qt_askname()
     nh_terminate(0);
 }
 
-void NetHackQtBind::qt_get_nh_event()
+void LumaHackQtBind::qt_get_nh_event()
 {
 }
 
@@ -4655,7 +4655,7 @@ public:
 };
 #endif
  
-void NetHackQtBind::qt_exit_nhwindows(const char *)
+void LumaHackQtBind::qt_exit_nhwindows(const char *)
 {
 #if defined(QWS)
     // Avoids bug in SHARP SL5500
@@ -4666,17 +4666,17 @@ void NetHackQtBind::qt_exit_nhwindows(const char *)
     delete instance; // ie. qApp
 }
 
-void NetHackQtBind::qt_suspend_nhwindows(const char *)
+void LumaHackQtBind::qt_suspend_nhwindows(const char *)
 {
 }
 
-void NetHackQtBind::qt_resume_nhwindows()
+void LumaHackQtBind::qt_resume_nhwindows()
 {
 }
 
-static QArray<NetHackQtWindow*> id_to_window;
+static QArray<LumaHackQtWindow*> id_to_window;
 
-winid NetHackQtBind::qt_create_nhwindow(int type)
+winid LumaHackQtBind::qt_create_nhwindow(int type)
 {
     winid id;
     for (id = 0; id < (winid) id_to_window.size(); id++) {
@@ -4686,25 +4686,25 @@ winid NetHackQtBind::qt_create_nhwindow(int type)
     if ( id == (winid) id_to_window.size() )
 	id_to_window.resize(id+1);
 
-    NetHackQtWindow* window=0;
+    LumaHackQtWindow* window=0;
 
     switch (type) {
      case NHW_MAP: {
-	NetHackQtMapWindow* w=new NetHackQtMapWindow(clickbuffer);
+	LumaHackQtMapWindow* w=new LumaHackQtMapWindow(clickbuffer);
 	main->AddMapWindow(w);
 	window=w;
     } break; case NHW_MESSAGE: {
-	NetHackQtMessageWindow* w=new NetHackQtMessageWindow;
+	LumaHackQtMessageWindow* w=new LumaHackQtMessageWindow;
 	main->AddMessageWindow(w);
 	window=w;
     } break; case NHW_STATUS: {
-	NetHackQtStatusWindow* w=new NetHackQtStatusWindow;
+	LumaHackQtStatusWindow* w=new LumaHackQtStatusWindow;
 	main->AddStatusWindow(w);
 	window=w;
     } break; case NHW_MENU:
-	window=new NetHackQtMenuOrTextWindow(keybuffer);
+	window=new LumaHackQtMenuOrTextWindow(keybuffer);
     break; case NHW_TEXT:
-	window=new NetHackQtTextWindow(keybuffer);
+	window=new LumaHackQtTextWindow(keybuffer);
     }
 
     window->nhid = id;
@@ -4726,42 +4726,42 @@ winid NetHackQtBind::qt_create_nhwindow(int type)
     return id;
 }
 
-void NetHackQtBind::qt_clear_nhwindow(winid wid)
+void LumaHackQtBind::qt_clear_nhwindow(winid wid)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->Clear();
 }
 
-void NetHackQtBind::qt_display_nhwindow(winid wid, BOOLEAN_P block)
+void LumaHackQtBind::qt_display_nhwindow(winid wid, BOOLEAN_P block)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->Display(block);
 }
 
-void NetHackQtBind::qt_destroy_nhwindow(winid wid)
+void LumaHackQtBind::qt_destroy_nhwindow(winid wid)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     main->RemoveWindow(window);
     if (window->Destroy())
 	delete window;
     id_to_window[wid] = 0;
 }
 
-void NetHackQtBind::qt_curs(winid wid, int x, int y)
+void LumaHackQtBind::qt_curs(winid wid, int x, int y)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->CursorTo(x,y);
 }
 
-void NetHackQtBind::qt_putstr(winid wid, int attr, const char *text)
+void LumaHackQtBind::qt_putstr(winid wid, int attr, const char *text)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->PutStr(attr,text);
 }
 
-void NetHackQtBind::qt_display_file(const char *filename, BOOLEAN_P must_exist)
+void LumaHackQtBind::qt_display_file(const char *filename, BOOLEAN_P must_exist)
 {
-    NetHackQtTextWindow* window=new NetHackQtTextWindow(keybuffer);
+    LumaHackQtTextWindow* window=new LumaHackQtTextWindow(keybuffer);
     bool complain = FALSE;
 
 #ifdef DLB
@@ -4809,33 +4809,33 @@ void NetHackQtBind::qt_display_file(const char *filename, BOOLEAN_P must_exist)
     }
 }
 
-void NetHackQtBind::qt_start_menu(winid wid)
+void LumaHackQtBind::qt_start_menu(winid wid)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->StartMenu();
 }
 
-void NetHackQtBind::qt_add_menu(winid wid, int glyph,
+void LumaHackQtBind::qt_add_menu(winid wid, int glyph,
     const ANY_P * identifier, CHAR_P ch, CHAR_P gch, int attr,
     const char *str, BOOLEAN_P presel)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->AddMenu(glyph, identifier, ch, gch, attr, str, presel);
 }
 
-void NetHackQtBind::qt_end_menu(winid wid, const char *prompt)
+void LumaHackQtBind::qt_end_menu(winid wid, const char *prompt)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->EndMenu(prompt);
 }
 
-int NetHackQtBind::qt_select_menu(winid wid, int how, MENU_ITEM_P **menu_list)
+int LumaHackQtBind::qt_select_menu(winid wid, int how, MENU_ITEM_P **menu_list)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     return window->SelectMenu(how,menu_list);
 }
 
-void NetHackQtBind::qt_update_inventory()
+void LumaHackQtBind::qt_update_inventory()
 {
     if (main)
 	main->updateInventory();
@@ -4845,47 +4845,47 @@ void NetHackQtBind::qt_update_inventory()
     */
 }
 
-void NetHackQtBind::qt_mark_synch()
+void LumaHackQtBind::qt_mark_synch()
 {
 }
 
-void NetHackQtBind::qt_wait_synch()
+void LumaHackQtBind::qt_wait_synch()
 {
 }
 
-void NetHackQtBind::qt_cliparound(int x, int y)
+void LumaHackQtBind::qt_cliparound(int x, int y)
 {
     // XXXNH - winid should be a parameter!
     qt_cliparound_window(WIN_MAP,x,y);
 }
 
-void NetHackQtBind::qt_cliparound_window(winid wid, int x, int y)
+void LumaHackQtBind::qt_cliparound_window(winid wid, int x, int y)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->ClipAround(x,y);
 }
-void NetHackQtBind::qt_print_glyph(winid wid,XCHAR_P x,XCHAR_P y,int glyph, int bkglyph)
+void LumaHackQtBind::qt_print_glyph(winid wid,XCHAR_P x,XCHAR_P y,int glyph, int bkglyph)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
     window->PrintGlyph(x,y,glyph);
 }
-//void NetHackQtBind::qt_print_glyph_compose(winid wid,XCHAR_P x,XCHAR_P y,int glyph1, int glyph2)
+//void LumaHackQtBind::qt_print_glyph_compose(winid wid,XCHAR_P x,XCHAR_P y,int glyph1, int glyph2)
 //{
-    //NetHackQtWindow* window=id_to_window[wid];
+    //LumaHackQtWindow* window=id_to_window[wid];
     //window->PrintGlyphCompose(x,y,glyph1,glyph2);
 //}
 
-void NetHackQtBind::qt_raw_print(const char *str)
+void LumaHackQtBind::qt_raw_print(const char *str)
 {
     puts(str);
 }
 
-void NetHackQtBind::qt_raw_print_bold(const char *str)
+void LumaHackQtBind::qt_raw_print_bold(const char *str)
 {
     puts(str);
 }
 
-int NetHackQtBind::qt_nhgetch()
+int LumaHackQtBind::qt_nhgetch()
 {
     if (main)
 	main->fadeHighlighting();
@@ -4906,7 +4906,7 @@ int NetHackQtBind::qt_nhgetch()
     return keybuffer.GetAscii();
 }
 
-int NetHackQtBind::qt_nh_poskey(int *x, int *y, int *mod)
+int LumaHackQtBind::qt_nh_poskey(int *x, int *y, int *mod)
 {
     if (main)
 	main->fadeHighlighting();
@@ -4934,19 +4934,19 @@ int NetHackQtBind::qt_nh_poskey(int *x, int *y, int *mod)
     }
 }
 
-void NetHackQtBind::qt_nhbell()
+void LumaHackQtBind::qt_nhbell()
 {
     QApplication::beep();
 }
 
-int NetHackQtBind::qt_doprev_message()
+int LumaHackQtBind::qt_doprev_message()
 {
     // Don't need it - uses scrollbar
     // XXX but could make this a shortcut
     return 0;
 }
 
-char NetHackQtBind::qt_yn_function(const char *question, const char *choices, CHAR_P def)
+char LumaHackQtBind::qt_yn_function(const char *question, const char *choices, CHAR_P def)
 {
     if (qt_settings->ynInMessages() && WIN_MESSAGE!=WIN_ERR) {
 	// Similar to X11 windowport `slow' feature.
@@ -4976,7 +4976,7 @@ char NetHackQtBind::qt_yn_function(const char *question, const char *choices, CH
 #ifdef USE_POPUPS
 	// Improve some special-cases (DIRKS 08/02/23)
 	if (strcmp (choices,"ynq") == 0) {
-	    switch (QMessageBox::information (qApp->mainWidget(),"NetHack",question,"&Yes","&No","&Quit",0,2))
+	    switch (QMessageBox::information (qApp->mainWidget(),"LumaHack",question,"&Yes","&No","&Quit",0,2))
 	    {
 	      case 0: return 'y'; 
 	      case 1: return 'n'; 
@@ -4985,7 +4985,7 @@ char NetHackQtBind::qt_yn_function(const char *question, const char *choices, CH
 	}
 
 	if (strcmp (choices,"yn") == 0) {
-	    switch (QMessageBox::information(qApp->mainWidget(),"NetHack",question,"&Yes", "&No",0,1))
+	    switch (QMessageBox::information(qApp->mainWidget(),"LumaHack",question,"&Yes", "&No",0,1))
 	    {
 	      case 0: return 'y';
 	      case 1: return 'n'; 
@@ -4993,18 +4993,18 @@ char NetHackQtBind::qt_yn_function(const char *question, const char *choices, CH
 	}
 #endif
 
-	NetHackQtBind::qt_putstr(WIN_MESSAGE, ATR_BOLD, message);
+	LumaHackQtBind::qt_putstr(WIN_MESSAGE, ATR_BOLD, message);
 
 	int result=-1;
 	while (result<0) {
-	    char ch=NetHackQtBind::qt_nhgetch();
+	    char ch=LumaHackQtBind::qt_nhgetch();
 	    if (ch=='\033') {
 		result=yn_esc_map;
 	    } else if (choices && !index(choices,ch)) {
 		if (def && (ch==' ' || ch=='\r' || ch=='\n')) {
 		    result=def;
 		} else {
-		    NetHackQtBind::qt_nhbell();
+		    LumaHackQtBind::qt_nhbell();
 		    // and try again...
 		}
 	    } else {
@@ -5012,24 +5012,24 @@ char NetHackQtBind::qt_yn_function(const char *question, const char *choices, CH
 	    }
 	}
 
-	NetHackQtBind::qt_clear_nhwindow(WIN_MESSAGE);
+	LumaHackQtBind::qt_clear_nhwindow(WIN_MESSAGE);
 
 	return result;
     } else {
-	NetHackQtYnDialog dialog(keybuffer,question,choices,def);
+	LumaHackQtYnDialog dialog(keybuffer,question,choices,def);
 	return dialog.Exec();
     }
 }
 
-void NetHackQtBind::qt_getlin(const char *prompt, char *line)
+void LumaHackQtBind::qt_getlin(const char *prompt, char *line)
 {
-    NetHackQtStringRequestor requestor(keybuffer,prompt);
+    LumaHackQtStringRequestor requestor(keybuffer,prompt);
     if (!requestor.Get(line)) {
 	line[0]=0;
     }
 }
 
-NetHackQtExtCmdRequestor::NetHackQtExtCmdRequestor(NetHackQtKeyBuffer& ks) :
+LumaHackQtExtCmdRequestor::LumaHackQtExtCmdRequestor(LumaHackQtKeyBuffer& ks) :
     QDialog(qApp->mainWidget(), "ext-cmd", FALSE),
     keysource(ks)
 {
@@ -5073,19 +5073,19 @@ NetHackQtExtCmdRequestor::NetHackQtExtCmdRequestor(NetHackQtKeyBuffer& ks) :
     connect(can,SIGNAL(clicked()),this,SLOT(cancel()));
 }
 
-void NetHackQtExtCmdRequestor::cancel()
+void LumaHackQtExtCmdRequestor::cancel()
 {
     setResult(-1);
     qApp->exit_loop();
 }
 
-void NetHackQtExtCmdRequestor::done(int i)
+void LumaHackQtExtCmdRequestor::done(int i)
 {
     setResult(i);
     qApp->exit_loop();
 }
 
-int NetHackQtExtCmdRequestor::get()
+int LumaHackQtExtCmdRequestor::get()
 {
     const int none = -10;
     char str[32];
@@ -5126,41 +5126,41 @@ int NetHackQtExtCmdRequestor::get()
 }
 
 
-int NetHackQtBind::qt_get_ext_cmd()
+int LumaHackQtBind::qt_get_ext_cmd()
 {
-    NetHackQtExtCmdRequestor requestor(keybuffer);
+    LumaHackQtExtCmdRequestor requestor(keybuffer);
     return requestor.get();
 }
 
-void NetHackQtBind::qt_number_pad(int)
+void LumaHackQtBind::qt_number_pad(int)
 {
     // Ignore.
 }
 
-void NetHackQtBind::qt_delay_output()
+void LumaHackQtBind::qt_delay_output()
 {
-    NetHackQtDelay delay(15);
+    LumaHackQtDelay delay(15);
     delay.wait();
 }
 
-void NetHackQtBind::qt_start_screen()
+void LumaHackQtBind::qt_start_screen()
 {
     // Ignore.
 }
 
-void NetHackQtBind::qt_end_screen()
+void LumaHackQtBind::qt_end_screen()
 {
     // Ignore.
 }
 
-void NetHackQtBind::qt_outrip(winid wid, int how, time_t when)
+void LumaHackQtBind::qt_outrip(winid wid, int how, time_t when)
 {
-    NetHackQtWindow* window=id_to_window[wid];
+    LumaHackQtWindow* window=id_to_window[wid];
 
     window->UseRIP(how, when);
 }
 
-bool NetHackQtBind::notify(QObject *receiver, QEvent *event)
+bool LumaHackQtBind::notify(QObject *receiver, QEvent *event)
 {
     // Ignore Alt-key navigation to menubar, it's annoying when you
     // use Alt-Direction to move around.
@@ -5213,11 +5213,11 @@ bool NetHackQtBind::notify(QObject *receiver, QEvent *event)
     return result;
 }
 
-NetHackQtBind* NetHackQtBind::instance=0;
-NetHackQtKeyBuffer NetHackQtBind::keybuffer;
-NetHackQtClickBuffer NetHackQtBind::clickbuffer;
-NetHackQtMainWindow* NetHackQtBind::main=0;
-QWidget* NetHackQtBind::splash=0;
+LumaHackQtBind* LumaHackQtBind::instance=0;
+LumaHackQtKeyBuffer LumaHackQtBind::keybuffer;
+LumaHackQtClickBuffer LumaHackQtBind::clickbuffer;
+LumaHackQtMainWindow* LumaHackQtBind::main=0;
+QWidget* LumaHackQtBind::splash=0;
 
 
 extern "C" struct window_procs Qt_procs;
@@ -5230,57 +5230,57 @@ struct window_procs Qt_procs = {
 	WC_PLAYER_SELECTION|WC_SPLASH_SCREEN,
     0L,
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},   /* color availability */
-    NetHackQtBind::qt_init_nhwindows,
-    NetHackQtBind::qt_player_selection,
-    NetHackQtBind::qt_askname,
-    NetHackQtBind::qt_get_nh_event,
-    NetHackQtBind::qt_exit_nhwindows,
-    NetHackQtBind::qt_suspend_nhwindows,
-    NetHackQtBind::qt_resume_nhwindows,
-    NetHackQtBind::qt_create_nhwindow,
-    NetHackQtBind::qt_clear_nhwindow,
-    NetHackQtBind::qt_display_nhwindow,
-    NetHackQtBind::qt_destroy_nhwindow,
-    NetHackQtBind::qt_curs,
-    NetHackQtBind::qt_putstr,
+    LumaHackQtBind::qt_init_nhwindows,
+    LumaHackQtBind::qt_player_selection,
+    LumaHackQtBind::qt_askname,
+    LumaHackQtBind::qt_get_nh_event,
+    LumaHackQtBind::qt_exit_nhwindows,
+    LumaHackQtBind::qt_suspend_nhwindows,
+    LumaHackQtBind::qt_resume_nhwindows,
+    LumaHackQtBind::qt_create_nhwindow,
+    LumaHackQtBind::qt_clear_nhwindow,
+    LumaHackQtBind::qt_display_nhwindow,
+    LumaHackQtBind::qt_destroy_nhwindow,
+    LumaHackQtBind::qt_curs,
+    LumaHackQtBind::qt_putstr,
     genl_putmixed,
-    NetHackQtBind::qt_display_file,
-    NetHackQtBind::qt_start_menu,
-    NetHackQtBind::qt_add_menu,
-    NetHackQtBind::qt_end_menu,
-    NetHackQtBind::qt_select_menu,
+    LumaHackQtBind::qt_display_file,
+    LumaHackQtBind::qt_start_menu,
+    LumaHackQtBind::qt_add_menu,
+    LumaHackQtBind::qt_end_menu,
+    LumaHackQtBind::qt_select_menu,
     genl_message_menu,      /* no need for X-specific handling */
-    NetHackQtBind::qt_update_inventory,
-    NetHackQtBind::qt_mark_synch,
-    NetHackQtBind::qt_wait_synch,
+    LumaHackQtBind::qt_update_inventory,
+    LumaHackQtBind::qt_mark_synch,
+    LumaHackQtBind::qt_wait_synch,
 #ifdef CLIPPING
-    NetHackQtBind::qt_cliparound,
+    LumaHackQtBind::qt_cliparound,
 #endif
 #ifdef POSITIONBAR
     donull,
 #endif
-    NetHackQtBind::qt_print_glyph,
-    //NetHackQtBind::qt_print_glyph_compose,
-    NetHackQtBind::qt_raw_print,
-    NetHackQtBind::qt_raw_print_bold,
-    NetHackQtBind::qt_nhgetch,
-    NetHackQtBind::qt_nh_poskey,
-    NetHackQtBind::qt_nhbell,
-    NetHackQtBind::qt_doprev_message,
-    NetHackQtBind::qt_yn_function,
-    NetHackQtBind::qt_getlin,
-    NetHackQtBind::qt_get_ext_cmd,
-    NetHackQtBind::qt_number_pad,
-    NetHackQtBind::qt_delay_output,
+    LumaHackQtBind::qt_print_glyph,
+    //LumaHackQtBind::qt_print_glyph_compose,
+    LumaHackQtBind::qt_raw_print,
+    LumaHackQtBind::qt_raw_print_bold,
+    LumaHackQtBind::qt_nhgetch,
+    LumaHackQtBind::qt_nh_poskey,
+    LumaHackQtBind::qt_nhbell,
+    LumaHackQtBind::qt_doprev_message,
+    LumaHackQtBind::qt_yn_function,
+    LumaHackQtBind::qt_getlin,
+    LumaHackQtBind::qt_get_ext_cmd,
+    LumaHackQtBind::qt_number_pad,
+    LumaHackQtBind::qt_delay_output,
 #ifdef CHANGE_COLOR     /* only a Mac option currently */
     donull,
     donull,
 #endif
     /* other defs that really should go away (they're tty specific) */
-    NetHackQtBind::qt_start_screen,
-    NetHackQtBind::qt_end_screen,
+    LumaHackQtBind::qt_start_screen,
+    LumaHackQtBind::qt_end_screen,
 #ifdef GRAPHIC_TOMBSTONE
-    NetHackQtBind::qt_outrip,
+    LumaHackQtBind::qt_outrip,
 #else
     genl_outrip,
 #endif

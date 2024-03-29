@@ -1,6 +1,6 @@
-/* NetHack 3.6	sp_lev.h	$NHDT-Date: 1544930819 2018/12/16 03:26:59 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.25 $ */
+/* LumaHack 3.6	sp_lev.h	$NHDT-Date: 1544930819 2018/12/16 03:26:59 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.25 $ */
 /* Copyright (c) 1989 by Jean-Christophe Collet			  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef SP_LEV_H
 #define SP_LEV_H
@@ -486,7 +486,7 @@ struct lc_breakdef {
  * Quick! Avert your eyes while you still have a chance!
  */
 #ifdef SPEC_LEV
-/* compiling lev_comp rather than nethack */
+/* compiling lev_comp rather than lumahack */
 /* clang format off */
 #ifdef USE_OLDARGS
 #ifndef VA_TYPE

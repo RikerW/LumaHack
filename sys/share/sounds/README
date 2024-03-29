@@ -1,6 +1,6 @@
 README for the AIFF files:
 
-These files are sound files for the instruments in NetHack.
+These files are sound files for the instruments in LumaHack.
 There are 11 sounds, one for each distinct instrument.
 The sounds are in 8-bit 22kHz AIFF format, which should be
 readable by a broad range of platforms. Since the sounds
@@ -31,4 +31,4 @@ Any comment on the sounds or their use is welcome:
 
 						Jon W{tte
 						Mac Team
-						nethack-bugs@nethack.org
+						lumahack-bugs@lumahack.org

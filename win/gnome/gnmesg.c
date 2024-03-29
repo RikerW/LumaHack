@@ -1,6 +1,6 @@
-/* NetHack 3.6	gnmesg.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
+/* LumaHack 3.6	gnmesg.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "gnmesg.h"
 #include "gnsignal.h"
@@ -17,7 +17,7 @@ GtkWidget *MW_scrollbar;
 void
 ghack_message_window_clear(GtkWidget *widget, gpointer data)
 {
-    /* Seems nethack calls this after every move -- we don't want
+    /* Seems lumahack calls this after every move -- we don't want
      * to really clear the window at all though.  Ignore the request */
     gint len;
 

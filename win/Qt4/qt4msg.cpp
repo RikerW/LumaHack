@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4msg.cpp -- a message window
 
@@ -27,9 +27,9 @@ extern "C" {
 #include "qt4set.h"
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtMessageWindow::NetHackQtMessageWindow() :
+LumaHackQtMessageWindow::LumaHackQtMessageWindow() :
     list(new QListWidget())
 {
     list->setFocusPolicy(Qt::NoFocus);
@@ -40,46 +40,46 @@ NetHackQtMessageWindow::NetHackQtMessageWindow() :
     updateFont();
 }
 
-NetHackQtMessageWindow::~NetHackQtMessageWindow()
+LumaHackQtMessageWindow::~LumaHackQtMessageWindow()
 {
     ::iflags.window_inited = 0;
     delete list;
 }
 
-QWidget* NetHackQtMessageWindow::Widget() { return list; }
+QWidget* LumaHackQtMessageWindow::Widget() { return list; }
 
-void NetHackQtMessageWindow::setMap(NetHackQtMapWindow2* m)
+void LumaHackQtMessageWindow::setMap(LumaHackQtMapWindow2* m)
 {
     map = m;
     updateFont();
 }
 
-void NetHackQtMessageWindow::updateFont()
+void LumaHackQtMessageWindow::updateFont()
 {
     list->setFont(qt_settings->normalFont());
     if ( map )
 	map->setFont(qt_settings->normalFont());
 }
 
-void NetHackQtMessageWindow::Scroll(int dx, int dy)
+void LumaHackQtMessageWindow::Scroll(int dx, int dy)
 {
     //RLC Is this necessary?
     //RLC list->Scroll(dx,dy);
 }
 
-void NetHackQtMessageWindow::Clear()
+void LumaHackQtMessageWindow::Clear()
 {
     if ( map )
 	map->clearMessages();
 }
 
-void NetHackQtMessageWindow::ClearMessages()
+void LumaHackQtMessageWindow::ClearMessages()
 {
     if (list)
         list->clear();
 }
 
-void NetHackQtMessageWindow::Display(bool block)
+void LumaHackQtMessageWindow::Display(bool block)
 {
     if (changed) {
 	list->repaint();
@@ -87,7 +87,7 @@ void NetHackQtMessageWindow::Display(bool block)
     }
 }
 
-const char * NetHackQtMessageWindow::GetStr(bool init)
+const char * LumaHackQtMessageWindow::GetStr(bool init)
 {
     if (init)
         currgetmsg = 0;
@@ -101,7 +101,7 @@ const char * NetHackQtMessageWindow::GetStr(bool init)
     return NULL;
 }
 
-void NetHackQtMessageWindow::PutStr(int attr, const QString& text)
+void LumaHackQtMessageWindow::PutStr(int attr, const QString& text)
 {
 #ifdef USER_SOUNDS
     play_sound_for_message(text.toLatin1().constData());
@@ -152,4 +152,4 @@ void NetHackQtMessageWindow::PutStr(int attr, const QString& text)
 	map->putMessage(attr, text2);
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

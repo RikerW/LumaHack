@@ -1,12 +1,12 @@
-/* NetHack 3.6	mhinput.c	$NHDT-Date: 1432512810 2015/05/25 00:13:30 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
+/* LumaHack 3.6	mhinput.c	$NHDT-Date: 1432512810 2015/05/25 00:13:30 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
 /* Copyright (C) 2001 by Alex Kompel 	 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include <assert.h>
 #include "winMS.h"
 #include "mhinput.h"
 
-/* nethack input queue functions */
+/* lumahack input queue functions */
 
 #define NH_INPUT_BUFFER_SIZE 64
 

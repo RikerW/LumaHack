@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoHTML</key>
-	<string>http://www.nethack.org</string>
+	<string>http://www.lumahack.org</string>
 	<key>CFBundleGetInfoString</key>
 	<string>Copyright (C) 1985-2003 Stichting Mathematisch Centrum</string>
 	<key>CFBundleIconFile</key>
-	<string>nethack.icns</string>
+	<string>lumahack.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.nethack.qt</string>
+	<string>org.lumahack.qt</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

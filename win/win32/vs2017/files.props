@@ -186,7 +186,7 @@
     <UUFiles Include = "$(WinWin32Dir)record.uu"/>
   </ItemGroup>
   <ItemGroup>
-    <IconFiles Include = "$(WinWin32Dir)nethack.ico"/>
+    <IconFiles Include = "$(WinWin32Dir)lumahack.ico"/>
   </ItemGroup>
   <ItemGroup>
     <RecordFiles Include = "$(WinWin32Dir)record"/>

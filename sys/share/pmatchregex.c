@@ -1,6 +1,6 @@
-/* NetHack 3.6  pmatchregex.c	$NHDT-Date: 1544482890 2018/12/10 23:01:30 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.2 $ */
+/* LumaHack 3.6  pmatchregex.c	$NHDT-Date: 1544482890 2018/12/10 23:01:30 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.2 $ */
 /* Copyright (c) Sean Hunt  2015.                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -9,7 +9,7 @@
  *
  * This is a fallback ONLY and should be avoided where possible, as it results
  * in regexes not behaving as POSIX extended regular expressions. As a result,
- * configuration files for NetHacks built with this engine will not be
+ * configuration files for LumaHacks built with this engine will not be
  * portable to ones built with an alternate regex engine.
  */
 

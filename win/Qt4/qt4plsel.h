@@ -1,22 +1,22 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4plsel.h -- player selector dialog
 
 #ifndef QT4PLSEL_H
 #define QT4PLSEL_H
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtKeyBuffer;
+class LumaHackQtKeyBuffer;
 
-class NetHackQtPlayerSelector : private QDialog {
+class LumaHackQtPlayerSelector : private QDialog {
 	Q_OBJECT
 public:
 	enum { R_None=-1, R_Quit=-2, R_Rand=-3 };
 
-	NetHackQtPlayerSelector(NetHackQtKeyBuffer&);
+	LumaHackQtPlayerSelector(LumaHackQtKeyBuffer&);
 
 public slots:
 	void Quit();
@@ -43,6 +43,6 @@ private:
         int chosen_align;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

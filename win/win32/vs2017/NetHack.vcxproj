@@ -4,22 +4,22 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{609BC774-C6F8-4B2B-AA7D-5B3D0EA95751}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>NetHack</RootNamespace>
+    <RootNamespace>LumaHack</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <Import Project="console.props" />
   <Import Project="common.props" />
@@ -252,19 +252,19 @@
     <ClInclude Include="$(WinCursDir)curswins.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="$(WinWin32Dir)NetHack.rc" />
+    <ResourceCompile Include="$(WinWin32Dir)LumaHack.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="$(WinWin32Dir)nethack.ico" />
+    <Image Include="$(WinWin32Dir)lumahack.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Target Name="AfterBuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterClean">
-    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterRebuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>
 </Project>

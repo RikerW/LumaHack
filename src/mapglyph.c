@@ -1,6 +1,6 @@
-/* NetHack 3.6	mapglyph.c	$NHDT-Date: 1573943501 2019/11/16 22:31:41 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.51 $ */
+/* LumaHack 3.6	mapglyph.c	$NHDT-Date: 1573943501 2019/11/16 22:31:41 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.51 $ */
 /* Copyright (c) David Cohrs, 1991                                */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #if defined(TTY_GRAPHICS)

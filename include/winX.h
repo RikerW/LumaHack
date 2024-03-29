@@ -1,6 +1,6 @@
-/* NetHack 3.6	winX.h	$NHDT-Date: 1457079196 2016/03/04 08:13:16 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.23 $ */
+/* LumaHack 3.6	winX.h	$NHDT-Date: 1457079196 2016/03/04 08:13:16 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.23 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Definitions for the X11 window-port.  See doc/window.doc for details on
@@ -191,7 +191,7 @@ struct text_info_t {
  * Basic window structure.
  */
 struct xwindow {
-    int type;              /* type of nethack window */
+    int type;              /* type of lumahack window */
     Widget popup;          /* direct parent of widget w or viewport */
     Widget w;              /* the widget that does things */
     Dimension pixel_width; /* window size, in pixels */

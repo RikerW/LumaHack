@@ -1,6 +1,6 @@
-/* NetHack 3.6	mhmap.c	$NHDT-Date: 1435002695 2015/06/22 19:51:35 $  $NHDT-Branch: master $:$NHDT-Revision: 1.56 $ */
+/* LumaHack 3.6	mhmap.c	$NHDT-Date: 1435002695 2015/06/22 19:51:35 $  $NHDT-Branch: master $:$NHDT-Revision: 1.56 $ */
 /* Copyright (C) 2001 by Alex Kompel      */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "win10.h"
 #include "winMS.h"
@@ -30,7 +30,7 @@ extern short glyph2tile[];
     ((ntile / GetNHApp()->mapTilesPerLine) * GetNHApp()->mapTile_Y)
 
 /* map window data */
-typedef struct mswin_nethack_map_window {
+typedef struct mswin_lumahack_map_window {
     HWND hWnd;                  /* window */
 
     int map[COLNO][ROWNO];      /* glyph map */
@@ -853,7 +853,7 @@ paintTile(PNHMapWindow data, int i, int j, RECT * rect)
     }
 
 #ifdef USE_PILEMARK
-    /* rely on NetHack core helper routine */
+    /* rely on LumaHack core helper routine */
     (void) mapglyph(data->map[i][j], &mgch, &color, &special,
                     i, j, 0);
     if ((glyph != NO_GLYPH) && (special & MG_PET)
@@ -928,7 +928,7 @@ paintGlyph(PNHMapWindow data, int i, int j, RECT * rect)
         nhglyph2charcolor(data->map[i][j], &ch, &color);
         OldFg = SetTextColor(hDC, nhcolor_to_RGB(color));
     #else
-        /* rely on NetHack core helper routine */
+        /* rely on LumaHack core helper routine */
         (void) mapglyph(data->map[i][j], &mgch, &color,
                         &special, i, j, 0);
         ch = (char) mgch;
@@ -1190,7 +1190,7 @@ onMSNH_HScroll(HWND hWnd, WPARAM wParam, LPARAM lParam)
     SetScrollInfo(hWnd, SB_HORZ, &si, TRUE);
 }
 
-/* map nethack map coordinates to the screen location */
+/* map lumahack map coordinates to the screen location */
 void
 nhcoord2display(PNHMapWindow data, int x, int y, LPRECT lpOut)
 {
@@ -1259,7 +1259,7 @@ nhglyph2charcolor(short g, uchar *ch, int *color)
 }
 #endif
 
-/* map nethack color to RGB */
+/* map lumahack color to RGB */
 COLORREF
 nhcolor_to_RGB(int c)
 {

@@ -70,7 +70,7 @@ nansi|zansi|N/ZANSI.SYS color:\
 	:mb=\E[5m:md=\E[1m:mr=\E[7m:me=\E[0;44m:\
 	:al=\E[L:dl=\E[M:ic=\E[@:dc=\E[P:
 #
-# For ST NetHack:
+# For ST LumaHack:
 #       for VT100/200/&c in VT52 mode, add :ti=\E[?2l:
 vt52|atari|DEC VT52:\
 	:co#80:li#24:bs:pt:bl=^G:le=^H:do=^J:\
@@ -80,7 +80,7 @@ vt52|atari|DEC VT52:\
 	:ku=\EA:kd=\EB:kl=\EC:kr=\ED:kb=^H:\
 	:sr=\EI:as=\EF:ae=\EG:
 #
-# For Amiga or VMS NetHack:
+# For Amiga or VMS LumaHack:
 #       VT100 or clone without the advanced video option installed
 vt100|amiga|vt100-80|vt100-noavo|DEC VT100:\
 	:co#80:li#24:bs:pt:am:mi:bl=^G:le=^H:do=^J:xo:vt#3:\
@@ -132,7 +132,7 @@ AX|ANSI X3.64|full ANSI X3.64 (1977) standard:\
 	:kn#4:k1=\EOP:k2=\EOQ:k3=\EOR:k4=\EOS:\
 	:im=\E[4h:ei=\E[4l:al=\E[L:dl=\E[M:ic=\E[@:dc=\E[P:sf=\ED:sr=\EM:
 #
-# For PC-9800 NetHack:
+# For PC-9800 LumaHack:
 #
 pc9800|pc9801|pc98|NEC PC-9800 Series:\
 	:co#80:li#25:\

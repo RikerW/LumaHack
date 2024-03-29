@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4xcmd.cpp -- extended command widget
 
@@ -26,13 +26,13 @@
 #include "qt4set.h"
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain(QWidget *);
 // end temporary
 
-NetHackQtExtCmdRequestor::NetHackQtExtCmdRequestor(QWidget *parent) :
+LumaHackQtExtCmdRequestor::LumaHackQtExtCmdRequestor(QWidget *parent) :
     QDialog(parent)
 {
     QVBoxLayout *l = new QVBoxLayout(this);
@@ -76,12 +76,12 @@ NetHackQtExtCmdRequestor::NetHackQtExtCmdRequestor(QWidget *parent) :
     resize(1,1);
 }
 
-void NetHackQtExtCmdRequestor::cancel()
+void LumaHackQtExtCmdRequestor::cancel()
 {
     reject();
 }
 
-void NetHackQtExtCmdRequestor::keyPressEvent(QKeyEvent *event)
+void LumaHackQtExtCmdRequestor::keyPressEvent(QKeyEvent *event)
 {
     QString text = event->text();
     if (text == "\r" || text == "\n" || text == " " || text == "\033")
@@ -117,15 +117,15 @@ void NetHackQtExtCmdRequestor::keyPressEvent(QKeyEvent *event)
     }
 }
 
-int NetHackQtExtCmdRequestor::get()
+int LumaHackQtExtCmdRequestor::get()
 {
     const int none = -10;
     resize(1,1); // pack
     centerOnMain(this);
     // Add any keys presently buffered to the prompt
     setResult(none);
-    while (NetHackQtBind::qt_kbhit() && result() == none) {
-	int ch = NetHackQtBind::qt_nhgetch();
+    while (LumaHackQtBind::qt_kbhit() && result() == none) {
+	int ch = LumaHackQtBind::qt_nhgetch();
 	QKeyEvent event(QEvent::KeyPress, 0, Qt::NoModifier, QChar(ch));
 	keyPressEvent(&event);
     }
@@ -135,7 +135,7 @@ int NetHackQtExtCmdRequestor::get()
 }
 
 // Enable only buttons that match the current prompt string
-void NetHackQtExtCmdRequestor::enableButtons()
+void LumaHackQtExtCmdRequestor::enableButtons()
 {
     QString typedstr = prompt->text().mid(1); // skip the '#'
     std::size_t len = typedstr.size();
@@ -145,4 +145,4 @@ void NetHackQtExtCmdRequestor::enableButtons()
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

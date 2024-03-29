@@ -1,4 +1,4 @@
-This directory contains the windowing code written for GnomeHack. The NetHack
+This directory contains the windowing code written for GnomeHack. The LumaHack
 devteam is in the process of making it part of the normal distribution.  
 It should be noted that this is still work in progress and that there are
 still problems with this code.  So use at your own risk.  Of course any
@@ -43,7 +43,7 @@ Other files have been removed because we don't or can't use them (yet).
 	gnomehack.desktop
 	gnomehack.desktop.in
 
-NetHack currently doesn't use autoconf, so the setup for that has not
+LumaHack currently doesn't use autoconf, so the setup for that has not
 made the translation.
 
 Note:  All loss in style, elegance, and readability is entirely our fault

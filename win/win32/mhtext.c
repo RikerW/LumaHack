@@ -1,6 +1,6 @@
-/* NetHack 3.6	mhtext.c	$NHDT-Date: 1432512813 2015/05/25 00:13:33 $  $NHDT-Branch: master $:$NHDT-Revision: 1.25 $ */
+/* LumaHack 3.6	mhtext.c	$NHDT-Date: 1432512813 2015/05/25 00:13:33 $  $NHDT-Branch: master $:$NHDT-Revision: 1.25 $ */
 /* Copyright (C) 2001 by Alex Kompel 	 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "winMS.h"
 #include "resource.h"
@@ -10,7 +10,7 @@
 
 PNHWinApp GetNHApp(void);
 
-typedef struct mswin_nethack_text_window {
+typedef struct mswin_lumahack_text_window {
     TCHAR *window_text;
 } NHTextWindow, *PNHTextWindow;
 
@@ -238,7 +238,7 @@ LayoutText(HWND hWnd)
     /* get window coordinates */
     GetClientRect(hWnd, &clrt);
 
-    if( !GetNHApp()->regNetHackMode ) {
+    if( !GetNHApp()->regLumaHackMode ) {
         /* set window placements */
         GetWindowRect(btn_ok, &rt);
         sz_ok.cx = clrt.right - clrt.left;
@@ -289,15 +289,15 @@ NHEditHookWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_KEYDOWN:
         switch (wParam) {
         /* close on space in Windows mode
-           page down on space in NetHack mode */
+           page down on space in LumaHack mode */
         case VK_SPACE: {
             SCROLLINFO si;
 
             si.cbSize = sizeof(SCROLLINFO);
             si.fMask = SIF_POS | SIF_RANGE | SIF_PAGE;
             GetScrollInfo(hWnd, SB_VERT, &si);
-            /* If nethackmode and not at the end of the list */
-            if (GetNHApp()->regNetHackMode
+            /* If lumahackmode and not at the end of the list */
+            if (GetNHApp()->regLumaHackMode
                 && (si.nPos + (int) si.nPage) <= (si.nMax - si.nMin))
                 SendMessage(hWnd, EM_SCROLL, SB_PAGEDOWN, 0);
             else

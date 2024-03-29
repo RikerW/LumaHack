@@ -1,8 +1,8 @@
 %{
-/* NetHack 3.6  dgn_comp.y	$NHDT-Date: 1432512785 2015/05/25 00:13:05 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
+/* LumaHack 3.6  dgn_comp.y	$NHDT-Date: 1432512785 2015/05/25 00:13:05 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
 /*	Copyright (c) 1989 by Jean-Christophe Collet */
 /*	Copyright (c) 1990 by M. Stephenson				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file contains the Dungeon Compiler code
@@ -625,7 +625,7 @@ check_branch()
  *
  *	The file will have the following format:
  *
- *	[ nethack version ID ]
+ *	[ lumahack version ID ]
  *	[ number of dungeons ]
  *	[ first dungeon struct ]
  *	[ levels for the first dungeon ]

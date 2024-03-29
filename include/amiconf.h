@@ -1,7 +1,7 @@
-/* NetHack 3.6	amiconf.h	$NHDT-Date: 1432512775 2015/05/25 00:12:55 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
+/* LumaHack 3.6	amiconf.h	$NHDT-Date: 1432512775 2015/05/25 00:12:55 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
 /* Copyright (c) Kenneth Lorber, Bethesda, Maryland, 1990, 1991, 1992, 1993.
  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef AMICONF_H
 #define AMICONF_H
@@ -43,8 +43,8 @@ typedef long off_t;
 
 /* data librarian defs */
 #ifndef NOCWD_ASSUMPTIONS
-#define DLBFILE "NetHack:nhdat"   /* main library */
-#define DLBFILE2 "NetHack:nhsdat" /* sound library */
+#define DLBFILE "LumaHack:nhdat"   /* main library */
+#define DLBFILE2 "LumaHack:nhsdat" /* sound library */
 #else
 #define DLBFILE "nhdat"   /* main library */
 #define DLBFILE2 "nhsdat" /* sound library */
@@ -70,7 +70,7 @@ typedef long off_t;
 
 /* ### amidos.c ### */
 
-extern void FDECL(nethack_exit, (int));
+extern void FDECL(lumahack_exit, (int));
 
 /* ### amiwbench.c ### */
 
@@ -141,7 +141,7 @@ extern char *FDECL(gets, (char *));
 #define HACKFONT  /* Use special hack.font */
 #define SHELL     /* Have a shell escape command (!) */
 #define MAIL      /* Get mail at unexpected occasions */
-#define DEFAULT_ICON "NetHack:default.icon" /* private icon */
+#define DEFAULT_ICON "LumaHack:default.icon" /* private icon */
 #define AMIFLUSH /* toss typeahead (select flush in .cnf) */
 /* #define OPT_DISPMAP		/* enable fast_map option */
 
@@ -162,7 +162,7 @@ extern char *FDECL(gets, (char *));
 #define AMII_MAXCOLORS (1L << DEPTH)
 typedef unsigned short AMII_COLOR_TYPE;
 
-#define PORT_HELP "nethack:amii.hlp"
+#define PORT_HELP "lumahack:amii.hlp"
 
 #undef TERMLIB
 

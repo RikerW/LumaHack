@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 cursmain.c */
+/* LumaHack 3.6 cursmain.c */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -33,7 +33,7 @@ static void dummy_change_color(int, long, int);
 static char *dummy_get_color_string(VOID_ARGS);
 #endif
 
-/* Public functions for curses NetHack interface */
+/* Public functions for curses LumaHack interface */
 
 /* Interface definition, for windows.c */
 struct window_procs curses_procs = {
@@ -134,7 +134,7 @@ static int inv_update = 0;
 
 /*
 init_nhwindows(int* argcp, char** argv)
-                -- Initialize the windows used by NetHack.  This can also
+                -- Initialize the windows used by LumaHack.  This can also
                    create the standard windows listed at the top, but does
                    not display them.
                 -- Any commandline arguments relevant to the windowport
@@ -199,9 +199,9 @@ curses_init_nhwindows(int *argcp UNUSED,
        /* VERSION_STRING */
 # else
 #  ifdef VERSION_STRING
-    sprintf(window_title, "%s %s", "NetHack", VERSION_STRING);
+    sprintf(window_title, "%s %s", "LumaHack", VERSION_STRING);
 #  else
-    sprintf(window_title, "%s", "NetHack");
+    sprintf(window_title, "%s", "LumaHack");
 #  endif
        /* VERSION_STRING */
 # endif/* DEF_GAME_NAME */
@@ -328,7 +328,7 @@ curses_suspend_nhwindows(const char *str UNUSED)
 void
 curses_resume_nhwindows()
 {
-    curses_refresh_nethack_windows();
+    curses_refresh_lumahack_windows();
 }
 
 /*  Create a window of type "type" which can be
@@ -475,7 +475,7 @@ curses_putstr(winid wid, int attr, const char *text)
         /* display message without saving it in recall history */
         curses_count_window(text);
     } else {
-        /* We need to convert NetHack attributes to curses attributes */
+        /* We need to convert LumaHack attributes to curses attributes */
         curses_attr = curses_convert_attr(attr);
         curses_puts(wid, curses_attr, text);
     }
@@ -619,7 +619,7 @@ curses_update_inventory(void)
         return;
     }
 
-    /* Update inventory sidebar. NetHack uses normal menu functions
+    /* Update inventory sidebar. LumaHack uses normal menu functions
        when drawing the inventory, and we don't want to change the
        underlying code. So instead, track if an inventory update is
        being performed with a static variable. */
@@ -932,7 +932,7 @@ curses_outrip(winid wid UNUSED,
 /*
 preference_update(preference)
                 -- The player has just changed one of the wincap preference
-                   settings, and the NetHack core is notifying your window
+                   settings, and the LumaHack core is notifying your window
                    port of that change.  If your window-port is capable of
                    dynamically adjusting to the change then it should do so.
                    Your window-port will only be notified of a particular

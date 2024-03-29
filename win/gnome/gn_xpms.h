@@ -1,13 +1,13 @@
-/* NetHack 3.6	gn_xpms.h	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
+/* LumaHack 3.6	gn_xpms.h	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 /* These XPMs are the artwork of Warwick Allison
  * <warwick@troll.no>.  They have been borrowed from
- * the most excellent NetHackQt, until such time as
+ * the most excellent LumaHackQt, until such time as
  * we can come up with something better.
  *
- * More information about NetHackQt can be had from:
- * http://www.troll.no/~warwick/nethack/
+ * More information about LumaHackQt can be had from:
+ * http://www.troll.no/~warwick/lumahack/
  */
 
 /* clang-format off */

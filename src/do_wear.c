@@ -1,7 +1,7 @@
-/* NetHack 3.6	do_wear.c	$NHDT-Date: 1575214670 2019/12/01 15:37:50 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.116 $ */
+/* LumaHack 3.6	do_wear.c	$NHDT-Date: 1575214670 2019/12/01 15:37:50 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.116 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -717,7 +717,7 @@ Armor_off(VOID_ARGS)
 
 /* The gone functions differ from the off functions in that if you die from
  * taking it off and have life saving, you still die.  [Obsolete reference
- * to lack of fire resistance being fatal in hell (nethack 3.0) and life
+ * to lack of fire resistance being fatal in hell (lumahack 3.0) and life
  * saving putting a removed item back on to prevent that from immediately
  * repeating.]
  */

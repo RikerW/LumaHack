@@ -1,6 +1,6 @@
-/* NetHack 3.6	winmisc.c	$NHDT-Date: 1554135506 2019/04/01 16:18:26 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.44 $ */
+/* LumaHack 3.6	winmisc.c	$NHDT-Date: 1554135506 2019/04/01 16:18:26 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.44 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Misc. popup windows: player selection and extended commands.
@@ -2272,7 +2272,7 @@ Widget *formp; /* return */
      * scroll bar (enabled but not forced above) to be included.
      */
     screen_height = XHeightOfScreen(XtScreen(popup));
-    screen_height -= appResources.extcmd_height_delta; /* NetHack.ad */
+    screen_height -= appResources.extcmd_height_delta; /* LumaHack.ad */
     if (cumulative_height >= screen_height) {
         /* 25 is a guesstimate for scrollbar width;
            window manager might override the request for y==1 */

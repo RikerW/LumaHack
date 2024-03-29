@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4streq.cpp -- string requestor
 
@@ -22,13 +22,13 @@
 #include "qt4streq.h"
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain(QWidget *);
 // end temporary
 
-NetHackQtStringRequestor::NetHackQtStringRequestor(QWidget *parent, const char* p, const char* cancelstr) :
+LumaHackQtStringRequestor::LumaHackQtStringRequestor(QWidget *parent, const char* p, const char* cancelstr) :
     QDialog(parent),
     prompt(QString::fromLatin1(p),this),
     input(this,"input")
@@ -44,7 +44,7 @@ NetHackQtStringRequestor::NetHackQtStringRequestor(QWidget *parent, const char* 
     setFocusPolicy(Qt::StrongFocus);
 }
 
-void NetHackQtStringRequestor::resizeEvent(QResizeEvent*)
+void LumaHackQtStringRequestor::resizeEvent(QResizeEvent*)
 {
     const int margin=5;
     const int gutter=5;
@@ -69,12 +69,12 @@ void NetHackQtStringRequestor::resizeEvent(QResizeEvent*)
 	cancel->width(),h);
 }
 
-void NetHackQtStringRequestor::SetDefault(const char* d)
+void LumaHackQtStringRequestor::SetDefault(const char* d)
 {
     input.setText(d);
 }
 
-bool NetHackQtStringRequestor::Get(char* buffer, int maxchar)
+bool LumaHackQtStringRequestor::Get(char* buffer, int maxchar)
 {
     input.setMaxLength(maxchar);
     if (prompt.text().size() > 16) {
@@ -99,4 +99,4 @@ bool NetHackQtStringRequestor::Get(char* buffer, int maxchar)
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

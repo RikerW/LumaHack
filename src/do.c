@@ -1,7 +1,7 @@
-/* NetHack 3.6	do.c	$NHDT-Date: 1576638499 2019/12/18 03:08:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.198 $ */
+/* LumaHack 3.6	do.c	$NHDT-Date: 1576638499 2019/12/18 03:08:19 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.198 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Derek S. Ray, 2015. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* Contains code for 'd', 'D' (drop), '>', '<' (up, down) */
 
@@ -852,7 +852,7 @@ int retry;
         unsigned ggoresults = 0;
 
         all_categories = FALSE;
-        /* Gather valid classes via traditional NetHack method */
+        /* Gather valid classes via traditional LumaHack method */
         i = ggetobj("drop", drop, 0, TRUE, &ggoresults);
         if (i == -2)
             all_categories = TRUE;
@@ -1172,7 +1172,7 @@ currentlevel_rewrite()
     if (!savelev(fd, ledger_no(&u.uz), COUNT_SAVE)) {
         (void) nhclose(fd);
         delete_levelfile(ledger_no(&u.uz));
-        pline("NetHack is out of disk space for making levels!");
+        pline("LumaHack is out of disk space for making levels!");
         You("can save, quit, or continue playing.");
         return -1;
     }

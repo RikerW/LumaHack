@@ -1,15 +1,15 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4yndlg.h -- yes/no dialog
 
 #ifndef QT4YNDLG_H
 #define QT4YNDLG_H
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtYnDialog : QDialog {
+class LumaHackQtYnDialog : QDialog {
 	Q_OBJECT
 private:
 	QString question;
@@ -24,11 +24,11 @@ private slots:
 	void doneItem(int);
 
 public:
-	NetHackQtYnDialog(QWidget *,const QString&,const char*,char);
+	LumaHackQtYnDialog(QWidget *,const QString&,const char*,char);
 
 	char Exec();
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

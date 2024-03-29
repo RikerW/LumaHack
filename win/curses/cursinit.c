@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 cursinit.c */
+/* LumaHack 3.6 cursinit.c */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -107,7 +107,7 @@ set_window_position(int *winx, int *winy, int *winw, int *winh,
     }
 }
 
-/* Create the "main" nonvolatile windows used by nethack */
+/* Create the "main" nonvolatile windows used by lumahack */
 void
 curses_create_main_windows()
 {
@@ -284,7 +284,7 @@ curses_create_main_windows()
 
         refresh();
 
-        curses_refresh_nethack_windows();
+        curses_refresh_lumahack_windows();
     /*
         if (iflags.window_inited) {
             curses_update_stats();
@@ -297,7 +297,7 @@ curses_create_main_windows()
     }
 }
 
-/* Initialize curses colors to colors used by NetHack */
+/* Initialize curses colors to colors used by LumaHack */
 void
 curses_init_nhcolors()
 {
@@ -364,7 +364,7 @@ curses_init_nhcolors()
             color_content(COLOR_WHITE, &orig_white.r, &orig_white.g,
                           &orig_white.b);
 
-            /* Set colors to appear as NetHack expects */
+            /* Set colors to appear as LumaHack expects */
             init_color(COLOR_YELLOW, 500, 300, 0);
             init_color(COLOR_WHITE, 600, 600, 600);
             if (COLORS >= 16) {
@@ -384,7 +384,7 @@ curses_init_nhcolors()
                 color_content(COLOR_WHITE + 8, &orig_hiwhite.r,
                               &orig_hiwhite.g, &orig_hiwhite.b);
 
-                /* Set colors to appear as NetHack expects */
+                /* Set colors to appear as LumaHack expects */
                 init_color(COLOR_RED + 8, 1000, 500, 0);
                 init_color(COLOR_GREEN + 8, 0, 1000, 0);
                 init_color(COLOR_YELLOW + 8, 1000, 1000, 0);

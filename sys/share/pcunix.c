@@ -1,7 +1,7 @@
-/* NetHack 3.6	pcunix.c	$NHDT-Date: 1432512787 2015/05/25 00:13:07 $  $NHDT-Branch: master $:$NHDT-Revision: 1.34 $ */
+/* LumaHack 3.6	pcunix.c	$NHDT-Date: 1432512787 2015/05/25 00:13:07 $  $NHDT-Branch: master $:$NHDT-Revision: 1.34 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* This file collects some Unix dependencies; pager.c contains some more */
 
@@ -63,7 +63,7 @@ int fd;
 	 */
 #ifdef MSDOS
 	    pline("Make sure that your system's date and time are correct.");
-	    pline("They must be more current than NetHack.EXE's date/time stamp.");
+	    pline("They must be more current than LumaHack.EXE's date/time stamp.");
 #endif /* MSDOS */
 	return(0);
     }

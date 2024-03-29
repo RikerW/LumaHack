@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4str.cpp -- some string functions
 
@@ -8,7 +8,7 @@
 #include <QtCore/QStringList>
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // Bounded string copy
 size_t str_copy(char *dest, const char *src, size_t max)
@@ -80,4 +80,4 @@ int cp437(int ch)
     return cp437table[(unsigned char)ch];
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

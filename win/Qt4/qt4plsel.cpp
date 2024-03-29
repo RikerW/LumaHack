@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4plsel.cpp -- player selector dialog
 
@@ -31,14 +31,14 @@ extern "C" {
 // Warwick prefers it this way...
 #define QT_CHOOSE_RACE_FIRST
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain( QWidget* w );
 // end temporary
 
-static const char nh_attribution[] = "<center><big>NetHack %1</big>"
-	"<br><small>by the NetHack DevTeam</small></center>";
+static const char nh_attribution[] = "<center><big>LumaHack %1</big>"
+	"<br><small>by the LumaHack DevTeam</small></center>";
 
 class NhPSListViewItem : public QTableWidgetItem {
 public:
@@ -49,7 +49,7 @@ public:
 
     void setGlyph(int g)
     {
-	NetHackQtGlyphs& glyphs = qt_settings->glyphs();
+	LumaHackQtGlyphs& glyphs = qt_settings->glyphs();
 	int gw = glyphs.width();
 	int gh = glyphs.height();
 	QPixmap pm(gw,gh);
@@ -138,8 +138,8 @@ public:
     }
 };
 
-NetHackQtPlayerSelector::NetHackQtPlayerSelector(NetHackQtKeyBuffer& ks) :
-    QDialog(NetHackQtBind::mainWidget()),
+LumaHackQtPlayerSelector::LumaHackQtPlayerSelector(LumaHackQtKeyBuffer& ks) :
+    QDialog(LumaHackQtBind::mainWidget()),
     fully_specified_role(true)
 {
     /*
@@ -274,7 +274,7 @@ NetHackQtPlayerSelector::NetHackQtPlayerSelector(NetHackQtKeyBuffer& ks) :
     Randomize();
 }
 
-void NetHackQtPlayerSelector::Randomize()
+void LumaHackQtPlayerSelector::Randomize()
 {
     int nrole = role->rowCount();
     int nrace = race->rowCount();
@@ -368,12 +368,12 @@ void NetHackQtPlayerSelector::Randomize()
     race->setCurrentCell(ra, 0);
 }
 
-void NetHackQtPlayerSelector::selectName(const QString& n)
+void LumaHackQtPlayerSelector::selectName(const QString& n)
 {
     str_copy(plname,n.toLatin1().constData(),SIZE(plname));
 }
 
-void NetHackQtPlayerSelector::selectRole(int crow, int ccol, int prow, int pcol)
+void LumaHackQtPlayerSelector::selectRole(int crow, int ccol, int prow, int pcol)
 {
     int ra = race->currentRow();
     int ro = role->currentRow();
@@ -412,7 +412,7 @@ void NetHackQtPlayerSelector::selectRole(int crow, int ccol, int prow, int pcol)
     setupOthers();
 }
 
-void NetHackQtPlayerSelector::selectRace(int crow, int ccol, int prow, int pcol)
+void LumaHackQtPlayerSelector::selectRace(int crow, int ccol, int prow, int pcol)
 {
     int ra = race->currentRow();
     int ro = role->currentRow();
@@ -450,7 +450,7 @@ void NetHackQtPlayerSelector::selectRace(int crow, int ccol, int prow, int pcol)
     setupOthers();
 }
 
-void NetHackQtPlayerSelector::setupOthers()
+void LumaHackQtPlayerSelector::setupOthers()
 {
     int ro = role->currentRow();
     int ra = race->currentRow();
@@ -488,27 +488,27 @@ void NetHackQtPlayerSelector::setupOthers()
     selectAlignment(c);
 }
 
-void NetHackQtPlayerSelector::selectGender(int i)
+void LumaHackQtPlayerSelector::selectGender(int i)
 {
     chosen_gend = i;
 }
 
-void NetHackQtPlayerSelector::selectAlignment(int i)
+void LumaHackQtPlayerSelector::selectAlignment(int i)
 {
     chosen_align = i;
 }
 
-void NetHackQtPlayerSelector::Quit()
+void LumaHackQtPlayerSelector::Quit()
 {
     done(R_Quit);
 }
 
-void NetHackQtPlayerSelector::Random()
+void LumaHackQtPlayerSelector::Random()
 {
     done(R_Rand);
 }
 
-bool NetHackQtPlayerSelector::Choose()
+bool LumaHackQtPlayerSelector::Choose()
 {
     if (fully_specified_role) return true;
 
@@ -533,4 +533,4 @@ bool NetHackQtPlayerSelector::Choose()
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

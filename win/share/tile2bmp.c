@@ -1,6 +1,6 @@
-/* NetHack 3.6	tile2bmp.c	$NHDT-Date: 1451442061 2015/12/30 02:21:01 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.15 $ */
-/*   Copyright (c) NetHack PC Development Team 1995                 */
-/*   NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	tile2bmp.c	$NHDT-Date: 1451442061 2015/12/30 02:21:01 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.15 $ */
+/*   Copyright (c) LumaHack PC Development Team 1995                 */
+/*   LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Edit History:

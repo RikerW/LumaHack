@@ -1,6 +1,6 @@
-/* NetHack 3.6	drawing.c	$NHDT-Date: 1573943500 2019/11/16 22:31:40 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.64 $ */
-/* Copyright (c) NetHack Development Team 1992.                   */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	drawing.c	$NHDT-Date: 1573943500 2019/11/16 22:31:40 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.64 $ */
+/* Copyright (c) LumaHack Development Team 1992.                   */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "tcap.h"
@@ -306,7 +306,7 @@ char ch;
  *
  * init_symbols()
  *                     Sets the current display symbols, the
- *                     loadable symbols to the default NetHack
+ *                     loadable symbols to the default LumaHack
  *                     symbols, including the rogue_syms rogue level
  *                     symbols. This would typically be done
  *                     immediately after execution begins. Any

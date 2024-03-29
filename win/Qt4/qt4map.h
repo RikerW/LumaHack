@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4map.h -- the map window
 
@@ -10,15 +10,15 @@
 #include "qt4win.h"
 #include "qt4clust.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtClickBuffer;
+class LumaHackQtClickBuffer;
 
-class NetHackQtMapViewport : public QWidget {
+class LumaHackQtMapViewport : public QWidget {
 	Q_OBJECT
 public:
-	NetHackQtMapViewport(NetHackQtClickBuffer& click_sink);
-	~NetHackQtMapViewport(void);
+	LumaHackQtMapViewport(LumaHackQtClickBuffer& click_sink);
+	~LumaHackQtMapViewport(void);
 
 protected:
 	virtual void paintEvent(QPaintEvent* event);
@@ -34,7 +34,7 @@ private:
 	QPoint cursor;
 	QPixmap pet_annotation;
         QPixmap pile_annotation;
-	NetHackQtClickBuffer& clicksink;
+	LumaHackQtClickBuffer& clicksink;
 	Clusterizer change;
 
 	void clickCursor();
@@ -45,14 +45,14 @@ private:
 	void Changed(int x, int y);
 	void updateTiles();
 
-	// NetHackQtMapWindow2 passes through many calls to the viewport
-	friend class NetHackQtMapWindow2;
+	// LumaHackQtMapWindow2 passes through many calls to the viewport
+	friend class LumaHackQtMapWindow2;
 };
 
-class NetHackQtMapWindow2 : public QScrollArea, public NetHackQtWindow {
+class LumaHackQtMapWindow2 : public QScrollArea, public LumaHackQtWindow {
 	Q_OBJECT
 public:
-	NetHackQtMapWindow2(NetHackQtClickBuffer& click_sink);
+	LumaHackQtMapWindow2(LumaHackQtClickBuffer& click_sink);
 	void clearMessages();
 	void putMessage(int attr, const QString& text);
 	void clickCursor();
@@ -72,11 +72,11 @@ private slots:
 	void updateTiles();
 
 private:
-	NetHackQtMapViewport *m_viewport;
+	LumaHackQtMapViewport *m_viewport;
 	QRect messages_rect;
 	QString messages;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

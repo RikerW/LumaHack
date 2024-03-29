@@ -41,11 +41,11 @@
  *      window itself.  Suggestion from David E. Wexelblat, dwex@goblin.org.
  *
  * Modified 5/2015, anonymous.
- *    + Include nethack's lint.h to get nhStr() macro.
+ *    + Include lumahack's lint.h to get nhStr() macro.
  *    + Use nhStr() on string literals (or macros from <X11/StringDefs.h>
  *      that hide string literals) to cast away implicit 'const' in order
  *      to suppress "warning: assignment discards qualifers from pointer
- *      target type" issued by 'gcc -Wwrite-strings' as used by nethack.
+ *      target type" issued by 'gcc -Wwrite-strings' as used by lumahack.
  *      (For this file, always the second parameter to XtSetArg().)
  *
  * Modified 1/2016, Pat Rankin.
@@ -54,7 +54,7 @@
  *    + Make 'okay' button same width as 'cancel', and both wider than
  *      default by a small arbitrary amount.
  *
- * $NHDT-Date: 1455157470 2016/02/11 02:24:30 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.9 $
+ * $NHDT-Date: 1455157470 2016/02/11 02:24:30 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.9 $
  */
 
 #ifndef SYSV
@@ -78,7 +78,7 @@
 #endif
 
 #include "config.h" /* #define for const for non __STDC__ compilers */
-#include "lint.h"   /* for nethack's nhStr() macro */
+#include "lint.h"   /* for lumahack's nhStr() macro */
 
 /* ":" added to both translations below to allow limited redefining of
  * keysyms before testing for keysym values -- dlc */

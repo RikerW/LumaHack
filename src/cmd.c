@@ -1,7 +1,7 @@
-/* NetHack 3.6	cmd.c	$NHDT-Date: 1575245052 2019/12/02 00:04:12 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.350 $ */
+/* LumaHack 3.6	cmd.c	$NHDT-Date: 1575245052 2019/12/02 00:04:12 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.350 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2013. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "lev.h"
@@ -3502,7 +3502,7 @@ struct ext_func_tab extcmdlist[] = {
     { '\0', "vanquished", "list vanquished monsters",
             dovanquished, IFBURIED | AUTOCOMPLETE | WIZMODECMD },
     { M('v'), "version",
-            "list compile time options for this version of NetHack",
+            "list compile time options for this version of LumaHack",
             doextversion, IFBURIED | AUTOCOMPLETE | GENERALCMD },
     { 'v', "versionshort", "show version", doversion, IFBURIED | GENERALCMD },
     { '\0', "vision", "show vision array",
@@ -3807,7 +3807,7 @@ dokeylist(VOID_ARGS)
         }
     }
 #ifndef NO_SIGNAL
-    putstr(datawin, 0, "^c       break out of NetHack (SIGINT)");
+    putstr(datawin, 0, "^c       break out of LumaHack (SIGINT)");
     keys_used[(uchar) C('c')] = TRUE;
 #endif
 
@@ -4413,7 +4413,7 @@ uchar c;
 char *txt; /* sufficiently long buffer */
 {
     /* should probably switch to "SPC", "ESC", "RET"
-       since nethack's documentation uses ESC for <escape> */
+       since lumahack's documentation uses ESC for <escape> */
     if (c == ' ')
         Sprintf(txt, "<space>");
     else if (c == '\033')

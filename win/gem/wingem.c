@@ -1,6 +1,6 @@
-/* NetHack 3.6	wingem.c	$NHDT-Date: 1450453304 2015/12/18 15:41:44 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.26 $ */
+/* LumaHack 3.6	wingem.c	$NHDT-Date: 1450453304 2015/12/18 15:41:44 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.26 $ */
 /* Copyright (c) Christian Bressler, 1999 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "func_tab.h"
@@ -980,7 +980,7 @@ Gem_nhgetch()
     mar_update_value();
     i = tgetch();
     if (!i)
-        i = '\033'; /* map NUL to ESC since nethack doesn't expect NUL */
+        i = '\033'; /* map NUL to ESC since lumahack doesn't expect NUL */
 
     return i;
 }

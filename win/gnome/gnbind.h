@@ -1,13 +1,13 @@
-/* NetHack 3.6	gnbind.h	$NHDT-Date: 1432512806 2015/05/25 00:13:26 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
+/* LumaHack 3.6	gnbind.h	$NHDT-Date: 1432512806 2015/05/25 00:13:26 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef GnomeHackBind_h
 #define GnomeHackBind_h
 
 /*
  * This header files defines the interface between the window port specific
- * code in the Gnome port and the rest of the nethack game engine.
+ * code in the Gnome port and the rest of the lumahack game engine.
 */
 
 #include <gnome.h>
@@ -64,7 +64,7 @@ void gnome_update_inventory(void);
 void gnome_mark_synch(void);
 void gnome_wait_synch(void);
 void gnome_cliparound(int x, int y);
-/* The following function does the right thing.  The nethack
+/* The following function does the right thing.  The lumahack
  * gnome_cliparound (which lacks the winid) simply calls this function.
 */
 void gnome_cliparound_proper(winid wid, int x, int y);

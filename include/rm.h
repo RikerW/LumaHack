@@ -1,14 +1,14 @@
-/* NetHack 3.6	rm.h	$NHDT-Date: 1573943499 2019/11/16 22:31:39 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.66 $ */
+/* LumaHack 3.6	rm.h	$NHDT-Date: 1573943499 2019/11/16 22:31:39 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.66 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Pasi Kallinen, 2017. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef RM_H
 #define RM_H
 
 /*
  * The dungeon presentation graphics code and data structures were rewritten
- * and generalized for NetHack's release 2 by Eric S. Raymond (eric@snark)
+ * and generalized for LumaHack's release 2 by Eric S. Raymond (eric@snark)
  * building on Don G. Kneller's MS-DOS implementation.	See drawing.c for
  * the code that permits the user to set the contents of the symbol structure.
  *

@@ -37,7 +37,7 @@ menu_objsyms   show object symbols in menus if it is selectable   [FALSE]
 menu_overlay   overlay menus on the screen and align to right     [TRUE]
 nudist         start your character without armor                 [FALSE]
 null           allow nulls to be sent to your terminal            [TRUE]
-               try turning this option off (forcing NetHack to use its own
+               try turning this option off (forcing LumaHack to use its own
                delay code) if moving objects seem to teleport across rooms
 perm_invent    keep inventory in a permanent window               [FALSE]
 pickup_thrown  override pickup_types for thrown objects           [TRUE]
@@ -96,7 +96,7 @@ timed_delay    on unix and VMS, use a timer instead of sending    [TRUE]
 Boolean option for Amiga, or for others if ALTMETA was set at compile time:
 altmeta        For Amiga, treat Alt+key as Meta+key.              [TRUE]
 altmeta        For unix and VMS, treat two character sequence
-               "ESC c" as M-c (Meta+c, 8th bit set) when nethack  [FALSE]
+               "ESC c" as M-c (Meta+c, 8th bit set) when lumahack  [FALSE]
                obtains a command from player's keyboard.
 
 Boolean option if USE_TILES was set at compile time (MSDOS protected mode):
@@ -125,7 +125,7 @@ disclose      the types of information you want         [ni na nv ng nc no]
               monsters, 'g' genocided and extinct monsters, 'c' conduct,
               'o' dungeon overview)
 fruit         the name of a fruit you enjoy eating             [slime mold]
-              (basically a whimsy which NetHack uses from time to time).
+              (basically a whimsy which LumaHack uses from time to time).
 menustyle     user interface for selection of multiple objects:      [Full]
               Traditional -- prompt for classes of interest, then
                              prompt item-by-item for those classes;
@@ -239,7 +239,7 @@ name       the name of your character      [defaults to username on multi-
            the username is classified as generic like "games"]
            MS Windows is treated as single-user even though it supports
            usernames.  If character name is specified on the command
-           line (typically via 'nethack -u myname' depending upon type
+           line (typically via 'lumahack -u myname' depending upon type
            of system and method of access to it), that name overrides
            'name' from your options.
 pettype    your preferred type of pet (cat, dog, horse, random,    [random]

@@ -25,7 +25,7 @@
     <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
   </PropertyGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
-  <Import Project="NetHackProperties.props" />
+  <Import Project="LumaHackProperties.props" />
   <Import Project="dirs.props" />
   <PropertyGroup>
     <OutDir>$(BinDir)</OutDir>
@@ -35,8 +35,8 @@
     <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>NetHackPackage_StoreKey.pfx</PackageCertificateKeyFile>
-    <EntryPointProjectUniqueName>NetHackW.vcxproj</EntryPointProjectUniqueName>
+    <PackageCertificateKeyFile>LumaHackPackage_StoreKey.pfx</PackageCertificateKeyFile>
+    <EntryPointProjectUniqueName>LumaHackW.vcxproj</EntryPointProjectUniqueName>
     <PackageCertificateThumbprint>19591BE8832D6EFED75019EACE7C4CA42ABC90D4</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
@@ -57,10 +57,10 @@
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
-    <AppxManifest Include="NetHackPackage.appxmanifest">
+    <AppxManifest Include="LumaHackPackage.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="NetHackPackage_TemporaryKey.pfx" />
+    <None Include="LumaHackPackage_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\BadgeLogo.scale-100.png" />
@@ -113,33 +113,33 @@
     <Content Include="Images\Wide310x150Logo.scale-125.png" />
     <Content Include="Images\Wide310x150Logo.scale-150.png" />
     <Content Include="Images\Wide310x150Logo.scale-200.png" />
-    <Content Include="$(BinDir).nethackrc.template">
-      <Link>NetHackW\.nethackrc.template</Link>
+    <Content Include="$(BinDir).lumahackrc.template">
+      <Link>LumaHackW\.lumahackrc.template</Link>
     </Content>
     <Content Include="$(BinDir)Guidebook.txt">
-      <Link>NetHackW\Guidebook.txt</Link>
+      <Link>LumaHackW\Guidebook.txt</Link>
     </Content>
     <Content Include="$(BinDir)license">
-      <Link>NetHackW\license</Link>
+      <Link>LumaHackW\license</Link>
     </Content>
     <Content Include="$(BinDir)nhdat$(VERSION_MAJOR)$(VERSION_MINOR)$(PATCHLEVEL)">
-      <Link>NetHackW\nhdat$(VERSION_MAJOR)$(VERSION_MINOR)$(PATCHLEVEL)</Link>
+      <Link>LumaHackW\nhdat$(VERSION_MAJOR)$(VERSION_MINOR)$(PATCHLEVEL)</Link>
     </Content>
     <Content Include="$(BinDir)opthelp">
-      <Link>NetHackW\opthelp</Link>
+      <Link>LumaHackW\opthelp</Link>
     </Content>
     <Content Include="$(BinDir)symbols.template">
-      <Link>NetHackW\symbols.template</Link>
+      <Link>LumaHackW\symbols.template</Link>
     </Content>
     <Content Include="$(BinDir)sysconf.template">
-      <Link>NetHackW\sysconf.template</Link>
+      <Link>LumaHackW\sysconf.template</Link>
     </Content>
     <Content Include="Images\Wide310x150Logo.scale-400.png" />
-    <None Include="NetHackPackage_StoreKey.pfx" />
+    <None Include="LumaHackPackage_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NetHackW.vcxproj" />
+    <ProjectReference Include="LumaHackW.vcxproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>

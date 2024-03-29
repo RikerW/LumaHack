@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4glyph.cpp -- class to manage the glyphs in a tile set
 
@@ -28,7 +28,7 @@ extern "C" {
 
 extern short glyph2tile[]; // from tile.c
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 static int tilefile_tile_W=16;
 static int tilefile_tile_H=16;
@@ -42,7 +42,7 @@ static int tilefile_tile_H=16;
 # endif
 #endif
 
-NetHackQtGlyphs::NetHackQtGlyphs()
+LumaHackQtGlyphs::LumaHackQtGlyphs()
 {
     const char* tile_file = PIXMAPDIR "/nhtiles.bmp";
     if ( iflags.wc_tile_file )
@@ -77,7 +77,7 @@ NetHackQtGlyphs::NetHackQtGlyphs()
     setSize(tilefile_tile_W, tilefile_tile_H);
 }
 
-void NetHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
+void LumaHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
 {
     int tile = glyph2tile[glyph];
     int px = (tile%tiles_per_row)*width();
@@ -91,11 +91,11 @@ void NetHackQtGlyphs::drawGlyph(QPainter& painter, int glyph, int x, int y)
 	width(),height()
     );
 }
-void NetHackQtGlyphs::drawCell(QPainter& painter, int glyph, int cellx, int celly)
+void LumaHackQtGlyphs::drawCell(QPainter& painter, int glyph, int cellx, int celly)
 {
     drawGlyph(painter,glyph,cellx*width(),celly*height());
 }
-QPixmap NetHackQtGlyphs::glyph(int glyph)
+QPixmap LumaHackQtGlyphs::glyph(int glyph)
 {
     int tile = glyph2tile[glyph];
     int px = (tile%tiles_per_row)*tilefile_tile_W;
@@ -103,7 +103,7 @@ QPixmap NetHackQtGlyphs::glyph(int glyph)
 
     return QPixmap::fromImage(img.copy(px, py, tilefile_tile_W, tilefile_tile_H));
 }
-void NetHackQtGlyphs::setSize(int w, int h)
+void LumaHackQtGlyphs::setSize(int w, int h)
 {
     if ( size == QSize(w,h) )
 	return;
@@ -138,4 +138,4 @@ void NetHackQtGlyphs::setSize(int w, int h)
     (was1 ? pm2 : pm1) = pm;
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

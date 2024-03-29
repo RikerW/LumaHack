@@ -1,6 +1,6 @@
-/* NetHack 3.6	ntconf.h	$NHDT-Date: 1447424077 2015/11/13 14:14:37 $  $NHDT-Branch: master $:$NHDT-Revision: 1.48 $ */
-/* Copyright (c) NetHack PC Development Team 1993, 1994.  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	ntconf.h	$NHDT-Date: 1447424077 2015/11/13 14:14:37 $  $NHDT-Branch: master $:$NHDT-Revision: 1.48 $ */
+/* Copyright (c) LumaHack PC Development Team 1993, 1994.  */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef NTCONF_H
 #define NTCONF_H
@@ -27,7 +27,7 @@
 #define SYSCF_FILE "sysconf" /* Use a file to hold the SYSCF configuration */
 
 #define DUMPLOG      /* Enable dumplog files */
-/*#define DUMPLOG_FILE "nethack-%n-%d.log"*/
+/*#define DUMPLOG_FILE "lumahack-%n-%d.log"*/
 #define DUMPLOG_MSG_COUNT 50
 
 #define USER_SOUNDS
@@ -82,8 +82,8 @@
                      * objects being thrown when the hangup occurs.    \
                      */
 
-#define CONFIG_FILE ".nethackrc"
-#define CONFIG_TEMPLATE ".nethackrc.template"
+#define CONFIG_FILE ".lumahackrc"
+#define CONFIG_TEMPLATE ".lumahackrc.template"
 #define SYSCF_TEMPLATE "sysconf.template"
 #define SYMBOLS_TEMPLATE "symbols.template"
 #define GUIDEBOOK_FILE "Guidebook.txt"
@@ -290,8 +290,8 @@ extern void FDECL(nhassert_failed, (const char * exp, const char * file,
         (nhassert_failed(#expression, __FILE__, __LINE__), 0))
 #endif
 
-#define nethack_enter(argc, argv) nethack_enter_winnt()
-extern void FDECL(nethack_exit, (int)) NORETURN;
+#define lumahack_enter(argc, argv) lumahack_enter_winnt()
+extern void FDECL(lumahack_exit, (int)) NORETURN;
 extern boolean FDECL(file_exists, (const char *));
 extern boolean FDECL(file_newer, (const char *, const char *));
 #endif /* NTCONF_H */

@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 cursstat.c */
+/* LumaHack 3.6 cursstat.c */
 /* Copyright (c) Andy Thomson, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -13,7 +13,7 @@
 /*
  * The following data structures come from the genl_ routines in
  * src/windows.c and as such are considered to be on the window-port
- * "side" of things, rather than the NetHack-core "side" of things.
+ * "side" of things, rather than the LumaHack-core "side" of things.
  */
 
 extern const char *status_fieldfmt[MAXBLSTATS];
@@ -1715,7 +1715,7 @@ draw_bar(boolean is_hp, int cur, int max, const char *title)
     waddch(win, ']');
 }
 
-/* Update the status win - this is called when NetHack would normally
+/* Update the status win - this is called when LumaHack would normally
    write to the status window, so we know somwthing has changed.  We
    override the write and update what needs to be updated ourselves. */
 void

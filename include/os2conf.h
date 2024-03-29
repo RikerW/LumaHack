@@ -1,8 +1,8 @@
-/* NetHack 3.6	os2conf.h	$NHDT-Date: 1432512775 2015/05/25 00:12:55 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
+/* LumaHack 3.6	os2conf.h	$NHDT-Date: 1432512775 2015/05/25 00:12:55 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Kenneth Lorber, Kensington, Maryland, 2015. */
 /* Copyright (c) Timo Hakulinen, 1990, 1991, 1992, 1993, 1996. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifdef OS2
 #ifndef OS2CONF_H
@@ -39,7 +39,7 @@
 #define RANDOM /* Berkeley random(3) */
 #define SHELL  /* shell escape */
 /* #define TERMLIB		/* use termcap file */
-#define ANSI_DEFAULT /* allows NetHack to run without termcap file */
+#define ANSI_DEFAULT /* allows LumaHack to run without termcap file */
 #define TEXTCOLOR    /* allow color */
 
 /*

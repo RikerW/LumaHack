@@ -1,6 +1,6 @@
-/* NetHack 3.6 wincurs.h */
+/* LumaHack 3.6 wincurs.h */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef WINCURS_H
 #define WINCURS_H
@@ -119,7 +119,7 @@ extern void curses_add_nhwin(winid wid, int height, int width, int y,
                              int x, orient orientation, boolean border);
 extern void curses_add_wid(winid wid);
 extern void curses_refresh_nhwin(winid wid);
-extern void curses_refresh_nethack_windows(void);
+extern void curses_refresh_lumahack_windows(void);
 extern void curses_del_nhwin(winid wid);
 extern void curses_del_wid(winid wid);
 extern void curs_destroy_all_wins(void);

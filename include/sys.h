@@ -1,6 +1,6 @@
-/* NetHack 3.6	sys.h	$NHDT-Date: 1449296291 2015/12/05 06:18:11 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.27 $ */
+/* LumaHack 3.6	sys.h	$NHDT-Date: 1449296291 2015/12/05 06:18:11 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.27 $ */
 /* Copyright (c) Kenneth Lorber, Kensington, Maryland, 2008. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef SYS_H
 #define SYS_H
@@ -45,7 +45,7 @@ struct sysopt {
     /* enable accessibility options */
     int accessibility;
 #ifdef WIN32
-    int portable_device_paths;  /* nethack configuration for a portable device */
+    int portable_device_paths;  /* lumahack configuration for a portable device */
 #endif
 };
 

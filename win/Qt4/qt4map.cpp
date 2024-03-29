@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4map.cpp -- the map window
 
@@ -33,7 +33,7 @@ extern "C" {
 extern int qt_compact_mode;
 // end temporary
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 #ifdef TEXTCOLOR
 static const QPen& nhcolor_to_pen(int c)
@@ -64,7 +64,7 @@ static const QPen& nhcolor_to_pen(int c)
 }
 #endif
 
-NetHackQtMapViewport::NetHackQtMapViewport(NetHackQtClickBuffer& click_sink) :
+LumaHackQtMapViewport::LumaHackQtMapViewport(LumaHackQtClickBuffer& click_sink) :
 	QWidget(NULL),
 	rogue_font(NULL),
 	clicksink(click_sink),
@@ -78,12 +78,12 @@ NetHackQtMapViewport::NetHackQtMapViewport(NetHackQtClickBuffer& click_sink) :
     cursor.setY(0);
 }
 
-NetHackQtMapViewport::~NetHackQtMapViewport(void)
+LumaHackQtMapViewport::~LumaHackQtMapViewport(void)
 {
     delete rogue_font;
 }
 
-void NetHackQtMapViewport::paintEvent(QPaintEvent* event)
+void LumaHackQtMapViewport::paintEvent(QPaintEvent* event)
 {
     QRect area=event->rect();
     QRect garea;
@@ -231,7 +231,7 @@ void NetHackQtMapViewport::paintEvent(QPaintEvent* event)
     painter.end();
 }
 
-bool NetHackQtMapViewport::DrawWalls(
+bool LumaHackQtMapViewport::DrawWalls(
 	QPainter& painter,
 	int x, int y, int w, int h,
 	unsigned ch)
@@ -451,7 +451,7 @@ bool NetHackQtMapViewport::DrawWalls(
     return false;
 }
 
-void NetHackQtMapViewport::mousePressEvent(QMouseEvent* event)
+void LumaHackQtMapViewport::mousePressEvent(QMouseEvent* event)
 {
     clicksink.Put(
 	event->pos().x()/qt_settings->glyphs().width(),
@@ -461,32 +461,32 @@ void NetHackQtMapViewport::mousePressEvent(QMouseEvent* event)
     qApp->exit();
 }
 
-void NetHackQtMapViewport::updateTiles()
+void LumaHackQtMapViewport::updateTiles()
 {
     change.clear();
     change.add(0,0,COLNO,ROWNO);
     delete rogue_font; rogue_font = NULL;
 }
 
-QSize NetHackQtMapViewport::sizeHint() const
+QSize LumaHackQtMapViewport::sizeHint() const
 {
     return QSize(
 	    qt_settings->glyphs().width() * COLNO,
 	    qt_settings->glyphs().height() * ROWNO);
 }
 
-QSize NetHackQtMapViewport::minimumSizeHint() const
+QSize LumaHackQtMapViewport::minimumSizeHint() const
 {
     return sizeHint();
 }
 
-void NetHackQtMapViewport::clickCursor()
+void LumaHackQtMapViewport::clickCursor()
 {
     clicksink.Put(cursor.x(),cursor.y(),CLICK_1);
     qApp->exit();
 }
 
-void NetHackQtMapViewport::Clear()
+void LumaHackQtMapViewport::Clear()
 {
     unsigned short stone=cmap_to_glyph(S_stone);
 
@@ -500,7 +500,7 @@ void NetHackQtMapViewport::Clear()
     change.add(0,0,COLNO,ROWNO);
 }
 
-void NetHackQtMapViewport::Display(bool block)
+void LumaHackQtMapViewport::Display(bool block)
 {
     for (int i=0; i<change.clusters(); i++) {
 	const QRect& ch=change[i];
@@ -519,7 +519,7 @@ void NetHackQtMapViewport::Display(bool block)
     }
 }
 
-void NetHackQtMapViewport::CursorTo(int x,int y)
+void LumaHackQtMapViewport::CursorTo(int x,int y)
 {
     Changed(cursor.x(),cursor.y());
     cursor.setX(x);
@@ -527,20 +527,20 @@ void NetHackQtMapViewport::CursorTo(int x,int y)
     Changed(cursor.x(),cursor.y());
 }
 
-void NetHackQtMapViewport::PrintGlyph(int x,int y,int glyph)
+void LumaHackQtMapViewport::PrintGlyph(int x,int y,int glyph)
 {
     Glyph(x,y)=glyph;
     Changed(x,y);
 }
 
-void NetHackQtMapViewport::Changed(int x, int y)
+void LumaHackQtMapViewport::Changed(int x, int y)
 {
     change.add(x,y);
 }
 
-NetHackQtMapWindow2::NetHackQtMapWindow2(NetHackQtClickBuffer& click_sink) :
+LumaHackQtMapWindow2::LumaHackQtMapWindow2(LumaHackQtClickBuffer& click_sink) :
 	QScrollArea(NULL),
-	m_viewport(new NetHackQtMapViewport(click_sink))
+	m_viewport(new LumaHackQtMapViewport(click_sink))
 {
     QPalette palette;
     palette.setColor(backgroundRole(), Qt::black);
@@ -552,9 +552,9 @@ NetHackQtMapWindow2::NetHackQtMapWindow2(NetHackQtClickBuffer& click_sink) :
     updateTiles();
 }
 
-void NetHackQtMapWindow2::updateTiles()
+void LumaHackQtMapWindow2::updateTiles()
 {
-    NetHackQtGlyphs& glyphs = qt_settings->glyphs();
+    LumaHackQtGlyphs& glyphs = qt_settings->glyphs();
     int gw = glyphs.width();
     int gh = glyphs.height();
     // Be exactly the size we want to be - full map...
@@ -571,14 +571,14 @@ void NetHackQtMapWindow2::updateTiles()
     emit resized();
 }
 
-void NetHackQtMapWindow2::clearMessages()
+void LumaHackQtMapWindow2::clearMessages()
 {
     messages = "";
     update(messages_rect);
     messages_rect = QRect();
 }
 
-void NetHackQtMapWindow2::putMessage(int attr, const QString& text)
+void LumaHackQtMapWindow2::putMessage(int attr, const QString& text)
 {
     if ( !messages.isEmpty() )
 	messages += "\n";
@@ -590,37 +590,37 @@ void NetHackQtMapWindow2::putMessage(int attr, const QString& text)
 #endif
 }
 
-void NetHackQtMapWindow2::clickCursor()
+void LumaHackQtMapWindow2::clickCursor()
 {
     m_viewport->clickCursor();
 }
 
-QWidget *NetHackQtMapWindow2::Widget()
+QWidget *LumaHackQtMapWindow2::Widget()
 {
     return this;
 }
 
-void NetHackQtMapWindow2::Clear()
+void LumaHackQtMapWindow2::Clear()
 {
     m_viewport->Clear();
 }
 
-void NetHackQtMapWindow2::Display(bool block)
+void LumaHackQtMapWindow2::Display(bool block)
 {
     m_viewport->Display(block);
 }
 
-void NetHackQtMapWindow2::CursorTo(int x,int y)
+void LumaHackQtMapWindow2::CursorTo(int x,int y)
 {
     m_viewport->CursorTo(x, y);
 }
 
-void NetHackQtMapWindow2::PutStr(int attr, const QString& text)
+void LumaHackQtMapWindow2::PutStr(int attr, const QString& text)
 {
     puts("unexpected PutStr in MapWindow");
 }
 
-void NetHackQtMapWindow2::ClipAround(int x,int y)
+void LumaHackQtMapWindow2::ClipAround(int x,int y)
 {
     // Convert to pixel of center of tile
     x=x*qt_settings->glyphs().width()+qt_settings->glyphs().width()/2;
@@ -630,7 +630,7 @@ void NetHackQtMapWindow2::ClipAround(int x,int y)
     ensureVisible(x,y,width()*0.45,height()*0.45);
 }
 
-void NetHackQtMapWindow2::PrintGlyph(int x,int y,int glyph)
+void LumaHackQtMapWindow2::PrintGlyph(int x,int y,int glyph)
 {
     m_viewport->PrintGlyph(x, y, glyph);
 }
@@ -638,9 +638,9 @@ void NetHackQtMapWindow2::PrintGlyph(int x,int y,int glyph)
 #if 0 //RLC
 // XXX Hmmm... crash after saving bones file if Map window is
 // XXX deleted.  Strange bug somewhere.
-bool NetHackQtMapWindow::Destroy() { return false; }
+bool LumaHackQtMapWindow::Destroy() { return false; }
 
-NetHackQtMapWindow::NetHackQtMapWindow(NetHackQtClickBuffer& click_sink) :
+LumaHackQtMapWindow::LumaHackQtMapWindow(LumaHackQtClickBuffer& click_sink) :
     clicksink(click_sink),
     change(10),
     rogue_font(0)
@@ -668,7 +668,7 @@ NetHackQtMapWindow::NetHackQtMapWindow(NetHackQtClickBuffer& click_sink) :
     //setFocusPolicy(Qt::StrongFocus);
 }
 
-void NetHackQtMapWindow::moveMessages(int x, int y)
+void LumaHackQtMapWindow::moveMessages(int x, int y)
 {
     QRect u = messages_rect;
     messages_rect.moveTopLeft(QPoint(x,y));
@@ -676,14 +676,14 @@ void NetHackQtMapWindow::moveMessages(int x, int y)
     update(u);
 }
 
-void NetHackQtMapWindow::clearMessages()
+void LumaHackQtMapWindow::clearMessages()
 {
     messages = "";
     update(messages_rect);
     messages_rect = QRect();
 }
 
-void NetHackQtMapWindow::putMessage(int attr, const QString& text)
+void LumaHackQtMapWindow::putMessage(int attr, const QString& text)
 {
     if ( !messages.isEmpty() )
 	messages += "\n";
@@ -693,9 +693,9 @@ void NetHackQtMapWindow::putMessage(int attr, const QString& text)
     update(messages_rect);
 }
 
-void NetHackQtMapWindow::updateTiles()
+void LumaHackQtMapWindow::updateTiles()
 {
-    NetHackQtGlyphs& glyphs = qt_settings->glyphs();
+    LumaHackQtGlyphs& glyphs = qt_settings->glyphs();
     int gw = glyphs.width();
     int gh = glyphs.height();
     // Be exactly the size we want to be - full map...
@@ -721,19 +721,19 @@ void NetHackQtMapWindow::updateTiles()
     emit resized();
 }
 
-NetHackQtMapWindow::~NetHackQtMapWindow()
+LumaHackQtMapWindow::~LumaHackQtMapWindow()
 {
     // Remove from viewport porthole, since that is a destructible member.
     viewport.removeChild(this);
     setParent(0,0);
 }
 
-QWidget* NetHackQtMapWindow::Widget()
+QWidget* LumaHackQtMapWindow::Widget()
 {
     return &viewport;
 }
 
-void NetHackQtMapWindow::Scroll(int dx, int dy)
+void LumaHackQtMapWindow::Scroll(int dx, int dy)
 {
     if (viewport.horizontalScrollBar()->isVisible()) {
 	while (dx<0) { viewport.horizontalScrollBar()->triggerAction(QAbstractSlider::SliderPageStepSub); dx++; }
@@ -745,7 +745,7 @@ void NetHackQtMapWindow::Scroll(int dx, int dy)
     }
 }
 
-void NetHackQtMapWindow::Clear()
+void LumaHackQtMapWindow::Clear()
 {
     unsigned short stone=cmap_to_glyph(S_stone);
 
@@ -759,13 +759,13 @@ void NetHackQtMapWindow::Clear()
     change.add(0,0,COLNO,ROWNO);
 }
 
-void NetHackQtMapWindow::clickCursor()
+void LumaHackQtMapWindow::clickCursor()
 {
     clicksink.Put(cursor.x(),cursor.y(),CLICK_1);
     qApp->exit();
 }
 
-void NetHackQtMapWindow::mousePressEvent(QMouseEvent* event)
+void LumaHackQtMapWindow::mousePressEvent(QMouseEvent* event)
 {
     clicksink.Put(
 	event->pos().x()/qt_settings->glyphs().width(),
@@ -775,7 +775,7 @@ void NetHackQtMapWindow::mousePressEvent(QMouseEvent* event)
     qApp->exit();
 }
 
-void NetHackQtMapWindow::paintEvent(QPaintEvent* event)
+void LumaHackQtMapWindow::paintEvent(QPaintEvent* event)
 {
     QRect area=event->rect();
     QRect garea;
@@ -912,7 +912,7 @@ void NetHackQtMapWindow::paintEvent(QPaintEvent* event)
     painter.end();
 }
 
-void NetHackQtMapWindow::Display(bool block)
+void LumaHackQtMapWindow::Display(bool block)
 {
     for (int i=0; i<change.clusters(); i++) {
 	const QRect& ch=change[i];
@@ -931,7 +931,7 @@ void NetHackQtMapWindow::Display(bool block)
     }
 }
 
-void NetHackQtMapWindow::CursorTo(int x,int y)
+void LumaHackQtMapWindow::CursorTo(int x,int y)
 {
     Changed(cursor.x(),cursor.y());
     cursor.setX(x);
@@ -939,12 +939,12 @@ void NetHackQtMapWindow::CursorTo(int x,int y)
     Changed(cursor.x(),cursor.y());
 }
 
-void NetHackQtMapWindow::PutStr(int attr, const QString& text)
+void LumaHackQtMapWindow::PutStr(int attr, const QString& text)
 {
     puts("unexpected PutStr in MapWindow");
 }
 
-void NetHackQtMapWindow::ClipAround(int x,int y)
+void LumaHackQtMapWindow::ClipAround(int x,int y)
 {
     // Convert to pixel of center of tile
     x=x*qt_settings->glyphs().width()+qt_settings->glyphs().width()/2;
@@ -954,21 +954,21 @@ void NetHackQtMapWindow::ClipAround(int x,int y)
     viewport.center(x,y,0.45,0.45);
 }
 
-void NetHackQtMapWindow::PrintGlyph(int x,int y,int glyph)
+void LumaHackQtMapWindow::PrintGlyph(int x,int y,int glyph)
 {
     Glyph(x,y)=glyph;
     Changed(x,y);
 }
 
-//void NetHackQtMapWindow::PrintGlyphCompose(int x,int y,int glyph1, int glyph2)
+//void LumaHackQtMapWindow::PrintGlyphCompose(int x,int y,int glyph1, int glyph2)
 //{
     // TODO: composed graphics
 //}
 
-void NetHackQtMapWindow::Changed(int x, int y)
+void LumaHackQtMapWindow::Changed(int x, int y)
 {
     change.add(x,y);
 }
 #endif
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

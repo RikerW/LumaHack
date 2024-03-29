@@ -1,6 +1,6 @@
-/* NetHack 3.6	winmap.c	$NHDT-Date: 1455389908 2016/02/13 18:58:28 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.29 $ */
+/* LumaHack 3.6	winmap.c	$NHDT-Date: 1455389908 2016/02/13 18:58:28 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.29 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file contains:
@@ -12,7 +12,7 @@
  *      + We don't really have a good way to get the compiled ROWNO and
  *        COLNO as defaults.  They are hardwired to the current "correct"
  *        values in the Window widget.  I am _not_ in favor of including
- *        some nethack include file for Window.c.
+ *        some lumahack include file for Window.c.
  */
 
 #ifndef SYSV
@@ -718,7 +718,7 @@ struct xwindow *wp;
  * Check to see if the viewport has grown smaller.  If so, then we want to
  * make
  * sure that the cursor is still on the screen.  We do this to keep the cursor
- * on the screen when the user resizes the nethack window.
+ * on the screen when the user resizes the lumahack window.
  */
 static void
 map_check_size_change(wp)
@@ -1482,7 +1482,7 @@ Widget parent;
         XtSetArg(args[num_args], XtNinput, False);
         num_args++;
 
-        wp->popup = parent = XtCreatePopupShell("nethack",
+        wp->popup = parent = XtCreatePopupShell("lumahack",
                                                 topLevelShellWidgetClass,
                                                 toplevel, args, num_args);
         /*

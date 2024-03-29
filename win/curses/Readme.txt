@@ -1,7 +1,7 @@
 INTRO
 =====
 
-The "curses" windowport is a new text-based interface for NetHack,
+The "curses" windowport is a new text-based interface for LumaHack,
 using high-level curses routines to control the display.  Currently, it
 has been compiled and tested on Linux and Windows, but it should also
 be portable to a number of other systems, such as other forms of UNIX,
@@ -45,7 +45,7 @@ the appropriate Makefile to include the curses windowport files.
 GAMEPLAY
 ========
 
-Gameplay should be similar to the tty interface for NetHack; the 
+Gameplay should be similar to the tty interface for LumaHack; the 
 differences are primarily visual.  This windowport supports dymanic
 resizing of the terminal window, so you can play with it to see how it
 looks best to you during a game.  Also, the align_status and
@@ -59,8 +59,8 @@ and end keys to go to the first and last pages, respectively.
 
 Some configuration options that are specific to or relevant to the
 curses windowport are shown below.  Copy any of these that you like to
-your nethack configuration file (e.g. .nethackrc for UNIX or
-NetHack.cnf for Windows):
+your lumahack configuration file (e.g. .lumahackrc for UNIX or
+LumaHack.cnf for Windows):
 #
 # Use this if the binary was compiled with multiple window interfaces,
 # and curses is not the default
@@ -87,12 +87,12 @@ OPTIONS=align_message:bottom,align_status:right
 # done for the tty interface.
 OPTIONS=popup_dialog
 #
-# Specify the initial window size for NetHack in units of characters.
+# Specify the initial window size for LumaHack in units of characters.
 # This is supported on PDCurses for SDL as well as PDCurses for
 # Windows.
 OPTIONS=term_cols:110,term_rows:32
 #
-# Controls the usage of window borders for the main NetHack windows
+# Controls the usage of window borders for the main LumaHack windows
 # (message, map, and status windows).  A value of 1 forces the borders
 # to be drawn, a value of 2 forces them to be off, and a value of 3
 # allows the code to decide if they should be drawn based on the size

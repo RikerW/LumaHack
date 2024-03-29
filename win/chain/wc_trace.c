@@ -1,6 +1,6 @@
-/* NetHack 3.6	wc_trace.c	$NHDT-Date: 1501464799 2017/07/31 01:33:19 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.8 $ */
+/* LumaHack 3.6	wc_trace.c	$NHDT-Date: 1501464799 2017/07/31 01:33:19 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.8 $ */
 /* Copyright (c) Kenneth Lorber, 2012				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "wintty.h"

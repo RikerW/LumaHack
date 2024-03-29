@@ -1,6 +1,6 @@
-/* NetHack 3.6	integer.h	$NHDT-Date: 1551901047 2019/03/06 19:37:27 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.7 $ */
+/* LumaHack 3.6	integer.h	$NHDT-Date: 1551901047 2019/03/06 19:37:27 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.7 $ */
 /*      Copyright (c) 2016 by Michael Allison          */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* integer.h -- provide sized integer types
  *
@@ -80,7 +80,7 @@ typedef int int32_t;
 typedef unsigned int uint32_t;
 #endif
 
-/* The only place where nethack cares about 64-bit integers is in the
+/* The only place where lumahack cares about 64-bit integers is in the
    Isaac64 random number generator.  If your environment can't support
    64-bit integers, you should comment out USE_ISAAC64 in config.h so
    that the previous RNG gets used instead.  Then this file will be

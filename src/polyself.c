@@ -1,6 +1,6 @@
-/* NetHack 3.6	polyself.c	$NHDT-Date: 1573290419 2019/11/09 09:06:59 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.135 $ */
+/* LumaHack 3.6	polyself.c	$NHDT-Date: 1573290419 2019/11/09 09:06:59 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.135 $ */
 /*      Copyright (C) 1987, 1988, 1989 by Ken Arromdee */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Polymorph self routine.

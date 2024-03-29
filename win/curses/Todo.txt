@@ -3,7 +3,7 @@ Below are some things I would like to see
 NETHACK INTERFACE
 =================
 
-(These are the functions in cursmain.c called by the core NetHack code)
+(These are the functions in cursmain.c called by the core LumaHack code)
 
  * Implement curses_rip for optional fancier color tombstone, as well
  as one that will display correctly on smaller terminals.

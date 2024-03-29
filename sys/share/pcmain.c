@@ -1,9 +1,9 @@
-/* NetHack 3.6	pcmain.c	$NHDT-Date: 1543465755 2018/11/29 04:29:15 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.101 $ */
+/* LumaHack 3.6	pcmain.c	$NHDT-Date: 1543465755 2018/11/29 04:29:15 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.101 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Derek S. Ray, 2015. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
-/* main.c - MSDOS, OS/2, ST, Amiga NetHack */
+/* main.c - MSDOS, OS/2, ST, Amiga LumaHack */
 
 #include "hack.h"
 #include "dlb.h"
@@ -42,9 +42,9 @@ STATIC_DCL void FDECL(process_options, (int argc, char **argv));
 STATIC_DCL void NDECL(nhusage);
 
 #if defined(MICRO) || defined(OS2)
-extern void FDECL(nethack_exit, (int));
+extern void FDECL(lumahack_exit, (int));
 #else
-#define nethack_exit exit
+#define lumahack_exit exit
 #endif
 
 #ifdef EXEPATH
@@ -78,7 +78,7 @@ char *argv[];
     sys_early_init();
     resuming = pcmain(argc, argv);
     moveloop(resuming);
-    nethack_exit(EXIT_SUCCESS);
+    lumahack_exit(EXIT_SUCCESS);
     /*NOTREACHED*/
     return 0;
 }
@@ -133,7 +133,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
         run_from_desktop = FALSE;
     } else
 #endif
-        hname = "NetHack"; /* used for syntax messages */
+        hname = "LumaHack"; /* used for syntax messages */
 
     choose_windows(DEFAULT_WINDOW_SYS);
 
@@ -142,10 +142,10 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
      * the game is exited.
      */
     if (getcwd(orgdir, sizeof orgdir) == (char *) 0)
-        error("NetHack: current directory path too long");
+        error("LumaHack: current directory path too long");
 #ifndef NO_SIGNAL
     signal(SIGINT,
-           (SIG_RET_TYPE) nethack_exit); /* restore original directory */
+           (SIG_RET_TYPE) lumahack_exit); /* restore original directory */
 #endif
 #endif /* !AMIGA && !GNUDOS */
 
@@ -206,7 +206,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
                         (char *) alloc(strlen(envp) + 10);
                     Strcpy(fqn_prefix[SYSCONFPREFIX], envp);
                     append_slash(fqn_prefix[SYSCONFPREFIX]);
-                    Strcat(fqn_prefix[SYSCONFPREFIX], "NetHack\\");
+                    Strcat(fqn_prefix[SYSCONFPREFIX], "LumaHack\\");
                 }
             }
 
@@ -276,7 +276,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     if (!validate_prefix_locations(failbuf)) {
         raw_printf("Some invalid directory locations were specified:\n\t%s\n",
                    failbuf);
-        nethack_exit(EXIT_FAILURE);
+        lumahack_exit(EXIT_FAILURE);
     }
 #endif
 
@@ -292,7 +292,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 #endif
     if (argc > 1) {
         if (argcheck(argc, argv, ARG_VERSION) == 2)
-            nethack_exit(EXIT_SUCCESS);
+            lumahack_exit(EXIT_SUCCESS);
 
         if (argcheck(argc, argv, ARG_DEBUG) == 1) {
             argc--;
@@ -330,13 +330,13 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
                 initoptions();
 #endif
                 prscore(argc, argv);
-                nethack_exit(EXIT_SUCCESS);
+                lumahack_exit(EXIT_SUCCESS);
             }
 
             /* Don't initialize the window system just to print usage */
             if (!strncmp(argv[1], "-?", 2) || !strncmp(argv[1], "/?", 2)) {
                 nhusage();
-                nethack_exit(EXIT_SUCCESS);
+                lumahack_exit(EXIT_SUCCESS);
             }
         }
     }
@@ -349,7 +349,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 #endif
     if (!dlb_init()) {
         pline(
-            "%s\n%s\n%s\n%s\n\nNetHack was unable to open the required file "
+            "%s\n%s\n%s\n%s\n\nLumaHack was unable to open the required file "
             "\"%s\".%s",
             copyright_banner_line(1), copyright_banner_line(2),
             copyright_banner_line(3), copyright_banner_line(4), DLBFILE,
@@ -651,7 +651,7 @@ char *argv[];
         /* FALL THROUGH */
         case '?':
             nhusage();
-            nethack_exit(EXIT_SUCCESS);
+            lumahack_exit(EXIT_SUCCESS);
         }
     }
 }

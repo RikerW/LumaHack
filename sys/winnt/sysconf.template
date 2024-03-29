@@ -1,11 +1,11 @@
 #
-# NetHack 3.6 sysconf $NHDT-Date: 1524689357 2018/04/25 20:49:17 $ $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.22 $
+# LumaHack 3.6 sysconf $NHDT-Date: 1524689357 2018/04/25 20:49:17 $ $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.22 $
 # Copyright (c) 2015 by Michael Allison
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 #
 # Sample sysconf file.
-# The sysconf file is only used if NetHack is compiled with SYSCF defined.
-# This file uses the same syntax as nethack.cf.
+# The sysconf file is only used if LumaHack is compiled with SYSCF defined.
+# This file uses the same syntax as lumahack.cf.
 
 # Which users can use WIZARD (debugging) mode (the -D flag).
 # A value of * allows anyone to enter debugging mode.
@@ -21,7 +21,7 @@ WIZARDS=*
 #DEBUGFILES=*
 
 # Save end of game dump log to this file.
-# Only available if NetHack was compiled with DUMPLOG
+# Only available if LumaHack was compiled with DUMPLOG
 # Allows following placeholders:
 #   %% literal '%'
 #   %v version (eg. "3.6.6-0")
@@ -32,7 +32,7 @@ WIZARDS=*
 #   %D current time, YYYYMMDDhhmmss format
 #   %n player name
 #   %N first character of player name
-#DUMPLOGFILE=nethack-%n-%d.log
+#DUMPLOGFILE=lumahack-%n-%d.log
 
 # Number of bones file pools.
 # The pool you belong to is determined at game start. You will
@@ -42,7 +42,7 @@ WIZARDS=*
 # Disabled by setting to 0, or commenting out.
 #BONES_POOLS=10
 
-# Limit the number of simultaneous games (see also nethack.sh).
+# Limit the number of simultaneous games (see also lumahack.sh).
 #MAXPLAYERS=10
 
 # If not null, added to string "To get local support, " in the support
@@ -75,32 +75,32 @@ WIZARDS=*
 
 # *** LOCATIONS ***
 # IMPORTANT: If you change any of these locations, the directories they
-# point at must exist.  NetHack will not create them for you.
+# point at must exist.  LumaHack will not create them for you.
 #
 # Before adjusting, you can verify the default locations for files with:
-#       nethack --showpaths
+#       lumahack --showpaths
 #
 # The location that users can adjust their config file startup options
-#CONFIGDIR=%USERPROFILE%\NetHack
+#CONFIGDIR=%USERPROFILE%\LumaHack
 #
 # The location that a record of game aborts and self-diagnosed game problems
 # is kept (default=HACKDIR, writeable)
-#TROUBLEDIR=%USERPROFILE%\NetHack\3.6
+#TROUBLEDIR=%USERPROFILE%\LumaHack\3.6
 #
 # The location that documentation and helps files are placed
-#HACKDIR=%USERPROFILE%\NetHack\3.6
+#HACKDIR=%USERPROFILE%\LumaHack\3.6
 #
 # The location that level files in progress are stored (writeable)
-#LEVELDIR=%USERPROFILE%\AppData\Local\NetHack\3.6
+#LEVELDIR=%USERPROFILE%\AppData\Local\LumaHack\3.6
 #
 # The location where saved games are kept (writeable)
-#SAVEDIR=%USERPROFILE%\AppData\Local\NetHack\3.6
+#SAVEDIR=%USERPROFILE%\AppData\Local\LumaHack\3.6
 #
 # The location that bones files are kept (writeable)
-#BONESDIR=c:\ProgramData\NetHack\3.6
+#BONESDIR=c:\ProgramData\LumaHack\3.6
 #
 # The location that score files are kept (writeable)
-#SCOREDIR=c:\ProgramData\NetHack\3.6
+#SCOREDIR=c:\ProgramData\LumaHack\3.6
 #
 # The location that file synchronization locks are stored (writeable)
-#LOCKDIR=c:\ProgramData\NetHack\3.6
+#LOCKDIR=c:\ProgramData\LumaHack\3.6

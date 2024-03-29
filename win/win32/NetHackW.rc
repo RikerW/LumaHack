@@ -68,7 +68,7 @@ BEGIN
     END
     POPUP "Windows &Settings"
     BEGIN
-        MENUITEM "NetHack Mode",                IDM_NHMODE
+        MENUITEM "LumaHack Mode",                IDM_NHMODE
         MENUITEM SEPARATOR
         MENUITEM "&Clear All Settings",         IDM_CLEARSETTINGS
         MENUITEM SEPARATOR
@@ -80,14 +80,14 @@ BEGIN
         MENUITEM "&About ...",                  IDM_ABOUT
         MENUITEM "&Long description of the game", IDM_HELP_LONG
         MENUITEM "List of &commands",           IDM_HELP_COMMANDS
-        MENUITEM "&History of NetHack",         IDM_HELP_HISTORY
+        MENUITEM "&History of LumaHack",         IDM_HELP_HISTORY
         MENUITEM "&Info on a character",        IDM_HELP_INFO_CHAR
         MENUITEM "Info on what a given &key does", IDM_HELP_INFO_KEY
         MENUITEM "List of game &options",       IDM_HELP_OPTIONS
         MENUITEM "&Longer list of game options", IDM_HELP_OPTIONS_LONG
         MENUITEM "List of e&xtended commands",  IDM_HELP_EXTCMD
-        MENUITEM "The &NetHack license",        IDM_HELP_LICENSE
-        MENUITEM "NetHack for &Windows help",   IDM_HELP_PORTHELP
+        MENUITEM "The &LumaHack license",        IDM_HELP_LICENSE
+        MENUITEM "LumaHack for &Windows help",   IDM_HELP_PORTHELP
     END
 END
 
@@ -114,7 +114,7 @@ STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "System"
 BEGIN
-    LTEXT           "NetHack",IDC_ABOUT_VERSION,10,10,170,15,SS_NOPREFIX
+    LTEXT           "LumaHack",IDC_ABOUT_VERSION,10,10,170,15,SS_NOPREFIX
     LTEXT           "Copyright",IDC_ABOUT_COPYRIGHT,10,30,210,40
     DEFPUSHBUTTON   "OK",IDOK,195,6,30,11,WS_GROUP
 END
@@ -192,7 +192,7 @@ END
 
 IDD_SPLASH DIALOG 0, 0, 281, 257
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Welcome to NetHack"
+CAPTION "Welcome to LumaHack"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,224,236,50,14
@@ -336,13 +336,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "NetHack for Windows - Graphical Interface"
+            VALUE "FileDescription", "LumaHack for Windows - Graphical Interface"
             VALUE "FileVersion", "3.6.7"
-            VALUE "InternalName", "NetHackW"
+            VALUE "InternalName", "LumaHackW"
             VALUE "LegalCopyright", "Copyright (C) 1985 - 2023.  By Stichting Mathematisch Centrum and M. Stephenson.  See license for details."
-            VALUE "OriginalFilename", "NetHackW.exe"
+            VALUE "OriginalFilename", "LumaHackW.exe"
             VALUE "PrivateBuild", "140606"
-            VALUE "ProductName", "NetHack"
+            VALUE "ProductName", "LumaHack"
             VALUE "ProductVersion", "3.6.7"
         END
     END
@@ -371,9 +371,9 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_APP_TITLE           "NetHack for Windows - Graphical Interface"
+    IDS_APP_TITLE           "LumaHack for Windows - Graphical Interface"
     IDC_NETHACKW            "NETHACKW"
-    IDS_APP_TITLE_SHORT     "NetHack for Windows"
+    IDS_APP_TITLE_SHORT     "LumaHack for Windows"
 END
 
 #endif    // English (United States) resources

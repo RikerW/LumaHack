@@ -1,11 +1,11 @@
 #!/bin/sh
-# NetHack 3.6  nethack.sh	$NHDT-Date: 1552425075 2019/03/12 21:11:15 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.20 $
+# LumaHack 3.6  lumahack.sh	$NHDT-Date: 1552425075 2019/03/12 21:11:15 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.20 $
 # Copyright (c) 2015 by Kenneth Lorber, Kensington, Maryland
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
-HACKDIR=/usr/games/lib/nethackdir
+HACKDIR=/usr/games/lib/lumahackdir
 export HACKDIR
-HACK=$HACKDIR/nethack
+HACK=$HACKDIR/lumahack
 
 # Since Nethack.ad is installed in HACKDIR, add it to XUSERFILESEARCHPATH
 case "x$XUSERFILESEARCHPATH" in
@@ -23,8 +23,8 @@ test -n "$DISPLAY" -a -f $HACKDIR/fonts.dir && xset p >/dev/null 2>&1 && (
 )
 
 # see if we can find the full path name of PAGER, so help files work properly
-# assume that if someone sets up a special variable (HACKPAGER) for NetHack,
-# it will already be in a form acceptable to NetHack
+# assume that if someone sets up a special variable (HACKPAGER) for LumaHack,
+# it will already be in a form acceptable to LumaHack
 # ideas from brian@radio.astro.utoronto.ca
 if test \( "xxx$PAGER" != xxx \) -a \( "xxx$HACKPAGER" = xxx \)
 then
@@ -34,7 +34,7 @@ then
 #	use only the first word of the pager variable
 #	this prevents problems when looking for file names with trailing
 #	options, but also makes the options unavailable for later use from
-#	NetHack
+#	LumaHack
 	for i in $HACKPAGER
 	do
 		HACKPAGER=$i

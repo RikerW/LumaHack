@@ -1,7 +1,7 @@
-/* NetHack 3.6	topl.c	$NHDT-Date: 1560608320 2019/06/15 14:18:40 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.47 $ */
+/* LumaHack 3.6	topl.c	$NHDT-Date: 1560608320 2019/06/15 14:18:40 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.47 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2009. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 

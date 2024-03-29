@@ -1,6 +1,6 @@
-/* NetHack 3.6    bmptiles.c    $NHDT-Date: 1457207054 2016/03/05 19:44:14 $ $NHDT-Branch: chasonr $:$NHDT-Revision: 1.0 $ */
+/* LumaHack 3.6    bmptiles.c    $NHDT-Date: 1457207054 2016/03/05 19:44:14 $ $NHDT-Branch: chasonr $:$NHDT-Revision: 1.0 $ */
 /* Copyright (c) Ray Chason, 2016. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "config.h"
 #include "integer.h"

@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4svsel.cpp -- saved game selector
 
@@ -23,10 +23,10 @@
 #include "qt4bind.h"
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
-    QDialog(NetHackQtBind::mainWidget())
+LumaHackQtSavedGameSelector::LumaHackQtSavedGameSelector(const char** saved) :
+    QDialog(LumaHackQtBind::mainWidget())
 {
     QVBoxLayout *vbl = new QVBoxLayout(this);
     QHBoxLayout* hb;
@@ -34,7 +34,7 @@ NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
     QLabel* logo = new QLabel(this); vbl->addWidget(logo);
     logo->setAlignment(Qt::AlignCenter);
     logo->setPixmap(QPixmap("nhsplash.xpm"));
-    QLabel* attr = new QLabel("by the NetHack DevTeam",this);
+    QLabel* attr = new QLabel("by the LumaHack DevTeam",this);
     attr->setAlignment(Qt::AlignCenter);
     vbl->addWidget(attr);
     vbl->addStretch(2);
@@ -68,7 +68,7 @@ NetHackQtSavedGameSelector::NetHackQtSavedGameSelector(const char** saved) :
     }
 }
 
-int NetHackQtSavedGameSelector::choose()
+int LumaHackQtSavedGameSelector::choose()
 {
 #if defined(QWS) // probably safe with Qt 3, too (where show!=exec in QDialog).
     if ( qt_compact_mode )
@@ -77,4 +77,4 @@ int NetHackQtSavedGameSelector::choose()
     return exec()-2;
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

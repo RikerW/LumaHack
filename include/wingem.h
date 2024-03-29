@@ -1,6 +1,6 @@
-/* NetHack 3.6	wingem.h	$NHDT-Date: 1433806582 2015/06/08 23:36:22 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
+/* LumaHack 3.6	wingem.h	$NHDT-Date: 1433806582 2015/06/08 23:36:22 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $ */
 /* Copyright (c) Christian Bressler, 1999				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef WINGEM_H
 #define WINGEM_H

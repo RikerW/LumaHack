@@ -1,6 +1,6 @@
-/* NetHack 3.6	gnmenu.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
+/* LumaHack 3.6	gnmenu.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include <string.h>
 #include <gtk/gtk.h>
@@ -294,7 +294,7 @@ ghack_menu_window_add_menu(GtkWidget *menuWin, gpointer menu_item,
         special = FALSE;
         item_selectable = TRUE;
     }
-    if (!strcmp(item->str, "The NetHack license.")) {
+    if (!strcmp(item->str, "The LumaHack license.")) {
         special = TRUE;
     }
 

@@ -1,7 +1,7 @@
-/* NetHack 3.6	pager.c	$NHDT-Date: 1574722864 2019/11/25 23:01:04 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.162 $ */
+/* LumaHack 3.6	pager.c	$NHDT-Date: 1574722864 2019/11/25 23:01:04 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.162 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* This file contains the command routines dowhatis() and dohelp() and */
 /* a few other help related facilities */
@@ -1932,13 +1932,13 @@ docontact(VOID_ARGS)
         putstr(cwin, 0, buf);
         putstr(cwin, 0, "");
     }
-    putstr(cwin, 0, "To contact the NetHack development team directly,");
+    putstr(cwin, 0, "To contact the LumaHack development team directly,");
     /*XXX overflow possibilities*/
     Sprintf(buf, "see the 'Contact' form on our website or email <%s>.",
             DEVTEAM_EMAIL);
     putstr(cwin, 0, buf);
     putstr(cwin, 0, "");
-    putstr(cwin, 0, "For more information on NetHack, or to report a bug,");
+    putstr(cwin, 0, "For more information on LumaHack, or to report a bug,");
     Sprintf(buf, "visit our website \"%s\".", DEVTEAM_URL);
     putstr(cwin, 0, buf);
     display_nhwindow(cwin, FALSE);
@@ -2019,10 +2019,10 @@ static struct {
     void NDECL((*f));
     const char *text;
 } help_menu_items[] = {
-    { hmenu_doextversion, "About NetHack (version information)." },
+    { hmenu_doextversion, "About LumaHack (version information)." },
     { dispfile_help, "Long description of the game and commands." },
     { dispfile_shelp, "List of game commands." },
-    { hmenu_dohistory, "Concise history of NetHack." },
+    { hmenu_dohistory, "Concise history of LumaHack." },
     { hmenu_dowhatis, "Info on a character in the game display." },
     { hmenu_dowhatdoes, "Info on what a given key does." },
     { option_help, "List of game options." },
@@ -2030,7 +2030,7 @@ static struct {
     { dokeylist, "Full list of keyboard commands" },
     { hmenu_doextlist, "List of extended commands." },
     { domenucontrols, "List menu control keys" },
-    { dispfile_license, "The NetHack license." },
+    { dispfile_license, "The LumaHack license." },
     { docontact, "Support information." },
 #ifdef PORT_HELP
     { port_help, "%s-specific help and commands." },

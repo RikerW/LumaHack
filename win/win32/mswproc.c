@@ -1,10 +1,10 @@
-/* NetHack 3.6	mswproc.c	$NHDT-Date: 1575245201 2019/12/02 00:06:41 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.137 $ */
+/* LumaHack 3.6	mswproc.c	$NHDT-Date: 1575245201 2019/12/02 00:06:41 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.137 $ */
 /* Copyright (C) 2001 by Alex Kompel 	 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file implements the interface between the window port specific
- * code in the mswin port and the rest of the nethack game engine.
+ * code in the mswin port and the rest of the lumahack game engine.
 */
 
 #include "hack.h"
@@ -122,7 +122,7 @@ struct window_procs mswin_procs = {
 
 /*
 init_nhwindows(int* argcp, char** argv)
-                -- Initialize the windows used by NetHack.  This can also
+                -- Initialize the windows used by LumaHack.  This can also
                    create the standard windows listed at the top, but does
                    not display them.
                 -- Any commandline arguments relevant to the windowport
@@ -2111,7 +2111,7 @@ mswin_main_loop()
 
         if (!iflags.debug_fuzzer || PeekMessage(&msg, NULL, 0, 0, FALSE)) {
             if(GetMessage(&msg, NULL, 0, 0) != 0) {
-                if (GetNHApp()->regNetHackMode
+                if (GetNHApp()->regLumaHackMode
                     || !TranslateAccelerator(msg.hwnd, GetNHApp()->hAccelTable,
                                              &msg)) {
                     TranslateMessage(&msg);
@@ -2318,8 +2318,8 @@ logDebug(const char *fmt, ...)
 
 /* Reading and writing settings from the registry. */
 #define CATEGORYKEY "Software"
-#define COMPANYKEY "NetHack"
-#define PRODUCTKEY "NetHack 3.6.6"
+#define COMPANYKEY "LumaHack"
+#define PRODUCTKEY "LumaHack 3.6.6"
 #define SETTINGSKEY "Settings"
 #define MAINSHOWSTATEKEY "MainShowState"
 #define MAINMINXKEY "MainMinX"
@@ -2393,7 +2393,7 @@ mswin_read_reg()
        is
        read from the registry, so these defaults apply. */
     GetNHApp()->saveRegistrySettings = 1; /* Normally, we always save */
-    GetNHApp()->regNetHackMode = TRUE;
+    GetNHApp()->regLumaHackMode = TRUE;
 
     for (i = 0; i < CLR_MAX; i++)
         GetNHApp()->regMapColors[i] = default_mapcolors[i];
@@ -2410,7 +2410,7 @@ mswin_read_reg()
     (val) = safe_buf;
 
     /* read the keys here */
-    NHGETREG_DWORD(INTFKEY, GetNHApp()->regNetHackMode);
+    NHGETREG_DWORD(INTFKEY, GetNHApp()->regLumaHackMode);
 
     /* read window placement */
     NHGETREG_DWORD(MAINSHOWSTATEKEY, GetNHApp()->regMainShowState);
@@ -2498,7 +2498,7 @@ mswin_write_reg()
                   sizeof(DWORD));
 
         /* Write the keys here */
-        NHSETREG_DWORD(INTFKEY, GetNHApp()->regNetHackMode);
+        NHSETREG_DWORD(INTFKEY, GetNHApp()->regLumaHackMode);
 
         /* Main window placement */
         NHSETREG_DWORD(MAINSHOWSTATEKEY, GetNHApp()->regMainShowState);
@@ -2563,7 +2563,7 @@ mswin_destroy_reg()
     sprintf(keystring, "%s\\%s\\%s", CATEGORYKEY, COMPANYKEY, PRODUCTKEY);
     RegDeleteKey(HKEY_CURRENT_USER, keystring);
     /* The company key will also contain information about newer versions
-       of nethack (e.g. a subkey called NetHack 4.0), so only delete that
+       of lumahack (e.g. a subkey called LumaHack 4.0), so only delete that
        if it's empty now. */
     sprintf(keystring, "%s\\%s", CATEGORYKEY, COMPANYKEY);
     /* If we cannot open it, we probably cannot delete it either... Just
@@ -2587,12 +2587,12 @@ typedef struct ctv {
 
 /*
  * The color list here is a combination of:
- * NetHack colors.  (See mhmap.c)
+ * LumaHack colors.  (See mhmap.c)
  * HTML colors. (See http://www.w3.org/TR/REC-html40/types.html#h-6.5 )
  */
 
 static color_table_value color_table[] = {
-    /* NetHack colors */
+    /* LumaHack colors */
     { "black", RGB(0x55, 0x55, 0x55) },
     { "red", RGB(0xFF, 0x00, 0x00) },
     { "green", RGB(0x00, 0x80, 0x00) },
@@ -2614,12 +2614,12 @@ static color_table_value color_table[] = {
     { "purple", RGB(0x80, 0x00, 0x80) },
     { "silver", RGB(0xC0, 0xC0, 0xC0) },
     { "maroon", RGB(0x80, 0x00, 0x00) },
-    { "fuchsia", RGB(0xFF, 0x00, 0xFF) }, /* = NetHack magenta */
-    { "lime", RGB(0x00, 0xFF, 0x00) },    /* = NetHack bright green */
+    { "fuchsia", RGB(0xFF, 0x00, 0xFF) }, /* = LumaHack magenta */
+    { "lime", RGB(0x00, 0xFF, 0x00) },    /* = LumaHack bright green */
     { "olive", RGB(0x80, 0x80, 0x00) },
     { "navy", RGB(0x00, 0x00, 0x80) },
     { "teal", RGB(0x00, 0x80, 0x80) },
-    { "aqua", RGB(0x00, 0xFF, 0xFF) }, /* = NetHack cyan */
+    { "aqua", RGB(0x00, 0xFF, 0xFF) }, /* = LumaHack cyan */
     { "", RGB(0x00, 0x00, 0x00) },
 };
 
@@ -3032,7 +3032,7 @@ status_update(int fldindex, genericptr_t ptr, int chg, int percent, int color, u
                    symbol for GOLD "\GXXXXNNNN:nnn". If window port needs
                    textual gold amount without the leading "$:" the port will
                    have to skip past ':' in passed "ptr" for the BL_GOLD case.
-                -- color is the color that the NetHack core is telling you to
+                -- color is the color that the LumaHack core is telling you to
                    use to display the text.
                 -- condmasks is a pointer to a set of BL_ATTCLR_MAX unsigned
                    longs telling which conditions should be displayed in each

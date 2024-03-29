@@ -1,6 +1,6 @@
-/* NetHack 3.6	sp_lev.c	$NHDT-Date: 1567805254 2019/09/06 21:27:34 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.117 $ */
+/* LumaHack 3.6	sp_lev.c	$NHDT-Date: 1567805254 2019/09/06 21:27:34 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.117 $ */
 /*      Copyright (c) 1989 by Jean-Christophe Collet */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file contains the various functions that are related to the special
@@ -432,7 +432,7 @@ struct opvar *ov;
  * __FUNCTION__ -- gcc extension, starting before C99 and continuing after;
  *                 picked up by other compilers (or vice versa?);
  * __FUNC__     -- supported by Borland;
- * nhFunc       -- slightly intrusive but fully portable nethack construct
+ * nhFunc       -- slightly intrusive but fully portable lumahack construct
  *                 for any version of any compiler.
  */
 #define opvar_free(ov)                                    \

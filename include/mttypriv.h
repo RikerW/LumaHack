@@ -1,6 +1,6 @@
-/* NetHack 3.6	mttypriv.h	$NHDT-Date: 1432512780 2015/05/25 00:13:00 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
+/* LumaHack 3.6	mttypriv.h	$NHDT-Date: 1432512780 2015/05/25 00:13:00 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /* Copyright (c) Jon W{tte 1993.					*/
-/* NetHack may be freely redistributed.  See license for details.	*/
+/* LumaHack may be freely redistributed.  See license for details.	*/
 
 /*
  * This file contains private structures used to implement the

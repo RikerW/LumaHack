@@ -1,6 +1,6 @@
-/* NetHack 3.6	prop.h	$NHDT-Date: 1570566360 2019/10/08 20:26:00 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.21 $ */
+/* LumaHack 3.6	prop.h	$NHDT-Date: 1570566360 2019/10/08 20:26:00 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.21 $ */
 /* Copyright (c) 1989 Mike Threepoint				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef PROP_H
 #define PROP_H
@@ -117,7 +117,7 @@ struct prop {
 #define W_TOOL 0x00080000L   /* Eyewear */
 #define W_ACCESSORY (W_RING | W_AMUL | W_TOOL)
     /* historical note: originally in slash'em, 'worn' saddle stayed in
-       hero's inventory; in nethack, it's kept in the steed's inventory */
+       hero's inventory; in lumahack, it's kept in the steed's inventory */
 #define W_SADDLE 0x00100000L /* KMH -- For riding monsters */
 #define W_BALL 0x00200000L   /* Punishment ball */
 #define W_CHAIN 0x00400000L  /* Punishment chain */

@@ -51,7 +51,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "nethack.ico"
+IDI_ICON1               ICON                    "lumahack.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -76,12 +76,12 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "NetHack for Windows - TTY Interface"
+            VALUE "FileDescription", "LumaHack for Windows - TTY Interface"
             VALUE "FileVersion", "3.6.7"
-            VALUE "InternalName", "NetHack"
+            VALUE "InternalName", "LumaHack"
             VALUE "LegalCopyright", "Copyright (C) 1985 - 2023.  By Stichting Mathematisch Centrum and M. Stephenson.  See license for details."
-            VALUE "OriginalFilename", "NetHack.exe"
-            VALUE "ProductName", "NetHack"
+            VALUE "OriginalFilename", "LumaHack.exe"
+            VALUE "ProductName", "LumaHack"
             VALUE "ProductVersion", "3.6.7"
         END
     END

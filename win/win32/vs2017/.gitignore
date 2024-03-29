@@ -1,4 +1,4 @@
-!NetHack.sln
+!LumaHack.sln
 *.db-shm
 *.db-wal
 paniclog
@@ -8,5 +8,5 @@ BundleArtifacts
 report.xml
 *.cer
 *.appxbundle
-NetHackPackage_StoreKey.pfx
-NetHackPackage_TemporaryKey.pfx
+LumaHackPackage_StoreKey.pfx
+LumaHackPackage_TemporaryKey.pfx

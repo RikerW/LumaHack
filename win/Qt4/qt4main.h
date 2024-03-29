@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4main.h -- the main window
 
@@ -14,19 +14,19 @@
 #include "qt4kde0.h"
 #endif
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtInvUsageWindow;
-class NetHackQtKeyBuffer;
-class NetHackQtMapWindow2;
-class NetHackQtMessageWindow;
-class NetHackQtStatusWindow;
-class NetHackQtWindow;
+class LumaHackQtInvUsageWindow;
+class LumaHackQtKeyBuffer;
+class LumaHackQtMapWindow2;
+class LumaHackQtMessageWindow;
+class LumaHackQtStatusWindow;
+class LumaHackQtWindow;
 
-// This class is the main widget for NetHack
+// This class is the main widget for LumaHack
 //
 // It is a collection of Message, Map, and Status windows.  In the current
-// version of nethack there is only one of each, and this class makes this
+// version of lumahack there is only one of each, and this class makes this
 // assumption, not showing itself until all are inserted.
 //
 // This class simply knows how to layout such children sensibly.
@@ -35,16 +35,16 @@ class NetHackQtWindow;
 // note the actual class of the windows.
 //
 
-class NetHackQtMainWindow : public KTopLevelWidget {
+class LumaHackQtMainWindow : public KTopLevelWidget {
 	Q_OBJECT
 public:
-	NetHackQtMainWindow(NetHackQtKeyBuffer&);
+	LumaHackQtMainWindow(LumaHackQtKeyBuffer&);
 
-	void AddMessageWindow(NetHackQtMessageWindow* window);
-	NetHackQtMessageWindow * GetMessageWindow();
-	void AddMapWindow(NetHackQtMapWindow2* window);
-	void AddStatusWindow(NetHackQtStatusWindow* window);
-	void RemoveWindow(NetHackQtWindow* window);
+	void AddMessageWindow(LumaHackQtMessageWindow* window);
+	LumaHackQtMessageWindow * GetMessageWindow();
+	void AddMapWindow(LumaHackQtMapWindow2* window);
+	void AddStatusWindow(LumaHackQtStatusWindow* window);
+	void RemoveWindow(LumaHackQtWindow* window);
 	void updateInventory();
 
 	void fadeHighlighting();
@@ -77,19 +77,19 @@ private:
 #else
 	QMenuBar* menubar;
 #endif
-	NetHackQtMessageWindow* message;
-	NetHackQtMapWindow2* map;
-	NetHackQtStatusWindow* status;
-	NetHackQtInvUsageWindow* invusage;
+	LumaHackQtMessageWindow* message;
+	LumaHackQtMapWindow2* map;
+	LumaHackQtStatusWindow* status;
+	LumaHackQtInvUsageWindow* invusage;
 
 	QSplitter *hsplitter;
 	QSplitter *vsplitter;
 
-	NetHackQtKeyBuffer& keysink;
+	LumaHackQtKeyBuffer& keysink;
 	QStackedWidget* stack;
 	int dirkey;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

@@ -1,6 +1,6 @@
-/* NetHack 3.6	wintty.c	$NHDT-Date: 1575245194 2019/12/02 00:06:34 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.227 $ */
+/* LumaHack 3.6	wintty.c	$NHDT-Date: 1575245194 2019/12/02 00:06:34 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.227 $ */
 /* Copyright (c) David Cohrs, 1991                                */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Neither a standard out nor character-based control codes should be
@@ -47,7 +47,7 @@ extern short glyph2tile[];
 
 #ifdef HANGUP_HANDLING
 /*
- * NetHack's core switches to a dummy windowing interface when it
+ * LumaHack's core switches to a dummy windowing interface when it
  * detects SIGHUP, but that's no help for any interface routine which
  * is already in progress at the time, and there have been reports of
  * runaway disconnected processes which use up all available CPU time.
@@ -1634,7 +1634,7 @@ winid window;
         context.botlx = 1;
         break;
     case NHW_MAP:
-        /* cheap -- clear the whole thing and tell nethack to redraw botl */
+        /* cheap -- clear the whole thing and tell lumahack to redraw botl */
         context.botlx = 1;
         /*FALLTHRU*/
     case NHW_BASE:
@@ -3516,7 +3516,7 @@ tty_nhgetch()
 #endif
     }
     if (!i)
-        i = '\033'; /* map NUL to ESC since nethack doesn't expect NUL */
+        i = '\033'; /* map NUL to ESC since lumahack doesn't expect NUL */
     else if (i == EOF)
         i = '\033'; /* same for EOF */
     if (ttyDisplay && ttyDisplay->toplin == 1)
@@ -3557,7 +3557,7 @@ int *x, *y, *mod;
         wins[WIN_MESSAGE]->flags &= ~WIN_STOP;
     i = ntposkey(x, y, mod);
     if (!i && mod && (*mod == 0 || *mod == EOF))
-        i = '\033'; /* map NUL or EOF to ESC, nethack doesn't expect either */
+        i = '\033'; /* map NUL or EOF to ESC, lumahack doesn't expect either */
     if (ttyDisplay && ttyDisplay->toplin == 1)
         ttyDisplay->toplin = 2;
 #else /* !WIN32CON */
@@ -3601,7 +3601,7 @@ char *posbar;
  * ----------------------------------------------------------------
  * tty_status_update
  *
- *      Called from the NetHack core and receives info hand-offs
+ *      Called from the LumaHack core and receives info hand-offs
  *      from the core, processes them, storing some information
  *      for rendering to the tty.
  *          -> make_things_fit()
@@ -3647,7 +3647,7 @@ char *posbar;
 /*
  * The following data structures come from the genl_ routines in
  * src/windows.c and as such are considered to be on the window-port
- * "side" of things, rather than the NetHack-core "side" of things.
+ * "side" of things, rather than the LumaHack-core "side" of things.
  */
 extern const char *status_fieldfmt[MAXBLSTATS];
 extern char *status_vals[MAXBLSTATS];

@@ -1,6 +1,6 @@
-/* NetHack 3.6	trampoli.h	$NHDT-Date: 1433806581 2015/06/08 23:36:21 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
+/* LumaHack 3.6	trampoli.h	$NHDT-Date: 1433806581 2015/06/08 23:36:21 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
 /* Copyright (c) 1989, by Norm Meluch and Stephen Spackman	  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef TRAMPOLI_H
 #define TRAMPOLI_H

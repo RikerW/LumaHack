@@ -3,22 +3,22 @@
   <Import Project="config.props" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CEC5D360-8804-454F-8591-002184C23499}</ProjectGuid>
-    <RootNamespace>NetHackW</RootNamespace>
+    <RootNamespace>LumaHackW</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <Import Project="common.props" />
   <Import Project="dirs.props" />
@@ -181,10 +181,10 @@
     <ClCompile Include="$(WinWin32Dir)mhstatus.c" />
     <ClCompile Include="$(WinWin32Dir)mhtext.c" />
     <ClCompile Include="$(WinWin32Dir)mswproc.c" />
-    <ClCompile Include="$(WinWin32Dir)NetHackW.c" />
+    <ClCompile Include="$(WinWin32Dir)LumaHackW.c" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="$(WinWin32Dir)NetHackW.rc" />
+    <ResourceCompile Include="$(WinWin32Dir)LumaHackW.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(WinWin32Dir)mhaskyn.h" />
@@ -216,12 +216,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Target Name="AfterBuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterClean">
-    <MSBuild Projects="afternethack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Clean" Properties="Configuration=$(Configuration)" />
   </Target>
   <Target Name="AfterRebuild">
-    <MSBuild Projects="afternethack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="afterlumahack.proj" Targets="Build" Properties="Configuration=$(Configuration)" />
   </Target>
 </Project>

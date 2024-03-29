@@ -1,6 +1,6 @@
-/* NetHack 3.6    tileset.h    $NHDT-Date: 1457207052 2016/03/05 19:44:12 $ $NHDT-Branch: chasonr $:$NHDT-Revision: 1.0 $ */
+/* LumaHack 3.6    tileset.h    $NHDT-Date: 1457207052 2016/03/05 19:44:12 $ $NHDT-Branch: chasonr $:$NHDT-Revision: 1.0 $ */
 /* Copyright (c) Ray Chason, 2016. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef TILESET_H
 #define TILESET_H

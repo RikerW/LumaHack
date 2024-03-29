@@ -1,6 +1,6 @@
-/* NetHack 3.6	extern.h	$NHDT-Date: 1573940539 2019/11/16 21:42:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.741 $ */
+/* LumaHack 3.6	extern.h	$NHDT-Date: 1573940539 2019/11/16 21:42:19 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.741 $ */
 /* Copyright (c) Steve Creps, 1988.				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef EXTERN_H
 #define EXTERN_H
@@ -1678,7 +1678,7 @@ E int NDECL(tgetch);
 E int FDECL(ntposkey, (int *, int *, int *));
 E void FDECL(set_output_mode, (int));
 E void NDECL(synch_cursor);
-E void NDECL(nethack_enter_nttty);
+E void NDECL(lumahack_enter_nttty);
 E void NDECL(nttty_exit);
 E int NDECL(set_keyhandling_via_option);
 #endif /* WIN32 */
@@ -2884,7 +2884,7 @@ E void FDECL(dump_forward_putstr, (winid, int, const char*, int));
 
 /* ### winnt.c ### */
 #ifdef WIN32
-E void NDECL(nethack_enter_winnt);
+E void NDECL(lumahack_enter_winnt);
 #endif
 
 /* ### wizard.c ### */

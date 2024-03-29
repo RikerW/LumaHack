@@ -1,6 +1,6 @@
-@REM  NetHack 3.6	nhsetup.bat	$NHDT-Date: 1554784485 2019/04/09 04:34:45 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.37 $ */
-@REM  Copyright (c) NetHack PC Development Team 1993-2019
-@REM  NetHack may be freely redistributed.  See license for details. 
+@REM  LumaHack 3.6	nhsetup.bat	$NHDT-Date: 1554784485 2019/04/09 04:34:45 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.37 $ */
+@REM  Copyright (c) LumaHack PC Development Team 1993-2019
+@REM  LumaHack may be freely redistributed.  See license for details. 
 @REM  Win32 setup batch file, see Install.nt for details
 @REM
 @echo off
@@ -98,14 +98,14 @@ SET MSVCVERSION=2015
 :fallback
 echo Using VS%MSVCVERSION%.
 set SRCPATH=%WIN32PATH%\vs%MSVCPROJ%
-echo NetHack VS%MSVCVERSION% project files are in %SRCPATH%
+echo LumaHack VS%MSVCVERSION% project files are in %SRCPATH%
 goto :done
 
 :err_win
-echo Some of the files needed to build graphical NetHack
+echo Some of the files needed to build graphical LumaHack
 echo for Windows are not in the expected places.
 echo Check "Install.nt" for a list of the steps required 
-echo to build NetHack.
+echo to build LumaHack.
 goto :fini
 
 :err_dir

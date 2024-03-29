@@ -1,7 +1,7 @@
-/* NetHack 3.6	global.h	$NHDT-Date: 1557510460 2019/05/10 17:47:40 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.72 $ */
+/* LumaHack 3.6	global.h	$NHDT-Date: 1557510460 2019/05/10 17:47:40 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.72 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef GLOBAL_H
 #define GLOBAL_H
@@ -17,7 +17,7 @@
 #define NH_STATUS_POSTRELEASE 3         /* patch commit point only */
 
 /*
- * Development status of this NetHack version.
+ * Development status of this LumaHack version.
  */
 #define NH_DEVEL_STATUS NH_STATUS_POSTRELEASE
 
@@ -38,7 +38,7 @@
 #define ORACLEFILE "oracles"    /* file with oracular information */
 #define DATAFILE "data"         /* file giving the meaning of symbols used */
 #define CMDHELPFILE "cmdhelp"   /* file telling what commands do */
-#define HISTORY "history"       /* file giving nethack's history */
+#define HISTORY "history"       /* file giving lumahack's history */
 #define LICENSE "license"       /* file with license information */
 #define OPTIONFILE "opthelp"    /* file explaining runtime options */
 #define OPTIONS_USED "options"  /* compile-time options, for #version */
@@ -115,7 +115,7 @@ typedef uchar nhsym;
 
 #define SIZE(x) (int)(sizeof(x) / sizeof(x[0]))
 
-/* A limit for some NetHack int variables.  It need not, and for comparable
+/* A limit for some LumaHack int variables.  It need not, and for comparable
  * scoring should not, depend on the actual limit on integers for a
  * particular machine, although it is set to the minimum required maximum
  * signed integer for C (2^15 -1).
@@ -372,9 +372,9 @@ struct savefile_info {
 #define PANICTRACE_GDB
 #endif
 
-/* Supply nethack_enter macro if not supplied by port */
-#ifndef nethack_enter
-#define nethack_enter(argc, argv) ((void) 0)
+/* Supply lumahack_enter macro if not supplied by port */
+#ifndef lumahack_enter
+#define lumahack_enter(argc, argv) ((void) 0)
 #endif
 
 

@@ -1,7 +1,7 @@
 #
-# NetHack 3.6  linux-x11 $NHDT-Date: 1566346602 2019/08/21 00:16:42 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.24 $
+# LumaHack 3.6  linux-x11 $NHDT-Date: 1566346602 2019/08/21 00:16:42 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.24 $
 # Copyright (c) Kenneth Lorber, Kensington, Maryland, 2007.
-# NetHack may be freely redistributed.  See license for details. 
+# LumaHack may be freely redistributed.  See license for details. 
 #
 #-PRE
 # Linux hints file
@@ -33,7 +33,7 @@ WINSRC = $(WINX11SRC)
 WINOBJ = $(WINX11OBJ)
 WINLIB = $(WINX11LIB)
 
-VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm
+VARDATND = x11tiles LumaHack.ad pet_mark.xbm pilemark.xbm
 
 WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
 

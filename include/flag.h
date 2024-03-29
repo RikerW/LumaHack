@@ -1,7 +1,7 @@
-/* NetHack 3.6	flag.h	$NHDT-Date: 1574900824 2019/11/28 00:27:04 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.160 $ */
+/* LumaHack 3.6	flag.h	$NHDT-Date: 1574900824 2019/11/28 00:27:04 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.160 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* If you change the flag structure make sure you increment EDITLEVEL in   */
 /* patchlevel.h if needed.  Changing the instance_flags structure does     */
@@ -55,7 +55,7 @@ struct flag {
      * type from 'boolean' to 'char'.  A compiler was smart enough to
      * complain that assigning any of the relevant letters was not 0 or 1
      * so not appropriate for boolean (by a configuration which used
-     * SKIP_BOOLEAN to bypass nethack's 'boolean' and use a C++-compatible
+     * SKIP_BOOLEAN to bypass lumahack's 'boolean' and use a C++-compatible
      * one).  So the type was changed to 'xchar', which is guaranteed to
      * match the size of 'boolean' (this guarantee only applies for the
      * !SKIP_BOOLEAN config, unfortunately).  Since xchar does not match
@@ -244,7 +244,7 @@ struct debug_flags {
 struct instance_flags {
     /* stuff that really isn't option or platform related. They are
      * set and cleared during the game to control the internal
-     * behaviour of various NetHack functions and probably warrant
+     * behaviour of various LumaHack functions and probably warrant
      * a structure of their own elsewhere some day.
      */
     boolean debug_fuzzer;  /* fuzz testing */
@@ -433,7 +433,7 @@ struct instance_flags {
     int wc2_term_cols;		/* terminal width, in characters */
     int wc2_term_rows;		/* terminal height, in characters */
     int wc2_statuslines;        /* default = 2, curses can handle 3 */
-    int wc2_windowborders;	/* display borders on NetHack windows */
+    int wc2_windowborders;	/* display borders on LumaHack windows */
     int wc2_petattr;            /* text attributes for pet */
 #ifdef WIN32
 #define MAX_ALTKEYHANDLING 25

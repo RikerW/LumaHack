@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4streq.h -- string requestor
 
@@ -9,22 +9,22 @@
 
 #include "qt4line.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtStringRequestor : QDialog {
+class LumaHackQtStringRequestor : QDialog {
 private:
 	QLabel prompt;
-	NetHackQtLineEdit input;
+	LumaHackQtLineEdit input;
 	QPushButton* okay;
 	QPushButton* cancel;
 
 public:
-	NetHackQtStringRequestor(QWidget *parent, const char* p,const char* cancelstr="Cancel");
+	LumaHackQtStringRequestor(QWidget *parent, const char* p,const char* cancelstr="Cancel");
 	void SetDefault(const char*);
 	bool Get(char* buffer, int maxchar=80);
 	virtual void resizeEvent(QResizeEvent*);
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

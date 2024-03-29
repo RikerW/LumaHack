@@ -1,6 +1,6 @@
-/* NetHack 3.6	gnsignal.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
+/* LumaHack 3.6	gnsignal.c	$NHDT-Date: 1432512805 2015/05/25 00:13:25 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
 /* Copyright (C) 1998 by Anthony Taylor <tonyt@ptialaska.net> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "gnsignal.h"
 #include "gnmain.h"

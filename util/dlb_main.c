@@ -1,6 +1,6 @@
-/* NetHack 3.6	dlb_main.c	$NHDT-Date: 1570258542 2019/10/05 06:55:42 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.13 $ */
+/* LumaHack 3.6	dlb_main.c	$NHDT-Date: 1570258542 2019/10/05 06:55:42 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.13 $ */
 /* Copyright (c) Kenneth Lorber, Bethesda, Maryland, 1993. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* data librarian; only useful if you are making the library version, DLBLIB
  */

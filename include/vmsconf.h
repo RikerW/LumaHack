@@ -1,7 +1,7 @@
-/* NetHack 3.6	vmsconf.h	$NHDT-Date: 1555361299 2019/04/15 20:48:19 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.30 $ */
+/* LumaHack 3.6	vmsconf.h	$NHDT-Date: 1555361299 2019/04/15 20:48:19 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.30 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2011. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifdef VMS
 #ifndef VMSCONF_H
@@ -9,10 +9,10 @@
 
 /*
  * Edit these to choose values appropriate for your site.
- * WIZARD is the username allowed to use the debug option of nethack; no harm
+ * WIZARD is the username allowed to use the debug option of lumahack; no harm
  *   is done by leaving it as a username that doesn't exist at your site.
  * HACKDIR can be overridden at run-time with the logical name HACKDIR, as in
- *   $ define hackdir disk$users:[games.nethack]
+ *   $ define hackdir disk$users:[games.lumahack]
  * Trailing NULs are present in the default values in order to make some
  *   extra room for patching longer values into an existing executable.
  */
@@ -49,7 +49,7 @@
 
 #define HLOCK "perm;1" /* an empty file used for locking purposes */
 
-/* want compression--for level & save files--performed within NetHack itself
+/* want compression--for level & save files--performed within LumaHack itself
  */
 #ifdef COMPRESS
 #undef COMPRESS
@@ -59,7 +59,7 @@
 #endif
 
 /*
- * If nethack.exe will be installed with privilege so that the playground
+ * If lumahack.exe will be installed with privilege so that the playground
  * won't need to be left unprotected, define SECURE to suppress a couple
  * of file protection fixups (protection of bones files and ownership of
  * save files).
@@ -88,7 +88,7 @@ PANICTRACE_GDB=2  #at conclusion of panic, show a call traceback and then
 
 /*
  * Provide menu of saved games to choose from at start.
- * [Player needs to use ``nethack "-ugames"'' for this to work.]
+ * [Player needs to use ``lumahack "-ugames"'' for this to work.]
  */
 #define SELECTSAVED
 
@@ -125,10 +125,10 @@ PANICTRACE_GDB=2  #at conclusion of panic, show a call traceback and then
 #define TIMED_DELAY /* enable the `timed_delay' run-time option */
 
 /*
- * If you define MAIL, then NetHack will capture incoming broadcast
+ * If you define MAIL, then LumaHack will capture incoming broadcast
  * messages such as "New mail from so-and-so" and "Print job completed,"
  * and then deliver them to the player.  For mail and phone broadcasts
- * a scroll of mail will be created, which when read will cause NetHack
+ * a scroll of mail will be created, which when read will cause LumaHack
  * to prompt the player for a command to spawn in order to respond.  The
  * latter capability will not be available if SHELL is disabled below.
  * If you undefine MAIL, broadcasts will go straight to the terminal,
@@ -139,10 +139,10 @@ PANICTRACE_GDB=2  #at conclusion of panic, show a call traceback and then
 /*
  * SHELL enables the player to 'escape' into a spawned subprocess via
  * the '!' command.  Logout or attach back to the parent to resume play.
- * If the player attaches back to NetHack, then a subsequent escape will
+ * If the player attaches back to LumaHack, then a subsequent escape will
  * re-attach to the existing subprocess.  Any such subprocess left over
  * at game exit will be deleted by an exit handler.
- * SUSPEND enables someone running NetHack in a subprocess to reconnect
+ * SUSPEND enables someone running LumaHack in a subprocess to reconnect
  * to the parent process with the <ctrl/Z> command; this is not very
  * close to Unix job control, but it's better than nothing.
  */
@@ -152,7 +152,7 @@ PANICTRACE_GDB=2  #at conclusion of panic, show a call traceback and then
 /*
  * Some terminals or terminal emulators send two character sequence "ESC c"
  * when Alt+c is pressed.  The altmeta run-time option allows the user to
- * request that "ESC c" be treated as M-c, which means that if nethack sees
+ * request that "ESC c" be treated as M-c, which means that if lumahack sees
  * ESC when it is waiting for a command, it will wait for another character
  * (even if user intended that ESC to be standalone to cancel a count prefix).
  */
@@ -263,7 +263,7 @@ typedef __mode_t mode_t;
 #ifndef USE_ISAAC64
 # if defined(RANDOM)
 #  define Rand() random()
-/* VMS V7 adds these entry points to DECC$SHR; stick with the nethack-supplied
+/* VMS V7 adds these entry points to DECC$SHR; stick with the lumahack-supplied
    code to avoid having to deal with version-specific conditionalized builds */
 #  define random nh_random
 #  define srandom nh_srandom

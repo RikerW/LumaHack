@@ -1,6 +1,6 @@
-/* NetHack 3.6	light.c	$NHDT-Date: 1559994625 2019/06/08 11:50:25 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.30 $ */
+/* LumaHack 3.6	light.c	$NHDT-Date: 1559994625 2019/06/08 11:50:25 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.30 $ */
 /* Copyright (c) Dean Luick, 1994                                       */
-/* NetHack may be freely redistributed.  See license for details.       */
+/* LumaHack may be freely redistributed.  See license for details.       */
 
 #include "hack.h"
 #include "lev.h" /* for checking save modes */

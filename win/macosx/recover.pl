@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 
-# NetHack 3.6  recover.pl $NHDT-Date: 1524684612 2018/04/25 19:30:12 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.12 $
+# LumaHack 3.6  recover.pl $NHDT-Date: 1524684612 2018/04/25 19:30:12 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.12 $
 # Copyright (c) Kenneth Lorber, Kensington, Maryland, 2009
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
 # Wrapper for 3.4.3 recover to be called from Applescript to reset the Qt
 # package after it locks up due to a bug in suspend handling.

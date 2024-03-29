@@ -1,13 +1,13 @@
-/* NetHack 3.6	hacklib.c	$NHDT-Date: 1552639487 2019/03/15 08:44:47 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.67 $ */
+/* LumaHack 3.6	hacklib.c	$NHDT-Date: 1552639487 2019/03/15 08:44:47 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.67 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2007. */
 /* Copyright (c) Robert Patrick Rankin, 1991                      */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h" /* for config.h+extern.h */
 /*=
     Assorted 'small' utility routines.  They're virtually independent of
-    NetHack, except that rounddiv may call panic().  setrandom calls one
+    LumaHack, except that rounddiv may call panic().  setrandom calls one
     of srandom(), srand48(), or srand() depending upon configuration.
 
       return type     routine name    argument type(s)

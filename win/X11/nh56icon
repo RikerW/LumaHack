@@ -1,8 +1,8 @@
-/* NetHack 3.6	nh56icon	$NHDT-Date: 1446457887 2015/11/02 09:51:27 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
+/* LumaHack 3.6	nh56icon	$NHDT-Date: 1446457887 2015/11/02 09:51:27 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /*	Copyright (c) 1993,1995,2015 by M. Stephenson			*/
-/* NetHack may be freely redistributed.  See license for details.	*/
+/* LumaHack may be freely redistributed.  See license for details.	*/
 
-/*	56x56 X11 icon for NetHack.					*/
+/*	56x56 X11 icon for LumaHack.					*/
 
 #define nh56icon_width 56
 #define nh56icon_height 56

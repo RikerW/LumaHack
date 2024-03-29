@@ -1,6 +1,6 @@
-/* NetHack 3.6	gnmain.c	$NHDT-Date: 1432512807 2015/05/25 00:13:27 $  $NHDT-Branch: master $:$NHDT-Revision: 1.15 $ */
+/* LumaHack 3.6	gnmain.c	$NHDT-Date: 1432512807 2015/05/25 00:13:27 $  $NHDT-Branch: master $:$NHDT-Revision: 1.15 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "gnmain.h"
 #include "gnsignal.h"
@@ -158,7 +158,7 @@ free(str) below
 #else
     strcat(buf1, VERSION_STRING);
     strcat(buf,
-           _("\nSend comments and bug reports to: nethack-bugs@nethack.org\n"
+           _("\nSend comments and bug reports to: lumahack-bugs@lumahack.org\n"
              "This game is free software. See License for details."));
 #endif
     about = gnome_about_new(_("Nethack"), buf1,
@@ -494,7 +494,7 @@ parse_args(int argc, char *argv[])
             exit(0);
             break;
         case 'v':
-            g_print(_("NetHack %s.\n"), VERSION_STRING);
+            g_print(_("LumaHack %s.\n"), VERSION_STRING);
             exit(0);
             break;
         case ':':
@@ -593,8 +593,8 @@ ghack_init_main_window(int argc, char **argv)
     if (uid != euid)
         setuid(uid);
     hide_privileges(TRUE);
-    /* XXX gnome_init must print nethack options for --help, but does not */
-    gnome_init("nethack", VERSION_STRING, argc, argv);
+    /* XXX gnome_init must print lumahack options for --help, but does not */
+    gnome_init("lumahack", VERSION_STRING, argc, argv);
     hide_privileges(FALSE);
     parse_args(argc, argv);
 
@@ -606,7 +606,7 @@ ghack_init_main_window(int argc, char **argv)
 
     /* Main window */
     mainWindow =
-        gnome_app_new((char *) "nethack", (char *) N_("Nethack for Gnome"));
+        gnome_app_new((char *) "lumahack", (char *) N_("Nethack for Gnome"));
     gtk_widget_realize(mainWindow);
     if (restarted) {
         gtk_widget_set_uposition(mainWindow, os_x, os_y);
@@ -650,7 +650,7 @@ ghack_main_window_add_map_window(GtkWidget *win)
     gtk_box_pack_start(GTK_BOX(vBoxMain), vBox, TRUE, TRUE, 2);
     gtk_widget_show_all(vBox);
     /* Ok, now show the main window -- now that we have added in
-     * all the windows (relys on nethack displaying the map window last
+     * all the windows (relys on lumahack displaying the map window last
      * (This is an ugly kludge, BTW)
      */
     gtk_widget_show_all(mainWindow);

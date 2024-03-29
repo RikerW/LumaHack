@@ -1,6 +1,6 @@
-/* NetHack 3.6	micro.h	$NHDT-Date: 1524689515 2018/04/25 20:51:55 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.10 $ */
+/* LumaHack 3.6	micro.h	$NHDT-Date: 1524689515 2018/04/25 20:51:55 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.10 $ */
 /*      Copyright (c) 2015 by Kenneth Lorber              */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* micro.h - function declarations for various microcomputers */
 

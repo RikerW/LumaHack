@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4bind.h -- bindings between the Qt 4 interface and the main code
 
@@ -9,30 +9,30 @@
 
 #include "qt4main.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtClickBuffer;
+class LumaHackQtClickBuffer;
 
 #ifdef KDE
-#define NetHackQtBindBase KApplication
+#define LumaHackQtBindBase KApplication
 #elif defined(QWS)
-#define NetHackQtBindBase QPEApplication
+#define LumaHackQtBindBase QPEApplication
 #else
-#define NetHackQtBindBase QApplication
+#define LumaHackQtBindBase QApplication
 #endif
 
-class NetHackQtBind : NetHackQtBindBase {
+class LumaHackQtBind : LumaHackQtBindBase {
 private:
 	// Single-instance preservation...
-	NetHackQtBind(int& argc, char** argv);
+	LumaHackQtBind(int& argc, char** argv);
 
-	static NetHackQtBind* instance;
+	static LumaHackQtBind* instance;
 
-	static NetHackQtKeyBuffer keybuffer;
-	static NetHackQtClickBuffer clickbuffer;
+	static LumaHackQtKeyBuffer keybuffer;
+	static LumaHackQtClickBuffer clickbuffer;
 
 	static QFrame* splash;
-	static NetHackQtMainWindow* main;
+	static LumaHackQtMainWindow* main;
 
 public:
 	static void qt_init_nhwindows(int* argc, char** argv);
@@ -94,6 +94,6 @@ private:
         static boolean msgs_initd;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

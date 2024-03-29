@@ -1,5 +1,5 @@
 # KDE Config File 
-# Call this file knethack.kdelnk or knethack.desktop
+# Call this file klumahack.kdelnk or klumahack.desktop
 [KDE Desktop Entry]
 Name=Nethack
 Name[fr]=Nethack
@@ -11,8 +11,8 @@ Name[hr]=Nethack
 Name[pt]=Nethack
 Name[pt_BR]=Nethack
 Icon=knh.xpm
-Exec=knethack -caption "%c" %i %m
+Exec=klumahack -caption "%c" %i %m
 Type=Application
-DocPath=knethack/index.html
+DocPath=klumahack/index.html
 Comment=The classic Unix role-playing game - fight monsters and seek the Amulet of Yendor for your god!
 

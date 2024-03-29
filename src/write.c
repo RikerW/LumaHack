@@ -1,5 +1,5 @@
-/* NetHack 3.6	write.c	$NHDT-Date: 1573346194 2019/11/10 00:36:34 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.20 $ */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	write.c	$NHDT-Date: 1573346194 2019/11/10 00:36:34 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.20 $ */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 

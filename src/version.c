@@ -1,7 +1,7 @@
-/* NetHack 3.6	version.c	$NHDT-Date: 1552353060 2019/03/12 01:11:00 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.52 $ */
+/* LumaHack 3.6	version.c	$NHDT-Date: 1552353060 2019/03/12 01:11:00 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.52 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "dlb.h"
@@ -17,10 +17,10 @@
 #endif
 
 #if defined(NETHACK_GIT_SHA)
-const char *NetHack_git_sha = NETHACK_GIT_SHA;
+const char *LumaHack_git_sha = NETHACK_GIT_SHA;
 #endif
 #if defined(NETHACK_GIT_BRANCH)
-const char *NetHack_git_branch = NETHACK_GIT_BRANCH;
+const char *LumaHack_git_branch = NETHACK_GIT_BRANCH;
 #endif
 
 STATIC_DCL void FDECL(insert_rtoption, (char *));
@@ -33,7 +33,7 @@ char *buf;
     return strcpy(buf, VERSION_STRING);
 }
 
-/* fill and return the given buffer with the long nethack version string */
+/* fill and return the given buffer with the long lumahack version string */
 char *
 getversionstring(buf)
 char *buf;
@@ -59,14 +59,14 @@ char *buf;
             Sprintf(eos(buf), "%s%s", c++ ? "," : "", tmp);
 #endif
 #if defined(NETHACK_GIT_SHA)
-        if (NetHack_git_sha)
-            Sprintf(eos(buf), "%s%s", c++ ? "," : "", NetHack_git_sha);
+        if (LumaHack_git_sha)
+            Sprintf(eos(buf), "%s%s", c++ ? "," : "", LumaHack_git_sha);
 #endif
 #if defined(NETHACK_GIT_BRANCH)
 #if (NH_DEVEL_STATUS != NH_STATUS_RELEASED)
-        if (NetHack_git_branch)
+        if (LumaHack_git_branch)
             Sprintf(eos(buf), "%sbranch:%s",
-                    c++ ? "," : "", NetHack_git_branch);
+                    c++ ? "," : "", LumaHack_git_branch);
 #endif
 #endif
         if (c)

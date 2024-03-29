@@ -1,6 +1,6 @@
-/* NetHack 3.6	tileedit.h	$NHDT-Date: 1432512809 2015/05/25 00:13:29 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
+/* LumaHack 3.6	tileedit.h	$NHDT-Date: 1432512809 2015/05/25 00:13:29 $  $NHDT-Branch: master $:$NHDT-Revision: 1.8 $ */
 /* Copyright (c) Warwick Allison, 1999. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 #ifndef QNHTILEEDIT_H
 #define QNHTILEEDIT_H
 

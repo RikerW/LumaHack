@@ -1,9 +1,9 @@
-/* NetHack 3.6	unixmain.c	$NHDT-Date: 1570408210 2019/10/07 00:30:10 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.70 $ */
+/* LumaHack 3.6	unixmain.c	$NHDT-Date: 1570408210 2019/10/07 00:30:10 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.70 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2011. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
-/* main.c - Unix NetHack */
+/* main.c - Unix LumaHack */
 
 #include "hack.h"
 #include "dlb.h"

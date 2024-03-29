@@ -1,7 +1,7 @@
-/* NetHack 3.6	mail.c	$NHDT-Date: 1568508711 2019/09/15 00:51:51 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.40 $ */
+/* LumaHack 3.6	mail.c	$NHDT-Date: 1568508711 2019/09/15 00:51:51 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.40 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Pasi Kallinen, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -463,7 +463,7 @@ struct obj *otmp UNUSED;
     static const char *junk[] = {
         "Report bugs to <%s>.", /*** must be first entry ***/
         "Please disregard previous letter.",
-        "Welcome to NetHack.",
+        "Welcome to LumaHack.",
 #ifdef AMIGA
         "Only Amiga makes it possible.",
         "CATS have all the answers.",
@@ -476,13 +476,13 @@ struct obj *otmp UNUSED;
            for an ordinary 80-column display so wraps to a second line
            (suboptimal but works correctly);
            dollar sign and fractional zorkmids are inappropriate within
-           nethack but are suitable for typical dysfunctional spam mail */
+           lumahack but are suitable for typical dysfunctional spam mail */
      "Buy a potion of gain level for only $19.99!  Guaranteed to be blessed!",
         /* DEVTEAM_URL will be substituted for "%s"; terminating punctuation
            (formerly "!") has deliberately been omitted so that it can't be
            mistaken for part of the URL (unfortunately that is still followed
            by a closing quote--in the pline below, not the data here) */
-        "Invitation: Visit the NetHack web site at %s"
+        "Invitation: Visit the LumaHack web site at %s"
     };
 
     /* XXX replace with more general substitution code and add local

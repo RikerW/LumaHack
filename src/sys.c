@@ -1,6 +1,6 @@
-/* NetHack 3.6	sys.c	$NHDT-Date: 1575665952 2019/12/06 20:59:12 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.46 $ */
+/* LumaHack 3.6	sys.c	$NHDT-Date: 1575665952 2019/12/06 20:59:12 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.46 $ */
 /* Copyright (c) Kenneth Lorber, Kensington, Maryland, 2008. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 

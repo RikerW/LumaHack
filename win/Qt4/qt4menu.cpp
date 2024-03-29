@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4menu.cpp -- a menu or text-list widget
 
@@ -34,20 +34,20 @@ extern "C" int qt_compact_mode;
 
 extern "C" struct menucoloring *menu_colorings;
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain( QWidget* w );
 // end temporary
 
-QSize NetHackQtTextListBox::sizeHint() const
+QSize LumaHackQtTextListBox::sizeHint() const
 {
     QScrollBar *hscroll = horizontalScrollBar();
     int hsize = hscroll ? hscroll->height() : 0;
     return QSize(TotalWidth()+hsize, TotalHeight()+hsize);
 }
 
-int NetHackQtMenuListBox::TotalWidth() const
+int LumaHackQtMenuListBox::TotalWidth() const
 {
     int width = 0;
 
@@ -57,7 +57,7 @@ int NetHackQtMenuListBox::TotalWidth() const
     return width;
 }
 
-int NetHackQtMenuListBox::TotalHeight() const
+int LumaHackQtMenuListBox::TotalHeight() const
 {
     int height = 0;
 
@@ -67,7 +67,7 @@ int NetHackQtMenuListBox::TotalHeight() const
     return height;
 }
 
-QSize NetHackQtMenuListBox::sizeHint() const
+QSize LumaHackQtMenuListBox::sizeHint() const
 {
     QScrollBar *hscroll = horizontalScrollBar();
     int hsize = hscroll ? hscroll->height() : 0;
@@ -83,9 +83,9 @@ QSize NetHackQtMenuListBox::sizeHint() const
 //   double-clicking or click-on-count gives pop-up entry
 // string is green when selected
 //
-NetHackQtMenuWindow::NetHackQtMenuWindow(QWidget *parent) :
+LumaHackQtMenuWindow::LumaHackQtMenuWindow(QWidget *parent) :
     QDialog(parent),
-    table(new NetHackQtMenuListBox()),
+    table(new LumaHackQtMenuListBox()),
     prompt(0),
     counting(false)
 {
@@ -137,29 +137,29 @@ NetHackQtMenuWindow::NetHackQtMenuWindow(QWidget *parent) :
     setLayout(grid);
 }
 
-NetHackQtMenuWindow::~NetHackQtMenuWindow()
+LumaHackQtMenuWindow::~LumaHackQtMenuWindow()
 {
 }
 
-QWidget* NetHackQtMenuWindow::Widget() { return this; }
+QWidget* LumaHackQtMenuWindow::Widget() { return this; }
 
-void NetHackQtMenuWindow::StartMenu()
+void LumaHackQtMenuWindow::StartMenu()
 {
     table->setRowCount((itemcount=0));
     next_accel=0;
     has_glyphs=false;
 }
 
-NetHackQtMenuWindow::MenuItem::MenuItem() :
+LumaHackQtMenuWindow::MenuItem::MenuItem() :
     str("")
 {
 }
 
-NetHackQtMenuWindow::MenuItem::~MenuItem()
+LumaHackQtMenuWindow::MenuItem::~MenuItem()
 {
 }
 
-void NetHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
+void LumaHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
 	char ch, char gch, int attr, const QString& str, bool presel)
 {
     if (!ch && identifier->a_void!=0) {
@@ -202,13 +202,13 @@ void NetHackQtMenuWindow::AddMenu(int glyph, const ANY_P* identifier,
     if (glyph!=NO_GLYPH) has_glyphs=true;
 }
 
-void NetHackQtMenuWindow::EndMenu(const QString& p)
+void LumaHackQtMenuWindow::EndMenu(const QString& p)
 {
     prompt.setText(p);
     promptstr = p;
 }
 
-int NetHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
+int LumaHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
 {
     QFont tablefont(qt_settings->normalFont());
     table->setFont(tablefont);
@@ -319,7 +319,7 @@ int NetHackQtMenuWindow::SelectMenu(int h, MENU_ITEM_P **menu_list)
     }
 }
 
-void NetHackQtMenuWindow::AddRow(int row, const MenuItem& mi)
+void LumaHackQtMenuWindow::AddRow(int row, const MenuItem& mi)
 {
     static const QColor colors[] = {
 	QColor(64, 64, 64),
@@ -430,7 +430,7 @@ void NetHackQtMenuWindow::AddRow(int row, const MenuItem& mi)
     }
 }
 
-void NetHackQtMenuWindow::WidenColumn(int column, int width)
+void LumaHackQtMenuWindow::WidenColumn(int column, int width)
 {
     // need to add a bit so the whole column displays
     width += 7;
@@ -439,7 +439,7 @@ void NetHackQtMenuWindow::WidenColumn(int column, int width)
     }
 }
 
-void NetHackQtMenuWindow::InputCount(char key)
+void LumaHackQtMenuWindow::InputCount(char key)
 {
     if (key == '\b')
     {
@@ -460,14 +460,14 @@ void NetHackQtMenuWindow::InputCount(char key)
 	prompt.setText("Count: " + countstr);
 }
 
-void NetHackQtMenuWindow::ClearCount(void)
+void LumaHackQtMenuWindow::ClearCount(void)
 {
     counting = false;
     prompt.setText(promptstr);
     countstr = "";
 }
 
-void NetHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
+void LumaHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
 {
     QString text = event->text();
 
@@ -500,7 +500,7 @@ void NetHackQtMenuWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMenuWindow::All()
+void LumaHackQtMenuWindow::All()
 {
     if (how != PICK_ANY)
         return;
@@ -513,7 +513,7 @@ void NetHackQtMenuWindow::All()
 	if (cb != NULL) cb->setChecked(true);
     }
 }
-void NetHackQtMenuWindow::ChooseNone()
+void LumaHackQtMenuWindow::ChooseNone()
 {
     if (how != PICK_ANY)
         return;
@@ -526,7 +526,7 @@ void NetHackQtMenuWindow::ChooseNone()
 	if (cb != NULL) cb->setChecked(false);
     }
 }
-void NetHackQtMenuWindow::Invert()
+void LumaHackQtMenuWindow::Invert()
 {
     if (how != PICK_ANY)
         return;
@@ -539,12 +539,12 @@ void NetHackQtMenuWindow::Invert()
 	if (cb != NULL) cb->setChecked(cb->checkState() == Qt::Unchecked);
     }
 }
-void NetHackQtMenuWindow::Search()
+void LumaHackQtMenuWindow::Search()
 {
     if (how == PICK_NONE)
         return;
 
-    NetHackQtStringRequestor requestor(this, "Search for:");
+    LumaHackQtStringRequestor requestor(this, "Search for:");
     char line[256];
     if (requestor.Get(line)) {
 	for (int i=0; i<itemcount; i++) {
@@ -553,7 +553,7 @@ void NetHackQtMenuWindow::Search()
 	}
     }
 }
-void NetHackQtMenuWindow::ToggleSelect(int i)
+void LumaHackQtMenuWindow::ToggleSelect(int i)
 {
     if (itemlist[i].Selectable()) {
 	QCheckBox *cb = dynamic_cast<QCheckBox *>(table->cellWidget(i, 1));
@@ -573,25 +573,25 @@ void NetHackQtMenuWindow::ToggleSelect(int i)
     }
 }
 
-void NetHackQtMenuWindow::cellToggleSelect(int i, int j)
+void LumaHackQtMenuWindow::cellToggleSelect(int i, int j)
 {
     ToggleSelect(i);
 }
 
-void NetHackQtMenuWindow::DoSelection(bool)
+void LumaHackQtMenuWindow::DoSelection(bool)
 {
     if (how == PICK_ONE) {
 	accept();
     }
 }
 
-bool NetHackQtMenuWindow::isSelected(int row)
+bool LumaHackQtMenuWindow::isSelected(int row)
 {
     QCheckBox *cb = dynamic_cast<QCheckBox *>(table->cellWidget(row, 1));
     return cb != NULL && cb->checkState() != Qt::Unchecked;
 }
 
-int NetHackQtMenuWindow::count(int row)
+int LumaHackQtMenuWindow::count(int row)
 {
     QTableWidgetItem *count = table->item(row, 0);
     if (count == NULL) return -1;
@@ -599,13 +599,13 @@ int NetHackQtMenuWindow::count(int row)
     return cstr.isEmpty() ? -1 : cstr.toInt();
 }
 
-NetHackQtTextWindow::NetHackQtTextWindow(QWidget *parent) :
+LumaHackQtTextWindow::LumaHackQtTextWindow(QWidget *parent) :
     QDialog(parent),
     use_rip(false),
     str_fixed(false),
     ok("Dismiss",this),
     search("Search",this),
-    lines(new NetHackQtTextListBox(this)),
+    lines(new LumaHackQtTextListBox(this)),
     rip(this)
 {
     ok.setDefault(true);
@@ -622,28 +622,28 @@ NetHackQtTextWindow::NetHackQtTextWindow(QWidget *parent) :
     vb->addWidget(lines);
 }
 
-void NetHackQtTextWindow::doUpdate()
+void LumaHackQtTextWindow::doUpdate()
 {
     update();
 }
 
 
-NetHackQtTextWindow::~NetHackQtTextWindow()
+LumaHackQtTextWindow::~LumaHackQtTextWindow()
 {
 
 }
 
-QWidget* NetHackQtTextWindow::Widget()
+QWidget* LumaHackQtTextWindow::Widget()
 {
     return this;
 }
 
-bool NetHackQtTextWindow::Destroy()
+bool LumaHackQtTextWindow::Destroy()
 {
     return !isVisible();
 }
 
-void NetHackQtTextWindow::UseRIP(int how, time_t when)
+void LumaHackQtTextWindow::UseRIP(int how, time_t when)
 {
 // Code from X11 windowport
 #define STONE_LINE_LEN 16    /* # chars that fit on one line */
@@ -704,14 +704,14 @@ static char** rip_line=0;
     use_rip=true;
 }
 
-void NetHackQtTextWindow::Clear()
+void LumaHackQtTextWindow::Clear()
 {
     lines->clear();
     use_rip=false;
     str_fixed=false;
 }
 
-void NetHackQtTextWindow::Display(bool block)
+void LumaHackQtTextWindow::Display(bool block)
 {
     if (str_fixed) {
 	lines->setFont(qt_settings->normalFixedFont());
@@ -744,15 +744,15 @@ void NetHackQtTextWindow::Display(bool block)
     exec();
 }
 
-void NetHackQtTextWindow::PutStr(int attr, const QString& text)
+void LumaHackQtTextWindow::PutStr(int attr, const QString& text)
 {
     str_fixed=str_fixed || text.contains("    ");
     lines->addItem(text);
 }
 
-void NetHackQtTextWindow::Search()
+void LumaHackQtTextWindow::Search()
 {
-    NetHackQtStringRequestor requestor(this, "Search for:");
+    LumaHackQtStringRequestor requestor(this, "Search for:");
     static char line[256]="";
     requestor.SetDefault(line);
     if (requestor.Get(line)) {
@@ -769,62 +769,62 @@ void NetHackQtTextWindow::Search()
     }
 }
 
-NetHackQtMenuOrTextWindow::NetHackQtMenuOrTextWindow(QWidget *parent_) :
+LumaHackQtMenuOrTextWindow::LumaHackQtMenuOrTextWindow(QWidget *parent_) :
     actual(0),
     parent(parent_)
 {
 }
 
-QWidget* NetHackQtMenuOrTextWindow::Widget()
+QWidget* LumaHackQtMenuOrTextWindow::Widget()
 {
     if (!actual) impossible("Widget called before we know if Menu or Text");
     return actual->Widget();
 }
 
 // Text
-void NetHackQtMenuOrTextWindow::Clear()
+void LumaHackQtMenuOrTextWindow::Clear()
 {
     if (!actual) impossible("Clear called before we know if Menu or Text");
     actual->Clear();
 }
-void NetHackQtMenuOrTextWindow::Display(bool block)
+void LumaHackQtMenuOrTextWindow::Display(bool block)
 {
     if (!actual) impossible("Display called before we know if Menu or Text");
     actual->Display(block);
 }
-bool NetHackQtMenuOrTextWindow::Destroy()
+bool LumaHackQtMenuOrTextWindow::Destroy()
 {
     if (!actual) impossible("Destroy called before we know if Menu or Text");
     return actual->Destroy();
 }
 
-void NetHackQtMenuOrTextWindow::PutStr(int attr, const QString& text)
+void LumaHackQtMenuOrTextWindow::PutStr(int attr, const QString& text)
 {
-    if (!actual) actual=new NetHackQtTextWindow(parent);
+    if (!actual) actual=new LumaHackQtTextWindow(parent);
     actual->PutStr(attr,text);
 }
 
 // Menu
-void NetHackQtMenuOrTextWindow::StartMenu()
+void LumaHackQtMenuOrTextWindow::StartMenu()
 {
-    if (!actual) actual=new NetHackQtMenuWindow(parent);
+    if (!actual) actual=new LumaHackQtMenuWindow(parent);
     actual->StartMenu();
 }
-void NetHackQtMenuOrTextWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
+void LumaHackQtMenuOrTextWindow::AddMenu(int glyph, const ANY_P* identifier, char ch, char gch, int attr,
 	const QString& str, bool presel)
 {
     if (!actual) impossible("AddMenu called before we know if Menu or Text");
     actual->AddMenu(glyph,identifier,ch,gch,attr,str,presel);
 }
-void NetHackQtMenuOrTextWindow::EndMenu(const QString& prompt)
+void LumaHackQtMenuOrTextWindow::EndMenu(const QString& prompt)
 {
     if (!actual) impossible("EndMenu called before we know if Menu or Text");
     actual->EndMenu(prompt);
 }
-int NetHackQtMenuOrTextWindow::SelectMenu(int how, MENU_ITEM_P **menu_list)
+int LumaHackQtMenuOrTextWindow::SelectMenu(int how, MENU_ITEM_P **menu_list)
 {
     if (!actual) impossible("SelectMenu called before we know if Menu or Text");
     return actual->SelectMenu(how,menu_list);
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

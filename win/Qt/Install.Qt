@@ -1,10 +1,10 @@
-Installing NetHack with a Qt or KDE interface
+Installing LumaHack with a Qt or KDE interface
 ---------------------------------------------
-$NHDT-Date: 1524689332 2018/04/25 20:48:52 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.11 $
+$NHDT-Date: 1524689332 2018/04/25 20:48:52 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.11 $
 # Copyright (c) 2004 by Warwick Allison
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
-This document describes the installation of NetHack with a Qt interface
+This document describes the installation of LumaHack with a Qt interface
 on UNIX/X11 or Mac OS X. This code should also work with Qt/Windows, but
 support for that is not currently official.
 
@@ -46,7 +46,7 @@ To use this code on UNIX (not Mac OS X):
    5. Follow all the instructions in ../../sys/unix/Install.unx for
       the remainder of the installation process.
 
-   6. Consider adding the lines below to your .nethackrc, as they are
+   6. Consider adding the lines below to your .lumahackrc, as they are
       likely to give the best interface for this window port:
 
         OPTIONS=name:player,number_pad,menustyle:partial,!time,showexp
@@ -65,15 +65,15 @@ extra functionality. To do so:
       the LFLAGS definition and $(WINKDELIB) to WINLIB.
 
    3. Some additional files here - knh-mini.xpm, knh.xpm, and
-      knethack.lnk are useful if you want to install "knethack" in
+      klumahack.lnk are useful if you want to install "klumahack" in
       the KDE games directory.  
 
-If you are using Qtopia, you can compile NetHack for that environment
+If you are using Qtopia, you can compile LumaHack for that environment
 with the following additional steps:
 
    1. First be sure that you can build a simple Qtopia application,
       such as the examples that ship with Qtopia. Do not attempt
-      something as challenging to compile as NetHack before you can
+      something as challenging to compile as LumaHack before you can
       already build a Qtopia application for your target device.
 
    2. If you are cross-compiling (eg. targetting an ARM-based handheld),
@@ -96,15 +96,15 @@ To use this code on Mac OS X:
 
    2. quite a number of changes are required to the Makefiles. They are
         slowly being made 'official', but for now they are all in the patch
-	nethack-macosx-qt.patch:
+	lumahack-macosx-qt.patch:
 
 	    cd ../..
-	    patch -p0 < win/Qt/nethack-macosx-qt.patch
+	    patch -p0 < win/Qt/lumahack-macosx-qt.patch
 
    3. Follow all the instructions in ../../sys/unix/Install.unx for
       the remainder of the installation process (basically run "make install").
 
-   4. Consider adding the lines below to a file called "NetHack Defaults",
+   4. Consider adding the lines below to a file called "LumaHack Defaults",
       in your "Library/Preferences" folder, as they are likely to give
       the best interface for this window port:
 

@@ -8,16 +8,16 @@
   <Import Project="default.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="NetHackProperties.props" />
+    <Import Project="LumaHackProperties.props" />
   </ImportGroup>
   <Import Project="console.props" />
   <Import Project="common.props" />

@@ -220,5 +220,5 @@ M-s	Sit down
 M-t	Turn undead
 M-T	Tip: empty a container
 M-u	Untrap something (trap, door, or chest)
-M-v	Print compile time options for this version of NetHack
+M-v	Print compile time options for this version of LumaHack
 M-w	Wipe off your face

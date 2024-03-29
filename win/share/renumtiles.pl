@@ -1,8 +1,8 @@
 #!/bin/perl
 #
-#  $NHDT-Date: 1524689313 2018/04/25 20:48:33 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.5 $
+#  $NHDT-Date: 1524689313 2018/04/25 20:48:33 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.5 $
 # Copyright (c) 2015 by Derek S. Ray
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 #
 
 sub bail($);
@@ -72,7 +72,7 @@ sub main::VERSION_MESSAGE()
 {
     my ($objglob, $optpackage, $ver, $switches) = @_;
     print <<"STARTHELP";
-renumtiles $ver -- tile-renumbering utility for NetHack
+renumtiles $ver -- tile-renumbering utility for LumaHack
 STARTHELP
 }
 

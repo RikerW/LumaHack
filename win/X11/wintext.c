@@ -1,6 +1,6 @@
-/* NetHack 3.6	wintext.c	$NHDT-Date: 1552422654 2019/03/12 20:30:54 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.18 $ */
+/* LumaHack 3.6	wintext.c	$NHDT-Date: 1552422654 2019/03/12 20:30:54 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.18 $ */
 /* Copyright (c) Dean Luick, 1992				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * File for dealing with text windows.
@@ -80,7 +80,7 @@ Cardinal *num_params;
 
 /*
  * Callback used for all text windows.  The window is poped down on any key
- * or button down event.  It is destroyed if the main nethack code is done
+ * or button down event.  It is destroyed if the main lumahack code is done
  * with it.
  */
 /*ARGSUSED*/

@@ -1,24 +1,24 @@
-         Copyright (c) NetHack Development Team 1990-2023
-         NetHack may be freely redistributed.  See license for details.
+         Copyright (c) LumaHack Development Team 1990-2023
+         LumaHack may be freely redistributed.  See license for details.
          ==============================================================
                   Instructions for compiling and installing
-                       NetHack 3.6 on a Windows system
+                       LumaHack 3.6 on a Windows system
                        (Windows 10/11 or later)
          ==============================================================
           Last revision: $NHDT-Date: 1575245156 2019/12/02 00:05:56 $
 
-Credit for the porting of NetHack to the Win32 Console Subsystem goes to
+Credit for the porting of LumaHack to the Win32 Console Subsystem goes to
 the NT Porting Team started by Michael Allison.
 
-Credit for the Win32 Graphical version of NetHack (aka "NetHack for
-Windows" or NetHackW) goes to Alex Kompel who initially developed and
+Credit for the Win32 Graphical version of LumaHack (aka "LumaHack for
+Windows" or LumaHackW) goes to Alex Kompel who initially developed and
 contributed the port.
 
 Alex Kompel, Dion Nicolaas, Yitzhak Sapir, Derek S. Ray, Michael Allison,
 Pasi Kallinen, Bart House, and Janet Walz contributed to the maintainance
-of the tty and graphical windows versions of NetHack 3.6.7.
+of the tty and graphical windows versions of LumaHack 3.6.7.
 
-You can build a TTY version of NetHack and a Windows Graphical
+You can build a TTY version of LumaHack and a Windows Graphical
 version.  You can use one of the following build environments:
 
   o A copy of Microsoft Visual Studio 2017 Community Edition or
@@ -35,11 +35,11 @@ version.  You can use one of the following build environments:
     Graphical version.
 
 /---------------------------------------------\
-|    Directories for a Win32 NetHack build    |
+|    Directories for a Win32 LumaHack build    |
 \---------------------------------------------/
 
 
-                 (NetHack-top) ----------------------(optional-pdcurses-top)
+                 (LumaHack-top) ----------------------(optional-pdcurses-top)
                        |                                        |
   ----------------------------------------------          --------------
   |     |     |        |      |     |          |          |            |
@@ -61,15 +61,15 @@ using a Make utility and a Makefile proceed to "Building Using Make".
 
 When using either Visual Studio 2017, you simply need to load the
 solution file within the IDE, build the solution and  run the version
-of NetHack you wish to run.
+of LumaHack you wish to run.
 
-The Visual Studio 2017 NetHack solution file can be found here:
-    win\win32\vs2017\NetHack.sln
+The Visual Studio 2017 LumaHack solution file can be found here:
+    win\win32\vs2017\LumaHack.sln
 
-You can use that same win\win32\vs2017\NetHack.sln with Visual Studio 2019,
+You can use that same win\win32\vs2017\LumaHack.sln with Visual Studio 2019,
 but you likely have to retarget the projects. The same would apply if you are
 trying to build using an even more recent version of Visual Studio as well.
-Note: If you already built NetHack previously with an older version of
+Note: If you already built LumaHack previously with an older version of
 Visual Studio, manually delete the following subfolders of win\win32\vs2017:
         <DIR>          obj
         <DIR>          symbols
@@ -101,19 +101,19 @@ using.  Change to the directory win\win32\vs2017 and run "build.bat".
  * Optional curses window-port support *
 
 Since 3.6.2, the community patch for a window-port that uses curses has been
-incorporated into the NetHack source code tree. That window-port, which
+incorporated into the LumaHack source code tree. That window-port, which
 evolved from work originally done by Karl Garrison, has been used in several
-NetHack variants and on nethack.alt.org and on www.hardfought.org/nethack/.
+LumaHack variants and on lumahack.alt.org and on www.hardfought.org/lumahack/.
 
 If you want to include the curses window-port support in your Visual Studio
 build, you will have to first obtain the PDCurses sources from
 https://github.com/wmcbrine/PDCurses
-and have them available prior to building NetHack. There are two ways to
+and have them available prior to building LumaHack. There are two ways to
 enable curses window-port support during the VS build: Either set the
 environment variable PDCURSES to a folder containing a PDCurses
 repository/source-tree
     OR
-Place the PDCurses folder alongside the NetHack source repository prior
+Place the PDCurses folder alongside the LumaHack source repository prior
 to proceeding with steps 1 through 5 above.
 
 
@@ -124,7 +124,7 @@ to proceeding with steps 1 through 5 above.
 --------------------------------------------------------------------------
 -- Beginning of prerequisite step --
 
-The first step in building either version of NetHack via Makefile is to
+The first step in building either version of LumaHack via Makefile is to
 execute sys\winnt\nhsetup.bat to move some files to their required locations.
 
 From the command prompt:
@@ -140,32 +140,32 @@ THE COMMAND LINE."
 -- end of prerequisite step --
 --------------------------------------------------------------------------
 
-Two different versions of NetHack will be built for Windows from the
+Two different versions of LumaHack will be built for Windows from the
 command line using the Makefile approach:
     A tty port utilizing the Win32 Console I/O subsystem, Console
-        NetHack;
-    A Win32 native port built on the Windows API, Graphical NetHack or
-        NetHackW.
+        LumaHack;
+    A Win32 native port built on the Windows API, Graphical LumaHack or
+        LumaHackW.
 
-The executable for Console NetHack will be named NetHack.exe. The
-executable for Graphical NetHack will be named NetHackW.exe. The
-Makefile configuration will build both; NetHackW.exe and NetHack.exe
+The executable for Console LumaHack will be named LumaHack.exe. The
+executable for Graphical LumaHack will be named LumaHackW.exe. The
+Makefile configuration will build both; LumaHackW.exe and LumaHack.exe
 will be able to use the same datafiles, save files and bones files.
 
-Since the last official release of NetHack, compilers and computer
+Since the last official release of LumaHack, compilers and computer
 architectures have evolved and you can now choose whether to build
 a 32-bit x86 version, or a 64-bit x64 version.  The default Makefile
 is set up for a 32-bit x86 version, but that's only because it will
 run on the most number of existing Windows environments.
 
-NetHack's save files and bones files in the 3.6.7 release have not yet
+LumaHack's save files and bones files in the 3.6.7 release have not yet
 evolved enough to allow them to interchange between the 32-bit version
 and the 64-bit version (or between different platforms). Hopefully
 that will change in an upcoming release.
 
 I. Dispelling the Myths:
 
-    Compiling NetHack for Windows is not as easy as it sounds, nor as hard
+    Compiling LumaHack for Windows is not as easy as it sounds, nor as hard
     as it looks, however it will behoove you to read this entire section
     through before beginning the task.
 
@@ -184,11 +184,11 @@ I. Dispelling the Myths:
     which comes with the MinGW package.
 
     You may find it useful to obtain copies of lex (flex) and yacc
-    (bison, or byacc).  While not strictly necessary to compile nethack,
+    (bison, or byacc).  While not strictly necessary to compile lumahack,
     they are required should you desire to make any changes to the level
     and dungeon compilers.
 
-II. To compile your copy of NetHack on a Windows machine:
+II. To compile your copy of LumaHack on a Windows machine:
 
 Setting Up
 
@@ -197,7 +197,7 @@ Setting Up
     all the necessary environment variables for the compiler environment
     are set correctly.
 
-    Change your current directory to the src subfolder of the nethack
+    Change your current directory to the src subfolder of the lumahack
     source tree.
         cd src
 
@@ -206,21 +206,21 @@ Setting Up
     For the GCC Makefile, add <mingw>\bin to your path, where <mingw>
     is your MinGW root directory.).
 
-    Change your current directory to src subfolder of the nethack
+    Change your current directory to src subfolder of the lumahack
     source tree.
         cd src
 
 2.  Since 3.6.2, the community patch for an optional curses window-port
-    has been incorporated into the NetHack source code tree. That
+    has been incorporated into the LumaHack source code tree. That
     window-port, which evolved from work originally done by Karl Garrison,
-    has been used in several NetHack variants and on nethack.alt.org and
-    on www.hardfought.org/nethack/. The optional curses window-port is
+    has been used in several LumaHack variants and on lumahack.alt.org and
+    on www.hardfought.org/lumahack/. The optional curses window-port is
     available for Windows, Mac OS X, and Unix (and also DOS).
 
     If you want to include the optional curses window-port support in your
     command line Makefile build, you will have to first obtain the
     PDCurses sources from https://github.com/wmcbrine/PDCurses
-    and have that source code tree available prior to building NetHack.
+    and have that source code tree available prior to building LumaHack.
     Edit your Makefile and in Question 4 of the four decisions you can
     make in there, uncomment these two lines:
         ADD_CURSES=Y
@@ -231,13 +231,13 @@ Setting Up
     the path shown.
 
 3.  Make sure all the necessary files are in the appropriate directory
-    structure.  You should have a main NetHack top directory with
+    structure.  You should have a main LumaHack top directory with
     subdirectories dat, doc, include, src, sys\share, sys\winnt,
     win\tty, util.
 
     If you are including the optional Curses window port into your
     build,then you will need the top of the PDCurses sources in a
-    folder parallel to the top of the NetHack folder (or you will need
+    folder parallel to the top of the LumaHack folder (or you will need
     to change the value of the PDCURSES_TOP macro in the Makefile to
     specify the appropriate location.
 
@@ -265,13 +265,13 @@ Compiling
 
     For the Visual Studio compiler, as mentioned above, you should now be
     at the command prompt to carry out the build and your current
-    directory should be the src subdirectory in the NetHack source tree.
+    directory should be the src subdirectory in the LumaHack source tree.
 
     In the src subdirectory, issue this command:
 	        nmake install
 
     For GCC:
-	Change your current directory to the NetHack src directory.
+	Change your current directory to the LumaHack src directory.
 	Issue this command:
         	mingw32-make -f Makefile.gcc install
 
@@ -283,11 +283,11 @@ Compiling
 
     In any case, it is likely that the command prompt window where you
     are doing the compiling will be occupied for a while.  If all goes
-    well, you will get an NetHack executable.
+    well, you will get an LumaHack executable.
 
 Notes:
 
-1.  To install an update of NetHack after changing something, change
+1.  To install an update of LumaHack after changing something, change
     your current directory to src and issue the appropriate command for
     your compiler:
 
@@ -317,17 +317,17 @@ Notes:
     Note that saved games are NOT compatible between the 32-bit and the
     64-bit versions at this time.
 
-NetHack.exe is the tty version. NetHackW.exe is the graphical version.
-Play NetHack.
+LumaHack.exe is the tty version. LumaHackW.exe is the graphical version.
+Play LumaHack.
 
 PROBLEMS
 
     If you discover a bug and wish to report it, or if you have comments
     or suggestions we recommend using our "Contact Us" web page at:
-        http://www.nethack.org/common/contact.html
+        http://www.lumahack.org/common/contact.html
 
     If you don't have access to the web, or you want to send us a patch
-    to the NetHack source code feel free to drop us a line c/o:
-        DevTeam (at) nethack.org
+    to the LumaHack source code feel free to drop us a line c/o:
+        DevTeam (at) lumahack.org
 
-    Happy NetHacking!
+    Happy LumaHacking!

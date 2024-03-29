@@ -1,6 +1,6 @@
-NetHack 3.6.0 Linux Elf
+LumaHack 3.6.0 Linux Elf
 
-$NHDT-Date: 1575245121 2019/12/02 00:05:21 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.25 $
+$NHDT-Date: 1575245121 2019/12/02 00:05:21 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.25 $
 
 This README provides the instructions for using the official Linux binary,
 system platform requirements, as well as steps used to create that binary.
@@ -17,14 +17,14 @@ The Linux binary package assumes that you have a user and a group named
 creating them first.
 
 Log in as or su to "root".  Then, cd /, gunzip and untar the package,
-preserving permissions to put the NetHack files in /usr/games/nethack and
-/usr/games/lib/nethackdir.   For example, if the package in in your
+preserving permissions to put the LumaHack files in /usr/games/lumahack and
+/usr/games/lib/lumahackdir.   For example, if the package in in your
 home directory you might perform these steps.
     % su
     # cd /
-    # tar xpvzf ~yourlogin/nethack-361-linux-X11.tgz
+    # tar xpvzf ~yourlogin/lumahack-361-linux-X11.tgz
 
-If you have old record and logfile entries from a previous NetHack version,
+If you have old record and logfile entries from a previous LumaHack version,
 you might want to save copies before they get overwritten by the new empty
 files; old saved games and bones files from 3.6.0 through to 3.6.5 should
 work with 3.6.6 but even older saved games and bones files from 3.4.3 will
@@ -32,34 +32,34 @@ not. If you are installing from the RPM, there is no need to save the old
 record and logfile; they are automatically preserved.
 
 In addition to data files for running the game, you will find other useful
-things in /usr/games/lib/nethackdir (such as a copy of this README :-).
+things in /usr/games/lib/lumahackdir (such as a copy of this README :-).
 
 The general documentation Guidebook.txt and the processed man pages
-nethack.txt and recover.txt should provide an introduction to the game.
+lumahack.txt and recover.txt should provide an introduction to the game.
 
-The sample config file called dot.nethackrc can be used by copying
-it to your home directory as .nethackrc and modifying it to your liking.
+The sample config file called dot.lumahackrc can be used by copying
+it to your home directory as .lumahackrc and modifying it to your liking.
 
 If you are running X11 copy the nh10.pcf and ibm.pcf font files from
-/usr/games/lib/nethackdir to a X11 fonts directory (such as
+/usr/games/lib/lumahackdir to a X11 fonts directory (such as
 /usr/X11/lib/X11/fonts/misc) and run "mkfontdir", then restart X
 windows to load them.  If you prefer to use the graphical tiles,
 add the following to your .Xdefaults or .Xresources file:
-	NetHack.tile_file: x11tiles
+	LumaHack.tile_file: x11tiles
 You may need to run "xrdb -merge $HOME/.Xdefaults" (or .Xresources) after
 doing this.
 
 The official Linux binary is set up to run setgid games, which allows
 multiple users on your system to play the game and prevents cheating by
-unprivileged users.  The usual default for NetHack is setuid games, but
-this causes problems with accessing .nethackrc on distributions with
+unprivileged users.  The usual default for LumaHack is setuid games, but
+this causes problems with accessing .lumahackrc on distributions with
 restrictive default security on home directories and users who don't know
 the tradeoffs of various permission settings.
 
 
 If you have problems, send us some email.
 
-nethack-bugs@nethack.org
+lumahack-bugs@lumahack.org
 
 Recommended steps:
 
@@ -109,7 +109,7 @@ System:  gcc-3.2, XFree86-libs-4.2.1, ncurses-5.2, glibc-2.3.2 (GLIBC_2.3)
 		  FILEPERM = 0664
 		  EXEPERM = 0755
 		  DIRPERM = 0775
-		  VARDATND = x11tiles NetHack.ad pet_mark.xbm rip.xpm
+		  VARDATND = x11tiles LumaHack.ad pet_mark.xbm rip.xpm
 
     make all; su; make install
 

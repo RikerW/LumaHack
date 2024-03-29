@@ -1,6 +1,6 @@
-/* NetHack 3.6  posixregex.c	$NHDT-Date: 1434446947 2015/06/16 09:29:07 $  $NHDT-Branch: master $:$NHDT-Revision: 1.5 $ */
+/* LumaHack 3.6  posixregex.c	$NHDT-Date: 1434446947 2015/06/16 09:29:07 $  $NHDT-Branch: master $:$NHDT-Revision: 1.5 $ */
 /* Copyright (c) Sean Hunt  2015.                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -14,7 +14,7 @@
  *   http://pubs.opengroup.org/onlinepubs/009696899/basedefs/xbd_chap09.html
  * If an implementation uses an alternate expression format, this should
  * be clearly noted; this will result in incompatibility of config files
- * when NetHack is compiled with that implementation.
+ * when LumaHack is compiled with that implementation.
  *
  * struct nhregex
  * The nhregex structure is an opaque structure type containing the

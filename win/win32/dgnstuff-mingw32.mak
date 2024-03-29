@@ -1,6 +1,6 @@
-# $NHDT-Date: 1524689255 2018/04/25 20:47:35 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.12 $
+# $NHDT-Date: 1524689255 2018/04/25 20:47:35 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.12 $
 # Copyright (c) 2018 by Michael Allison
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
 # Set all of these or none of them.
 #

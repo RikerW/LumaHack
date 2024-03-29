@@ -1,6 +1,6 @@
-/* NetHack 3.6	windmain.c	$NHDT-Date: 1543465755 2018/11/29 04:29:15 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.101 $ */
+/* LumaHack 3.6	windmain.c	$NHDT-Date: 1543465755 2018/11/29 04:29:15 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.101 $ */
 /* Copyright (c) Derek S. Ray, 2015. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* main.c - Windows */
 
@@ -28,7 +28,7 @@ char *FDECL(translate_path_variables, (const char *, char *));
 char *NDECL(exename);
 boolean NDECL(fakeconsole);
 void NDECL(freefakeconsole);
-E void FDECL(nethack_exit, (int));
+E void FDECL(lumahack_exit, (int));
 E char chosen_windowtype[WINTYPELEN];   /* flag.h */
 #if defined(MSWIN_GRAPHICS)
 E void NDECL(mswin_destroy_reg);
@@ -128,7 +128,7 @@ build_known_folder_path(
     if(!get_known_folder_path(folder_id, path, path_size))
         return FALSE;
 
-    strcat(path, "\\NetHack\\");
+    strcat(path, "\\LumaHack\\");
     create_directory(path);
     if (versioned) {
         Sprintf(eos(path), "%d.%d\\", 
@@ -193,7 +193,7 @@ test_portable_config(
     if (portable_device_path && folder_file_exists(executable_path, "sysconf")) {
         /*
            There is a sysconf file (not just sysconf.template) present in
-           the exe path, which is not the way NetHack is initially distributed,
+           the exe path, which is not the way LumaHack is initially distributed,
            so assume it means that the admin/installer wants to override
            something, perhaps set up for a fully-portable configuration that
            leaves no traces behind elsewhere on this computer's hard drive -
@@ -383,7 +383,7 @@ void copy_config_content()
         fqn_prefix[DATAPREFIX], CONFIG_TEMPLATE, FALSE);
 
     /* If the required early game file does not exist, copy it */
-    /* NOTE: We never replace .nethackrc or sysconf */
+    /* NOTE: We never replace .lumahackrc or sysconf */
     copy_file(fqn_prefix[CONFIGPREFIX], CONFIG_FILE,
         fqn_prefix[DATAPREFIX], CONFIG_TEMPLATE);
 }
@@ -452,14 +452,14 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
 # endif
 #endif
 
-    hname = "NetHack"; /* used for syntax messages */
+    hname = "LumaHack"; /* used for syntax messages */
 
 #if defined(CHDIR) && !defined(NOCWD_ASSUMPTIONS)
     /* Save current directory and make sure it gets restored when
      * the game is exited.
      */
     if (getcwd(orgdir, sizeof orgdir) == (char *) 0)
-        error("NetHack: current directory path too long");
+        error("LumaHack: current directory path too long");
 #endif
 
     set_default_prefix_locations(argv[0]);
@@ -486,7 +486,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     /* did something earlier flag a need to exit without starting a game? */
     if (windows_startup_state > 0) {
         raw_printf("Exiting.");
-        nethack_exit(EXIT_FAILURE);
+        lumahack_exit(EXIT_FAILURE);
     }
 
     /* Finished processing options, lock all directory paths */
@@ -496,7 +496,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     if (!validate_prefix_locations(failbuf)) {
         raw_printf("Some invalid directory locations were specified:\n\t%s\n",
                    failbuf);
-        nethack_exit(EXIT_FAILURE);
+        lumahack_exit(EXIT_FAILURE);
     }
 
     copy_hack_content();
@@ -506,7 +506,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
  */
     if (argc >= 1
         && !strcmpi(default_window_sys, "mswin")
-        && (strstri(argv[0], "nethackw.exe") || GUILaunched))
+        && (strstri(argv[0], "lumahackw.exe") || GUILaunched))
         iflags.windowtype_locked = TRUE;
     windowtype = default_window_sys;
 
@@ -514,9 +514,9 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
         pline("%s\n%s\n%s\n%s\n\n",
               copyright_banner_line(1), copyright_banner_line(2),
               copyright_banner_line(3), copyright_banner_line(4));
-        pline("NetHack was unable to open the required file \"%s\"",DLBFILE);
+        pline("LumaHack was unable to open the required file \"%s\"",DLBFILE);
         if (file_exists(DLBFILE))
-            pline("\nAre you perhaps trying to run NetHack within a zip utility?");
+            pline("\nAre you perhaps trying to run LumaHack within a zip utility?");
         error("dlb_init failure.");
     }
 
@@ -536,7 +536,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     u.uhp = 1; /* prevent RIP on early quits */
     u.ux = 0;  /* prevent flush_screen() */
 
-    nethack_enter(argc, argv);
+    lumahack_enter(argc, argv);
     iflags.use_background_glyph = FALSE;
     if (WINDOWPORT("mswin"))
         iflags.use_background_glyph = TRUE;
@@ -565,7 +565,7 @@ _CrtSetReportFile(_CRT_ASSERT, _CRTDBG_FILE_STDERR);*/
     Sprintf(lock, "%s", encodedfnamebuf);
     /* regularize(lock); */ /* we encode now, rather than substitute */
     if (getlock() == 0)
-        nethack_exit(EXIT_SUCCESS);
+        lumahack_exit(EXIT_SUCCESS);
 
     /* Set up level 0 file to keep the game state.
      */
@@ -633,7 +633,7 @@ attempt_restore:
         //	iflags.debug_fuzzer = TRUE;
 
         moveloop(resuming);
-    nethack_exit(EXIT_SUCCESS);
+    lumahack_exit(EXIT_SUCCESS);
     /*NOTREACHED*/
     return 0;
 }
@@ -650,14 +650,14 @@ char *argv[];
      */
     if (argc > 1) {
         if (argcheck(argc, argv, ARG_VERSION) == 2)
-            nethack_exit(EXIT_SUCCESS);
+            lumahack_exit(EXIT_SUCCESS);
 
         if (argcheck(argc, argv, ARG_SHOWPATHS) == 2) {
             iflags.initoptions_noterminate = TRUE;
             initoptions();
             iflags.initoptions_noterminate = FALSE;
             reveal_paths();
-            nethack_exit(EXIT_SUCCESS);
+            lumahack_exit(EXIT_SUCCESS);
         }
         if (argcheck(argc, argv, ARG_DEBUG) == 1) {
             argc--;
@@ -697,18 +697,18 @@ char *argv[];
 #endif
                 prscore(argc, argv);
 
-                nethack_exit(EXIT_SUCCESS);
+                lumahack_exit(EXIT_SUCCESS);
             }
             if (GUILaunched) {
                 if (!strncmpi(argv[1], "-clearreg", 6)) { /* clear registry */
                     mswin_destroy_reg();
-                    nethack_exit(EXIT_SUCCESS);
+                    lumahack_exit(EXIT_SUCCESS);
                 }
             }
             /* Don't initialize the full window system just to print usage */
             if (!strncmp(argv[1], "-?", 2) || !strncmp(argv[1], "/?", 2)) {
                 nhusage();
-                nethack_exit(EXIT_SUCCESS);
+                lumahack_exit(EXIT_SUCCESS);
             }
         }
     }
@@ -799,7 +799,7 @@ char *argv[];
         /* FALL THROUGH */
         case '?':
             nhusage();
-            nethack_exit(EXIT_SUCCESS);
+            lumahack_exit(EXIT_SUCCESS);
         }
     }
 }
@@ -1151,7 +1151,7 @@ getlock()
         unlock_file(HLOCK);
         Sprintf(oops, "Cannot open %s", fq_lock);
         raw_print(oops);
-        nethack_exit(EXIT_FAILURE);
+        lumahack_exit(EXIT_FAILURE);
     }
 
     (void) nhclose(fd);

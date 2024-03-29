@@ -1,8 +1,8 @@
-# NetHack 3.6	quest.txt	$NHDT-Date: 1505170340 2017/09/11 22:52:20 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.34 $
+# LumaHack 3.6	quest.txt	$NHDT-Date: 1505170340 2017/09/11 22:52:20 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.34 $
 #	Copyright (c) 1991 by M. Stephenson
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 #
-#	The quest text file for NetHack 3.4
+#	The quest text file for LumaHack 3.4
 #
 #	These are the "standard" message numbers from qtext.h.  All class
 #	dialogue must have at least these entries.

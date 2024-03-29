@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4key.cpp -- a key buffer
 
@@ -18,17 +18,17 @@
 #include <QtGui/QtGui>
 #include "qt4key.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtKeyBuffer::NetHackQtKeyBuffer() :
+LumaHackQtKeyBuffer::LumaHackQtKeyBuffer() :
     in(0), out(0)
 {
 }
 
-bool NetHackQtKeyBuffer::Empty() const { return in==out; }
-bool NetHackQtKeyBuffer::Full() const { return (in+1)%maxkey==out; }
+bool LumaHackQtKeyBuffer::Empty() const { return in==out; }
+bool LumaHackQtKeyBuffer::Full() const { return (in+1)%maxkey==out; }
 
-void NetHackQtKeyBuffer::Put(int k, int a, int state)
+void LumaHackQtKeyBuffer::Put(int k, int a, int state)
 {
     if ( Full() ) return;	// Safety
     key[in]=k;
@@ -36,17 +36,17 @@ void NetHackQtKeyBuffer::Put(int k, int a, int state)
     in=(in+1)%maxkey;
 }
 
-void NetHackQtKeyBuffer::Put(char a)
+void LumaHackQtKeyBuffer::Put(char a)
 {
     Put(0,a,0);
 }
 
-void NetHackQtKeyBuffer::Put(const char* str)
+void LumaHackQtKeyBuffer::Put(const char* str)
 {
     while (*str) Put(*str++);
 }
 
-int NetHackQtKeyBuffer::GetKey()
+int LumaHackQtKeyBuffer::GetKey()
 {
     if ( Empty() ) return 0;
     int r=TopKey();
@@ -54,7 +54,7 @@ int NetHackQtKeyBuffer::GetKey()
     return r;
 }
 
-int NetHackQtKeyBuffer::GetAscii()
+int LumaHackQtKeyBuffer::GetAscii()
 {
     if ( Empty() ) return 0; // Safety
     int r=TopAscii();
@@ -62,7 +62,7 @@ int NetHackQtKeyBuffer::GetAscii()
     return r;
 }
 
-Qt::KeyboardModifiers NetHackQtKeyBuffer::GetState()
+Qt::KeyboardModifiers LumaHackQtKeyBuffer::GetState()
 {
     if ( Empty() ) return 0;
     Qt::KeyboardModifiers r=TopState();
@@ -70,22 +70,22 @@ Qt::KeyboardModifiers NetHackQtKeyBuffer::GetState()
     return r;
 }
 
-int NetHackQtKeyBuffer::TopKey() const
+int LumaHackQtKeyBuffer::TopKey() const
 {
     if ( Empty() ) return 0;
     return key[out];
 }
 
-int NetHackQtKeyBuffer::TopAscii() const
+int LumaHackQtKeyBuffer::TopAscii() const
 {
     if ( Empty() ) return 0;
     return ascii[out];
 }
 
-Qt::KeyboardModifiers NetHackQtKeyBuffer::TopState() const
+Qt::KeyboardModifiers LumaHackQtKeyBuffer::TopState() const
 {
     if ( Empty() ) return 0;
     return state[out];
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

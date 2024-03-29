@@ -1,6 +1,6 @@
-/* NetHack 3.6    giftiles.c    $NHDT-Date: 1457358406 2016/03/07 13:46:46 $ $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.0 $ */
+/* LumaHack 3.6    giftiles.c    $NHDT-Date: 1457358406 2016/03/07 13:46:46 $ $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.0 $ */
 /* Copyright (c) Ray Chason, 2016. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /* giftiles.c -- read a tile map in GIF format */
 /* Reference: GIF specification,, retrieved from

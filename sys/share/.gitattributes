@@ -1,5 +1,5 @@
 Makefile.* NHSUBST
-NetHack.cnf NHSUBST
+LumaHack.cnf NHSUBST
 termcap NH_header=no
 dgn_comp.h NH_header=no
 lev_comp.h NH_header=no
@@ -14,8 +14,8 @@ pcmain.c	NH_filestag=(file_for_MSDOS,_OS/2,_Amiga,_and_Atari_versions_-_untested
 pcsys.c		NH_filestag=(file%s_for_MSDOS,_OS/2_and_Atari_versions_-_tested_on_MSDOS_for_3.6.6_via_partial_cross-compile_only)
 pcunix.c	NH_filestag=>pcsys.c
 
-NetHack.cnf	NH_filestag=(file_for_MSDOS,_OS/2,_and_Atari_versions_-_untested_for_3.6.6)
-pctty.c		NH_filestag=>NetHack.cnf
+LumaHack.cnf	NH_filestag=(file_for_MSDOS,_OS/2,_and_Atari_versions_-_untested_for_3.6.6)
+pctty.c		NH_filestag=>LumaHack.cnf
 
 ioctl.c		NH_filestag=(file%s_for_UNIX_and_Be_versions)
 unixtty.c	NH_filestag=>ioctl.c

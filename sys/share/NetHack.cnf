@@ -1,7 +1,7 @@
-#	NetHack Copyright (c) NetHack PC Development Team 1993 - 2006
-#	NetHack may be freely redistributed.  See license for details.
+#	LumaHack Copyright (c) LumaHack PC Development Team 1993 - 2006
+#	LumaHack may be freely redistributed.  See license for details.
 #
-# $NHDT-Date: 1524684112 2018/04/25 19:21:52 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.12 $
+# $NHDT-Date: 1524684112 2018/04/25 19:21:52 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.12 $
 #
 # A '#' at the beginning of a line means the rest of the line is a comment.
 #
@@ -16,20 +16,20 @@
 # *** OPTIONS ***
 #
 # The three options on this line should be used for most setups.  
-# If your machine isn't very IBM-compatible, and NetHack doesn't work, 
+# If your machine isn't very IBM-compatible, and LumaHack doesn't work, 
 # try commenting out this line.
 OPTIONS=rawio,BIOS,symset:IBMGraphics_2,roguesymset:RogueEpyx
 
 # Here is a suggested symbol set from Michael Feir, 
-# for use by blind NetHack players
+# for use by blind LumaHack players
 #OPTIONS=symset:NHAccess,roguesymset:NHAccess
 
 # To use VGA graphical tiles on an MS-DOS PC with VGA or better,uncomment 
 # this:
 #OPTIONS=video:autodetect
 
-# Some versions of NetHack use the pc speaker to play the notes given when
-# playing music instruments in NetHack.  To use this feature, if available,
+# Some versions of LumaHack use the pc speaker to play the notes given when
+# playing music instruments in LumaHack.  To use this feature, if available,
 # uncomment the following line:
 #OPTIONS=soundcard:autodetect
 
@@ -73,37 +73,37 @@ OPTIONS=time,noshowexp,number_pad:2,lit_corridor
 # *** LOCATIONS ***
 # Some platforms allow you to change the location where various things are kept.
 # IMPORTANT: If you change any of these locations, the directories they
-# point at must exist.  NetHack will not create them for you.
+# point at must exist.  LumaHack will not create them for you.
 #
 # The default location for everything.
 # Note: On Windows HACKDIR defaults to the location 
-#       of the NetHack.exe or NetHackw.exe file so
+#       of the LumaHack.exe or LumaHackw.exe file so
 #       setting HACKDIR below to override that is 
 #       not usually necessary or recommended.
-#HACKDIR=c:\games\nethack
+#HACKDIR=c:\games\lumahack
 #
 # The location that level files in progress are stored (default=HACKDIR, writeable)
-#LEVELDIR=c:\nethack\levels
+#LEVELDIR=c:\lumahack\levels
 #
 # The location where saved games are kept (default=HACKDIR, writeable)
-#SAVEDIR=c:\nethack\save
+#SAVEDIR=c:\lumahack\save
 #
 # The location that bones files are kept (default=HACKDIR, writeable)
-#BONESDIR=c:\nethack\save
+#BONESDIR=c:\lumahack\save
 #
 # The location that file synchronization locks are stored (default=HACKDIR, writeable)
-#LOCKDIR=c:\nethack\levels
+#LOCKDIR=c:\lumahack\levels
 #
 # The location that a record of game aborts and self-diagnosed game problems
 # is kept (default=HACKDIR, writeable)
-#TROUBLEDIR=c:\nethack\trouble
+#TROUBLEDIR=c:\lumahack\trouble
 #
 
 # ================================================
 # DEC Rainbow/ANSI line-drawing character set:
 #
 # If you have compiled with TERMLIB, merely set the DECgraphics option as
-# above.  NetHack will then switch into the VTxxx line-drawing character set
+# above.  LumaHack will then switch into the VTxxx line-drawing character set
 # (aka ANSI ruling character set '0') for dungeon characters.  If you don't
 # like the selections, you can make up your own via the SYMBOLS keyword,
 # adding 128 to the value of any line-drawing character you want to use.

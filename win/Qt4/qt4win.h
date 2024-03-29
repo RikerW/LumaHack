@@ -1,11 +1,11 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
-// Qt Binding for NetHack 3.4
+// Qt Binding for LumaHack 3.4
 //
 // Unfortunately, this doesn't use Qt as well as I would like,
-// primarily because NetHack is fundamentally a getkey-type
+// primarily because LumaHack is fundamentally a getkey-type
 // program rather than being event driven (hence the ugly key
 // and click buffer rather), but also because this is my first
 // major application of Qt.
@@ -14,12 +14,12 @@
 #ifndef qt4win_h
 #define qt4win_h
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtWindow {
+class LumaHackQtWindow {
 public:
-	NetHackQtWindow();
-	virtual ~NetHackQtWindow();
+	LumaHackQtWindow();
+	virtual ~LumaHackQtWindow();
 
 	virtual QWidget* Widget() =0;
 
@@ -44,6 +44,6 @@ public:
 	int nhid;
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

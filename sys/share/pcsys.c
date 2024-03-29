@@ -1,6 +1,6 @@
-/* NetHack 3.6	pcsys.c	$NHDT-Date: 1524689500 2018/04/25 20:51:40 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.31 $ */
+/* LumaHack 3.6	pcsys.c	$NHDT-Date: 1524689500 2018/04/25 20:51:40 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.31 $ */
 /*      Copyright (c) 2012 by Michael Allison              */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  *  System related functions for MSDOS, OS/2, TOS
@@ -29,9 +29,9 @@
 #endif
 
 #if defined(MICRO) || defined(OS2)
-void FDECL(nethack_exit, (int));
+void FDECL(lumahack_exit, (int));
 #else
-#define nethack_exit exit
+#define lumahack_exit exit
 #endif
 STATIC_DCL void NDECL(msexit);
 
@@ -84,7 +84,7 @@ dosh()
     if ((comspec = getcomspec())) {
 #ifndef TOS /* TOS has a variety of shells */
         suspend_nhwindows(
-            "To return to NetHack, enter \"exit\" at the system prompt.\n");
+            "To return to LumaHack, enter \"exit\" at the system prompt.\n");
 #else
 #if defined(MSDOS) && defined(NO_TERMS)
         grmode = iflags.grmode;
@@ -261,7 +261,7 @@ playwoRAMdisk()
         c = 'y';
     if (c != 'y') {
         settty("Be seeing you...\n");
-        nethack_exit(EXIT_SUCCESS);
+        lumahack_exit(EXIT_SUCCESS);
     }
     set_lock_and_bones();
     return;
@@ -479,7 +479,7 @@ const char *name, *mode;
 
 #if defined(MICRO) || defined(OS2)
 void
-nethack_exit(code)
+lumahack_exit(code)
 int code;
 {
     msexit();

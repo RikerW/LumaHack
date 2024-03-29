@@ -1,6 +1,6 @@
-/* NetHack 3.6	muse.c	$NHDT-Date: 1561053256 2019/06/20 17:54:16 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.97 $ */
+/* LumaHack 3.6	muse.c	$NHDT-Date: 1561053256 2019/06/20 17:54:16 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.97 $ */
 /*      Copyright (C) 1990 by Ken Arromdee                         */
-/* NetHack may be freely redistributed.  See license for details.  */
+/* LumaHack may be freely redistributed.  See license for details.  */
 
 /*
  * Monster item usage routines.

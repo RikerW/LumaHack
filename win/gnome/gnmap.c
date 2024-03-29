@@ -1,7 +1,7 @@
-/* NetHack 3.6	gnmap.c	$NHDT-Date: 1432512806 2015/05/25 00:13:26 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
+/* LumaHack 3.6	gnmap.c	$NHDT-Date: 1432512806 2015/05/25 00:13:26 $  $NHDT-Branch: master $:$NHDT-Revision: 1.10 $ */
 /* Copyright (C) 1998 by Erik Andersen <andersee@debian.org> */
 /* Copyright (C) 1998 by Anthony Taylor <tonyt@ptialaska.net> */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "gnmap.h"
 #include "gnglyph.h"
@@ -39,11 +39,11 @@ static void ghack_map_window_zoom(GtkAdjustment *adj, gpointer data);
 
 /* The following XPM is the artwork of Warwick Allison
  * <warwick@troll.no>.  It has been borrowed from
- * the most excellent NetHackQt, until such time as
+ * the most excellent LumaHackQt, until such time as
  * we can come up with something better.
  *
- * More information about NetHackQt can be had from:
- * http://www.troll.no/~warwick/nethack/
+ * More information about LumaHackQt can be had from:
+ * http://www.troll.no/~warwick/lumahack/
  */
 
 /* XPM */

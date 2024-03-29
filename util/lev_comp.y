@@ -1,7 +1,7 @@
 %{
-/* NetHack 3.6  lev_comp.y	$NHDT-Date: 1543371691 2018/11/28 02:21:31 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.22 $ */
+/* LumaHack 3.6  lev_comp.y	$NHDT-Date: 1543371691 2018/11/28 02:21:31 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.22 $ */
 /*      Copyright (c) 1989 by Jean-Christophe Collet */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This file contains the Level Compiler code
@@ -26,7 +26,7 @@
 #include "sp_lev.h"
 
 #define ERR             (-1)
-/* many types of things are put in chars for transference to NetHack.
+/* many types of things are put in chars for transference to LumaHack.
  * since some systems will use signed chars, limit everybody to the
  * same number for portability.
  */

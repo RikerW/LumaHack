@@ -1,10 +1,10 @@
-/* NetHack 3.6	console.rc	$NHDT-Date: 1601668518 2020/10/02 19:55:18 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.14 $ */
+/* LumaHack 3.6	console.rc	$NHDT-Date: 1601668518 2020/10/02 19:55:18 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.14 $ */
 /* Copyright (c) Yitzhak Sapir, 2002. 					*/
-/* NetHack may be freely redistributed.  See license for details. 	*/
+/* LumaHack may be freely redistributed.  See license for details. 	*/
 
 #include "windows.h"
 
-1 ICON DISCARDABLE "NetHack.ICO"
+1 ICON DISCARDABLE "LumaHack.ICO"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -28,13 +28,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "NetHack for Windows - TTY Interface\0"
+            VALUE "FileDescription", "LumaHack for Windows - TTY Interface\0"
             VALUE "FileVersion", "3.6.7\0"
-            VALUE "InternalName", "NetHack\0"
+            VALUE "InternalName", "LumaHack\0"
             VALUE "LegalCopyright", "Copyright (C) 1985 - 2023.  By Stichting Mathematisch Centrum and M. Stephenson.  See license for details.\0"
-            VALUE "OriginalFilename", "NetHack.exe\0"
+            VALUE "OriginalFilename", "LumaHack.exe\0"
             VALUE "PrivateBuild", "050102\0"
-            VALUE "ProductName", "NetHack\0"
+            VALUE "ProductName", "LumaHack\0"
             VALUE "ProductVersion", "3.6.7\0"
         END
     END

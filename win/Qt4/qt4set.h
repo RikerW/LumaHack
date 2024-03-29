@@ -1,23 +1,23 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4set.h -- the Qt settings
 
 #ifndef QT4SET_H
 #define QT4SET_H
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtGlyphs;
+class LumaHackQtGlyphs;
 
-class NetHackQtSettings : public QDialog {
+class LumaHackQtSettings : public QDialog {
 	Q_OBJECT
 public:
 	// Size of window - used to decide default sizes
-	NetHackQtSettings(int width, int height);
+	LumaHackQtSettings(int width, int height);
 
-	NetHackQtGlyphs& glyphs();
+	LumaHackQtGlyphs& glyphs();
 	const QFont& normalFont();
 	const QFont& normalFixedFont();
 	const QFont& largeFont();
@@ -45,15 +45,15 @@ private:
 
 	QFont normal, normalfixed, large;
 
-	NetHackQtGlyphs* theglyphs;
+	LumaHackQtGlyphs* theglyphs;
 
 private slots:
 	void resizeTiles();
 	void changedFont();
 };
 
-extern NetHackQtSettings* qt_settings;
+extern LumaHackQtSettings* qt_settings;
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

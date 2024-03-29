@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4yndlg.cpp -- yes/no dialog
 
@@ -27,21 +27,21 @@
 extern int qt_compact_mode;
 // end temporary
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain(QWidget *);
 // end temporary
 
-NetHackQtYnDialog::NetHackQtYnDialog(QWidget *parent,const QString& q,const char* ch,char df) :
+LumaHackQtYnDialog::LumaHackQtYnDialog(QWidget *parent,const QString& q,const char* ch,char df) :
     QDialog(parent),
     question(q), choices(ch), def(df),
     keypress('\033')
 {
-    setWindowTitle("NetHack: Question");
+    setWindowTitle("LumaHack: Question");
 }
 
-char NetHackQtYnDialog::Exec()
+char LumaHackQtYnDialog::Exec()
 {
     QString ch(QString::fromLatin1(choices));
     int ch_per_line=6;
@@ -216,7 +216,7 @@ char NetHackQtYnDialog::Exec()
     }
 }
 
-void NetHackQtYnDialog::keyPressEvent(QKeyEvent* event)
+void LumaHackQtYnDialog::keyPressEvent(QKeyEvent* event)
 {
     // Don't want QDialog's Return/Esc behaviour
     //RLC ...or do we?
@@ -236,9 +236,9 @@ void NetHackQtYnDialog::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtYnDialog::doneItem(int i)
+void LumaHackQtYnDialog::doneItem(int i)
 {
     done(i+1000);
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

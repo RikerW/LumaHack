@@ -1,13 +1,13 @@
 #
 # Nethack configuration file.
-# $NHDT-Date: 1524689294 2018/04/25 20:48:14 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.7 $
+# $NHDT-Date: 1524689294 2018/04/25 20:48:14 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.7 $
 # Copyright (c) 2015 by Kenneth Lorber, Kensington, Maryland
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
 #
-# Naming this file $(HOME)/.nethackrc (for UNIX) or setting the environment
+# Naming this file $(HOME)/.lumahackrc (for UNIX) or setting the environment
 # variable NETHACKOPTIONS to point to its full path name elsewhere tells
-# NetHack to use X11 windowing and fonts (provided the executable was
+# LumaHack to use X11 windowing and fonts (provided the executable was
 # compiled with that ability).
 #
 #
@@ -17,7 +17,7 @@ OPTIONS=verbose,news,fruit:pineapple
 OPTIONS=dogname:Dhairrhuwyth
 OPTIONS=catname:Ghisteslwchlohm
 #
-# The graphics symbols mappings below are for NetHack 3.4.  NetHack 3.6
+# The graphics symbols mappings below are for LumaHack 3.4.  LumaHack 3.6
 # uses a new scheme, but this file has not been updated.
 #
 # There are 17 object symbols and various graphics symbols.

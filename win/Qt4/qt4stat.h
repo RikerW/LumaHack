@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4stat.h -- bindings between the Qt 4 interface and the main code
 
@@ -10,12 +10,12 @@
 #include "qt4win.h"
 #include "qt4icon.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtStatusWindow : QWidget, public NetHackQtWindow {
+class LumaHackQtStatusWindow : QWidget, public LumaHackQtWindow {
 	Q_OBJECT
 public:
-	NetHackQtStatusWindow();
+	LumaHackQtStatusWindow();
 
 	virtual QWidget* Widget();
 
@@ -58,35 +58,35 @@ private:
 
 	QPixmap p_encumber[5];
 
-	NetHackQtLabelledIcon name;
-	NetHackQtLabelledIcon dlevel;
+	LumaHackQtLabelledIcon name;
+	LumaHackQtLabelledIcon dlevel;
 
-	NetHackQtLabelledIcon str;
-	NetHackQtLabelledIcon dex;
-	NetHackQtLabelledIcon con;
-	NetHackQtLabelledIcon intel;
-	NetHackQtLabelledIcon wis;
-	NetHackQtLabelledIcon cha;
+	LumaHackQtLabelledIcon str;
+	LumaHackQtLabelledIcon dex;
+	LumaHackQtLabelledIcon con;
+	LumaHackQtLabelledIcon intel;
+	LumaHackQtLabelledIcon wis;
+	LumaHackQtLabelledIcon cha;
 
-	NetHackQtLabelledIcon gold;
-	NetHackQtLabelledIcon hp;
-	NetHackQtLabelledIcon power;
-	NetHackQtLabelledIcon ac;
-	NetHackQtLabelledIcon level;
-	NetHackQtLabelledIcon exp;
-	NetHackQtLabelledIcon align;
+	LumaHackQtLabelledIcon gold;
+	LumaHackQtLabelledIcon hp;
+	LumaHackQtLabelledIcon power;
+	LumaHackQtLabelledIcon ac;
+	LumaHackQtLabelledIcon level;
+	LumaHackQtLabelledIcon exp;
+	LumaHackQtLabelledIcon align;
 
-	NetHackQtLabelledIcon time;
-	NetHackQtLabelledIcon score;
+	LumaHackQtLabelledIcon time;
+	LumaHackQtLabelledIcon score;
 
-	NetHackQtLabelledIcon hunger;
-	NetHackQtLabelledIcon confused;
-	NetHackQtLabelledIcon sick_fp;
-	NetHackQtLabelledIcon sick_il;
-	NetHackQtLabelledIcon blind;
-	NetHackQtLabelledIcon stunned;
-	NetHackQtLabelledIcon hallu;
-	NetHackQtLabelledIcon encumber;
+	LumaHackQtLabelledIcon hunger;
+	LumaHackQtLabelledIcon confused;
+	LumaHackQtLabelledIcon sick_fp;
+	LumaHackQtLabelledIcon sick_il;
+	LumaHackQtLabelledIcon blind;
+	LumaHackQtLabelledIcon stunned;
+	LumaHackQtLabelledIcon hallu;
+	LumaHackQtLabelledIcon encumber;
 
 	QFrame hline1;
 	QFrame hline2;
@@ -101,6 +101,6 @@ private:
 	void checkTurnEvents();
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

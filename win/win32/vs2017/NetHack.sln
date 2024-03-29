@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetHackW", "NetHackW.vcxproj", "{CEC5D360-8804-454F-8591-002184C23499}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LumaHackW", "LumaHackW.vcxproj", "{CEC5D360-8804-454F-8591-002184C23499}"
 	ProjectSection(ProjectDependencies) = postProject
 		{93F10526-209E-41D7-BBEA-775787876895} = {93F10526-209E-41D7-BBEA-775787876895}
 		{63F9B82B-F589-4082-ABE5-D4F0682050AB} = {63F9B82B-F589-4082-ABE5-D4F0682050AB}
@@ -52,7 +52,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uudecode", "uudecode.vcxpro
 		{BA3DD34C-04B7-40D0-B373-9329AA9E8945} = {BA3DD34C-04B7-40D0-B373-9329AA9E8945}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetHack", "NetHack.vcxproj", "{609BC774-C6F8-4B2B-AA7D-5B3D0EA95751}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LumaHack", "LumaHack.vcxproj", "{609BC774-C6F8-4B2B-AA7D-5B3D0EA95751}"
 	ProjectSection(ProjectDependencies) = postProject
 		{93F10526-209E-41D7-BBEA-775787876895} = {93F10526-209E-41D7-BBEA-775787876895}
 		{63F9B82B-F589-4082-ABE5-D4F0682050AB} = {63F9B82B-F589-4082-ABE5-D4F0682050AB}
@@ -66,10 +66,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PDCurses", "PDCurses.vcxpro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{477BF231-48E0-4312-AA12-9D8576215489}"
 	ProjectSection(SolutionItems) = preProject
-		NetHackProperties.props = NetHackProperties.props
+		LumaHackProperties.props = LumaHackProperties.props
 	EndProjectSection
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "NetHackPackage", "NetHackPackage.wapproj", "{6838EC9D-F25D-4779-9CD7-2EDB61E49429}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "LumaHackPackage", "LumaHackPackage.wapproj", "{6838EC9D-F25D-4779-9CD7-2EDB61E49429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

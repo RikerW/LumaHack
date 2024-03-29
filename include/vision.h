@@ -1,6 +1,6 @@
-/* NetHack 3.6	vision.h	$NHDT-Date: 1559994624 2019/06/08 11:50:24 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.10 $ */
+/* LumaHack 3.6	vision.h	$NHDT-Date: 1559994624 2019/06/08 11:50:24 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.10 $ */
 /* Copyright (c) Dean Luick, with acknowledgements to Dave Cohrs, 1990. */
-/* NetHack may be freely redistributed.  See license for details.	*/
+/* LumaHack may be freely redistributed.  See license for details.	*/
 
 #ifndef VISION_H
 #define VISION_H

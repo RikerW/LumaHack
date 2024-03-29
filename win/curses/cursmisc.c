@@ -1,7 +1,7 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* NetHack 3.6 cursmisc.c */
+/* LumaHack 3.6 cursmisc.c */
 /* Copyright (c) Karl Garrison, 2010. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "curses.h"
 #include "hack.h"
@@ -55,7 +55,7 @@ curses_read_char()
     ch = curses_convert_keys(ch);
 
     if (ch == 0) {
-        ch = '\033'; /* map NUL to ESC since nethack doesn't expect NUL */
+        ch = '\033'; /* map NUL to ESC since lumahack doesn't expect NUL */
     }
 #if defined(ALT_0) && defined(ALT_9)    /* PDCurses, maybe others */
     if ((ch >= ALT_0) && (ch <= ALT_9)) {
@@ -74,13 +74,13 @@ curses_read_char()
 #ifdef KEY_RESIZE
     /* Handle resize events via get_nh_event, not this code */
     if (ch == KEY_RESIZE) {
-        ch = C('r'); /* NetHack doesn't know what to do with KEY_RESIZE */
+        ch = C('r'); /* LumaHack doesn't know what to do with KEY_RESIZE */
     }
 #endif
 
     if (counting && !isdigit(ch)) { /* Dismiss count window if necissary */
         curses_count_window(NULL);
-        curses_refresh_nethack_windows();
+        curses_refresh_lumahack_windows();
     }
 
     return ch;
@@ -432,7 +432,7 @@ curses_str_remainder(const char *str, int width, int line_num)
 }
 
 
-/* Determine if the given NetHack winid is a menu window */
+/* Determine if the given LumaHack winid is a menu window */
 
 boolean
 curses_is_menu(winid wid)
@@ -445,7 +445,7 @@ curses_is_menu(winid wid)
 }
 
 
-/* Determine if the given NetHack winid is a text window */
+/* Determine if the given LumaHack winid is a text window */
 
 boolean
 curses_is_text(winid wid)
@@ -457,14 +457,14 @@ curses_is_text(winid wid)
     }
 }
 
-/* convert nethack's DECgraphics encoding into curses' ACS encoding */
+/* convert lumahack's DECgraphics encoding into curses' ACS encoding */
 int
 curses_convert_glyph(int ch, int glyph)
 {
     /* The DEC line drawing characters use 0x5f through 0x7e instead
        of the much more straightforward 0x60 through 0x7f, possibly
        because 0x7f is effectively a control character (Rubout);
-       nethack ORs 0x80 to flag line drawing--that's stripped below */
+       lumahack ORs 0x80 to flag line drawing--that's stripped below */
     static int decchars[33]; /* for chars 0x5f through 0x7f (95..127) */
 
     ch &= 0xff; /* 0..255 only */
@@ -492,13 +492,13 @@ curses_convert_glyph(int ch, int glyph)
 
     /* one-time initialization; some ACS_x aren't compile-time constant */
     if (!decchars[0]) {
-        /* [0] is non-breakable space; irrelevant to nethack */
+        /* [0] is non-breakable space; irrelevant to lumahack */
         decchars[0x5f - 0x5f] = ' '; /* NBSP */
         decchars[0x60 - 0x5f] = ACS_DIAMOND; /* [1] solid diamond */
         decchars[0x61 - 0x5f] = ACS_CKBOARD; /* [2] checkerboard */
         /* several "line drawing" characters are two-letter glyphs
            which could be substituted for invisible control codes;
-           nethack's DECgraphics doesn't use any of them so we're
+           lumahack's DECgraphics doesn't use any of them so we're
            satisfied with conversion to a simple letter;
            [3] "HT" as one char, with small raised upper case H over
            and/or preceding small lowered upper case T */
@@ -525,13 +525,13 @@ curses_convert_glyph(int ch, int glyph)
         /* [21] left tee, 'H' with right-hand vertical stroke removed;
            note on left vs right:  the ACS name (also DEC's terminal
            documentation) refers to vertical bar rather than cross stroke,
-           nethack's left/right refers to direction of the cross stroke */
+           lumahack's left/right refers to direction of the cross stroke */
         decchars[0x74 - 0x5f] = ACS_LTEE; /* ACS left tee, NH right tee */
         /* [22] right tee, 'H' with left-hand vertical stroke removed */
         decchars[0x75 - 0x5f] = ACS_RTEE; /* ACS right tee, NH left tee */
         /* [23] bottom tee, '+' with lower half of vertical stroke
            removed and remaining stroke pointed up (unside-down 'T');
-           nethack is inconsistent here--unlike with left/right, its
+           lumahack is inconsistent here--unlike with left/right, its
            bottom/top directions agree with ACS */
         decchars[0x76 - 0x5f] = ACS_BTEE; /* bottom tee, stroke up */
         /* [24] top tee, '+' with upper half of vertical stroke removed */
@@ -578,7 +578,7 @@ curses_convert_glyph(int ch, int glyph)
 }
 
 
-/* Move text cursor to specified coordinates in the given NetHack window */
+/* Move text cursor to specified coordinates in the given LumaHack window */
 
 void
 curses_move_cursor(winid wid, int x, int y)
@@ -730,7 +730,7 @@ curses_get_count(int first_digit)
 }
 
 
-/* Convert the given NetHack text attributes into the format curses
+/* Convert the given LumaHack text attributes into the format curses
    understands, and return that format mask. */
 
 int
@@ -852,7 +852,7 @@ char *outbuf;
     return &outbuf[1];
 }
 
-/* Convert special keys into values that NetHack can understand.
+/* Convert special keys into values that LumaHack can understand.
 Currently this is limited to arrow keys, but this may be expanded. */
 
 int

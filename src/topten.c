@@ -1,7 +1,7 @@
-/* NetHack 3.6	topten.c	$NHDT-Date: 1450451497 2015/12/18 15:11:37 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.44 $ */
+/* LumaHack 3.6	topten.c	$NHDT-Date: 1450451497 2015/12/18 15:11:37 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.44 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 #include "dlb.h"
@@ -817,7 +817,7 @@ boolean so;
     if (t1->plrace[0] != '?')
         Sprintf(eos(linebuf), "-%s", t1->plrace);
     /* Printing of gender and alignment is intentional.  It has been
-     * part of the NetHack Geek Code, and illustrates a proper way to
+     * part of the LumaHack Geek Code, and illustrates a proper way to
      * specify a character from the command line.
      */
     Sprintf(eos(linebuf), "-%s", t1->plgend);

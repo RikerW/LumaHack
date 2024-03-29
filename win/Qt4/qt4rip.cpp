@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4rip.cpp -- tombstone window
 
@@ -23,9 +23,9 @@
 #include "qt4bind.h"
 #include "qt4str.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-QPixmap* NetHackQtRIP::pixmap=0;
+QPixmap* LumaHackQtRIP::pixmap=0;
 
 // Debian uses a separate PIXMAPDIR
 #ifndef PIXMAPDIR
@@ -42,11 +42,11 @@ tryload(QPixmap& pm, const char* fn)
     if (!pm.load(fn)) {
 	QString msg;
 	msg.sprintf("Cannot load \"%s\"", fn);
-	QMessageBox::warning(NetHackQtBind::mainWidget(), "IO Error", msg);
+	QMessageBox::warning(LumaHackQtBind::mainWidget(), "IO Error", msg);
     }
 }
 
-NetHackQtRIP::NetHackQtRIP(QWidget* parent) :
+LumaHackQtRIP::LumaHackQtRIP(QWidget* parent) :
     QWidget(parent)
 {
     if (!pixmap) {
@@ -58,18 +58,18 @@ NetHackQtRIP::NetHackQtRIP(QWidget* parent) :
     setFont(QFont("times",12)); // XXX may need to be configurable
 }
 
-void NetHackQtRIP::setLines(char** l, int n)
+void LumaHackQtRIP::setLines(char** l, int n)
 {
     line=l;
     riplines=n;
 }
 
-QSize NetHackQtRIP::sizeHint() const
+QSize LumaHackQtRIP::sizeHint() const
 {
     return pixmap->size();
 }
 
-void NetHackQtRIP::paintEvent(QPaintEvent* event)
+void LumaHackQtRIP::paintEvent(QPaintEvent* event)
 {
     if ( riplines ) {
 	int pix_x=(width()-pixmap->width())/2;
@@ -91,4 +91,4 @@ void NetHackQtRIP::paintEvent(QPaintEvent* event)
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

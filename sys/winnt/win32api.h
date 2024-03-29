@@ -1,10 +1,10 @@
-/* NetHack 3.6	win32api.h	$NHDT-Date: 1432516197 2015/05/25 01:09:57 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
-/* Copyright (c) NetHack PC Development Team 1996                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack 3.6	win32api.h	$NHDT-Date: 1432516197 2015/05/25 01:09:57 $  $NHDT-Branch: master $:$NHDT-Revision: 1.11 $ */
+/* Copyright (c) LumaHack PC Development Team 1996                 */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * This header file is used to clear up some discrepencies with Visual C
- * header files & NetHack before including windows.h, so all NetHack
+ * header files & LumaHack before including windows.h, so all LumaHack
  * files should include "win32api.h" rather than <windows.h>.
  */
 #ifndef WIN32API

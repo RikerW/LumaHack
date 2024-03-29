@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4delay.cpp -- implement a delay
 
@@ -18,25 +18,25 @@
 #include <QtGui/QtGui>
 #include "qt4delay.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // RLC Can we use QTimer::single_shot for this?
-NetHackQtDelay::NetHackQtDelay(int ms) :
+LumaHackQtDelay::LumaHackQtDelay(int ms) :
     msec(ms), m_timer(0), m_loop(this)
 {
 }
 
-void NetHackQtDelay::wait()
+void LumaHackQtDelay::wait()
 {
     m_timer = startTimer(msec);
     m_loop.exec();
 }
 
-void NetHackQtDelay::timerEvent(QTimerEvent* timer)
+void LumaHackQtDelay::timerEvent(QTimerEvent* timer)
 {
     m_loop.exit();
     killTimer(m_timer);
     m_timer = 0;
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4menu.cpp -- a menu or text-list widget
 
@@ -10,11 +10,11 @@
 #include "qt4win.h"
 #include "qt4rip.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-class NetHackQtTextListBox : public QListWidget {
+class LumaHackQtTextListBox : public QListWidget {
 public:
-    NetHackQtTextListBox(QWidget* parent = NULL) : QListWidget(parent) { }
+    LumaHackQtTextListBox(QWidget* parent = NULL) : QListWidget(parent) { }
 
     int TotalWidth() const
     {
@@ -35,9 +35,9 @@ public:
     virtual QSize sizeHint() const;
 };
 
-class NetHackQtMenuListBox : public QTableWidget {
+class LumaHackQtMenuListBox : public QTableWidget {
 public:
-    NetHackQtMenuListBox(QWidget* parent = NULL) : QTableWidget(parent) { }
+    LumaHackQtMenuListBox(QWidget* parent = NULL) : QTableWidget(parent) { }
 
     int TotalWidth() const;
     int TotalHeight() const;
@@ -45,11 +45,11 @@ public:
     virtual QSize sizeHint() const;
 };
 
-class NetHackQtMenuWindow : public QDialog, public NetHackQtWindow {
+class LumaHackQtMenuWindow : public QDialog, public LumaHackQtWindow {
 	Q_OBJECT
 public:
-	NetHackQtMenuWindow(QWidget *parent = NULL);
-	~NetHackQtMenuWindow();
+	LumaHackQtMenuWindow(QWidget *parent = NULL);
+	~LumaHackQtMenuWindow();
 
 	virtual QWidget* Widget();
 
@@ -122,11 +122,11 @@ private:
 	void WidenColumn(int column, int width);
 };
 
-class NetHackQtTextWindow : public QDialog, public NetHackQtWindow {
+class LumaHackQtTextWindow : public QDialog, public LumaHackQtWindow {
 	Q_OBJECT
 public:
-	NetHackQtTextWindow(QWidget *parent = NULL);
-	~NetHackQtTextWindow();
+	LumaHackQtTextWindow(QWidget *parent = NULL);
+	~LumaHackQtTextWindow();
 
 	virtual QWidget* Widget();
 
@@ -148,18 +148,18 @@ private:
 
 	QPushButton ok;
 	QPushButton search;
-	NetHackQtTextListBox* lines;
+	LumaHackQtTextListBox* lines;
 
-	NetHackQtRIP rip;
+	LumaHackQtRIP rip;
 };
 
-class NetHackQtMenuOrTextWindow : public NetHackQtWindow {
+class LumaHackQtMenuOrTextWindow : public LumaHackQtWindow {
 private:
-	NetHackQtWindow* actual;
+	LumaHackQtWindow* actual;
     QWidget *parent;
 
 public:
-	NetHackQtMenuOrTextWindow(QWidget *parent = NULL);
+	LumaHackQtMenuOrTextWindow(QWidget *parent = NULL);
 
 	virtual QWidget* Widget();
 
@@ -178,6 +178,6 @@ public:
 
 };
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4
 
 #endif

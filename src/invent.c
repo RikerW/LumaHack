@@ -1,7 +1,7 @@
-/* NetHack 3.6	invent.c	$NHDT-Date: 1674864733 2023/01/28 00:12:13 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.268 $ */
+/* LumaHack 3.6	invent.c	$NHDT-Date: 1674864733 2023/01/28 00:12:13 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.268 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Derek S. Ray, 2015. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
 
@@ -1279,7 +1279,7 @@ static const char *const currencies[] = {
     "sporebuck",             /* Spore */
     "Triganic Pu",           /* The Hitchhiker's Guide to the Galaxy */
     "woolong",               /* Cowboy Bebop */
-    "zorkmid",               /* Zork, NetHack */
+    "zorkmid",               /* Zork, LumaHack */
 };
 
 const char *

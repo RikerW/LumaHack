@@ -3,7 +3,7 @@
  * to compiling $(PDCWINCON)\pdcscrn.c in the
  * PDCurses distribution.
  *
- * We don't want to ask NetHack builders to
+ * We don't want to ask LumaHack builders to
  * modify the PDCurses distribution in any way,
  * we only ask that they have the original intact
  * PDCurses source tree available during the build.

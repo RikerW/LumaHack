@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4main.cpp -- the main window
 
@@ -44,7 +44,7 @@ extern char *qt_tileheight;
 extern int qt_compact_mode;
 // end temporary
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 // temporary
 void centerOnMain( QWidget* w );
@@ -440,14 +440,14 @@ aboutMsg()
 {
     QString msg;
     msg.sprintf(
-    "Qt NetHack is a version of NetHack built\n"
+    "Qt LumaHack is a version of LumaHack built\n"
 #ifdef KDE
     "using KDE and the Qt GUI toolkit.\n"
 #else
     "using the Qt GUI toolkit.\n"
 #endif
     "This is version %d.%d.%d\n\n"
-    "Homepage:\n     http://trolls.troll.no/warwick/nethack/\n\n"
+    "Homepage:\n     http://trolls.troll.no/warwick/lumahack/\n\n"
 #ifdef KDE
 	  "KDE:\n     http://www.kde.org\n"
 #endif
@@ -479,7 +479,7 @@ public:
     }
 };
 
-NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
+LumaHackQtMainWindow::LumaHackQtMainWindow(LumaHackQtKeyBuffer& ks) :
     message(0), map(0), status(0), invusage(0),
     hsplitter(0), vsplitter(0),
     keysink(ks), dirkey(0)
@@ -490,11 +490,11 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
     addToolBar(toolbar);
     menubar = menuBar();
 
-    QCoreApplication::setOrganizationName("The NetHack DevTeam");
-    QCoreApplication::setOrganizationDomain("nethack.org");
-    QCoreApplication::setApplicationName("NetHack");
+    QCoreApplication::setOrganizationName("The LumaHack DevTeam");
+    QCoreApplication::setOrganizationDomain("lumahack.org");
+    QCoreApplication::setApplicationName("LumaHack");
 
-    setWindowTitle("Qt NetHack");
+    setWindowTitle("Qt LumaHack");
     if ( qt_compact_mode )
 	setWindowIcon(QIcon(QPixmap(nh_icon_small)));
     else
@@ -614,8 +614,8 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
     int i;
 
     game->addAction("Qt settings...",this,SLOT(doQtSettings(bool)));
-    help->addAction("About Qt NetHack...",this,SLOT(doAbout(bool)));
-    //help->addAction("NetHack Guidebook...",this,SLOT(doGuidebook(bool)));
+    help->addAction("About Qt LumaHack...",this,SLOT(doAbout(bool)));
+    //help->addAction("LumaHack Guidebook...",this,SLOT(doGuidebook(bool)));
     help->addSeparator();
 
     for (i=0; item[i].menu; i++) {
@@ -764,18 +764,18 @@ NetHackQtMainWindow::NetHackQtMainWindow(NetHackQtKeyBuffer& ks) :
 	vsplitter = new QSplitter(Qt::Vertical);
 	setCentralWidget(vsplitter);
 	hsplitter = new QSplitter(Qt::Horizontal);
-	invusage = new NetHackQtInvUsageWindow(hsplitter);
+	invusage = new LumaHackQtInvUsageWindow(hsplitter);
 	vsplitter->insertWidget(0, hsplitter);
 	hsplitter->insertWidget(1, invusage);
     }
 }
 
-void NetHackQtMainWindow::zoomMap()
+void LumaHackQtMainWindow::zoomMap()
 {
     qt_settings->toggleGlyphSize();
 }
 
-void NetHackQtMainWindow::raiseMap()
+void LumaHackQtMainWindow::raiseMap()
 {
     if ( stack->currentWidget() == map->Widget() ) {
 	zoomMap();
@@ -784,23 +784,23 @@ void NetHackQtMainWindow::raiseMap()
     }
 }
 
-void NetHackQtMainWindow::raiseMessages()
+void LumaHackQtMainWindow::raiseMessages()
 {
     stack->setCurrentWidget(message->Widget());
 }
 
-void NetHackQtMainWindow::raiseStatus()
+void LumaHackQtMainWindow::raiseStatus()
 {
     stack->setCurrentWidget(status->Widget());
 }
 
 #if 0 // RLC this isn't used
-class NetHackMimeSourceFactory : public Q3MimeSourceFactory {
+class LumaHackMimeSourceFactory : public Q3MimeSourceFactory {
 public:
     const QMimeSource* data(const QString& abs_name) const
     {
 	const QMimeSource* r = 0;
-	if ( (NetHackMimeSourceFactory*)this == Q3MimeSourceFactory::defaultFactory() )
+	if ( (LumaHackMimeSourceFactory*)this == Q3MimeSourceFactory::defaultFactory() )
 	    r = Q3MimeSourceFactory::data(abs_name);
 	else
 	    r = Q3MimeSourceFactory::defaultFactory()->data(abs_name);
@@ -825,29 +825,29 @@ public:
 };
 #endif
 
-void NetHackQtMainWindow::doMenuItem(QAction *action)
+void LumaHackQtMainWindow::doMenuItem(QAction *action)
 {
     doKeys(action->data().toString());
 }
 
-void NetHackQtMainWindow::doQtSettings(bool)
+void LumaHackQtMainWindow::doQtSettings(bool)
 {
     centerOnMain(qt_settings);
     qt_settings->show();
 }
 
-void NetHackQtMainWindow::doAbout(bool)
+void LumaHackQtMainWindow::doAbout(bool)
 {
-    QMessageBox::about(this, "About Qt NetHack", aboutMsg());
+    QMessageBox::about(this, "About Qt LumaHack", aboutMsg());
 }
 
 #if 0 // RLC this isn't used
-void NetHackQtMainWindow::doGuidebook(bool)
+void LumaHackQtMainWindow::doGuidebook(bool)
 {
     QDialog dlg(this);
     new QVBoxLayout(&dlg);
     Q3TextBrowser browser(&dlg);
-    NetHackMimeSourceFactory ms;
+    LumaHackMimeSourceFactory ms;
     browser.setMimeSourceFactory(&ms);
     browser.setSource(QDir::currentPath()+"/Guidebook.html");
     if ( qt_compact_mode )
@@ -856,13 +856,13 @@ void NetHackQtMainWindow::doGuidebook(bool)
 }
 #endif
 
-void NetHackQtMainWindow::doKeys(const QString& k)
+void LumaHackQtMainWindow::doKeys(const QString& k)
 {
     keysink.Put(k.toLatin1().constData());
     qApp->exit();
 }
 
-void NetHackQtMainWindow::AddMessageWindow(NetHackQtMessageWindow* window)
+void LumaHackQtMainWindow::AddMessageWindow(LumaHackQtMessageWindow* window)
 {
     message=window;
     if (!qt_compact_mode)
@@ -870,12 +870,12 @@ void NetHackQtMainWindow::AddMessageWindow(NetHackQtMessageWindow* window)
     ShowIfReady();
 }
 
-NetHackQtMessageWindow * NetHackQtMainWindow::GetMessageWindow()
+LumaHackQtMessageWindow * LumaHackQtMainWindow::GetMessageWindow()
 {
     return message;
 }
 
-void NetHackQtMainWindow::AddMapWindow(NetHackQtMapWindow2* window)
+void LumaHackQtMainWindow::AddMapWindow(LumaHackQtMapWindow2* window)
 {
 
     map=window;
@@ -885,7 +885,7 @@ void NetHackQtMainWindow::AddMapWindow(NetHackQtMapWindow2* window)
     connect(map,SIGNAL(resized()),this,SLOT(layout()));
 }
 
-void NetHackQtMainWindow::AddStatusWindow(NetHackQtStatusWindow* window)
+void LumaHackQtMainWindow::AddStatusWindow(LumaHackQtStatusWindow* window)
 {
     status=window;
     if (!qt_compact_mode)
@@ -893,7 +893,7 @@ void NetHackQtMainWindow::AddStatusWindow(NetHackQtStatusWindow* window)
     ShowIfReady();
 }
 
-void NetHackQtMainWindow::RemoveWindow(NetHackQtWindow* window)
+void LumaHackQtMainWindow::RemoveWindow(LumaHackQtWindow* window)
 {
     if (window==status) {
 	status=0;
@@ -907,20 +907,20 @@ void NetHackQtMainWindow::RemoveWindow(NetHackQtWindow* window)
     }
 }
 
-void NetHackQtMainWindow::updateInventory()
+void LumaHackQtMainWindow::updateInventory()
 {
     if ( invusage )
 	invusage->repaint();
 }
 
-void NetHackQtMainWindow::fadeHighlighting()
+void LumaHackQtMainWindow::fadeHighlighting()
 {
     if (status) {
 	status->fadeHighlighting();
     }
 }
 
-void NetHackQtMainWindow::layout()
+void LumaHackQtMainWindow::layout()
 {
 #if 0
     if ( qt_compact_mode )
@@ -944,7 +944,7 @@ void NetHackQtMainWindow::layout()
 #endif
 }
 
-void NetHackQtMainWindow::resizeEvent(QResizeEvent*)
+void LumaHackQtMainWindow::resizeEvent(QResizeEvent*)
 {
     layout();
 #ifdef KDE
@@ -952,7 +952,7 @@ void NetHackQtMainWindow::resizeEvent(QResizeEvent*)
 #endif
 }
 
-void NetHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
+void LumaHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
 {
     if ( dirkey ) {
 	doKeys(QString(QChar(dirkey)));
@@ -961,7 +961,7 @@ void NetHackQtMainWindow::keyReleaseEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMainWindow::keyPressEvent(QKeyEvent* event)
+void LumaHackQtMainWindow::keyPressEvent(QKeyEvent* event)
 {
     // Global key controls
 
@@ -1027,18 +1027,18 @@ void NetHackQtMainWindow::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void NetHackQtMainWindow::closeEvent(QCloseEvent* e)
+void LumaHackQtMainWindow::closeEvent(QCloseEvent* e)
 {
     if ( program_state.something_worth_saving ) {
-	switch ( QMessageBox::information( this, "NetHack",
-	    "This will end your NetHack session",
+	switch ( QMessageBox::information( this, "LumaHack",
+	    "This will end your LumaHack session",
 	    "&Save", "&Cancel", 0, 1 ) )
 	{
 	    case 0:
 		// See dosave() function
 		if (dosave0()) {
 		    u.uhp = -1;
-		    NetHackQtBind::qt_exit_nhwindows(0);
+		    LumaHackQtBind::qt_exit_nhwindows(0);
 		    nh_terminate(EXIT_SUCCESS);
 		}
 		break;
@@ -1050,7 +1050,7 @@ void NetHackQtMainWindow::closeEvent(QCloseEvent* e)
     }
 }
 
-void NetHackQtMainWindow::ShowIfReady()
+void LumaHackQtMainWindow::ShowIfReady()
 {
     if (message && map && status) {
 	QWidget* hp = qt_compact_mode ? static_cast<QWidget *>(stack) : static_cast<QWidget *>(hsplitter);
@@ -1073,4 +1073,4 @@ void NetHackQtMainWindow::ShowIfReady()
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

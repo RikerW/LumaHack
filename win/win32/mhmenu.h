@@ -1,6 +1,6 @@
-/* NetHack 3.6	mhmenu.h	$NHDT-Date: 1432512813 2015/05/25 00:13:33 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
+/* LumaHack 3.6	mhmenu.h	$NHDT-Date: 1432512813 2015/05/25 00:13:33 $  $NHDT-Branch: master $:$NHDT-Revision: 1.9 $ */
 /* Copyright (C) 2001 by Alex Kompel 	 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef MSWINMenuWindow_h
 #define MSWINMenuWindow_h

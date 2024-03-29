@@ -44,7 +44,7 @@ V     history   display game history
 Control characters are depicted as '^' followed by a letter.  Depress Ctrl
 or Control like a shift key then type the letter.  Control characters are
 case-insensitive; ^D is the same as ^d, Ctrl+d is same as Ctrl+Shift+d.
-There are a few non-letter control characters; nethack uses ^[ as a synonym
+There are a few non-letter control characters; lumahack uses ^[ as a synonym
 for Escape (or vice versa) but none of the others.
 
 Game commands:

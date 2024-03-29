@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4inv.cpp -- inventory usage window
 // This is at the top center of the main window
@@ -26,15 +26,15 @@ extern "C" {
 #include "qt4glyph.h"
 #include "qt4set.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtInvUsageWindow::NetHackQtInvUsageWindow(QWidget* parent) :
+LumaHackQtInvUsageWindow::LumaHackQtInvUsageWindow(QWidget* parent) :
     QWidget(parent)
 {
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
-void NetHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int y, bool canbe)
+void LumaHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int y, bool canbe)
 {
     short int glyph;
     if (nhobj)
@@ -47,7 +47,7 @@ void NetHackQtInvUsageWindow::drawWorn(QPainter& painter, obj* nhobj, int x, int
     qt_settings->glyphs().drawCell(painter,glyph,x,y);
 }
 
-void NetHackQtInvUsageWindow::paintEvent(QPaintEvent*)
+void LumaHackQtInvUsageWindow::paintEvent(QPaintEvent*)
 {
     //  012
     //
@@ -86,7 +86,7 @@ void NetHackQtInvUsageWindow::paintEvent(QPaintEvent*)
     painter.end();
 }
 
-QSize NetHackQtInvUsageWindow::sizeHint(void) const
+QSize LumaHackQtInvUsageWindow::sizeHint(void) const
 {
     if (qt_settings) {
 	return QSize(qt_settings->glyphs().width()*3,
@@ -96,4 +96,4 @@ QSize NetHackQtInvUsageWindow::sizeHint(void) const
     }
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

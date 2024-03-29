@@ -1,6 +1,6 @@
-/* NetHack 3.6	winprocs.h	$NHDT-Date: 1683746775 2023/05/10 19:26:15 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.53 $ */
+/* LumaHack 3.6	winprocs.h	$NHDT-Date: 1683746775 2023/05/10 19:26:15 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.53 $ */
 /* Copyright (c) David Cohrs, 1992				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef WINPROCS_H
 #define WINPROCS_H

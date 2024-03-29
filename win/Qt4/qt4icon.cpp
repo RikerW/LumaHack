@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4icon.cpp -- a labelled icon
 
@@ -21,9 +21,9 @@
 #endif
 #include "qt4icon.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l) :
+LumaHackQtLabelledIcon::LumaHackQtLabelledIcon(QWidget* parent, const char* l) :
     QWidget(parent),
     low_is_good(false),
     prev_value(-123),
@@ -34,7 +34,7 @@ NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l) :
     initHighlight();
 }
 
-NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l, const QPixmap& i) :
+LumaHackQtLabelledIcon::LumaHackQtLabelledIcon(QWidget* parent, const char* l, const QPixmap& i) :
     QWidget(parent),
     low_is_good(false),
     prev_value(-123),
@@ -46,13 +46,13 @@ NetHackQtLabelledIcon::NetHackQtLabelledIcon(QWidget* parent, const char* l, con
     initHighlight();
 }
 
-void NetHackQtLabelledIcon::initHighlight()
+void LumaHackQtLabelledIcon::initHighlight()
 {
     hl_good = "QLabel { background-color : green; color : white }";
     hl_bad  = "QLabel { background-color : red  ; color : white }";
 }
 
-void NetHackQtLabelledIcon::setLabel(const QString& t, bool lower)
+void LumaHackQtLabelledIcon::setLabel(const QString& t, bool lower)
 {
     if (!label) {
 	label=new QLabel(this);
@@ -65,7 +65,7 @@ void NetHackQtLabelledIcon::setLabel(const QString& t, bool lower)
     }
 }
 
-void NetHackQtLabelledIcon::setLabel(const QString& t, long v, long cv, const QString& tail)
+void LumaHackQtLabelledIcon::setLabel(const QString& t, long v, long cv, const QString& tail)
 {
     QString buf;
     if (v==NoNum) {
@@ -77,25 +77,25 @@ void NetHackQtLabelledIcon::setLabel(const QString& t, long v, long cv, const QS
     prev_value=cv;
 }
 
-void NetHackQtLabelledIcon::setLabel(const QString& t, long v, const QString& tail)
+void LumaHackQtLabelledIcon::setLabel(const QString& t, long v, const QString& tail)
 {
     setLabel(t,v,v,tail);
 }
 
-void NetHackQtLabelledIcon::setIcon(const QPixmap& i)
+void LumaHackQtLabelledIcon::setIcon(const QPixmap& i)
 {
     if (icon) icon->setPixmap(i);
     else { icon=new QLabel(this); icon->setPixmap(i); resizeEvent(0); }
     icon->resize(i.width(),i.height());
 }
 
-void NetHackQtLabelledIcon::setFont(const QFont& f)
+void LumaHackQtLabelledIcon::setFont(const QFont& f)
 {
     QWidget::setFont(f);
     if (label) label->setFont(f);
 }
 
-void NetHackQtLabelledIcon::show()
+void LumaHackQtLabelledIcon::show()
 {
 #if QT_VERSION >= 300
     if (isHidden())
@@ -106,7 +106,7 @@ void NetHackQtLabelledIcon::show()
     QWidget::show();
 }
 
-QSize NetHackQtLabelledIcon::sizeHint() const
+QSize LumaHackQtLabelledIcon::sizeHint() const
 {
     QSize iconsize, textsize;
 
@@ -121,7 +121,7 @@ QSize NetHackQtLabelledIcon::sizeHint() const
 	iconsize.height() + textsize.height());
 }
 
-QSize NetHackQtLabelledIcon::minimumSizeHint() const
+QSize LumaHackQtLabelledIcon::minimumSizeHint() const
 {
     QSize iconsize, textsize;
 
@@ -136,17 +136,17 @@ QSize NetHackQtLabelledIcon::minimumSizeHint() const
 	iconsize.height() + textsize.height());
 }
 
-void NetHackQtLabelledIcon::highlightWhenChanging()
+void LumaHackQtLabelledIcon::highlightWhenChanging()
 {
     turn_count=0;
 }
 
-void NetHackQtLabelledIcon::lowIsGood()
+void LumaHackQtLabelledIcon::lowIsGood()
 {
     low_is_good=true;
 }
 
-void NetHackQtLabelledIcon::dissipateHighlight()
+void LumaHackQtLabelledIcon::dissipateHighlight()
 {
     if (turn_count>0) {
 	turn_count--;
@@ -155,7 +155,7 @@ void NetHackQtLabelledIcon::dissipateHighlight()
     }
 }
 
-void NetHackQtLabelledIcon::highlight(const QString& hl)
+void LumaHackQtLabelledIcon::highlight(const QString& hl)
 {
     if (label) { // Surely it is?!
 	if (turn_count>=0) {
@@ -169,14 +169,14 @@ void NetHackQtLabelledIcon::highlight(const QString& hl)
     }
 }
 
-void NetHackQtLabelledIcon::unhighlight()
+void LumaHackQtLabelledIcon::unhighlight()
 {
     if (label) { // Surely it is?!
 	label->setStyleSheet("");
     }
 }
 
-void NetHackQtLabelledIcon::resizeEvent(QResizeEvent*)
+void LumaHackQtLabelledIcon::resizeEvent(QResizeEvent*)
 {
     setAlignments();
 
@@ -194,10 +194,10 @@ void NetHackQtLabelledIcon::resizeEvent(QResizeEvent*)
     }
 }
 
-void NetHackQtLabelledIcon::setAlignments()
+void LumaHackQtLabelledIcon::setAlignments()
 {
     if (label) label->setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
     if (icon) icon->setAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

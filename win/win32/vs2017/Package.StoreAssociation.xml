@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
   <Publisher>CN=8BDC628A-FAAA-4EBA-8B5B-EB61BA93BA1F</Publisher>
-  <PublisherDisplayName>NetHack DevTeam</PublisherDisplayName>
+  <PublisherDisplayName>LumaHack DevTeam</PublisherDisplayName>
   <DeveloperAccountType>AAD</DeveloperAccountType>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
@@ -361,13 +361,13 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>30485NetHackDevTeam.NetHack3.6</MainPackageIdentityName>
+    <MainPackageIdentityName>30485LumaHackDevTeam.LumaHack3.6</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>NetHack 3.6</ReservedName>
+      <ReservedName>LumaHack 3.6</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>30485NetHackDevTeam.NetHackBeta</MainPackageIdentityName>
+    <MainPackageIdentityName>30485LumaHackDevTeam.LumaHackBeta</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9PJ7BFSRP8M5" />
 </StoreAssociation>

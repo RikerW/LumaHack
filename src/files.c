@@ -1,7 +1,7 @@
-/* NetHack 3.6	files.c	$NHDT-Date: 1576626110 2019/12/17 23:41:50 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.276 $ */
+/* LumaHack 3.6	files.c	$NHDT-Date: 1576626110 2019/12/17 23:41:50 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.276 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Derek S. Ray, 2015. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #define NEED_VARARGS
 
@@ -92,7 +92,7 @@ char lock[PL_NSIZ + 25]; /* long enough for username+-+name+.99 */
 #define SAVESIZE (PL_NSIZ + 22) /* [.save]<uid>player.e;1 */
 #else
 #if defined(WIN32)
-#define SAVESIZE (PL_NSIZ + 40) /* username-player.NetHack-saved-game */
+#define SAVESIZE (PL_NSIZ + 40) /* username-player.LumaHack-saved-game */
 #else
 #define SAVESIZE FILENAME /* from macconf.h or pcconf.h */
 #endif
@@ -104,7 +104,7 @@ char lock[PL_NSIZ + 25]; /* long enough for username+-+name+.99 */
 #define SAVE_EXTENSION ".sav"
 #endif
 #ifdef WIN32
-#define SAVE_EXTENSION ".NetHack-saved-game"
+#define SAVE_EXTENSION ".LumaHack-saved-game"
 #endif
 #endif
 
@@ -118,7 +118,7 @@ struct level_ftrack {
     int init;
     int fd;    /* file descriptor for level file     */
     int oflag; /* open flags                         */
-    boolean nethack_thinks_it_is_open; /* Does NetHack think it's open? */
+    boolean lumahack_thinks_it_is_open; /* Does LumaHack think it's open? */
 } lftrack;
 #if defined(WIN32)
 #include <share.h>
@@ -570,7 +570,7 @@ char errbuf[];
 
     /* for failure, return an explanation that our caller can use;
        settle for `lock' instead of `fq_lock' because the latter
-       might end up being too big for nethack's BUFSZ */
+       might end up being too big for lumahack's BUFSZ */
     if (fd < 0 && errbuf)
         Sprintf(errbuf, "Cannot open file \"%s\" for level %d (errno %d).",
                 lock, lev, errno);
@@ -659,20 +659,20 @@ int lev, oflag;
             reslt = lseek(fd, 0L, SEEK_SET);
             if (reslt == -1L)
                 panic("open_levelfile_exclusively: lseek failed %d", errno);
-            lftrack.nethack_thinks_it_is_open = TRUE;
+            lftrack.lumahack_thinks_it_is_open = TRUE;
         } else {
             really_close();
             fd = sopen(name, oflag, SH_DENYRW, FCMASK);
             lftrack.fd = fd;
             lftrack.oflag = oflag;
-            lftrack.nethack_thinks_it_is_open = TRUE;
+            lftrack.lumahack_thinks_it_is_open = TRUE;
         }
     } else {
         fd = sopen(name, oflag, SH_DENYRW, FCMASK);
         lftrack.fd = fd;
         lftrack.oflag = oflag;
         if (fd >= 0)
-            lftrack.nethack_thinks_it_is_open = TRUE;
+            lftrack.lumahack_thinks_it_is_open = TRUE;
     }
     return fd;
 }
@@ -685,7 +685,7 @@ really_close()
     if (lftrack.init) {
         fd = lftrack.fd;
 
-        lftrack.nethack_thinks_it_is_open = FALSE;
+        lftrack.lumahack_thinks_it_is_open = FALSE;
         lftrack.fd = -1;
         lftrack.oflag = 0;
         if (fd != -1)
@@ -701,7 +701,7 @@ int fd;
     if (lftrack.fd == fd) {
         really_close(); /* close it, but reopen it to hold it */
         fd = open_levelfile(0, (char *) 0);
-        lftrack.nethack_thinks_it_is_open = FALSE;
+        lftrack.lumahack_thinks_it_is_open = FALSE;
         return 0;
     }
     return close(fd);
@@ -1735,7 +1735,7 @@ int retryct;
 #ifdef USE_FCNTL
     lockfd = open(filename, O_RDWR);
     if (lockfd == -1) {
-        HUP raw_printf("Cannot open file %s.  Is NetHack installed correctly?",
+        HUP raw_printf("Cannot open file %s.  Is LumaHack installed correctly?",
                        filename);
         nesting--;
         return FALSE;
@@ -1813,7 +1813,7 @@ int retryct;
             HUP perror(lockname);
             HUP raw_printf("Cannot lock %s.", filename);
             HUP raw_printf(
-  "(Perhaps you are running NetHack from inside the distribution package?).");
+  "(Perhaps you are running LumaHack from inside the distribution package?).");
             nesting--;
             return FALSE;
         default:
@@ -1920,15 +1920,15 @@ const char *filename;
 
 const char *default_configfile =
 #ifdef UNIX
-    ".nethackrc";
+    ".lumahackrc";
 #else
 #if defined(MAC) || defined(__BEOS__)
-    "NetHack Defaults";
+    "LumaHack Defaults";
 #else
 #if defined(MSDOS) || defined(WIN32)
     CONFIG_FILE;
 #else
-    "NetHack.cnf";
+    "LumaHack.cnf";
 #endif
 #endif
 #endif
@@ -1938,13 +1938,13 @@ char configfile[BUFSZ];
 
 #ifdef MSDOS
 /* conflict with speed-dial under windows
- * for XXX.cnf file so support of NetHack.cnf
+ * for XXX.cnf file so support of LumaHack.cnf
  * is for backward compatibility only.
  * Preferred name (and first tried) is now defaults.nh but
  * the game will try the old name if there
  * is no defaults.nh.
  */
-const char *backward_compat_configfile = "nethack.cnf";
+const char *backward_compat_configfile = "lumahack.cnf";
 #endif
 
 /* remember the name of the file we're accessing;
@@ -1990,7 +1990,7 @@ int src;
 #ifdef UNIX
         if (access(configfile, 4) == -1) { /* 4 is R_OK on newer systems */
             /* nasty sneaky attempt to read file through
-             * NetHack's setuid permissions -- this is the only
+             * LumaHack's setuid permissions -- this is the only
              * place a file name may be wholly under the player's
              * control (but SYSCF_FILE is not under the player's
              * control so it's OK).
@@ -2036,29 +2036,29 @@ int src;
 /* constructed full path names don't need fqname() */
 #ifdef VMS
     /* no punctuation, so might be a logical name */
-    set_configfile_name("nethackini");
+    set_configfile_name("lumahackini");
     if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
         return fp;
-    set_configfile_name("sys$login:nethack.ini");
+    set_configfile_name("sys$login:lumahack.ini");
     if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
         return fp;
 
     envp = nh_getenv("HOME");
     if (!envp || !*envp)
-        Strcpy(tmp_config, "NetHack.cnf");
+        Strcpy(tmp_config, "LumaHack.cnf");
     else
         Sprintf(tmp_config, "%s%s%s", envp,
                 !index(":]>/", envp[strlen(envp) - 1]) ? "/" : "",
-                "NetHack.cnf");
+                "LumaHack.cnf");
     set_configfile_name(tmp_config);
     if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
         return fp;
 #else /* should be only UNIX left */
     envp = nh_getenv("HOME");
     if (!envp)
-        Strcpy(tmp_config, ".nethackrc");
+        Strcpy(tmp_config, ".lumahackrc");
     else
-        Sprintf(tmp_config, "%s/%s", envp, ".nethackrc");
+        Sprintf(tmp_config, "%s/%s", envp, ".lumahackrc");
 
     set_configfile_name(tmp_config);
     if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
@@ -2068,13 +2068,13 @@ int src;
     if (envp) {
         /* OSX-style configuration settings */
         Sprintf(tmp_config, "%s/%s", envp,
-                "Library/Preferences/NetHack Defaults");
+                "Library/Preferences/LumaHack Defaults");
         set_configfile_name(tmp_config);
         if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
             return fp;
         /* may be easier for user to edit if filename has '.txt' suffix */
         Sprintf(tmp_config, "%s/%s", envp,
-                "Library/Preferences/NetHack Defaults.txt");
+                "Library/Preferences/LumaHack Defaults.txt");
         set_configfile_name(tmp_config);
         if ((fp = fopenp(configfile, "r")) != (FILE *) 0)
             return fp;
@@ -2083,7 +2083,7 @@ int src;
     if (errno != ENOENT) {
         const char *details;
 
-        /* e.g., problems when setuid NetHack can't search home
+        /* e.g., problems when setuid LumaHack can't search home
            directory restricted to user */
 #if defined(NHSTDC) && !defined(NOTSTDC)
         if ((details = strerror(errno)) == 0)
@@ -2958,7 +2958,7 @@ fopen_wizkit_file()
     if (access(wizkit, 4) == -1) {
         /* 4 is R_OK on newer systems */
         /* nasty sneaky attempt to read file through
-         * NetHack's setuid permissions -- this is a
+         * LumaHack's setuid permissions -- this is a
          * place a file name may be wholly under the player's
          * control
          */
@@ -2999,7 +2999,7 @@ fopen_wizkit_file()
     if ((fp = fopenp(tmp_wizkit, "r")) != (FILE *) 0)
         return fp;
     else if (errno != ENOENT) {
-        /* e.g., problems when setuid NetHack can't search home
+        /* e.g., problems when setuid LumaHack can't search home
          * directory restricted to user */
         raw_printf("Couldn't open default wizkit file %s (%d).", tmp_wizkit,
                    errno);
@@ -3715,7 +3715,7 @@ recover_savefile()
     /* level 0 file contains:
      *  pid of creating process (ignored here)
      *  level number for current level of save file
-     *  name of save file nethack would have created
+     *  name of save file lumahack would have created
      *  savefile info
      *  player name
      *  and game state
@@ -4030,7 +4030,7 @@ reveal_paths(VOID_ARGS)
 #if defined(SYSCF) || !defined(UNIX) || defined(DLB)
     const char *filep;
 #ifdef SYSCF
-    const char *gamename = (hname && *hname) ? hname : "NetHack";
+    const char *gamename = (hname && *hname) ? hname : "LumaHack";
 #endif
 #endif
 #ifdef UNIX
@@ -4203,16 +4203,16 @@ reveal_paths(VOID_ARGS)
             /* read access to default failed; might be protected excessively
                but more likely it doesn't exist; try first alternate:
                "$HOME/Library/Pref..."; 'endp' points past '/' */
-            copynchars(endp, "Library/Preferences/NetHack Defaults",
+            copynchars(endp, "Library/Preferences/LumaHack Defaults",
                        (int) (sizeof buf - 1 - strlen(buf)));
             if (access(buf, 4) == -1) {
                 /* first alternate failed, try second:
-                   ".../NetHack Defaults.txt"; no 'endp', just append */
+                   ".../LumaHack Defaults.txt"; no 'endp', just append */
                 copynchars(eos(buf), ".txt",
                            (int) (sizeof buf - 1 - strlen(buf)));
                 if (access(buf, 4) == -1) {
                     /* second alternate failed too, so revert to the
-                       original default ("$HOME/.nethackrc") for message */
+                       original default ("$HOME/.lumahackrc") for message */
                     copynchars(endp, default_configfile,
                                (int) (sizeof buf - 1 - strlen(buf)));
                 }

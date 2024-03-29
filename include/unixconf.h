@@ -1,7 +1,7 @@
-/* NetHack 3.6	unixconf.h	$NHDT-Date: 1555361298 2019/04/15 20:48:18 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.42 $ */
+/* LumaHack 3.6	unixconf.h	$NHDT-Date: 1555361298 2019/04/15 20:48:18 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.42 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Pasi Kallinen, 2018. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifdef UNIX
 #ifndef UNIXCONF_H
@@ -100,13 +100,13 @@
  */
 
 /* #define NO_FILE_LINKS */                       /* if no hard links */
-/* #define LOCKDIR "/usr/games/lib/nethackdir" */ /* where to put locks */
+/* #define LOCKDIR "/usr/games/lib/lumahackdir" */ /* where to put locks */
 
 /*
  * If you want the static parts of your playground on a read-only file
  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
  */
-/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
+/* #define VAR_PLAYGROUND "/var/lib/games/lumahack" */
 
 /*
  * Define DEF_PAGER as your default pager, e.g. "/bin/cat" or "/usr/ucb/more"
@@ -273,13 +273,13 @@
 
 /*
  * BSD/ULTRIX systems are normally the only ones that can suspend processes.
- * Suspending NetHack processes cleanly should be easy to add to other systems
+ * Suspending LumaHack processes cleanly should be easy to add to other systems
  * that have SIGTSTP in the Berkeley sense.  Currently the only such systems
  * known to work are HPUX and AIX 3.1; other systems will probably require
  * tweaks to unixtty.c and ioctl.c.
  *
  * POSIX defines a slightly different type of job control, which should be
- * equivalent for NetHack's purposes.  POSIX_JOB_CONTROL should work on
+ * equivalent for LumaHack's purposes.  POSIX_JOB_CONTROL should work on
  * various recent SYSV versions (with possibly tweaks to unixtty.c again).
  */
 #ifndef POSIX_JOB_CONTROL
@@ -367,7 +367,7 @@
 #endif
 
 /* Relevant for some systems which enable TEXTCOLOR:  some older versions
-   of curses (the run-time library optionally used by nethack's tty
+   of curses (the run-time library optionally used by lumahack's tty
    interface in addition to its curses interface) supply 'has_colors()'
    but corresponding <curses.h> doesn't declare it.  has_colors() is used
    in unixtty.c by init_sco_cons() and init_linux_cons().  If the compiler

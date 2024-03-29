@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4stat.cpp -- bindings between the Qt 4 interface and the main code
 
@@ -30,9 +30,9 @@ extern "C" {
 extern const char *enc_stat[]; /* from botl.c */
 extern const char *hu_stat[]; /* from eat.c */
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtStatusWindow::NetHackQtStatusWindow() :
+LumaHackQtStatusWindow::LumaHackQtStatusWindow() :
     // Notes:
     //  Alignment needs -2 init value, because -1 is an alignment.
     //  Armor Class is an schar, so 256 is out of range.
@@ -170,7 +170,7 @@ NetHackQtStatusWindow::NetHackQtStatusWindow() :
     doUpdate();
 }
 
-void NetHackQtStatusWindow::doUpdate()
+void LumaHackQtStatusWindow::doUpdate()
 {
     const QFont& large=qt_settings->largeFont();
     name.setFont(large);
@@ -204,26 +204,26 @@ void NetHackQtStatusWindow::doUpdate()
     updateStats();
 }
 
-QWidget* NetHackQtStatusWindow::Widget() { return this; }
+QWidget* LumaHackQtStatusWindow::Widget() { return this; }
 
-void NetHackQtStatusWindow::Clear()
+void LumaHackQtStatusWindow::Clear()
 {
 }
-void NetHackQtStatusWindow::Display(bool block)
+void LumaHackQtStatusWindow::Display(bool block)
 {
 }
-void NetHackQtStatusWindow::CursorTo(int,int y)
+void LumaHackQtStatusWindow::CursorTo(int,int y)
 {
     cursy=y;
 }
-void NetHackQtStatusWindow::PutStr(int attr, const QString& text)
+void LumaHackQtStatusWindow::PutStr(int attr, const QString& text)
 {
     // do a complete update when line 0 is done (as per X11 fancy status)
     if (cursy==0) updateStats();
 }
 
 #if 0 // RLC
-void NetHackQtStatusWindow::resizeEvent(QResizeEvent*)
+void LumaHackQtStatusWindow::resizeEvent(QResizeEvent*)
 {
 #if 0
     const float SP_name=0.13; //     <Name> the <Class> (large)
@@ -312,11 +312,11 @@ void NetHackQtStatusWindow::resizeEvent(QResizeEvent*)
  * have been calculated so that when the window is popped up we don't get all
  * kinds of funny values being displayed.
  */
-void NetHackQtStatusWindow::nullOut()
+void LumaHackQtStatusWindow::nullOut()
 {
 }
 
-void NetHackQtStatusWindow::fadeHighlighting()
+void LumaHackQtStatusWindow::fadeHighlighting()
 {
     name.dissipateHighlight();
     dlevel.dissipateHighlight();
@@ -363,7 +363,7 @@ void NetHackQtStatusWindow::fadeHighlighting()
  *
  * [**] HD is shown instead of level and exp if mtimedone is non-zero.
  */
-void NetHackQtStatusWindow::updateStats()
+void LumaHackQtStatusWindow::updateStats()
 {
     if (!parentWidget()) return;
 
@@ -381,7 +381,7 @@ void NetHackQtStatusWindow::updateStats()
     } else {
 	buf.sprintf("STR:%d",ACURR(A_STR));
     }
-    str.setLabel(buf,NetHackQtLabelledIcon::NoNum,ACURR(A_STR));
+    str.setLabel(buf,LumaHackQtLabelledIcon::NoNum,ACURR(A_STR));
 
     dex.setLabel("DEX:",(long)ACURR(A_DEX));
     con.setLabel("CON:",(long)ACURR(A_CON));
@@ -435,7 +435,7 @@ void NetHackQtStatusWindow::updateStats()
     }
     QString buf2;
     buf2.sprintf("%s the %s", plname, buf.toLatin1().constData());
-    name.setLabel(buf2, NetHackQtLabelledIcon::NoNum, u.ulevel);
+    name.setLabel(buf2, LumaHackQtLabelledIcon::NoNum, u.ulevel);
 
     char buf3[BUFSZ];
     if (describe_level(buf3)) {
@@ -533,8 +533,8 @@ void NetHackQtStatusWindow::updateStats()
 /*
  * Turn off hilighted status values after a certain amount of turns.
  */
-void NetHackQtStatusWindow::checkTurnEvents()
+void LumaHackQtStatusWindow::checkTurnEvents()
 {
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

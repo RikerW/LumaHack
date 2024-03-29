@@ -1,8 +1,8 @@
-$NHDT-Date: 1524689294 2018/04/25 20:48:14 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.11 $
+$NHDT-Date: 1524689294 2018/04/25 20:48:14 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.11 $
 # Copyright (c) 2003 by David Cohrs
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
-This document describes the installation of NetHack with an X11 interface.
+This document describes the installation of LumaHack with an X11 interface.
 
 There are no explicit UNIX dependencies in this code, but we have only
 tested it under UNIX, using X11R4, X11R5, or X11R6.  We have two reports
@@ -50,7 +50,7 @@ specified but haven't followed the direction in src/Makefile to remove
 all but one instance of tile.o from the WINxxxOBJ values used for WINOBJ.
 
 When using tiles, you have the option of defining USE_XPM in config.h.
-This causes NetHack to use the XPM file format for the "x11tiles" file
+This causes LumaHack to use the XPM file format for the "x11tiles" file
 rather than a custom format.  Since the XPM format can be processed by
 existing tools such as PBMPlus and XV, you can modify the tiles to suit
 your environment.  However, you need to make sure the number of tiles
@@ -76,8 +76,8 @@ case, make sure the top Makefile VARDATND also contains rip.xpm.
 Whether or not you install tile support, you can provide support for
 special graphics symbols via alternate fonts.  (The fonts and tiles
 cannot be used at the same time, but the same executable handles both.)
-The two included X11 fonts use the general NetHack map area remapping
-to represent object/dungeon/trap/effect characters (see win/X11/nethack.rc
+The two included X11 fonts use the general LumaHack map area remapping
+to represent object/dungeon/trap/effect characters (see win/X11/lumahack.rc
 and the Guidebook) as monocolored symbols and monsters as monocolored
 letters.  For instance, a ruby potion will show up as a potion symbol in
 red.  It's easier to see the difference between fonts and tiles than to
@@ -86,7 +86,7 @@ you already know which you prefer, we suggest installing the optional files
 for both possibilities and letting each person decide for themselves.
 
 To use the included fonts, you will need to install one or both of them
-and then use the symbol mappings found in nethack.rc.  The fonts are found
+and then use the symbol mappings found in lumahack.rc.  The fonts are found
 in nh10.bdf and ibm.bdf.  You first need to convert the bdf files to whatever
 form your X11 server recognizes (usually using a command called bdftosnf
 for R4 servers or bdftopcf for R5 servers).  Then run mkfontdir on the
@@ -94,10 +94,10 @@ directory containing your font files (you might want to copy them to HACKDIR,
 from the top Makefile, after you've done "make install").  If these commands
 aren't familiar, talk to your local X11 guru and read the man pages.
 
-nethack.sh automatically adds HACKDIR to your font search path.  If
+lumahack.sh automatically adds HACKDIR to your font search path.  If
 you (assuming you are a system administrator) can install the fonts in your
-standard X11 font directory the relevent lines in nethack.sh can be removed.
-Alternatively, all persons playing nethack must add that "xset fp+"
+standard X11 font directory the relevent lines in lumahack.sh can be removed.
+Alternatively, all persons playing lumahack must add that "xset fp+"
 command to their .xinitrc file, or whatever file they execute when starting
 X11.  See the note below for the alternative installation procedure
 for Sun's OpenWindows.
@@ -110,21 +110,21 @@ prepend an appropriate -I<idirectory> parameter to CFLAGS and a
 find the include and library files for X11.
 
 
-Finally, to ensure NetHack's windows look the way they were intended to
-look, make sure the top Makefile VARDATND also contains NetHack.ad.  If it
-does, running nethack will automatically take the appropriate steps to
-cause this file to be used to initialize NetHack's X11 resources.
+Finally, to ensure LumaHack's windows look the way they were intended to
+look, make sure the top Makefile VARDATND also contains LumaHack.ad.  If it
+does, running lumahack will automatically take the appropriate steps to
+cause this file to be used to initialize LumaHack's X11 resources.
 
 
 Three icon suggestions to the window manager are supported:  nh72, nh56,
 and nh32.  Data for them comes from the source files nh72icon, nh56icon,
 and nh32icon; they are compiled into the program via #includes in winX.c.
-Selection between them is controlled by the "icon" resource in NetHack.ad;
+Selection between them is controlled by the "icon" resource in LumaHack.ad;
 the default is nh72.
 
 
 Sorry, an Imakefile is not included.  Unlike many X11 programs, X11
-support is only a small, optional, part of nethack, and the Makefile is
+support is only a small, optional, part of lumahack, and the Makefile is
 needed for systems that don't use X11.
 
 
@@ -157,7 +157,7 @@ Notes for Sun's OpenWindows:
 	installation, you have the various "xset fp+" options outlined
 	above for standard X.
 
-    4.  Something must still be done with the NetHack.ad file -- all three
+    4.  Something must still be done with the LumaHack.ad file -- all three
 	of the possibilities mentioned for standard X11 should work.
 
 
@@ -179,15 +179,15 @@ Notes for XFree86 - (on linux and BSD386 platforms)
 
 File				Description
 ---------	---------------------------------------------------------------
-nethack.rc	- A sample configuration file for fonts nh10 and ibm.
+lumahack.rc	- A sample configuration file for fonts nh10 and ibm.
 nh10.bdf	- A modified version of the 10x20 standard font.
-ibm.bdf		- A modified version of one of the ibm (8x14) nethack font.
-		  Must be used in conjunction with NetHack.ad or nethack.rc.
+ibm.bdf		- A modified version of one of the ibm (8x14) lumahack font.
+		  Must be used in conjunction with LumaHack.ad or lumahack.rc.
 nh32icon	- A 32x32 icon bitmap for use with window managers.
 nh56icon	- A 56x56 icon bitmap for use with window managers.
 nh72icon	- A 72x72 icon bitmap for use with window managers.
 nh_icon.xpm	- A color icon for use with window managers.
-NetHack.ad	- A sample .Xdefaults for a color screen.
+LumaHack.ad	- A sample .Xdefaults for a color screen.
 ../../include/Window.h
 ../../include/WindowP.h
 Window.c	- A bare-bones widget that has 16 colors and a drawing canvas.

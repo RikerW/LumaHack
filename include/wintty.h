@@ -1,6 +1,6 @@
-/* NetHack 3.6	wintty.h	$NHDT-Date: 1558330405 2019/05/20 05:33:25 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.34 $ */
+/* LumaHack 3.6	wintty.h	$NHDT-Date: 1558330405 2019/05/20 05:33:25 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.34 $ */
 /* Copyright (c) David Cohrs, 1991,1992				  */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef WINTTY_H
 #define WINTTY_H

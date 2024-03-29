@@ -4,7 +4,7 @@ monstr.c
 hack.h-t
 tile.c
 Sysunix
-nethack
+lumahack
 *.o
 tiles.bmp
 *.moc

@@ -1,7 +1,7 @@
-/* NetHack 3.6	display.c	$NHDT-Date: 1574882660 2019/11/27 19:24:20 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.108 $ */
+/* LumaHack 3.6	display.c	$NHDT-Date: 1574882660 2019/11/27 19:24:20 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.108 $ */
 /* Copyright (c) Dean Luick, with acknowledgements to Kevin Darcy */
 /* and Dave Cohrs, 1990.                                          */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  *                      THE NEW DISPLAY CODE

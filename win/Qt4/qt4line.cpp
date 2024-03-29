@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4line.cpp -- a one line input window
 
@@ -21,22 +21,22 @@
 #endif
 #include "qt4line.h"
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
-NetHackQtLineEdit::NetHackQtLineEdit() :
+LumaHackQtLineEdit::LumaHackQtLineEdit() :
     QLineEdit(0)
 {
 }
 
-NetHackQtLineEdit::NetHackQtLineEdit(QWidget* parent, const char* name) :
+LumaHackQtLineEdit::LumaHackQtLineEdit(QWidget* parent, const char* name) :
     QLineEdit(parent)
 {
 }
 
-void NetHackQtLineEdit::fakeEvent(int key, int ascii, Qt::KeyboardModifiers state)
+void LumaHackQtLineEdit::fakeEvent(int key, int ascii, Qt::KeyboardModifiers state)
 {
     QKeyEvent fake(QEvent::KeyPress,key,state,QChar(ascii));
     keyPressEvent(&fake);
 }
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

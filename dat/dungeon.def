@@ -1,8 +1,8 @@
-# NetHack 3.6	dungeon.def	$NHDT-Date: 1462486876 2016/05/05 22:21:16 $  $NHDT-Branch: NetHack-3.6.0 $:$NHDT-Revision: 1.14 $
+# LumaHack 3.6	dungeon.def	$NHDT-Date: 1462486876 2016/05/05 22:21:16 $  $NHDT-Branch: LumaHack-3.6.0 $:$NHDT-Revision: 1.14 $
 #	Copyright (c) 1990-95 by M. Stephenson
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 #
-#	The dungeon description file for the "standard" 3.1 NetHack.
+#	The dungeon description file for the "standard" 3.1 LumaHack.
 #
 #	Note:	The order of the definition of dungeons in this file
 #		reflects in their order of creation in the real dungeon.

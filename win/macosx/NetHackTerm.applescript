@@ -1,7 +1,7 @@
 #!/usr/bin/osascript
-# NetHack 3.6.3  NetHackTerm.applescript $NHDT-Date: 1575245179 2019/12/02 00:06:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.10 $
+# LumaHack 3.6.3  LumaHackTerm.applescript $NHDT-Date: 1575245179 2019/12/02 00:06:19 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.10 $
 # Copyright (c) Kenneth Lorber, Kensington, Maryland, 2011
-# NetHack may be freely redistributed.  See license for details.
+# LumaHack may be freely redistributed.  See license for details.
 
 # Run the terminal port from the GUI.
 
@@ -20,8 +20,8 @@ tell application "Terminal"
 	end if
 	
 	activate
-	#open new window and run NetHack in it
-	do script with command "clear;sleep 1;/usr/local/bin/nethack;echo '(press RETURN to exit)';awk '{exit}';exit"
+	#open new window and run LumaHack in it
+	do script with command "clear;sleep 1;/usr/local/bin/lumahack;echo '(press RETURN to exit)';awk '{exit}';exit"
 	set nhresult to result -- class is tab
 	set nhresrec to result as record
 	set nhreslist to result as list
@@ -40,9 +40,9 @@ tell application "Terminal"
 	set nhtab to selected tab of nhwin
 	get processes of nhtab
 	
-	# main loop - wait for all nethack processes to exit
+	# main loop - wait for all lumahack processes to exit
 	set hit to true
-	set nhname to "nethack" as text
+	set nhname to "lumahack" as text
 	delay 4
 	repeat while hit
 		set hit to false

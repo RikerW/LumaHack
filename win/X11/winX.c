@@ -1,6 +1,6 @@
-/* NetHack 3.6	winX.c	$NHDT-Date: 1552441031 2019/03/13 01:37:11 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.73 $ */
+/* LumaHack 3.6	winX.c	$NHDT-Date: 1552441031 2019/03/13 01:37:11 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.73 $ */
 /* Copyright (c) Dean Luick, 1992                                 */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * "Main" file for the X window-port.  This contains most of the interface
@@ -330,12 +330,12 @@ struct xwindow *wp;
     rDB = XrmGetDatabase(dpy);
 
     for (color = 0; color < CLR_MAX; color++) {
-        Sprintf(clr_name, "nethack.%s.%s", wtn, mapCLR_to_res[color]);
-        Sprintf(clrclass, "NetHack.%s.%s", wtn_up, mapCLR_to_res[color]);
+        Sprintf(clr_name, "lumahack.%s.%s", wtn, mapCLR_to_res[color]);
+        Sprintf(clrclass, "LumaHack.%s.%s", wtn_up, mapCLR_to_res[color]);
 
         if (!XrmGetResource(rDB, clr_name, clrclass, ret_type, &value)) {
-            Sprintf(clr_name, "nethack.map.%s", mapCLR_to_res[color]);
-            Sprintf(clrclass, "NetHack.Map.%s", mapCLR_to_res[color]);
+            Sprintf(clr_name, "lumahack.map.%s", mapCLR_to_res[color]);
+            Sprintf(clrclass, "LumaHack.Map.%s", mapCLR_to_res[color]);
         }
 
         if (!XrmGetResource(rDB, clr_name, clrclass, ret_type, &value)) {
@@ -774,7 +774,7 @@ unsigned numdefs; /* array slot to fill */
     return TRUE;
 }
 
-/* read the template NetHack.ad into default_resource_data[] to supply
+/* read the template LumaHack.ad into default_resource_data[] to supply
    fallback resources to XtAppInitialize() */
 static void
 load_default_resources()
@@ -785,9 +785,9 @@ load_default_resources()
     boolean comment, isdef;
 
     /*
-     * Running nethack via the shell script adds $HACKDIR to the path used
+     * Running lumahack via the shell script adds $HACKDIR to the path used
      * by X to find resources, but running it directly doesn't.  So, if we
-     * can find the template file for NetHack.ad in the current directory,
+     * can find the template file for LumaHack.ad in the current directory,
      * load its contents into memory so that the application startup call
      * in X11_init_nhwindows() can use them as fallback resources.
      *
@@ -797,12 +797,12 @@ load_default_resources()
      * a macro must be at start of line (no whitespace before or after
      * the '#' character).
      */
-    fp = fopen("./NetHack.ad", "r");
+    fp = fopen("./LumaHack.ad", "r");
     if (!fp)
         return;
 
     /* measure the file without retaining its contents */
-    insiz = BUFSIZ; /* stdio BUFSIZ, not nethack BUFSZ */
+    insiz = BUFSIZ; /* stdio BUFSIZ, not lumahack BUFSZ */
     inbuf = (String) alloc(insiz);
     linelen = longlen = 0;
     numlines = numdefs = 0;
@@ -848,7 +848,7 @@ load_default_resources()
             if (numdefs) {
                 /*
                  * Macro expansion:  we assume at most one substitution
-                 * per line.  That's all that our sample NetHack.ad uses.
+                 * per line.  That's all that our sample LumaHack.ad uses.
                  *
                  * If we ever need more, this will have to become a lot
                  * more sophisticated.  It will need to find the first
@@ -1522,7 +1522,7 @@ char **argv;
         window_list[i].type = NHW_NONE;
 
     /* force high scores display to be shown in a window, and don't allow
-       that to be toggled off via 'O' (note: 'nethack -s' won't reach here;
+       that to be toggled off via 'O' (note: 'lumahack -s' won't reach here;
        its output goes to stdout and could be redirected into a file) */
     iflags.toptenwin = TRUE;
     set_option_mod_status("toptenwin", SET_IN_FILE);
@@ -1534,7 +1534,7 @@ char **argv;
     load_default_resources(); /* create default_resource_data[] */
 
     /*
-     * setuid hack: make sure that if nethack is setuid, to use real uid
+     * setuid hack: make sure that if lumahack is setuid, to use real uid
      * when opening X11 connections, in case the user is using xauth, since
      * the "games" or whatever user probably doesn't have permission to open
      * a window on the user's display.  This code is harmless if the binary
@@ -1547,9 +1547,9 @@ char **argv;
 
     num_args = 0;
     XtSetArg(args[num_args], XtNallowShellResize, True); num_args++;
-    XtSetArg(args[num_args], XtNtitle, "NetHack"); num_args++;
+    XtSetArg(args[num_args], XtNtitle, "LumaHack"); num_args++;
 
-    toplevel = XtAppInitialize(&app_context, "NetHack",     /* application  */
+    toplevel = XtAppInitialize(&app_context, "LumaHack",     /* application  */
                                (XrmOptionDescList) 0, 0,    /* options list */
                                argcp, (String *) argv,      /* command line */
                                default_resource_data, /* fallback resources */
@@ -1798,7 +1798,7 @@ XtPointer call_data;
 }
 
 /* ask player for character's name to replace generic name "player" (or other
-   values; see config.h) after 'nethack -u player' or OPTIONS=name:player */
+   values; see config.h) after 'lumahack -u player' or OPTIONS=name:player */
 void
 X11_askname()
 {
@@ -2179,7 +2179,7 @@ char def;            /* default response if user hits <space> or <return> */
 
     /*
      * This is sort of a kludge.  There are quite a few places in the main
-     * nethack code where a pline containing information is followed by a
+     * lumahack code where a pline containing information is followed by a
      * call to yn_function().  There is no flush of the message window
      * (it is implicit in the tty window port), so the line never shows
      * up for us!  Solution: do our own flush.
@@ -2428,7 +2428,7 @@ init_standard_windows()
 
     num_args = 0;
     XtSetArg(args[num_args], XtNallowShellResize, True); num_args++;
-    form = XtCreateManagedWidget("nethack", panedWidgetClass, toplevel, args,
+    form = XtCreateManagedWidget("lumahack", panedWidgetClass, toplevel, args,
                                  num_args);
 
     XtAddEventHandler(form, KeyPressMask, False, (XtEventHandler) msgkey,
@@ -2520,7 +2520,7 @@ init_standard_windows()
      * Realize the popup so that the status widget knows it's size.
      *
      * If we unset MappedWhenManaged then the DECwindow driver doesn't
-     * attach the nethack toplevel to the highest virtual root window.
+     * attach the lumahack toplevel to the highest virtual root window.
      * So don't do it.
      */
     /* XtSetMappedWhenManaged(toplevel, False); */

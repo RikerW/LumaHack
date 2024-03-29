@@ -1,7 +1,7 @@
-/* NetHack 3.6	pcconf.h	$NHDT-Date: 1457207019 2016/03/05 19:43:39 $  $NHDT-Branch: chasonr $:$NHDT-Revision: 1.19 $ */
+/* LumaHack 3.6	pcconf.h	$NHDT-Date: 1457207019 2016/03/05 19:43:39 $  $NHDT-Branch: chasonr $:$NHDT-Revision: 1.19 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2006. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef PCCONF_H
 #define PCCONF_H
@@ -60,7 +60,7 @@
                        /* compile and link in Fred Fish's termcap library, */
                        /* enclosed in TERMCAP.ARC, to use this */
 
-/* # define ANSI_DEFAULT */ /* allows NetHack to run without a ./termcap */
+/* # define ANSI_DEFAULT */ /* allows LumaHack to run without a ./termcap */
 
 #define NO_TERMS /* Allows Nethack to run without ansi.sys by linking */
                  /* screen routines into the .exe     */
@@ -70,7 +70,7 @@
 /* #define SCREEN_DJGPPFAST */ /* Use djgpp fast screen routines	*/
 #endif
 
-/* # define PC9800 */ /* Allows NetHack to run on NEC PC-9800 machines */
+/* # define PC9800 */ /* Allows LumaHack to run on NEC PC-9800 machines */
 /* Yamamoto Keizo */
 
 /*
@@ -191,7 +191,7 @@
 #include <pc.h> /* kbhit() */
 #define PC_LOCKING
 #define HOLD_LOCKFILE_OPEN
-#define SELF_RECOVER /* NetHack itself can recover games */
+#define SELF_RECOVER /* LumaHack itself can recover games */
 #endif
 
 #ifdef MSDOS

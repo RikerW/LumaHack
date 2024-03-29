@@ -1,6 +1,6 @@
 // Copyright (c) Warwick Allison, 1999.
 // Qt4 conversion copyright (c) Ray Chason, 2012-2014.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 
 // qt4set.cpp -- the Qt settings
 
@@ -34,12 +34,12 @@ int qt_compact_mode = 1;
 int qt_compact_mode = 0;
 #endif
 
-namespace nethack_qt4 {
+namespace lumahack_qt4 {
 
 #define TILEWMIN 6
 #define TILEHMIN 6
 
-NetHackQtSettings::NetHackQtSettings(int w, int h) :
+LumaHackQtSettings::LumaHackQtSettings(int w, int h) :
     settings(),
     tilewidth(this),
     tileheight(this),
@@ -68,7 +68,7 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
     tileheight.setValue(settings.value("tileheight", 16).toInt());
     default_fontsize = settings.value("fontsize", 2).toInt();
 
-    // Tile/font sizes read from .nethackrc
+    // Tile/font sizes read from .lumahackrc
     if (qt_tilewidth != NULL) {
 	tilewidth.setValue(atoi(qt_tilewidth));
 	delete[] qt_tilewidth;
@@ -88,7 +88,7 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
 	delete[] qt_fontsize;
     }
 
-    theglyphs=new NetHackQtGlyphs();
+    theglyphs=new LumaHackQtGlyphs();
     resizeTiles();
 
     connect(&tilewidth,SIGNAL(valueChanged(int)),this,SLOT(resizeTiles()));
@@ -122,18 +122,18 @@ NetHackQtSettings::NetHackQtSettings(int w, int h) :
     resize(150,140);
 }
 
-NetHackQtGlyphs& NetHackQtSettings::glyphs()
+LumaHackQtGlyphs& LumaHackQtSettings::glyphs()
 {
     return *theglyphs;
 }
 
-void NetHackQtSettings::changedFont()
+void LumaHackQtSettings::changedFont()
 {
     settings.setValue("fontsize", fontsize.currentIndex());
     emit fontChanged();
 }
 
-void NetHackQtSettings::resizeTiles()
+void LumaHackQtSettings::resizeTiles()
 {
     int w = tilewidth.value();
     int h = tileheight.value();
@@ -144,12 +144,12 @@ void NetHackQtSettings::resizeTiles()
     emit tilesChanged();
 }
 
-void NetHackQtSettings::toggleGlyphSize()
+void LumaHackQtSettings::toggleGlyphSize()
 {
     whichsize.toggle();
 }
 
-void NetHackQtSettings::setGlyphSize(bool which)
+void LumaHackQtSettings::setGlyphSize(bool which)
 {
     QSize n = QSize(tilewidth.value(),tileheight.value());
     if ( othersize.isValid() ) {
@@ -164,32 +164,32 @@ void NetHackQtSettings::setGlyphSize(bool which)
     othersize = n;
 }
 
-const QFont& NetHackQtSettings::normalFont()
+const QFont& LumaHackQtSettings::normalFont()
 {
     static int size[]={ 18, 14, 12, 10, 8 };
     normal.setPointSize(size[fontsize.currentIndex()]);
     return normal;
 }
 
-const QFont& NetHackQtSettings::normalFixedFont()
+const QFont& LumaHackQtSettings::normalFixedFont()
 {
     static int size[]={ 18, 14, 13, 10, 8 };
     normalfixed.setPointSize(size[fontsize.currentIndex()]);
     return normalfixed;
 }
 
-const QFont& NetHackQtSettings::largeFont()
+const QFont& LumaHackQtSettings::largeFont()
 {
     static int size[]={ 24, 18, 14, 12, 10 };
     large.setPointSize(size[fontsize.currentIndex()]);
     return large;
 }
 
-bool NetHackQtSettings::ynInMessages()
+bool LumaHackQtSettings::ynInMessages()
 {
     return !qt_compact_mode && !iflags.wc_popup_dialog;
 }
 
-NetHackQtSettings* qt_settings;
+LumaHackQtSettings* qt_settings;
 
-} // namespace nethack_qt4
+} // namespace lumahack_qt4

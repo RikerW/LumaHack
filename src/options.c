@@ -1,7 +1,7 @@
-/* NetHack 3.6	options.c	$NHDT-Date: 1578996303 2020/01/14 10:05:03 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.396 $ */
+/* LumaHack 3.6	options.c	$NHDT-Date: 1578996303 2020/01/14 10:05:03 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.396 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Michael Allison, 2008. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifdef OPTION_LISTS_ONLY /* (AMIGA) external program for opt lists */
 #include "config.h"
@@ -62,15 +62,15 @@ static struct Bool_Opt {
     { "acoustics", &flags.acoustics, TRUE, SET_IN_GAME },
 #if defined(SYSFLAGS) && defined(AMIGA)
     /* Amiga altmeta causes Alt+key to be converted into Meta+key by
-       low level nethack code; on by default, can be toggled off if
+       low level lumahack code; on by default, can be toggled off if
        Alt+key is needed for some ASCII chars on non-ASCII keyboard */
     { "altmeta", &sysflags.altmeta, TRUE, DISP_IN_GAME },
 #else
 #ifdef ALTMETA
-    /* non-Amiga altmeta causes nethack's top level command loop to treat
+    /* non-Amiga altmeta causes lumahack's top level command loop to treat
        two character sequence "ESC c" as M-c, for terminals or emulators
        which send "ESC c" when Alt+c is pressed; off by default, enabling
-       this can potentially make trouble if user types ESC when nethack
+       this can potentially make trouble if user types ESC when lumahack
        is honoring this conversion request (primarily after starting a
        count prefix prior to a command and then deciding to cancel it) */
     { "altmeta", &iflags.altmeta, FALSE, SET_IN_GAME },
@@ -1212,7 +1212,7 @@ const char *optn;
         Sprintf(buf, "%lu.%lu.%lu", FEATURE_NOTICE_VER_MAJ,
                 FEATURE_NOTICE_VER_MIN, FEATURE_NOTICE_VER_PATCH);
         pline(
-          "Feature change alerts disabled for NetHack %s features and prior.",
+          "Feature change alerts disabled for LumaHack %s features and prior.",
               buf);
     }
     return 1;
@@ -2080,7 +2080,7 @@ boolean tinitial, tfrom_file;
     }
 
 #if defined(MICRO) && !defined(AMIGA)
-    /* included for compatibility with old NetHack.cnf files */
+    /* included for compatibility with old LumaHack.cnf files */
     if (match_optname(opts, "IBM_", 4, FALSE)) {
         iflags.BIOS = !negated;
         return retval;
@@ -6232,7 +6232,7 @@ const char *strval; /* up to 4*BUFSZ-1 long; only first few chars matter */
 /* data for option_help() */
 static const char *opt_intro[] = {
     "",
-    "                 NetHack Options Help:", "",
+    "                 LumaHack Options Help:", "",
 #define CONFIG_SLOT 3 /* fill in next value at run-time */
     (char *) 0,
 #if !defined(MICRO) && !defined(MAC)
@@ -6465,10 +6465,10 @@ struct fruit *replace_fruit;
 }
 
 /*
- * This is a somewhat generic menu for taking a list of NetHack style
+ * This is a somewhat generic menu for taking a list of LumaHack style
  * class choices and presenting them via a description
- * rather than the traditional NetHack characters.
- * (Benefits users whose first exposure to NetHack is via tiles).
+ * rather than the traditional LumaHack characters.
+ * (Benefits users whose first exposure to LumaHack is via tiles).
  *
  * prompt
  *           The title at the top of the menu.
@@ -6921,7 +6921,7 @@ char *op;
 }
 
 /* set up for wizard mode if player or save file has requested to it;
-   called from port-specific startup code to handle `nethack -D' or
+   called from port-specific startup code to handle `lumahack -D' or
    OPTIONS=playmode:debug, or from dorecover()'s restgamestate() if
    restoring a game which was saved in wizard mode */
 void

@@ -1,7 +1,7 @@
-/* NetHack 3.6	hack.h	$NHDT-Date: 1561019041 2019/06/20 08:24:01 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.106 $ */
+/* LumaHack 3.6	hack.h	$NHDT-Date: 1561019041 2019/06/20 08:24:01 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.106 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Pasi Kallinen, 2017. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #ifndef HACK_H
 #define HACK_H
@@ -535,7 +535,7 @@ enum bodypart_types {
 #define CFDECLSPEC
 #endif
 
-#define DEVTEAM_EMAIL "devteam@nethack.org"
-#define DEVTEAM_URL "https://www.nethack.org/"
+#define DEVTEAM_EMAIL "devteam@lumahack.org"
+#define DEVTEAM_URL "https://www.lumahack.org/"
 
 #endif /* HACK_H */

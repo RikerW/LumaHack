@@ -1,7 +1,7 @@
-/* NetHack 3.6	end.c	$NHDT-Date: 1575245059 2019/12/02 00:04:19 $  $NHDT-Branch: NetHack-3.6 $:$NHDT-Revision: 1.181 $ */
+/* LumaHack 3.6	end.c	$NHDT-Date: 1575245059 2019/12/02 00:04:19 $  $NHDT-Branch: LumaHack-3.6 $:$NHDT-Revision: 1.181 $ */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /*-Copyright (c) Robert Patrick Rankin, 2012. */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 #define NEED_VARARGS /* comment line for pre-compiled headers */
 
@@ -66,9 +66,9 @@ STATIC_DCL void FDECL(dump_everything, (int, time_t));
 STATIC_DCL int NDECL(num_extinct);
 
 #if defined(__BEOS__) || defined(MICRO) || defined(OS2)
-extern void FDECL(nethack_exit, (int));
+extern void FDECL(lumahack_exit, (int));
 #else
-#define nethack_exit exit
+#define lumahack_exit exit
 #endif
 
 #define done_stopprint program_state.stopprint
@@ -735,7 +735,7 @@ time_t when; /* date+time at end of game */
 
     /* one line version ID, which includes build date+time;
        it's conceivable that the game started with a different
-       build date+time or even with an older nethack version,
+       build date+time or even with an older lumahack version,
        but we only have access to the one it finished under */
     putstr(0, 0, getversionstring(pbuf));
     putstr(0, 0, "");
@@ -1731,7 +1731,7 @@ int status;
         return;
 #endif
     program_state.exiting = 1;
-    nethack_exit(status);
+    lumahack_exit(status);
 }
 
 enum vanq_order_modes {

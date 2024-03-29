@@ -1,10 +1,10 @@
-/* $NHDT-Date: 1546081295 2018/12/29 11:01:35 $  $NHDT-Branch: NetHack-3.6.2-beta01 $:$NHDT-Revision: 1.12 $ */
+/* $NHDT-Date: 1546081295 2018/12/29 11:01:35 $  $NHDT-Branch: LumaHack-3.6.2-beta01 $:$NHDT-Revision: 1.12 $ */
 /*      Copyright (c) 2017 by Pasi Kallinen                       */
-/* NetHack may be freely redistributed.  See license for details. */
+/* LumaHack may be freely redistributed.  See license for details. */
 
 /*
  * Convert the given input files into an output file that is expected
- * by nethack.
+ * by lumahack.
  *
  * Assumptions:
  * 	+ Two dimensional byte arrays are in row order and are not padded

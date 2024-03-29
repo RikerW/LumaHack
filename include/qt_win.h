@@ -1,11 +1,11 @@
-// NetHack 3.6	qt_win.h	$NHDT-Date: 1447755972 2015/11/17 10:26:12 $  $NHDT-Branch: master $:$NHDT-Revision: 1.17 $
+// LumaHack 3.6	qt_win.h	$NHDT-Date: 1447755972 2015/11/17 10:26:12 $  $NHDT-Branch: master $:$NHDT-Revision: 1.17 $
 // Copyright (c) Warwick Allison, 1999.
-// NetHack may be freely redistributed.  See license for details.
+// LumaHack may be freely redistributed.  See license for details.
 //
-// Qt Binding for NetHack 3.4
+// Qt Binding for LumaHack 3.4
 //
 // Unfortunately, this doesn't use Qt as well as I would like,
-// primarily because NetHack is fundamentally a getkey-type
+// primarily because LumaHack is fundamentally a getkey-type
 // program rather than being event driven (hence the ugly key
 // and click buffer rather), but also because this is my first
 // major application of Qt.
@@ -65,25 +65,25 @@ class NhPSListView;
 //
 //////////////////////////////////////////////////////////////
 
-class NetHackQtGlyphs;
+class LumaHackQtGlyphs;
 
-class NetHackQtLineEdit : public QLineEdit
+class LumaHackQtLineEdit : public QLineEdit
 {
   public:
-    NetHackQtLineEdit();
-    NetHackQtLineEdit(QWidget *parent, const char *name);
+    LumaHackQtLineEdit();
+    LumaHackQtLineEdit(QWidget *parent, const char *name);
 
     void fakeEvent(int key, int ascii, int state);
 };
 
-class NetHackQtSettings : public QDialog
+class LumaHackQtSettings : public QDialog
 {
     Q_OBJECT
   public:
     // Size of window - used to decide default sizes
-    NetHackQtSettings(int width, int height);
+    LumaHackQtSettings(int width, int height);
 
-    NetHackQtGlyphs &glyphs();
+    LumaHackQtGlyphs &glyphs();
     const QFont &normalFont();
     const QFont &normalFixedFont();
     const QFont &largeFont();
@@ -110,16 +110,16 @@ class NetHackQtSettings : public QDialog
 
     QFont normal, normalfixed, large;
 
-    NetHackQtGlyphs *theglyphs;
+    LumaHackQtGlyphs *theglyphs;
 
   private slots:
     void resizeTiles();
 };
 
-class NetHackQtKeyBuffer
+class LumaHackQtKeyBuffer
 {
   public:
-    NetHackQtKeyBuffer();
+    LumaHackQtKeyBuffer();
 
     bool Empty() const;
     bool Full() const;
@@ -143,10 +143,10 @@ class NetHackQtKeyBuffer
     int in, out;
 };
 
-class NetHackQtClickBuffer
+class LumaHackQtClickBuffer
 {
   public:
-    NetHackQtClickBuffer();
+    LumaHackQtClickBuffer();
 
     bool Empty() const;
     bool Full() const;
@@ -167,21 +167,21 @@ class NetHackQtClickBuffer
     int in, out;
 };
 
-class NetHackQtSavedGameSelector : public QDialog
+class LumaHackQtSavedGameSelector : public QDialog
 {
   public:
-    NetHackQtSavedGameSelector(const char **saved);
+    LumaHackQtSavedGameSelector(const char **saved);
 
     int choose();
 };
 
-class NetHackQtPlayerSelector : private QDialog
+class LumaHackQtPlayerSelector : private QDialog
 {
     Q_OBJECT
   public:
     enum { R_None = -1, R_Quit = -2, R_Rand = -3 };
 
-    NetHackQtPlayerSelector(NetHackQtKeyBuffer &);
+    LumaHackQtPlayerSelector(LumaHackQtKeyBuffer &);
 
   protected:
     virtual void done(int);
@@ -201,7 +201,7 @@ class NetHackQtPlayerSelector : private QDialog
     bool Choose();
 
   private:
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
     NhPSListView *role;
     NhPSListView *race;
     QRadioButton **gender;
@@ -209,33 +209,33 @@ class NetHackQtPlayerSelector : private QDialog
     bool fully_specified_role;
 };
 
-class NetHackQtStringRequestor : QDialog
+class LumaHackQtStringRequestor : QDialog
 {
   private:
     QLabel prompt;
-    NetHackQtLineEdit input;
+    LumaHackQtLineEdit input;
     QPushButton *okay;
     QPushButton *cancel;
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
 
     virtual void done(int);
 
   public:
-    NetHackQtStringRequestor(NetHackQtKeyBuffer &, const char *p,
+    LumaHackQtStringRequestor(LumaHackQtKeyBuffer &, const char *p,
                              const char *cancelstr = "Cancel");
     void SetDefault(const char *);
     bool Get(char *buffer, int maxchar = 80);
     virtual void resizeEvent(QResizeEvent *);
 };
 
-class NetHackQtExtCmdRequestor : public QDialog
+class LumaHackQtExtCmdRequestor : public QDialog
 {
     Q_OBJECT
 
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
 
   public:
-    NetHackQtExtCmdRequestor(NetHackQtKeyBuffer &ks);
+    LumaHackQtExtCmdRequestor(LumaHackQtKeyBuffer &ks);
     int get();
 
   private slots:
@@ -243,11 +243,11 @@ class NetHackQtExtCmdRequestor : public QDialog
     void done(int i);
 };
 
-class NetHackQtWindow
+class LumaHackQtWindow
 {
   public:
-    NetHackQtWindow();
-    virtual ~NetHackQtWindow();
+    LumaHackQtWindow();
+    virtual ~LumaHackQtWindow();
 
     virtual QWidget *Widget() = 0;
 
@@ -268,10 +268,10 @@ class NetHackQtWindow
     int nhid;
 };
 
-class NetHackQtGlyphs
+class LumaHackQtGlyphs
 {
   public:
-    NetHackQtGlyphs();
+    LumaHackQtGlyphs();
 
     int
     width() const
@@ -305,11 +305,11 @@ class BlackScrollView : public QScrollView
     }
 };
 
-class NetHackQtMapWindow : public QWidget, public NetHackQtWindow
+class LumaHackQtMapWindow : public QWidget, public LumaHackQtWindow
 {
     Q_OBJECT
   private:
-    NetHackQtClickBuffer &clicksink;
+    LumaHackQtClickBuffer &clicksink;
     unsigned short glyph[ROWNO][COLNO];
     unsigned short &
     Glyph(int x, int y)
@@ -341,8 +341,8 @@ class NetHackQtMapWindow : public QWidget, public NetHackQtWindow
     virtual void mousePressEvent(QMouseEvent *);
 
   public:
-    NetHackQtMapWindow(NetHackQtClickBuffer &click_sink);
-    ~NetHackQtMapWindow();
+    LumaHackQtMapWindow(LumaHackQtClickBuffer &click_sink);
+    ~LumaHackQtMapWindow();
 
     virtual QWidget *Widget();
     virtual bool Destroy();
@@ -364,13 +364,13 @@ class NetHackQtMapWindow : public QWidget, public NetHackQtWindow
     void clickCursor();
 };
 
-class NetHackQtScrollText;
-class NetHackQtMessageWindow : QObject, public NetHackQtWindow
+class LumaHackQtScrollText;
+class LumaHackQtMessageWindow : QObject, public LumaHackQtWindow
 {
     Q_OBJECT
   public:
-    NetHackQtMessageWindow();
-    ~NetHackQtMessageWindow();
+    LumaHackQtMessageWindow();
+    ~LumaHackQtMessageWindow();
 
     virtual QWidget *Widget();
     virtual void Clear();
@@ -379,22 +379,22 @@ class NetHackQtMessageWindow : QObject, public NetHackQtWindow
 
     void Scroll(int dx, int dy);
 
-    void setMap(NetHackQtMapWindow *);
+    void setMap(LumaHackQtMapWindow *);
 
   private:
-    NetHackQtScrollText *list;
+    LumaHackQtScrollText *list;
     bool changed;
-    NetHackQtMapWindow *map;
+    LumaHackQtMapWindow *map;
 
   private slots:
     void updateFont();
 };
 
-class NetHackQtLabelledIcon : public QWidget
+class LumaHackQtLabelledIcon : public QWidget
 {
   public:
-    NetHackQtLabelledIcon(QWidget *parent, const char *label);
-    NetHackQtLabelledIcon(QWidget *parent, const char *label,
+    LumaHackQtLabelledIcon(QWidget *parent, const char *label);
+    LumaHackQtLabelledIcon(QWidget *parent, const char *label,
                           const QPixmap &icon);
 
     enum { NoNum = -99999 };
@@ -430,11 +430,11 @@ class NetHackQtLabelledIcon : public QWidget
     QLabel *icon;
 };
 
-class NetHackQtStatusWindow : QWidget, public NetHackQtWindow
+class LumaHackQtStatusWindow : QWidget, public LumaHackQtWindow
 {
     Q_OBJECT
   public:
-    NetHackQtStatusWindow();
+    LumaHackQtStatusWindow();
 
     virtual QWidget *Widget();
 
@@ -477,35 +477,35 @@ class NetHackQtStatusWindow : QWidget, public NetHackQtWindow
 
     QPixmap p_encumber[5];
 
-    NetHackQtLabelledIcon name;
-    NetHackQtLabelledIcon dlevel;
+    LumaHackQtLabelledIcon name;
+    LumaHackQtLabelledIcon dlevel;
 
-    NetHackQtLabelledIcon str;
-    NetHackQtLabelledIcon dex;
-    NetHackQtLabelledIcon con;
-    NetHackQtLabelledIcon intel;
-    NetHackQtLabelledIcon wis;
-    NetHackQtLabelledIcon cha;
+    LumaHackQtLabelledIcon str;
+    LumaHackQtLabelledIcon dex;
+    LumaHackQtLabelledIcon con;
+    LumaHackQtLabelledIcon intel;
+    LumaHackQtLabelledIcon wis;
+    LumaHackQtLabelledIcon cha;
 
-    NetHackQtLabelledIcon gold;
-    NetHackQtLabelledIcon hp;
-    NetHackQtLabelledIcon power;
-    NetHackQtLabelledIcon ac;
-    NetHackQtLabelledIcon level;
-    NetHackQtLabelledIcon exp;
-    NetHackQtLabelledIcon align;
+    LumaHackQtLabelledIcon gold;
+    LumaHackQtLabelledIcon hp;
+    LumaHackQtLabelledIcon power;
+    LumaHackQtLabelledIcon ac;
+    LumaHackQtLabelledIcon level;
+    LumaHackQtLabelledIcon exp;
+    LumaHackQtLabelledIcon align;
 
-    NetHackQtLabelledIcon time;
-    NetHackQtLabelledIcon score;
+    LumaHackQtLabelledIcon time;
+    LumaHackQtLabelledIcon score;
 
-    NetHackQtLabelledIcon hunger;
-    NetHackQtLabelledIcon confused;
-    NetHackQtLabelledIcon sick_fp;
-    NetHackQtLabelledIcon sick_il;
-    NetHackQtLabelledIcon blind;
-    NetHackQtLabelledIcon stunned;
-    NetHackQtLabelledIcon hallu;
-    NetHackQtLabelledIcon encumber;
+    LumaHackQtLabelledIcon hunger;
+    LumaHackQtLabelledIcon confused;
+    LumaHackQtLabelledIcon sick_fp;
+    LumaHackQtLabelledIcon sick_il;
+    LumaHackQtLabelledIcon blind;
+    LumaHackQtLabelledIcon stunned;
+    LumaHackQtLabelledIcon hallu;
+    LumaHackQtLabelledIcon encumber;
 
     QFrame hline1;
     QFrame hline2;
@@ -520,11 +520,11 @@ class NetHackQtStatusWindow : QWidget, public NetHackQtWindow
     void checkTurnEvents();
 };
 
-class NetHackQtMenuDialog : public QDialog
+class LumaHackQtMenuDialog : public QDialog
 {
     Q_OBJECT
   public:
-    NetHackQtMenuDialog();
+    LumaHackQtMenuDialog();
 
     void Accept();
     void Reject();
@@ -539,12 +539,12 @@ class NetHackQtMenuDialog : public QDialog
     void Resized();
 };
 
-class NetHackQtMenuWindow : public QTableView, public NetHackQtWindow
+class LumaHackQtMenuWindow : public QTableView, public LumaHackQtWindow
 {
     Q_OBJECT
   public:
-    NetHackQtMenuWindow(NetHackQtKeyBuffer &);
-    ~NetHackQtMenuWindow();
+    LumaHackQtMenuWindow(LumaHackQtKeyBuffer &);
+    ~LumaHackQtMenuWindow();
 
     virtual QWidget *Widget();
 
@@ -602,9 +602,9 @@ class NetHackQtMenuWindow : public QTableView, public NetHackQtWindow
     bool str_fixed;
     int next_accel;
 
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
 
-    NetHackQtMenuDialog *dialog;
+    LumaHackQtMenuDialog *dialog;
 
     QPushButton *ok;
     QPushButton *cancel;
@@ -622,9 +622,9 @@ class NetHackQtMenuWindow : public QTableView, public NetHackQtWindow
     bool was_sel;
 };
 
-class NetHackQtTextListBox;
+class LumaHackQtTextListBox;
 
-class NetHackQtRIP : public QWidget
+class LumaHackQtRIP : public QWidget
 {
   private:
     static QPixmap *pixmap;
@@ -632,7 +632,7 @@ class NetHackQtRIP : public QWidget
     int riplines;
 
   public:
-    NetHackQtRIP(QWidget *parent);
+    LumaHackQtRIP(QWidget *parent);
 
     void setLines(char **l, int n);
 
@@ -641,12 +641,12 @@ class NetHackQtRIP : public QWidget
     QSize sizeHint() const;
 };
 
-class NetHackQtTextWindow : public QDialog, public NetHackQtWindow
+class LumaHackQtTextWindow : public QDialog, public LumaHackQtWindow
 {
     Q_OBJECT
   public:
-    NetHackQtTextWindow(NetHackQtKeyBuffer &);
-    ~NetHackQtTextWindow();
+    LumaHackQtTextWindow(LumaHackQtKeyBuffer &);
+    ~LumaHackQtTextWindow();
 
     virtual QWidget *Widget();
 
@@ -667,26 +667,26 @@ class NetHackQtTextWindow : public QDialog, public NetHackQtWindow
     void doUpdate();
 
   private:
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
 
     bool use_rip;
     bool str_fixed;
 
     QPushButton ok;
     QPushButton search;
-    NetHackQtTextListBox *lines;
+    LumaHackQtTextListBox *lines;
 
-    NetHackQtRIP rip;
+    LumaHackQtRIP rip;
 };
 
-class NetHackQtMenuOrTextWindow : public NetHackQtWindow
+class LumaHackQtMenuOrTextWindow : public LumaHackQtWindow
 {
   private:
-    NetHackQtWindow *actual;
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtWindow *actual;
+    LumaHackQtKeyBuffer &keysource;
 
   public:
-    NetHackQtMenuOrTextWindow(NetHackQtKeyBuffer &);
+    LumaHackQtMenuOrTextWindow(LumaHackQtKeyBuffer &);
 
     virtual QWidget *Widget();
 
@@ -704,31 +704,31 @@ class NetHackQtMenuOrTextWindow : public NetHackQtWindow
     virtual int SelectMenu(int how, MENU_ITEM_P **menu_list);
 };
 
-class NetHackQtDelay : QObject
+class LumaHackQtDelay : QObject
 {
   private:
     int msec;
 
   public:
-    NetHackQtDelay(int ms);
+    LumaHackQtDelay(int ms);
     void wait();
     virtual void timerEvent(QTimerEvent *timer);
 };
 
-class NetHackQtInvUsageWindow : public QWidget
+class LumaHackQtInvUsageWindow : public QWidget
 {
   public:
-    NetHackQtInvUsageWindow(QWidget *parent);
+    LumaHackQtInvUsageWindow(QWidget *parent);
     virtual void paintEvent(QPaintEvent *);
 
   private:
     void drawWorn(QPainter &painter, obj *, int x, int y, bool canbe = TRUE);
 };
 
-// This class is the main widget for NetHack
+// This class is the main widget for LumaHack
 //
 // It is a collection of Message, Map, and Status windows.  In the current
-// version of nethack there is only one of each, and this class makes this
+// version of lumahack there is only one of each, and this class makes this
 // assumption, not showing itself until all are inserted.
 //
 // This class simply knows how to layout such children sensibly.
@@ -740,16 +740,16 @@ class NetHackQtInvUsageWindow : public QWidget
 #include "qt_kde0.h"
 #endif
 
-class NetHackQtMainWindow : public KTopLevelWidget
+class LumaHackQtMainWindow : public KTopLevelWidget
 {
     Q_OBJECT
   public:
-    NetHackQtMainWindow(NetHackQtKeyBuffer &);
+    LumaHackQtMainWindow(LumaHackQtKeyBuffer &);
 
-    void AddMessageWindow(NetHackQtMessageWindow *window);
-    void AddMapWindow(NetHackQtMapWindow *window);
-    void AddStatusWindow(NetHackQtStatusWindow *window);
-    void RemoveWindow(NetHackQtWindow *window);
+    void AddMessageWindow(LumaHackQtMessageWindow *window);
+    void AddMapWindow(LumaHackQtMapWindow *window);
+    void AddStatusWindow(LumaHackQtStatusWindow *window);
+    void RemoveWindow(LumaHackQtWindow *window);
     void updateInventory();
 
     void fadeHighlighting();
@@ -779,26 +779,26 @@ class NetHackQtMainWindow : public KTopLevelWidget
 #else
     QMenuBar *menubar;
 #endif
-    NetHackQtMessageWindow *message;
-    NetHackQtMapWindow *map;
-    NetHackQtStatusWindow *status;
-    NetHackQtInvUsageWindow *invusage;
+    LumaHackQtMessageWindow *message;
+    LumaHackQtMapWindow *map;
+    LumaHackQtStatusWindow *status;
+    LumaHackQtInvUsageWindow *invusage;
 
-    NetHackQtKeyBuffer &keysink;
+    LumaHackQtKeyBuffer &keysink;
     QWidgetStack *stack;
     int dirkey;
 
     const char **macro;
 };
 
-class NetHackQtYnDialog : QDialog
+class LumaHackQtYnDialog : QDialog
 {
     Q_OBJECT
   private:
     const char *question;
     const char *choices;
     char def;
-    NetHackQtKeyBuffer &keysource;
+    LumaHackQtKeyBuffer &keysource;
 
   protected:
     virtual void keyPressEvent(QKeyEvent *);
@@ -808,33 +808,33 @@ class NetHackQtYnDialog : QDialog
     void doneItem(int);
 
   public:
-    NetHackQtYnDialog(NetHackQtKeyBuffer &keysource, const char *,
+    LumaHackQtYnDialog(LumaHackQtKeyBuffer &keysource, const char *,
                       const char *, char);
 
     char Exec();
 };
 
 #ifdef KDE
-#define NetHackQtBindBase KApplication
+#define LumaHackQtBindBase KApplication
 #elif defined(QWS)
-#define NetHackQtBindBase QPEApplication
+#define LumaHackQtBindBase QPEApplication
 #else
-#define NetHackQtBindBase QApplication
+#define LumaHackQtBindBase QApplication
 #endif
 
-class NetHackQtBind : NetHackQtBindBase
+class LumaHackQtBind : LumaHackQtBindBase
 {
   private:
     // Single-instance preservation...
-    NetHackQtBind(int &argc, char **argv);
+    LumaHackQtBind(int &argc, char **argv);
 
-    static NetHackQtBind *instance;
+    static LumaHackQtBind *instance;
 
-    static NetHackQtKeyBuffer keybuffer;
-    static NetHackQtClickBuffer clickbuffer;
+    static LumaHackQtKeyBuffer keybuffer;
+    static LumaHackQtClickBuffer clickbuffer;
 
     static QWidget *splash;
-    static NetHackQtMainWindow *main;
+    static LumaHackQtMainWindow *main;
 
   public:
     static void qt_init_nhwindows(int *argc, char **argv);
